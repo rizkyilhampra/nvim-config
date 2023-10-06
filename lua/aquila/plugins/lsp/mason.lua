@@ -1,14 +1,25 @@
 return {
- "williamboman/mason.nvim",
-        config = function() 
-            require("mason").setup({
-                ui = {
-                    icons = {
-                        package_installed = "✓",
-                        package_pending = "➜",
-                        package_uninstalled = "✗"
-                    }
+    "williamboman/mason.nvim",
+    dependencies = {
+        "williamboman/mason-lspconfig.nvim"
+    },
+    config = function()
+        require("mason").setup({
+            ui = {
+                icons = {
+                    package_installed = "✓",
+                    package_pending = "➜",
+                    package_uninstalled = "✗"
                 }
-            })
-        end
+            }
+        })
+
+        require("mason-lspconfig").setup({
+            ensure_installed = {
+                "intelephense",
+                "lua_ls"
+            },
+            automatic_installation = true
+        })
+    end
 }
