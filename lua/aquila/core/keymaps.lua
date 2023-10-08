@@ -42,3 +42,5 @@ vim.keymap.set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/Yank to system 
 vim.keymap.set({ "n", "v" }, "<Leader>p", "\"+p", { desc = "Paste from system clipboard" })
 
 vim.keymap.set("n", "<Leader>t", vim.cmd.ToggleTerm, {desc = "Toggle terminal"})
+
+vim.keymap.set("n", "<Leader>h", vim.cmd.Alpha, {desc = "take me home to the place i belong ~~~~"})
