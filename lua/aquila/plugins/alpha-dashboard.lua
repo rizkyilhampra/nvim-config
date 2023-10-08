@@ -31,7 +31,8 @@ return {
             "⣮⣮⣄⣣⠘⡄⢣⠘⡄⢣⠘⡄⢣⠘⡄⢣⠘⡄⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⡈⢆⠱⡈⢆⠱⡈⢆⠱⣈⠑⣢⠘⠔⣱",
         }
 
-        local footer = "Type `:q` for exit/quit VIM"
+        -- local footer = "Type `:q` for exit/quit VIM"
+        local footer = "`:lua the_sunset_is_beautiful_isnt()`"
 
         dashboard.section.header.val = logo
         dashboard.section.footer.val = footer
@@ -65,7 +66,7 @@ return {
         --         local footerOnOpts = dashboard.section.footer.val
         --         local footerCustom = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
 
-        --         dashboard.section.footer.val = footerOnOpts .. "\n" .. footerCustom
+        --         dashboard.section.footer.val = footerCustom
 
         --         pcall(vim.cmd.AlphaRedraw)
         --     end,

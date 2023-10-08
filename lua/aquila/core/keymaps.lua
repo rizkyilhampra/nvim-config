@@ -14,8 +14,6 @@ vim.keymap.set("i", "jj", "<Esc>", opts)
 -- i love vscode and other editor at windows behavior for save a file
 vim.keymap.set({ 'i', 'n' }, "<C-s>", vim.cmd.w)
 
-vim.keymap.set({ 'n', 'v' }, "<Space>", ":WhichKey<CR><Leader>")
-
 -- switch buffer next or previous
 vim.keymap.set('n', '<C-h>', vim.cmd.bnext)
 vim.keymap.set('n', '<C-l>', vim.cmd.bprevious)
@@ -38,3 +36,12 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<Leader>ma", vim.cmd.Mason, { desc = 'Open Mason' })
 vim.keymap.set("n", "<Leader>la", vim.cmd.Lazy, { desc = "Open Lazy" })
+
+vim.keymap.set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/Yank to system clipboard" })
+
+vim.keymap.set({ "n", "v" }, "<Leader>p", "\"+p", { desc = "Paste from system clipboard" })
+
+-- Tab Nvim
+-- vim.keymap.set("n", "<Leader>tq", vim.cmd.tabclose, {desc = "Tab Close"})
+
+vim.keymap.set("n", "<Leader>t", vim.cmd.ToggleTerm, {desc = "Toggle terminal"})

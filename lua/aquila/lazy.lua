@@ -16,7 +16,7 @@ require("lazy").setup({
     { import = "aquila.plugins" },
     { import = "aquila.plugins.lsp" }
 }, {
-    install = {
-        colorscheme = { "tokyonight-night" }
-    }
+    change_detection = {
+        notify = false,
+    },
 })

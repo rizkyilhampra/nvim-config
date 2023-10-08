@@ -1,5 +1,6 @@
 return {
     "andweeb/presence.nvim",
+    event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
     config = function()
         require("presence").setup({
             -- General options
