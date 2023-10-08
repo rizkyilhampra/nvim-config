@@ -35,6 +35,7 @@ return {
                     api.tree.open()
                     api.tree.find_file(selection.cwd .. "/" .. selection.value)
                     api.node.open.edit()
+                    api.tree.close()
                 end)
                 return true
             end
