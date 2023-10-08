@@ -11,7 +11,7 @@ return {
 
         local keymap = vim.keymap
 
-        keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = "find files in cwd" })
+        -- keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = "find files in cwd" })
         keymap.set('n', '<leader>fa', '<cmd>Telescope find_files no_ignore=true hidden=true<CR>',
             { desc = "find all without respect anything" }
         )

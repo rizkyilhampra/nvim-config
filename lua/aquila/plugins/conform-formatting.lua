@@ -17,7 +17,10 @@ return {
     opts = {
         formatters_by_ft = {
             php = { "intelephense" },
-            lua = { "lua_ls" }
+            lua = { "lua_ls" },
+            html = { "prettier"},
+            css = { "prettier"},
+            javascript = { "prettier"},
         },
     },
     init = function()
