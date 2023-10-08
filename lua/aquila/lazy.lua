@@ -16,8 +16,8 @@ require("lazy").setup({
     { import = "aquila.plugins" },
     { import = "aquila.plugins.lsp" }
 }, {
-    change_detection = {
-        notify = false,
-    },
-})
+        change_detection = {
+            notify = true
+        }
+    })
 
