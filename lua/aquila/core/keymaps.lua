@@ -34,11 +34,13 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<Leader>ma", vim.cmd.Mason, { desc = 'Open Mason' })
-vim.keymap.set("n", "<Leader>la", vim.cmd.Lazy, { desc = "Open Lazy" })
+vim.keymap.set("n", "<Leader>m", vim.cmd.Mason, { desc = 'Open Mason' })
+vim.keymap.set("n", "<Leader>l", vim.cmd.Lazy, { desc = "Open Lazy" })
 
 vim.keymap.set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/Yank to system clipboard" })
-
 vim.keymap.set({ "n", "v" }, "<Leader>p", "\"+p", { desc = "Paste from system clipboard" })
 
-vim.keymap.set("n", "<Leader>h", vim.cmd.Alpha, {desc = "take me home to the place i belong ~~~~"})
+vim.keymap.set("n", "<Leader>h", vim.cmd.Alpha, { desc = "Take me home to the place i belong ~~" })
+
+vim.keymap.set("n", "H", "<C-w>h", { noremap = true, silent = true })
+vim.keymap.set("n", "L", "<C-w>l", { noremap = true, silent = true })
