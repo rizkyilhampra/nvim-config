@@ -33,7 +33,12 @@ return {
         local actions = require("telescope.actions")
         require('telescope').setup({
             defaults = {
-                buffer_previewer_maker = new_maker
+                buffer_previewer_maker = new_maker,
+                mappings = {
+                    n = {
+                        ['q'] = actions.close
+                    }
+                }
             }
         })
 
@@ -44,17 +49,22 @@ return {
         local keymap = vim.keymap
 
         keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = "find files in cwd" })
+        keymap.set('n', '<leader><space>', '<cmd>Telescope find_files<cr>', { desc = "find files in cwd" })
         keymap.set('n', '<leader>fa', '<cmd>Telescope find_files no_ignore=true hidden=true<CR>',
             { desc = "find all without respect anything" }
         )
-        keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "find recent files" })
+        keymap.set("n", "<leader>fR", "<cmd>Telescope oldfiles<cr>", { desc = "List previously open files" })
+        keymap.set("n", "<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles({cwd_only = true})<CR>", {
+            desc ='List previously open files on cwd only'
+        })
         keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "find string in cwd" })
         keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "find string under cursor in cwd" })
         keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "list of buffers" })
+        keymap.set("n", "<leader>r", "<cmd>Telescope registers<cr>", { desc = "List of registers" })
 
         -- extension file browser
-        keymap.set("n", "<Leader>fE", ":Telescope file_browser<CR>", { noremap = true, desc = "file browser on cwd" })
-        keymap.set("n", "<Leader>fe", ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+        keymap.set("n", "<Leader>E", ":Telescope file_browser<CR>", { noremap = true, desc = "file browser on cwd" })
+        keymap.set("n", "<Leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
             { noremap = true, desc = "file browser on current buffer path" })
     end
 }

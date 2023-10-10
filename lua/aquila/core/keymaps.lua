@@ -1,8 +1,3 @@
--- for fzf plugin
--- vim.keymap.set('n', '<Leader>bb', vim.cmd.Buffers)
--- vim.keymap.set('n', '<Leader>fg', vim.cmd.GitFiles)
--- vim.keymap.set('n', '<Leader>ff', vim.cmd.Files)
-
 local opts = {
     noremap = true,
     silent = true,
@@ -19,12 +14,9 @@ vim.keymap.set('n', '<C-h>', vim.cmd.bnext)
 vim.keymap.set('n', '<C-l>', vim.cmd.bprevious)
 
 -- fix problem when CTRL + Z is exit neovim
-vim.keymap.set({ 'n', 'v', 'i' },
-    '<C-z>',
-    '<Nop>'
-)
--- same problem like above
-vim.keymap.set({ 'i', 'n' }, '<C-c>', '<Nop>')
+vim.keymap.set({ 'n', 'v', 'i' }, '<C-z>', '<Nop>')
+-- fix probelm when CTRL + C in normal mode is exit neovim
+vim.keymap.set('n', '<C-c>', '<Nop>')
 
 -- same like alt + up/down at vscode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
