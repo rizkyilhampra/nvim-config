@@ -57,5 +57,17 @@ return {
             capabilities = capabilities,
             on_attach = on_attach
         })
+
+        lspconfig.emmet_ls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            cmd = { "emmet-ls", "--stdio" },
+            filetypes = { "astro", "css", "eruby", "html", "htmldjango", "javascriptreact", "less", "pug", "sass",
+                "scss", "svelte", "typescriptreact", "vue" },
+            root_dir = function(fname)
+                return vim.loop.cwd()
+            end,
+            single_file_support = true
+        })
     end
 }

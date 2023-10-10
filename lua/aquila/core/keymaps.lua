@@ -1,38 +1,31 @@
-local opts = {
-    noremap = true,
-    silent = true,
-}
-
+local set = function(mode, map, mapped, opts)
+    vim.keymap.set(mode, map, mapped, opts)
+end
 -- the important things you should remap
-vim.keymap.set("i", "jj", "<Esc>", opts)
+set("i", "jj", "<Esc>", { noremap = true, silent = true })
 
--- i love vscode and other editor at windows behavior for save a file
-vim.keymap.set({ 'i', 'n' }, "<C-s>", vim.cmd.w)
+set({ 'i', 'n' }, "<C-s>", '<cmd>w<CR>') -- i love vscode and other editor at windows behavior for save a file
 
--- switch buffer next or previous
-vim.keymap.set('n', '<C-h>', vim.cmd.bnext)
-vim.keymap.set('n', '<C-l>', vim.cmd.bprevious)
+set('n', '<C-h>', '<cmd>bnext<CR>')      -- switch buffer next or previous
+set('n', '<C-l>', '<cmd>bprevious<CR>')
 
--- fix problem when CTRL + Z is exit neovim
-vim.keymap.set({ 'n', 'v', 'i' }, '<C-z>', '<Nop>')
--- fix probelm when CTRL + C in normal mode is exit neovim
-vim.keymap.set('n', '<C-c>', '<Nop>')
+set({ 'n', 'v', 'i' }, '<C-z>', '<Nop>') -- fix problem when CTRL + Z is exit neovim
+set('n', '<C-c>', '<Nop>')               -- fix probelm when CTRL + C in normal mode is exit neovim
 
--- same like alt + up/down at vscode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+set("v", "J", ":m '>+1<CR>gv=gv")        -- same like alt + up/down at vscode
+set("v", "K", ":m '<-2<CR>gv=gv")
 
--- when you are in search mode and move with 'n'/'N' for the next matches, the window is stick center
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+set("n", "n", "nzzzv") -- when you are in search mode and move with 'n'/'N' for the next matches, the window is stick center
+set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<Leader>m", vim.cmd.Mason, { desc = 'Open Mason' })
-vim.keymap.set("n", "<Leader>l", vim.cmd.Lazy, { desc = "Open Lazy" })
+set("n", "<Leader>m", '<cmd>Mason<CR>', { desc = 'Open Mason' })
+set("n", "<Leader>l", '<cmd>Lazy<CR>', { desc = "Open Lazy" })
 
-vim.keymap.set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/Yank to system clipboard" })
-vim.keymap.set({ "n", "v" }, "<Leader>p", "\"+p", { desc = "Paste from system clipboard" })
+set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/Yank to system clipboard" })
+set({ "n", "v" }, "<Leader>p", "\"+p", { desc = "Paste from system clipboard" })
+set("v", "<leader>P", '"_dP', { desc = 'Do not lose the " register on paste' })
 
-vim.keymap.set("n", "<Leader>h", vim.cmd.Alpha, { desc = "Take me home to the place i belong ~~" })
+set("n", "<Leader>h", '<cmd>Alpha<CR>', { desc = "Take me home to the place i belong ~~" })
 
-vim.keymap.set("n", "H", "<C-w>h", { noremap = true, silent = true })
-vim.keymap.set("n", "L", "<C-w>l", { noremap = true, silent = true })
+set("n", "H", "<C-w>h", { noremap = true, silent = true })
+set("n", "L", "<C-w>l", { noremap = true, silent = true })
