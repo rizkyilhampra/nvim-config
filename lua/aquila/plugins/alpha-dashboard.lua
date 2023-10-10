@@ -32,7 +32,7 @@ return {
         }
 
         -- local footer = "Type `:q` for exit/quit VIM"
-        local footer = "`:lua the_sunset_is_beautiful_isnt()`"
+        local footer = "The sunset is beautiful, isn't it?"
 
         dashboard.section.header.val = logo
         dashboard.section.footer.val = footer
@@ -47,14 +47,6 @@ return {
         return dashboard
     end,
     config = function(_, dashboard)
-        if vim.o.filetype == 'lazy' then
-            vim.cmd.close()
-            vim.api.nvim_create_autocmd('User', {
-                pattern = 'AlphaReady',
-                callback = function() require('lazy').show() end,
-            })
-        end
-
         require('alpha').setup(dashboard.opts)
 
         -- vim.api.nvim_create_autocmd("User", {
