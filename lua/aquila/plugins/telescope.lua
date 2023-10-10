@@ -53,9 +53,9 @@ return {
         keymap.set('n', '<leader>fa', '<cmd>Telescope find_files no_ignore=true hidden=true<CR>',
             { desc = "find all without respect anything" }
         )
-        keymap.set("n", "<leader>fR", "<cmd>Telescope oldfiles<cr>", { desc = "List previously open files" })
-        keymap.set("n", "<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles({cwd_only = true})<CR>", {
-            desc ='List previously open files on cwd only'
+        keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "List previously open files all dir" })
+        keymap.set("n", "<leader><Tab>", "<cmd>lua require('telescope.builtin').oldfiles({cwd_only = true})<CR>", {
+            desc = 'List previously open files on cwd only'
         })
         keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "find string in cwd" })
         keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "find string under cursor in cwd" })
