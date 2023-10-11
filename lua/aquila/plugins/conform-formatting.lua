@@ -2,25 +2,24 @@ return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
-    keys = { {
-        "<Leader>af",
-        function()
-            require("conform").format({
-                async = true,
-                lsp_fallback = true
-            })
-        end,
-        mode = "",
-        desc = "Format buffer"
-    }
+    keys = {
+        {
+            "<Leader>af",
+            function()
+                require("conform").format({
+                    async = true,
+                    lsp_fallback = true
+                })
+            end,
+            mode = "",
+            desc = "Format buffer"
+        }
     },
     opts = {
         formatters_by_ft = {
-            php = { "intelephense" },
             lua = { "lua_ls" },
-            html = { "prettier"},
-            css = { "prettier"},
-            javascript = { "prettier"},
+            css = { "prettier" },
+            javascript = { "prettier" },
         },
     },
     init = function()

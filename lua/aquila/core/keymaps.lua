@@ -1,12 +1,12 @@
 local set = function(mode, map, mapped, opts)
     vim.keymap.set(mode, map, mapped, opts)
 end
--- the important things you should remap
-set("i", "jj", "<Esc>", { noremap = true, silent = true })
 
-set({ 'i', 'n' }, "<C-s>", '<cmd>w<CR>') -- i love vscode and other editor at windows behavior for save a file
+set("i", "jj", "<Esc>", { noremap = true, silent = true }) -- the important things you should remap
 
-set('n', '<C-h>', '<cmd>bnext<CR>')      -- switch buffer next or previous
+set({ 'i', 'n' }, "<C-s>", '<cmd>w<CR>')                   -- i love vscode and other editor at windows behavior for save a file
+
+set('n', '<C-h>', '<cmd>bnext<CR>')                        -- switch buffer next or previous
 set('n', '<C-l>', '<cmd>bprevious<CR>')
 
 set({ 'n', 'v', 'i' }, '<C-z>', '<Nop>') -- fix problem when CTRL + Z is exit neovim
@@ -29,3 +29,29 @@ set("n", "<Leader>h", '<cmd>Alpha<CR>', { desc = "Take me home to the place i be
 
 set("n", "H", "<C-w>h", { noremap = true, silent = true })
 set("n", "L", "<C-w>l", { noremap = true, silent = true })
+
+-- Neotree
+set("n", "<Leader>e", '<cmd>Neotree toggle<CR>')
+set("n", "<Leader>E", '<cmd>Neotree reveal<CR>')
+
+-- Telescope
+set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = "Find files in cwd" })
+set('n', '<leader><space>', '<cmd>Telescope find_files<cr>', { desc = "Find files in cwd" })
+set('n', '<leader>fa', '<cmd>Telescope find_files no_ignore=true hidden=true<CR>',
+    { desc = "Find all without respect anything" }
+)
+set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "List previously open files all dir" })
+set("n", "<leader><Tab>",
+    "<cmd>lua require('telescope.builtin').oldfiles({cwd_only = true, initial_mode = 'normal'})<CR>",
+    { desc = 'List previously open files on cwd only' })
+
+set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "list of buffers" })
+set("n", "<leader>r", "<cmd>lua require('telescope.builtin').registers({ initial_mode = 'normal' })<CR>",
+    { desc = "List of registers" })
+
+-- extension file browser
+-- keymap.set("n", "<Leader>E", ":Telescope file_browser<CR>", { noremap = true, desc = "file browser on cwd" })
+-- keymap.set("n", "<Leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+--     { noremap = true, desc = "file browser on current buffer path" })

@@ -17,7 +17,11 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "intelephense",
-                "lua_ls"
+                "lua_ls",
+                "cssls",
+                "html",
+                "tsserver",
+                "emmet_ls"
             },
             automatic_installation = true
         })
