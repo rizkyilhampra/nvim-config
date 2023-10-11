@@ -8,9 +8,16 @@ return {
         "saadparwaiz1/cmp_luasnip",     -- for autocompletion
         "rafamadriz/friendly-snippets", -- useful snippets
         "onsails/lspkind.nvim",         -- vs-code like pictograms
+        -- copilot
+        {
+            "zbirenbaum/copilot-cmp",
+            config = function()
+                require("copilot_cmp").setup()
+            end
+        }
     },
     config = function()
-        -- supertab
+        -- for supertab mapping
         local has_words_before = function()
             unpack = unpack or table.unpack
             local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -20,11 +27,44 @@ return {
         local cmp = require("cmp")
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
+        local cmp_kinds = {
+            Text = '  ',
+            Method = '  ',
+            Function = '  ',
+            Constructor = '  ',
+            Field = '  ',
+            Variable = '  ',
+            Class = '  ',
+            Interface = '  ',
+            Module = '  ',
+            Property = '  ',
+            Unit = '  ',
+            Value = '  ',
+            Enum = '  ',
+            Keyword = '  ',
+            Snippet = '  ',
+            Color = '  ',
+            File = '  ',
+            Reference = '  ',
+            Folder = '  ',
+            EnumMember = '  ',
+            Constant = '  ',
+            Struct = '  ',
+            Event = '  ',
+            Operator = '  ',
+            TypeParameter = '  ',
+            Copilot = '  '
+        }
 
         -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
         require("luasnip.loaders.from_vscode").lazy_load()
 
+        -- vim.api.nvim_set_hl(0, "CmpNormal", { bg = "#1ABC9C" })
+
         cmp.setup({
+            performance = {
+                max_view_entries = 20,
+            },
             completion = {
                 completeopt = "menu,menuone,preview,noselect",
             },
@@ -34,8 +74,18 @@ return {
                 end,
             },
             window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered(),
+                -- completion = cmp.config.window.bordered(),
+                -- completion = {
+                --     border = "rounded",
+                --     winhighlight = "Border:CmpNormal",
+                -- },
+
+                -- documentation = cmp.config.window.bordered(),
+                documentation = {
+                    border = "rounded",
+                    winhighlight = "Border:CmpNormal",
+                }
+
             },
             mapping = cmp.mapping.preset.insert({
                 -- ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
@@ -72,21 +122,25 @@ return {
             }),
             -- sources for autocompletion
             sources = cmp.config.sources({
-                { name = "nvim_lsp", max_item_count = 4 },
-                { name = "luasnip",  max_item_count = 4 }, -- snippets
-                { name = "buffer",   max_item_count = 4 }, -- text within current buffer
-                { name = "path",     max_item_count = 2 }, -- file system paths
+                { name = "nvim_lsp", group_index = 2 },
+                { name = "luasnip",  group_index = 2 }, -- snippets
+                { name = "buffer",   group_index = 2 }, -- text within current buffer
+                { name = "path",     group_index = 2 }, -- file system paths
+                { name = "copilot",  group_index = 2 }  -- copilot
             }),
             -- configure lspkind for vs-code like pictograms in completion menu
             formatting = {
-                format = lspkind.cmp_format({
-                    maxwidth = 50,
-                    ellipsis_char = "...",
-                }),
+                -- format = lspkind.cmp_format({
+                --     maxwidth = 50,
+                --     symbol_map = {},
+                --     ellipsis_char = "...",
+                -- }),
+                fields = { "kind", "abbr" },
+                format = function(_, vim_item)
+                    vim_item.kind = cmp_kinds[vim_item.kind] or ""
+                    return vim_item
+                end,
             },
-            experimental = {
-                ghost_text = true,
-            }
         })
     end,
 }
