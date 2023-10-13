@@ -41,24 +41,43 @@ return {
 
         require('telescope').load_extension('fzf')
 
-        function recent_files()
-            require('telescope.builtin').oldfiles({
-                cwd_only = true,
+        function AquilaRecentFiles()
+            -- require('telescope.builtin').oldfiles({
+            --     cwd_only = true,
+            --     initial_mode = 'normal',
+            --     layout_strategy = 'vertical',
+            --     layout_corfig = {
+            --         vertical = {
+            --             height = 0.8,
+            --             preview_cutoff = 1,
+            --             preview_height = 0.3
+            --         }
+            --     }
+            -- })
+            local builtin = require('telescope.builtin')
+            local themes = require('telescope.themes')
+            local opts = themes.get_dropdown({
+                winblend = 10,
+                previewer = false,
                 initial_mode = 'normal',
-                layout_strategy = 'vertical',
-                layout_config = {
-                    vertical = {
-                        height = 0.8,
-                        preview_cutoff = 1,
-                        preview_height = 0.3
-                    }
-                }
+                cwd_only = true,
             })
+
+            builtin.oldfiles(opts)
+        end
+
+        function AquilaFindFilesCommon()
+            local builtin = require('telescope.builtin')
+            local opts = {
+                layout_strategy = 'center',
+            }
+
+            builtin.find_files(opts)
         end
 
         vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = "Find files in cwd" })
-        vim.keymap.set('n', '<leader><space>',
-            "<cmd>lua require('telescope.builtin').find_files()<cr>",
+        vim.keymap.set('n', '<leader><Space>',
+            "<cmd>lua AquilaFindFilesCommon()<cr>",
             { desc = "Find files in cwd" })
 
         vim.keymap.set('n', '<leader>fa', '<cmd>Telescope find_files no_ignore=true hidden=true<CR>',
@@ -66,8 +85,8 @@ return {
         )
         vim.keymap.set("n", "<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles({initial_mode = 'normal'})<cr>",
             { desc = "List previously open files all dir" })
-        vim.keymap.set("n", "<leader><Tab>", '<cmd>lua recent_files()<cr>',
-            { desc = 'List previously open files on cwd only' })
+        vim.keymap.set("n", "<leader><Tab>", '<cmd>lua AquilaRecentFiles()<cr>',
+            { desc = 'List previously open files on cwd' })
 
         vim.keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
         vim.keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
@@ -87,8 +106,8 @@ return {
         --     "<cmd> lua require('telescope.builtin').lsp_workspace_symbols({initial_mode = 'normal'})<CR> ", {
         --         desc = "List of workspace symbols"
         --     })
-        vim.keymap.set('n', "<leader>flds",
-            "<cmd> lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR> ", {
+        vim.keymap.set('n', "<leader>flS",
+            "<cmd> lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>", {
                 desc = "List of dynamic workspace symbols"
             })
         vim.keymap.set('n', "<leader>fld",
