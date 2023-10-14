@@ -66,8 +66,6 @@ return {
         -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
         require("luasnip.loaders.from_vscode").lazy_load()
 
-        -- vim.api.nvim_set_hl(0, "CmpNormal", { bg = "#1ABC9C" })
-
         cmp.setup({
             performance = {
                 max_view_entries = 50,
@@ -108,9 +106,8 @@ return {
                 -- documentation = cmp.config.window.bordered(),
                 documentation = {
                     border = "rounded",
-                    winhighlight = "Border:CmpNormal",
-                }
-
+                    winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu',
+                },
             },
             mapping = cmp.mapping.preset.insert({
                 -- ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
@@ -175,5 +172,9 @@ return {
                 end,
             },
         })
+
+        cmp.event:on("menu_opened", function(fallback)
+            vim.opt.pumblend = 10
+        end)
     end,
 }
