@@ -1,5 +1,6 @@
 return {
     'declancm/cinnamon.nvim',
+    event = 'BufRead',
     config = function()
         require('cinnamon').setup({
             default_keymaps = true,

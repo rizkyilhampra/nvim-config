@@ -41,6 +41,22 @@ return {
             end,
         })
 
+        -- PHPACTOR
+        -- lspconfig.phpactor.setup({
+        --     capabilities = capabilities,
+        --     on_attach = on_attach,
+        --     init_options = {
+        --         ["language_server_phpstan.enabled"] = false,
+        --         ["language_server_psalm.enabled"] = false,
+        --     },
+        --     root_dir = function(fname)
+        --         if fname:match("composer.json") then
+        --             return vim.fn.getcwd()
+        --         end
+        --         return vim.loop.cwd()
+        --     end,
+        -- })
+
         lspconfig.lua_ls.setup({
             capabilities = capabilities,
             on_attach = on_attach,

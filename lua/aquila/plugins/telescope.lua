@@ -27,8 +27,14 @@ return {
             }):sync()
         end
 
-        local actions = require("telescope.actions")
-        require('telescope').setup({
+        local telescope = require('telescope')
+        local actions = require('telescope.actions')
+        local themes = require('telescope.themes')
+        local builtin = require('telescope.builtin')
+
+        telescope.load_extension("smart_open")
+
+        telescope.setup({
             defaults = {
                 buffer_previewer_maker = new_maker,
                 mappings = {
@@ -39,67 +45,97 @@ return {
             },
         })
 
-        require('telescope').load_extension('fzf')
 
-        function AquilaRecentFiles()
-            -- require('telescope.builtin').oldfiles({
-            --     cwd_only = true,
-            --     initial_mode = 'normal',
-            --     layout_strategy = 'vertical',
-            --     layout_corfig = {
-            --         vertical = {
-            --             height = 0.8,
-            --             preview_cutoff = 1,
-            --             preview_height = 0.3
-            --         }
-            --     }
-            -- })
-            local builtin = require('telescope.builtin')
-            local themes = require('telescope.themes')
-            local opts = themes.get_dropdown({
-                winblend = 10,
-                previewer = false,
-                initial_mode = 'normal',
-                cwd_only = true,
+        -- function AquilaRecentFiles()
+        --     -- require('telescope.builtin').oldfiles({
+        --     --     cwd_only = true,
+        --     --     initial_mode = 'normal',
+        --     --     layout_strategy = 'vertical',
+        --     --     layout_corfig = {
+        --     --         vertical = {
+        --     --             height = 0.8,
+        --     --             preview_cutoff = 1,
+        --     --             preview_height = 0.3
+        --     --         }
+        --     --     }
+        --     -- })
+        --     local builtin = require('telescope.builtin')
+        --     local themes = require('telescope.themes')
+        --     local opts = themes.get_dropdown({
+        --         winblend = 10,
+        --         previewer = false,
+        --         initial_mode = 'normal',
+        --         cwd_only = true,
+        --     })
+        --
+        --     builtin.oldfiles(opts)
+        -- end
+        --
+        -- function AquilaFindFilesCommon()
+        --     local builtin = require('telescope.builtin')
+        --     local opts = {
+        --         winblend = 10,
+        --         layout_strategy = 'center',
+        --         layout_config = {
+        --             center = {
+        --                 preview_cutoff = 1,
+        --             }
+        --         }
+        --     }
+        --
+        --     builtin.find_files(opts)
+        -- end
+
+        -- vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = "Find files in cwd" })
+        -- vim.keymap.set('n', '<leader><Space>',
+        --     "<cmd>lua AquilaFindFilesCommon()<cr>",
+        --     { desc = "Find files in cwd" })
+        vim.keymap.set('n', '<leader>fa', function()
+            builtin.find_files({
+                no_ignore = true,
+                hidden = true,
             })
+        end, { desc = "Find all without respect anything" })
 
-            builtin.oldfiles(opts)
-        end
-
-        function AquilaFindFilesCommon()
-            local builtin = require('telescope.builtin')
-            local opts = {
-                layout_strategy = 'center',
-            }
-
-            builtin.find_files(opts)
-        end
-
-        vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = "Find files in cwd" })
-        vim.keymap.set('n', '<leader><Space>',
-            "<cmd>lua AquilaFindFilesCommon()<cr>",
-            { desc = "Find files in cwd" })
-
-        vim.keymap.set('n', '<leader>fa', '<cmd>Telescope find_files no_ignore=true hidden=true<CR>',
-            { desc = "Find all without respect anything" }
-        )
-        vim.keymap.set("n", "<leader>fr", "<cmd>lua require('telescope.builtin').oldfiles({initial_mode = 'normal'})<cr>",
+        vim.keymap.set("n", "<leader>fr", function()
+                builtin.oldfiles({ initial_mode = 'normal' })
+            end,
             { desc = "List previously open files all dir" })
-        vim.keymap.set("n", "<leader><Tab>", '<cmd>lua AquilaRecentFiles()<cr>',
-            { desc = 'List previously open files on cwd' })
 
-        vim.keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-        vim.keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-        vim.keymap.set("n", "<leader>bb", "<cmd>lua require('telescope.builtin').buffers({initial_mode = 'normal'})<cr>",
+        -- vim.keymap.set("n", "<leader><Tab>", function()
+        --         builtin.oldfiles(themes.get_dropdown({
+        --             winblend = 10,
+        --             previewer = false,
+        --             initial_mode = 'normal',
+        --             cwd_only = true,
+        --         }))
+        --     end,
+        --     { desc = 'List previously open files on cwd' })
+
+        vim.keymap.set("n", "<leader>fs", function()
+            builtin.live_grep()
+        end, { desc = "Find string in cwd" })
+
+        vim.keymap.set("n", "<leader>fc", function()
+            builtin.grep_string()
+        end, { desc = "Find string under cursor in cwd" })
+
+        vim.keymap.set("n", "<leader>bb", function()
+                builtin.buffers({ initial_mode = 'normal' })
+            end,
             { desc = "list of buffers" })
 
         vim.keymap.set('n', "<leader>flr",
-            "<cmd> lua require('telescope.builtin').lsp_references({initial_mode = 'normal'})<CR> ", {
+            function()
+                builtin.lsp_references({ initial_mode = 'normal' })
+            end, {
                 desc = "List of references"
             })
 
         vim.keymap.set('n', "<leader>fls",
-            "<cmd> lua require('telescope.builtin').lsp_document_symbols()<CR> ", {
+            function()
+                builtin.lsp_document_symbols()
+            end, {
                 desc = "List of symbols"
             })
         -- vim.keymap.set('n', "<leader>flw",
@@ -107,12 +143,17 @@ return {
         --         desc = "List of workspace symbols"
         --     })
         vim.keymap.set('n', "<leader>flS",
-            "<cmd> lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>", {
+            function()
+                builtin.lsp_dynamic_workspace_symbols()
+            end, {
                 desc = "List of dynamic workspace symbols"
             })
         vim.keymap.set('n', "<leader>fld",
-            "<cmd> lua require('telescope.builtin').diagnostics({ bufnr = 0, initial_mode = 'normal' })<CR> ",
+            function()
+                builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' })
+            end,
             { desc = "List of diagnostics document" })
+
         -- vim.keymap.set('n', "<leader>flii",
         --     "<cmd> lua require('telescope.builtin').lsp_implementations({initial_mode = 'normal'})<CR> ", {
         --         desc = "List of implementations"
@@ -122,7 +163,13 @@ return {
         --         desc = "List of type definitions"
         --     })
 
-        vim.keymap.set("n", "<leader>h", "<cmd> lua require('telescope.builtin').help_tags()<CR>",
+        vim.keymap.set("n", "<leader>h", function()
+                builtin.help_tags()
+            end,
             { desc = "List of help tags" })
+
+        vim.keymap.set('n', "<Leader>r", function()
+            builtin.resume()
+        end, { desc = "Resume last telescope" })
     end
 }

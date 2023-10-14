@@ -3,7 +3,8 @@ return {
     dependencies = {
         'JoosepAlviste/nvim-ts-context-commentstring',
     },
-    lazy = true,
+    -- lazy = true,
+    event = "BufRead",
     opts = {
         enable_autocmd = false
     }
