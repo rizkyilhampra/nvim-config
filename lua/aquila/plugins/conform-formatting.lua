@@ -19,7 +19,14 @@ return {
         formatters_by_ft = {
             css = { "prettier" },
             javascript = { "prettier" },
+            blade = { 'my_blade' }
         },
+        formatters = {
+            my_blade = {
+                command = "blade-formatter",
+                args = { "--stdin=true", "--write", "$FILENAME" },
+            }
+        }
     },
     init = function()
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
