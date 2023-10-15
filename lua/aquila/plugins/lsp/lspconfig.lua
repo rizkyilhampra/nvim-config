@@ -33,13 +33,8 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
             cmd = { "intelephense", "--stdio" },
-            filetypes = { "php" },
-            root_dir = function(fname)
-                if fname:match("composer.json") then
-                    return vim.fn.getcwd()
-                end
-                return vim.loop.cwd()
-            end,
+            filetypes = { "php", "blade" },
+            single_file_support = true,
         })
 
         -- PHP language server (PHPActor)
@@ -80,25 +75,27 @@ return {
         -- CSS Language Server
         lspconfig.cssls.setup({
             capabilities = capabilities,
-            on_attach = on_attach
+            on_attach = on_attach,
         })
 
         -- HTML Language Server
         lspconfig.html.setup({
             capabilities = capabilities,
-            on_attach = on_attach
+            on_attach = on_attach,
+            filetypes = { "html", "php", "blade" },
         })
 
         -- Javascript and Typescript Language Server
         lspconfig.tsserver.setup({
             capabilities = capabilities,
-            on_attach = on_attach
+            on_attach = on_attach,
         })
 
         -- Emmet Language Server
         lspconfig.emmet_ls.setup({
             capabilities = capabilities,
-            on_attach = on_attach,
+            filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte",
+                "pug", "typescriptreact", "vue", "php", "blade" },
         })
 
         -- Bash Language Server
