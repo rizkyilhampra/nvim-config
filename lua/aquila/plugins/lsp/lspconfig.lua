@@ -28,6 +28,7 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
+        -- PHP language server (intelephense)
         lspconfig.intelephense.setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -41,7 +42,7 @@ return {
             end,
         })
 
-        -- PHPACTOR
+        -- PHP language server (PHPActor)
         -- lspconfig.phpactor.setup({
         --     capabilities = capabilities,
         --     on_attach = on_attach,
@@ -57,6 +58,7 @@ return {
         --     end,
         -- })
 
+        -- Lua Language Server
         lspconfig.lua_ls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -75,24 +77,34 @@ return {
             }
         })
 
+        -- CSS Language Server
         lspconfig.cssls.setup({
             capabilities = capabilities,
             on_attach = on_attach
         })
 
+        -- HTML Language Server
         lspconfig.html.setup({
             capabilities = capabilities,
             on_attach = on_attach
         })
 
+        -- Javascript and Typescript Language Server
         lspconfig.tsserver.setup({
             capabilities = capabilities,
             on_attach = on_attach
         })
 
+        -- Emmet Language Server
         lspconfig.emmet_ls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
+        })
+
+        -- Bash Language Server
+        lspconfig.bashls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach
         })
     end
 }
