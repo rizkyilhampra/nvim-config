@@ -9,7 +9,6 @@ return {
     opts = {
         border = "single"
     },
-    fasdf
     config = function(_, opts)
         require('fold-preview').setup(opts)
     end
