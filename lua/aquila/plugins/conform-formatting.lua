@@ -19,6 +19,10 @@ return {
         formatters_by_ft = {
             css = { "prettier" },
             javascript = { "prettier" },
+            javascriptreact = { "prettier" },
+            json = { "prettier" },
+            typescript = { "prettier" },
+            typescriptreact = { "prettier" },
             blade = { 'my_blade' }
         },
         formatters = {
