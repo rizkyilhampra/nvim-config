@@ -4,19 +4,8 @@ return {
     config = function()
         local builtin = require("statuscol.builtin")
         require("statuscol").setup({
-            relculright = true,
             segments = {
-                {
-                    text = { builtin.foldfunc },
-                    click = "v:lua.ScFa",
-                },
-                {
-                    text = { " " }
-                },
-                {
-                    sign = { name = { "Diagnostic" }, auto = true },
-                    click = "v:lua.ScSa"
-                },
+                relculright = true,
                 {
                     -- Git-colored bar
                     sign = {
@@ -25,8 +14,17 @@ return {
                     },
                     click = "v:lua.ScSa",
                 },
-                { text = { builtin.lnumfunc }, click = "v:lua.ScLa", },
-                { text = { " " } }
+                {
+                    sign = { name = { "Diagnostic" }, auto = true },
+                    click = "v:lua.ScSa"
+                },
+                {
+                    text = { builtin.foldfunc, " " },
+                    click = "v:lua.ScFa",
+                },
+                {
+                    text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa",
+                },
             },
         })
     end,
