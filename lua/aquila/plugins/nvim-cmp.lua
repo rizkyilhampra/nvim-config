@@ -8,13 +8,13 @@ return {
         "saadparwaiz1/cmp_luasnip",     -- for autocompletion
         "rafamadriz/friendly-snippets", -- useful snippets
         "onsails/lspkind.nvim",         -- vs-code like pictograms
-        -- copilot
-        {
-            "zbirenbaum/copilot-cmp",
-            config = function()
-                require("copilot_cmp").setup()
-            end
-        }
+        -- -- copilot
+        -- {
+        --     "zbirenbaum/copilot-cmp",
+        --     config = function()
+        --         require("copilot_cmp").setup()
+        --     end
+        -- }
     },
     config = function()
         -- for supertab mapping
@@ -128,12 +128,16 @@ return {
                 -- end),
                 -- supertab mapping
                 ["<Tab>"] = cmp.mapping(function(fallback)
+                    local cp = require('copilot.suggestion')
+
                     if cmp.visible() then
                         cmp.select_next_item()
                         -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
                         -- that way you will only jump inside the snippet region
                     elseif luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
+                    elseif cp.is_visible() then
+                        cp.accept()
                     elseif has_words_before() then
                         cmp.complete()
                     else
@@ -157,7 +161,7 @@ return {
                 { name = "luasnip",  group_index = 2 }, -- snippets
                 { name = "buffer",   group_index = 2 }, -- text within current buffer
                 { name = "path",     group_index = 2 }, -- file system paths
-                { name = "copilot",  group_index = 2 }  -- copilot
+                -- { name = "copilot",  group_index = 2 }  -- copilot
             }),
             -- configure lspkind for vs-code like pictograms in completion menu
             formatting = {
@@ -176,6 +180,11 @@ return {
 
         cmp.event:on("menu_opened", function(fallback)
             vim.opt.pumblend = 10
+            vim.b.copilot_suggestion_hidden = true
+        end)
+
+        cmp.event:on("menu_closed", function(fallback)
+            vim.b.copilot_suggestion_hidden = false
         end)
     end,
 }
