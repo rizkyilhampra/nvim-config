@@ -1,6 +1,7 @@
 return {
     "danielfalk/smart-open.nvim",
     branch = "0.2.x",
+    event = "VeryLazy",
     dependencies = {
         "kkharji/sqlite.lua",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }

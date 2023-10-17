@@ -1,7 +1,7 @@
 return {
     'echasnovski/mini.comment',
     version = false,
-    event = "VeryLazy",
+    event = "BufReadPost",
     opts = {
         options = {
             custom_commentstring = function()

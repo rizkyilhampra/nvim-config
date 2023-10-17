@@ -2,6 +2,7 @@ return {
     'akinsho/toggleterm.nvim',
     version = "*",
     opts = { --[[ things you want to change go here]] },
+    event = "VeryLazy",
     config = function()
         local Terminal = require('toggleterm.terminal').Terminal
 
