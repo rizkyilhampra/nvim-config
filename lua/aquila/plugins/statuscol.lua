@@ -25,6 +25,7 @@ return {
                     click = "v:lua.ScSa",
                 },
                 { text = { builtin.lnumfunc }, click = "v:lua.ScLa", },
+                { text = { " " } }
             },
         })
     end,
