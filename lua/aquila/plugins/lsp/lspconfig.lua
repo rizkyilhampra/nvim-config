@@ -32,8 +32,6 @@ return {
         lspconfig.intelephense.setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            cmd = { "intelephense", "--stdio" },
-            filetypes = { "php", "blade" },
             single_file_support = true,
         })
 
