@@ -20,7 +20,7 @@ return {
         local cwd_term  = Terminal:new({
             direction = "float",
             float_opts = {
-                winblend = 10
+                winblend = 0
             },
             -- function to run on opening the terminal
             on_open = function(term)
@@ -56,7 +56,7 @@ return {
             float_opts = {
                 height   = 33,
                 width    = 200,
-                winblend = 10
+                -- winblend = 10
             },
             -- function to run on opening the terminal
             on_open = function(term)

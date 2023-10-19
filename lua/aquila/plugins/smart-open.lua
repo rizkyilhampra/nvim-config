@@ -14,7 +14,7 @@ return {
 
         vim.keymap.set("n", "<leader><space>", function()
             telescope.extensions.smart_open.smart_open(themes.get_dropdown({
-                winblend = 10,
+                -- winblend = 0,
                 cwd_only = true,
                 devicons_enabled = true,
                 initial_mode = 'normal',
