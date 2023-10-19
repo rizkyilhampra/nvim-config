@@ -1,6 +1,7 @@
 return {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
+    event = "BufReadPre",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
         require("neorg").setup {
