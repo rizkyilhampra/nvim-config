@@ -6,25 +6,10 @@ return {
         require("statuscol").setup({
             segments = {
                 relculright = true,
-                {
-                    -- Git-colored bar
-                    sign = {
-                        namespace = { "gitsigns" },
-                        auto = true
-                    },
-                    click = "v:lua.ScSa",
-                },
-                {
-                    sign = { name = { "Diagnostic" }, auto = true },
-                    click = "v:lua.ScSa"
-                },
-                {
-                    text = { builtin.foldfunc, " " },
-                    click = "v:lua.ScFa",
-                },
-                {
-                    text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa",
-                },
+                { sign = { name = { "Diagnostic" }, auto = true },     click = "v:lua.ScSa" },
+                { sign = { namespace = { "gitsigns" }, auto = true, }, click = "v:lua.ScSa", },
+                { text = { builtin.lnumfunc, " " },                    click = "v:lua.ScLa", },
+                { text = { builtin.foldfunc, " " },                    click = "v:lua.ScFa", },
             },
         })
     end,
