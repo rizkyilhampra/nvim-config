@@ -12,12 +12,16 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-    { import = "aquila.plugins" },
-    { import = "aquila.plugins.lsp" }
-}, {
+require("lazy").setup(
+    {
+        { import = "aquila.plugins" },
+        { import = "aquila.plugins.lsp" }
+    },
+    {
         change_detection = {
             notify = true
         }
-    })
+    }
+)
 
+vim.cmd [[colorscheme tokyonight-night]]
