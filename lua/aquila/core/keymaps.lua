@@ -12,10 +12,12 @@ set('n', '<C-l>', '<cmd>bprevious<CR>')
 set({ 'n', 'v', 'i' }, '<C-z>', '<Nop>') -- fix problem when CTRL + Z is exit neovim
 set('n', '<C-c>', '<Nop>')               -- fix probelm when CTRL + C in normal mode is exit neovim
 
-set("v", "J", ":m '>+1<CR>gv=gv")        -- same like alt + up/down at vscode
+-- same like alt + up/down at vscode
+set("v", "J", ":m '>+1<CR>gv=gv")
 set("v", "K", ":m '<-2<CR>gv=gv")
 
-set("n", "n", "nzzzv") -- when you are in search mode and move with 'n'/'N' for the next matches, the window is stick center
+-- when you are in search mode and move with 'n'/'N' for the next matches, the window is stick center
+set("n", "n", "nzzzv")
 set("n", "N", "Nzzzv")
 
 set("n", "<Leader>m", '<cmd>Mason<CR>', { desc = 'Open Mason' })
@@ -25,7 +27,7 @@ set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/Yank to system clipboard" 
 set({ "n", "v" }, "<Leader>p", "\"+p", { desc = "Paste from system clipboard" })
 set("v", "<leader>P", '"_dP', { desc = 'Do not lose the " register on paste' })
 
-set("n", "<Leader>h", '<cmd>Alpha<CR>', { desc = "Take me home to the place i belong ~~" })
+set("n", "<Leader>ho", '<cmd>Alpha<CR>', { desc = "Take me home to the place i belong ~~" })
 
 set("n", "H", "<C-w>h", { noremap = true, silent = true })
 set("n", "L", "<C-w>l", { noremap = true, silent = true })
@@ -33,8 +35,3 @@ set("n", "L", "<C-w>l", { noremap = true, silent = true })
 -- Neotree
 set("n", "<Leader>e", '<cmd>Neotree toggle<CR>')
 set("n", "<Leader>E", '<cmd>Neotree reveal<CR>')
-
--- extension file browser
--- keymap.set("n", "<Leader>E", ":Telescope file_browser<CR>", { noremap = true, desc = "file browser on cwd" })
--- keymap.set("n", "<Leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
---     { noremap = true, desc = "file browser on current buffer path" })

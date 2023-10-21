@@ -164,7 +164,7 @@ return {
         --         desc = "List of type definitions"
         --     })
 
-        vim.keymap.set("n", "<leader>h", function()
+        vim.keymap.set("n", "<leader>fh", function()
                 builtin.help_tags()
             end,
             { desc = "List of help tags" })
