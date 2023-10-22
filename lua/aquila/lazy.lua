@@ -18,8 +18,29 @@ require("lazy").setup(
         { import = "aquila.plugins.lsp" }
     },
     {
+        install = {
+            colorscheme = { "tokyonight-night" }
+        },
         change_detection = {
             notify = true
+        },
+        performance = {
+            rtp = {
+                -- disable some rtp plugins
+                disabled_plugins = {
+                    "gzip",
+                    "matchit",
+                    "matchparen",
+                    "netrwPlugin",
+                    "tarPlugin",
+                    "tohtml",
+                    "tutor",
+                    "zipPlugin",
+                },
+            }
+        },
+        ui = {
+            border = "single"
         }
     }
 )
