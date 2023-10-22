@@ -41,6 +41,13 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
             single_file_support = true,
+            settings = {
+                intelephense = {
+                    files = {
+                        maxSize = 5000000
+                    }
+                }
+            }
         })
 
         -- PHP language server (PHPActor)
