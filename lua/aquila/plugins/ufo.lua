@@ -4,20 +4,24 @@ return {
     dependencies = {
         "kevinhwang91/promise-async",
     },
-    opts = {
-        close_fold_kinds = {
-            'comment', 'import'
-        },
-    },
+    opts = {},
     keys = function()
         vim.keymap.set("n", "zR", function()
             require("ufo").openAllFolds()
         end, {
             desc = "Open all fold"
         })
+
         vim.keymap.set("n", "zM", function()
             require("ufo").closeAllFolds()
         end, { desc = "Close all fold" })
+
+        vim.keymap.set('n', 'K', function()
+            local winid = require('ufo').peekFoldedLinesUnderCursor()
+            if not winid then
+                vim.lsp.buf.hover()
+            end
+        end)
     end,
     config = function()
         local function get_comment_folds(bufnr)
@@ -53,13 +57,6 @@ return {
             return lsp_folds
         end
 
-        local ftMap = {
-            vim = 'indent',
-            git = 'indent',
-            lua = function(bufnr)
-                return treesitter_and_comment_folding(bufnr)
-            end
-        }
         local function fold_text()
             local text = vim.treesitter.foldtext()
 
@@ -75,13 +72,28 @@ return {
             return text
         end
 
+        local ftMap = {
+            vim = 'indent',
+            git = 'indent',
+            bash = 'indent',
+            lua = function(bufnr)
+                return treesitter_and_comment_folding(bufnr)
+            end
+        }
 
         require('ufo').setup({
+            close_fold_kinds = { 'imports', 'comment' },
+            preview = {
+                win_config = {
+                    border = { '', '─', '', '', '', '─', '', '' },
+                    winhighlight = 'Normal:Folded',
+                    winblend = 0
+                },
+            },
             provider_selector = function(bufnr, filetype, buftype)
                 return ftMap[filetype]
             end,
             fold_virt_text_handler = fold_text
         })
     end
-
 }
