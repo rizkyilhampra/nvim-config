@@ -20,6 +20,10 @@ return {
         end
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
+        capabilities.textDocument.foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true
+        }
 
         -- Change the Diagnostic symbols in the sign column (gutter)
         local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
