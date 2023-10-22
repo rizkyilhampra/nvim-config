@@ -1,7 +1,7 @@
 return {
     "utilyre/barbecue.nvim",
     name = "barbecue",
-    event = "BufReadPre",
+    event = "LspAttach",
     version = "*",
     dependencies = {
         "SmiteshP/nvim-navic",
@@ -27,7 +27,7 @@ return {
         })
 
         vim.api.nvim_create_autocmd({
-            "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
+            "WinResized", -- or WinResized on NVIM-v0.9 and higher
             "BufWinEnter",
             "CursorHold",
             "InsertLeave",
