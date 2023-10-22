@@ -13,6 +13,10 @@ return {
         local on_attach = function(client, bufnr)
             opts.buffer = bufnr
 
+            if client.server_capabilities.documentSymbolProvider then
+                require('nvim-navic').attach(client, bufnr)
+            end
+
             vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
             -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)                  -- go to declaration
             vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)     -- show lsp definitions
