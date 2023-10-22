@@ -11,14 +11,6 @@ augroup remember_folds
 augroup END
 ]]
 
-vim.api.nvim_create_autocmd("User", {
-    pattern = "VeryLazy",
-    callback = function()
-        print('Yeah, I guess it is.')
-    end
-})
-
-
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = augroup('highlight_yank'),
     callback = function()
