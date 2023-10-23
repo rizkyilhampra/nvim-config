@@ -14,12 +14,12 @@ return {
 
         vim.keymap.set("n", "<leader><space>", function()
             telescope.extensions.smart_open.smart_open(themes.get_dropdown({
-                -- winblend = 0,
+                -- winblend = 10,
                 cwd_only = true,
                 devicons_enabled = true,
                 initial_mode = 'normal',
                 match_algorithm = 'fzf',
             }))
-        end, { noremap = true, silent = true })
+        end, { desc = "Find files in cwd" })
     end
 }
