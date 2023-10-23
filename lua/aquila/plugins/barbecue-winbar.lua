@@ -18,7 +18,7 @@ return {
             create_autocmd = false, -- prevent barbecue from updating itself automatically
             theme = {
                 normal = {
-                    bg = "#1a1b26"
+                    bg = "NONE"
                 },
                 context = {
                     underline = true
