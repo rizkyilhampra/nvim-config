@@ -93,7 +93,7 @@ return {
             provider_selector = function(bufnr, filetype, buftype)
                 return ftMap[filetype]
             end,
-            fold_virt_text_handler = fold_text
+            -- fold_virt_text_handler = fold_text
         })
     end
 }
