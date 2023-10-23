@@ -27,7 +27,7 @@ set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/Yank to system clipboard" 
 set({ "n", "v" }, "<Leader>p", "\"+p", { desc = "Paste from system clipboard" })
 set("v", "<leader>P", '"_dP', { desc = 'Do not lose the " register on paste' })
 
-set("n", "<Leader>ho", '<cmd>Alpha<CR>', { desc = "Take me home to the place i belong ~~" })
+set("n", "<Leader>h", '<cmd>Alpha<CR>', { desc = "Take me home to the place i belong ~~" })
 
 set("n", "H", "<C-w>h", { noremap = true, silent = true })
 set("n", "L", "<C-w>l", { noremap = true, silent = true })
