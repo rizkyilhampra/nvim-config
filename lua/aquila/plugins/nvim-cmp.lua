@@ -72,7 +72,7 @@ return {
             },
             completion = {
                 completeopt = "menu,menuone,preview,noselect",
-                autocomplete = false
+                -- autocomplete = false
             },
             snippet = { -- configure how nvim-cmp interacts with snippet engine
                 expand = function(args)
@@ -100,15 +100,15 @@ return {
             window = {
                 -- completion = cmp.config.window.bordered(),
                 -- completion = {
-                --     border = "rounded",
-                --     winhighlight = "Border:CmpNormal",
+                --     -- border = "rounded",
+                --     -- winhighlight = "Normal:TelescopeNormal",
                 -- },
 
-                -- documentation = cmp.config.window.bordered(),
-                documentation = {
-                    border = "rounded",
-                    winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu',
-                },
+                documentation = cmp.config.window.bordered(),
+                -- documentation = {
+                --     border = "rounded",
+                --     winhighlight = 'normal:pmenu,floatborder:pmenu',
+                -- },
             },
             mapping = cmp.mapping.preset.insert({
                 -- ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
@@ -179,7 +179,6 @@ return {
         })
 
         cmp.event:on("menu_opened", function(fallback)
-            vim.opt.pumblend = 10
             vim.b.copilot_suggestion_hidden = true
         end)
 
