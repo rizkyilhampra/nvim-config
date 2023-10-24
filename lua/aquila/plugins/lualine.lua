@@ -4,22 +4,36 @@ return {
     event = "VeryLazy",
     opts = {
         options = {
+            theme = "catppuccin",
             globalstatus = true,
             disabled_filetypes = {
                 statusline = { "alpha", "neo-tree" }
-            }
+            },
+            component_separators = '|',
+            section_separators = { left = '', right = '' },
         },
         sections = {
+            lualine_a = {
+                { 'mode', separator = { left = '' }, right_padding = 2 },
+            },
+            lualine_b = { 'filename', 'branch' },
+            lualine_c = { 'fileformat' },
+            lualine_x = {},
+            lualine_y = { 'filetype', 'progress' },
             lualine_z = {
-                function()
-                    return "  " .. os.date("%R")
-                end,
+                { 'location', separator = { right = '' }, left_padding = 2 },
             },
-            lualine_y = {
-                { "progress", separator = " ",                  padding = { left = 1, right = 0 } },
-                { "location", padding = { left = 0, right = 1 } },
-            },
-        }
+        },
+        inactive_sections = {
+            lualine_a = { 'filename' },
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {},
+            lualine_z = { 'location' },
+        },
+        tabline = {},
+        extensions = {},
     },
     init = function()
         vim.g.lualine_laststatus = vim.o.laststatus
