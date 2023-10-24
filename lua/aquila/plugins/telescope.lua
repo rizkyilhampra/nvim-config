@@ -46,7 +46,6 @@ return {
             },
         })
 
-
         -- function AquilaRecentFiles()
         --     -- require('telescope.builtin').oldfiles({
         --     --     cwd_only = true,
@@ -91,6 +90,10 @@ return {
         -- vim.keymap.set('n', '<leader><Space>',
         --     "<cmd>lua AquilaFindFilesCommon()<cr>",
         --     { desc = "Find files in cwd" })
+        -- require('which-key').register({
+        --     ["<Leader>f"] = { name = "+telescope" }
+        -- })
+
         vim.keymap.set('n', '<leader>fa', function()
             builtin.find_files({
                 no_ignore = true,
@@ -103,15 +106,14 @@ return {
             end,
             { desc = "List previously open files all dir" })
 
-        -- vim.keymap.set("n", "<leader><Tab>", function()
-        --         builtin.oldfiles(themes.get_dropdown({
-        --             winblend = 10,
-        --             previewer = false,
-        --             initial_mode = 'normal',
-        --             cwd_only = true,
-        --         }))
-        --     end,
-        --     { desc = 'List previously open files on cwd' })
+        vim.keymap.set("n", "<leader><Tab>", function()
+                builtin.oldfiles(themes.get_dropdown({
+                    previewer = false,
+                    initial_mode = 'normal',
+                    cwd_only = true,
+                }))
+            end,
+            { desc = 'List previously open files on cwd' })
 
         vim.keymap.set("n", "<leader>fs", function()
             builtin.live_grep()
@@ -121,10 +123,10 @@ return {
             builtin.grep_string()
         end, { desc = "Find string under cursor in cwd" })
 
-        vim.keymap.set("n", "<leader>bb", function()
-                builtin.buffers({ initial_mode = 'normal' })
-            end,
-            { desc = "list of buffers" })
+        -- vim.keymap.set("n", "<leader>fb", function()
+        --         builtin.buffers({ initial_mode = 'normal' })
+        --     end,
+        --     { desc = "list of buffers" })
 
         vim.keymap.set('n', "<leader>flr",
             function()
@@ -169,8 +171,12 @@ return {
             end,
             { desc = "List of help tags" })
 
-        vim.keymap.set('n', "<Leader>r", function()
+        vim.keymap.set('n', "<Leader>f/", function()
             builtin.resume()
         end, { desc = "Resume last telescope" })
+
+        vim.keymap.set('n', "<Leader>fi", function()
+            builtin.highlights()
+        end, { desc = "Lists all available highlights" })
     end
 }
