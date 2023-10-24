@@ -54,3 +54,5 @@ if mode == "reader" then
     -- Don't show trailing space in reader vim mode
     vim.opt.listchars:append({ trail = "•" })
 end
+
+vim.opt.pumblend = 10
