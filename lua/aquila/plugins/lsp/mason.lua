@@ -2,7 +2,8 @@ return {
     "williamboman/mason.nvim",
     event = "VeryLazy",
     dependencies = {
-        "williamboman/mason-lspconfig.nvim"
+        "williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim"
     },
     config = function()
         require("mason").setup({
@@ -11,7 +12,8 @@ return {
                     package_installed = "✓",
                     package_pending = "➜",
                     package_uninstalled = "✗"
-                }
+                },
+                border = "single"
             }
         })
 
@@ -25,6 +27,13 @@ return {
                 "emmet_ls"
             },
             automatic_installation = true
+        })
+
+        require("mason-tool-installer").setup({
+            ensure_installed = {
+                "eslint_d",
+                "prettierd"
+            }
         })
     end
 }
