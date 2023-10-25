@@ -19,7 +19,7 @@ require("lazy").setup(
     },
     {
         install = {
-            colorscheme = { "tokyonight-night" }
+            colorscheme = { "tokyonight" }
         },
         change_detection = {
             notify = true
@@ -45,5 +45,5 @@ require("lazy").setup(
     }
 )
 
-vim.cmd [[colorscheme catppuccin-mocha]]
--- vim.cmd [[colorscheme tokyonight-moon]]
+-- vim.cmd [[colorscheme catppuccin-mocha]]
+vim.cmd [[colorscheme tokyonight-moon]]
