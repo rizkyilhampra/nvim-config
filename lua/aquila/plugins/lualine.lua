@@ -4,7 +4,8 @@ return {
     event = "VeryLazy",
     opts = {
         options = {
-            theme = "catppuccin",
+            -- theme = "catppuccin",
+            theme = "tokyonight",
             globalstatus = true,
             disabled_filetypes = {
                 statusline = { "alpha", "neo-tree" }
