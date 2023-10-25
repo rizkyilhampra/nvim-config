@@ -21,7 +21,7 @@ return {
         local cwd_term  = Terminal:new({
             direction = "float",
             float_opts = {
-                winblend = 0
+                -- winblend = 10
             },
             on_open = function(term)
                 vim.cmd("startinsert!")
