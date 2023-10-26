@@ -4,7 +4,8 @@ return {
         'nvim-treesitter/playground',
     },
     build = ":TSUpdate",
-    event = "VeryLazy",
+    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+    event = { "BufReadPost", "BufNewFile", "BufWritePost", "VeryLazy" },
     config = function()
         local configs = require("nvim-treesitter.configs")
 
