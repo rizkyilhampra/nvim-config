@@ -24,7 +24,8 @@ return {
                 "cssls",
                 "html",
                 "tsserver",
-                "emmet_ls"
+                "emmet_ls",
+                "bashls"
             },
             automatic_installation = true
         })
