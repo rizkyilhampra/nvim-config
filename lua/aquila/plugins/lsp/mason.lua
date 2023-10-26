@@ -33,7 +33,8 @@ return {
         require("mason-tool-installer").setup({
             ensure_installed = {
                 "eslint_d",
-                "prettierd"
+                "prettierd",
+                "blade-formatter"
             }
         })
     end
