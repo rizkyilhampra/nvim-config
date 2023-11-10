@@ -1,5 +1,6 @@
 return {
     'rmagatti/goto-preview',
+    enabled = false,
     event = 'BufRead',
     config = function()
         require('goto-preview').setup({
