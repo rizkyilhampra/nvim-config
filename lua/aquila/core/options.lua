@@ -33,8 +33,6 @@ vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.opt.smoothscroll = true
 vim.opt.cursorline = true
 vim.opt.scrolloff = 14
-vim.opt.splitright = true
--- vim.o.splitbelow = true
 vim.opt.confirm = true
 vim.opt.swapfile = false
 vim.opt.spell = true
@@ -54,3 +52,8 @@ if mode == "reader" then
     -- Don't show trailing space in reader vim mode
     vim.opt.listchars:append({ trail = "•" })
 end
+
+vim.opt.mousemoveevent = true -- Allow hovering in bufferline
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.undofile = true
