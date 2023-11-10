@@ -17,20 +17,21 @@ return {
     },
     opts = {
         formatters_by_ft = {
+            php = { "pint" },
             css = { "prettierd" },
             javascript = { "prettierd" },
             javascriptreact = { "prettierd" },
-            json = { "prettier" },
+            json = { "prettierd" },
             typescript = { "prettierd" },
             typescriptreact = { "prettierd" },
-            blade = { 'blade-formatter' }
+            blade = { 'blade-formatter' },
         },
-        formatters = {
-            my_blade = {
-                command = "blade-formatter",
-                args = { "--stdin=true", "--write", "$FILENAME" },
-            }
-        }
+        -- formatters = {
+        --     my_blade = {
+        --         command = "blade-formatter",
+        --         args = { "--stdin=true", "--write", "$FILENAME" },
+        --     }
+        -- }
     },
     init = function()
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
