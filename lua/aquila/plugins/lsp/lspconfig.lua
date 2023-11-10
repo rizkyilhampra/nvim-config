@@ -13,14 +13,10 @@ return {
         local on_attach = function(client, bufnr)
             opts.buffer = bufnr
 
-            if client.server_capabilities.documentSymbolProvider then
-                require('nvim-navic').attach(client, bufnr)
-            end
-
-            vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
-            -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)                  -- go to declaration
-            vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)     -- show lsp definitions
-            vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+            vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts)
+            vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
+            vim.keymap.set("n", "gd", '<cmd>Telescope lsp_definitions<CR>', opts) -- show lsp definitions
+            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)      -- see available code actions, in visual mode will apply to selection
         end
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -37,34 +33,36 @@ return {
         end
 
         -- PHP language server (intelephense)
-        lspconfig.intelephense.setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            single_file_support = true,
-            settings = {
-                intelephense = {
-                    files = {
-                        maxSize = 5000000
-                    }
-                }
-            }
-        })
+        -- lspconfig.intelephense.setup({
+        --     commands = {
+        --         IntelephenseIndex = {
+        --             function()
+        --                 vim.lsp.buf.execute_command({ command = 'intelephense.index.workspace' })
+        --             end,
+        --         },
+        --     },
+        --     capabilities = capabilities,
+        --     single_file_support = true,
+        --     on_attach = on_attach,
+        --     settings = {
+        --         intelephense = {
+        --             files = {
+        --                 maxSize = 5000000
+        --             }
+        --         }
+        --     }
+        -- })
 
         -- PHP language server (PHPActor)
-        -- lspconfig.phpactor.setup({
-        --     capabilities = capabilities,
-        --     on_attach = on_attach,
-        --     init_options = {
-        --         ["language_server_phpstan.enabled"] = false,
-        --         ["language_server_psalm.enabled"] = false,
-        --     },
-        --     root_dir = function(fname)
-        --         if fname:match("composer.json") then
-        --             return vim.fn.getcwd()
-        --         end
-        --         return vim.loop.cwd()
-        --     end,
-        -- })
+        lspconfig.phpactor.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            init_options = {
+                ["language_server_phpstan.enabled"] = false,
+                ["language_server_psalm.enabled"] = false,
+            },
+            single_file_support = true,
+        })
 
         -- Lua Language Server
         lspconfig.lua_ls.setup({
@@ -124,13 +122,20 @@ return {
         lspconfig.emmet_ls.setup({
             capabilities = capabilities,
             filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte",
-                "pug", "typescriptreact", "vue", "php", "blade" },
+                "pug", "typescriptreact", "vue", "blade" },
         })
 
         -- Bash Language Server
         lspconfig.bashls.setup({
             capabilities = capabilities,
             on_attach = on_attach
+        })
+
+        vim.diagnostic.config({
+            virtual_text = false,
+            float = {
+                source = true,
+            }
         })
     end
 }
