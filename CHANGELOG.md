@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/rizkyilhampra/nvim-config/compare/v1.0.0...v1.1.0) (2023-11-17)
+
+
+### Features
+
+* **Injection:** add injection alpine js ([75b5e16](https://github.com/rizkyilhampra/nvim-config/commit/75b5e1625460f1b3e6647244929b1b11625d8d55))
+
+
+### Miscellaneous
+
+* **Plugins:** update plugins ([52cffb2](https://github.com/rizkyilhampra/nvim-config/commit/52cffb251d766682174e8852e0fd482681f43f32))
+
 ## 1.0.0 (2023-11-10)
 
 
