@@ -2,11 +2,12 @@ return {
     "folke/tokyonight.nvim",
     priority = 1000,
     lazy = false,
+    enabled = true,
     opts = {
         style = "moon",
         transparent = true,
         styles = {
-            sidebars = "transparent",
+            -- sidebars = "transparent",
             floats = "transparent"
         },
         -- on_highlights = function(hl, c)
@@ -20,5 +21,6 @@ return {
         --         bg = c.bg_dark
         --     }
         -- end
+
     },
 }

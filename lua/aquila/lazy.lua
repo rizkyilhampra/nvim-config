@@ -45,5 +45,4 @@ require("lazy").setup(
     }
 )
 
--- vim.cmd [[colorscheme catppuccin-mocha]]
-vim.cmd [[colorscheme tokyonight-moon]]
+vim.cmd [[colorscheme tokyonight]]
