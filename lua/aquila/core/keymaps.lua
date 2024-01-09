@@ -35,3 +35,6 @@ set("n", "L", "<C-w>l", { noremap = true, silent = true })
 -- Neotree
 set("n", "<Leader>e", '<cmd>Neotree toggle<CR>')
 set("n", "<Leader>E", '<cmd>Neotree reveal<CR>')
+
+-- remap <Esc> to <C-\><C-n> to exit terminal mode
+-- vim.cmd([[tnoremap <Esc> <C-\><C-n>]]) 
