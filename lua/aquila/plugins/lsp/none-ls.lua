@@ -7,12 +7,12 @@ return {
         local sources = {
             null_ls.builtins.code_actions.eslint_d.with({
                 condition = function(utils)
-                    return utils.root_has_file('.eslintrc.js', '.eslintrc.json', '.eslintrc')
+                    return utils.root_has_file('.eslintrc.js', '.eslintrc.cjs', '.eslintrc.json', '.eslintrc')
                 end
             }),
             null_ls.builtins.diagnostics.eslint_d.with({
                 condition = function(utils)
-                    return utils.root_has_file('.eslintrc.js', '.eslintrc.json', '.eslintrc')
+                    return utils.root_has_file('.eslintrc.js', '.eslintrc.cjs', '.eslintrc.json', '.eslintrc')
                 end
             })
         }
