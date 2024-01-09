@@ -2,6 +2,7 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = "VeryLazy",
+    enabled = true,
     opts = function()
         local theme = require("lualine.themes.tokyonight")
         if theme then
