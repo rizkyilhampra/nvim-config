@@ -57,3 +57,4 @@ vim.opt.mousemoveevent = true -- Allow hovering in bufferline
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.undofile = true
+vim.opt.showmode = false
