@@ -12,14 +12,15 @@ return {
                     statusline = { "alpha", "neo-tree" }
                 },
                 component_separators = '|',
-                section_separators = { left = '', right = '' },
+                -- section_separators = { left = '', right = '' },
+                section_separators = { left = '', right = '' },
             },
             sections = {
-                lualine_a = { 'mode'},
-                lualine_b = { 'filename','branch' },
-                lualine_c = {},
-                lualine_x = {},
-                lualine_y = { 'filetype', 'progress' },
+                lualine_a = { 'mode' },
+                lualine_b = { 'filename' },
+                lualine_c = { 'branch' },
+                lualine_x = { 'filetype' },
+                lualine_y = { 'progress' },
                 lualine_z = { 'location' },
             },
             inactive_sections = {
