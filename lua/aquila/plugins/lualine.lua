@@ -17,15 +17,7 @@ return {
             lualine_a = { 'mode' },
             lualine_b = { 'filename' },
             lualine_c = { 'branch' },
-            lualine_x = {
-                {
-                    require('lsp-progress').progress,
-                    icon = { "", align = "right" },
-                },
-                "diagnostics",
-                'filetype'
-
-            },
+            lualine_x = { "diagnostics", 'filetype' },
             lualine_y = { 'progress' },
             lualine_z = { 'location' },
         },
