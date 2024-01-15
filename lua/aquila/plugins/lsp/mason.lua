@@ -19,7 +19,7 @@ return {
 
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "intelephense",
+                "phpactor",
                 "lua_ls",
                 "cssls",
                 "html",
