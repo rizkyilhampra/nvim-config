@@ -19,6 +19,8 @@ return {
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)      -- see available code actions, in visual mode will apply to selection
         end
 
+        local capabilities = cmp_nvim_lsp.default_capabilities()
+
         -- Change the Diagnostic symbols in the sign column (gutter)
         local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
         for type, icon in pairs(signs) do
@@ -62,22 +64,22 @@ return {
         lspconfig.lua_ls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            diagnostics = {
-                signs = true,
-                underline = true,
-                update_in_insert = false,
-                virtual_text = {
-                    spacing = 4,
-                    source = 'if_many',
-                    prefix = '●',
-                },
-                severity_sort = true,
-                float = {
-                    show_header = true,
-                    border = 'rounded',
-                    source = 'always',
-                },
-            },
+            -- diagnostics = {
+            --     signs = true,
+            --     underline = true,
+            --     update_in_insert = false,
+            --     virtual_text = {
+            --         spacing = 4,
+            --         source = 'if_many',
+            --         prefix = '●',
+            --     },
+            --     severity_sort = true,
+            --     float = {
+            --         show_header = true,
+            --         border = 'rounded',
+            --         source = 'always',
+            --     },
+            -- },
             settings = {
                 Lua = {
                     diagnostics = {
