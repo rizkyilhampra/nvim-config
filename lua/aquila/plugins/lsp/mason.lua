@@ -25,7 +25,8 @@ return {
                 "html",
                 "tsserver",
                 "emmet_ls",
-                "bashls"
+                "bashls",
+                "marksman"
             },
             automatic_installation = true
         })
