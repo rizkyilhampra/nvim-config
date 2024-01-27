@@ -4,10 +4,10 @@ end
 
 set("i", "jj", "<Esc>", { noremap = true, silent = true }) -- the important things you should remap
 
-set({ 'i', 'n' }, "<C-s>", '<cmd>w<CR>')                   -- i love vscode and other editor at windows behavior for save a file
+set({ 'i', 'n' }, "<C-s>", '<cmd>w<CR>')                   -- i love windows behavior for save a file
 
-set({ 'n', 'v', 'i' }, '<C-z>', '<Nop>') -- fix problem when CTRL + Z is exit neovim
-set('n', '<C-c>', '<Nop>')               -- fix probelm when CTRL + C in normal mode is exit neovim
+set({ 'n', 'v', 'i' }, '<C-z>', '<Nop>')                   -- fix problem when CTRL + Z is exit neovim
+set('n', '<C-c>', '<Nop>')                                 -- fix probelm when CTRL + C in normal mode is exit neovim
 
 -- same like alt + up/down at vscode
 set("v", "J", ":m '>+1<CR>gv=gv")
@@ -23,6 +23,8 @@ set("n", "<Leader>l", '<cmd>Lazy<CR>', { desc = "Open Lazy" })
 set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/Yank to system clipboard" })
 set({ "n", "v" }, "<Leader>p", "\"+p", { desc = "Paste from system clipboard" })
 set("v", "<leader>P", '"_dP', { desc = 'Do not lose the " register on paste' })
+set("n", "x", '"_x', { desc = 'Do not lose the " register on delete' })
+set("n", "c", '"_c', { desc = 'Do not lose the " register on change' })
 
 set("n", "<Leader>~", '<cmd>Alpha<CR>', { desc = "Take me home to the place i belong ~~" })
 
@@ -32,3 +34,13 @@ set("n", "L", "<C-w>l", { noremap = true, silent = true })
 -- Neotree
 set("n", "<Leader>e", '<cmd>Neotree toggle<CR>')
 set("n", "<Leader>E", '<cmd>Neotree reveal<CR>')
+
+-- dd without copy to register if line is empty
+set("n", "dd", function()
+        if vim.fn.getline("."):match("^%s*$") then
+            return '"_dd'
+        end
+        return "dd"
+    end,
+    { expr = true }
+)
