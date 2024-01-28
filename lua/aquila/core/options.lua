@@ -1,25 +1,16 @@
 vim.g.mapleader = " "
-
---vim.opt.clipboard = 'unnamedplus'
 vim.opt.mouse = 'a'
-
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-
 vim.opt.smartindent = true
-
 vim.opt.wrap = false
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
-
 vim.opt.termguicolors = true
-
 -- vim.opt.hlsearch = false
 -- vim.opt.incsearch = true
-
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
@@ -30,7 +21,7 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
-vim.opt.smoothscroll = true
+vim.opt.smoothscroll = true -- only work in 10.0+
 vim.opt.cursorline = true
 vim.opt.scrolloff = 14
 vim.opt.sidescrolloff = 8
@@ -59,15 +50,5 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.showmode = false
 vim.opt.cmdheight = 0
-
-local home = os.getenv("HOME")
-if not vim.fn.isdirectory(home .. "/.vim") then
-  vim.fn.mkdir(home .. "/.vim", "", "rwxrw-")
-end
-
-if not vim.fn.isdirectory(home .. "/.vim/undo-dir") then
-  vim.fn.mkdir(home .. "/.vim/undo-dir", "", "rwx")
-end
-vim.opt.undodir = home .. "/.vim/undodir"
-
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
