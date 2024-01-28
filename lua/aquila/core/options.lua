@@ -33,6 +33,7 @@ vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.opt.smoothscroll = true
 vim.opt.cursorline = true
 vim.opt.scrolloff = 14
+vim.opt.sidescrolloff = 8
 vim.opt.confirm = true
 vim.opt.swapfile = false
 vim.opt.spell = true
@@ -56,5 +57,17 @@ end
 vim.opt.mousemoveevent = true -- Allow hovering in bufferline
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.undofile = true
 vim.opt.showmode = false
+vim.opt.cmdheight = 0
+
+local home = os.getenv("HOME")
+if not vim.fn.isdirectory(home .. "/.vim") then
+  vim.fn.mkdir(home .. "/.vim", "", "rwxrw-")
+end
+
+if not vim.fn.isdirectory(home .. "/.vim/undo-dir") then
+  vim.fn.mkdir(home .. "/.vim/undo-dir", "", "rwx")
+end
+vim.opt.undodir = home .. "/.vim/undodir"
+
+vim.opt.undofile = true
