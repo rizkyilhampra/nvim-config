@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.2.0](https://github.com/rizkyilhampra/nvim-config/compare/v1.1.0...v1.2.0) (2024-01-28)
+
+
+### Features
+
+* add copilotchat.nvim ([6307442](https://github.com/rizkyilhampra/nvim-config/commit/63074428e75223810d699bfbf1f7acb12ed2da5d))
+
+
+### Miscellaneous
+
+* add spesific undo dir and add option sidescrolloff ([2bb8dbc](https://github.com/rizkyilhampra/nvim-config/commit/2bb8dbc0f9260b4b9e9206c0d7f6f68d02d25a85))
+* add spesified conf for markdown file ([3726db2](https://github.com/rizkyilhampra/nvim-config/commit/3726db29efe24e95bb390543351a05a2f90258b9))
+* added some keybind ([b748f4e](https://github.com/rizkyilhampra/nvim-config/commit/b748f4e5f7e0f8ac954c3be353f1fd7e19a152f2))
+* **Autocommand:** refactor and also add auto save cmd ([7e74151](https://github.com/rizkyilhampra/nvim-config/commit/7e7415154adb5431e5710a8058342468ea32c9b6))
+* **Keymaps:** refactor and add duplicate selection keymap ([d449e0a](https://github.com/rizkyilhampra/nvim-config/commit/d449e0a73a970c128635b375617211a7232865cd))
+* **LSP:** add markdown lsp (marksman) ensure installed list ([3c5044e](https://github.com/rizkyilhampra/nvim-config/commit/3c5044e754bbf8848e3b6364aa6b70c2a1100aed))
+* **Neotree:** support trash for deleted files ([a095d68](https://github.com/rizkyilhampra/nvim-config/commit/a095d6829fca60c499145f0fd9ba627a6d062e35))
+
 ## [1.1.0](https://github.com/rizkyilhampra/nvim-config/compare/v1.0.0...v1.1.0) (2024-01-15)
 
 
