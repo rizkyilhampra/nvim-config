@@ -9,6 +9,7 @@ return {
     config = function()
         require("neo-tree").setup({
             close_if_last_window = true,
+            use_libuv_file_watcher = true,
             window = {
                 width = 35,
             },
@@ -68,5 +69,12 @@ return {
                 }
             },
         })
+
+        -- @todo
+        -- require("neo-tree.sources.filesystem.commands")
+        --     .refresh(
+        --         require("neo-tree.sources.manager")
+        --         .get_state("filesystem")
+        --     )
     end
 }
