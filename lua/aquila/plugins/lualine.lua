@@ -14,10 +14,22 @@ return {
             section_separators = { left = '', right = '' },
         },
         sections = {
-            lualine_a = { 'mode' },
-            lualine_b = { 'filename' },
-            lualine_c = { 'branch' },
-            lualine_x = { "diagnostics", 'filetype' },
+            lualine_a = { 'filename' },
+            lualine_b = { 'branch' },
+            lualine_c = { 'diagnostics' },
+            lualine_x = {
+                'filetype',
+                "encoding",
+                {
+                    'fileformat',
+                    icons_enabled = true,
+                    symbols = {
+                        unix = 'LF',
+                        dos = 'CRLF',
+                        mac = 'CR',
+                    },
+                }
+            },
             lualine_y = { 'progress' },
             lualine_z = { 'location' },
         },
@@ -32,14 +44,4 @@ return {
         tabline = {},
         extensions = {},
     },
-    init = function()
-        vim.g.lualine_laststatus = vim.o.laststatus
-        if vim.fn.argc(-1) > 0 then
-            -- set an empty statusline till lualine loads
-            vim.o.statusline = " "
-        else
-            -- hide the statusline on the starter page
-            vim.o.laststatus = 0
-        end
-    end,
 }
