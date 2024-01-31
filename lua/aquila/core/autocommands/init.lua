@@ -59,4 +59,4 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 --automatically save the current buffer (file) under certain conditions.
-require('aquila.core.autocommands.auto-save')
+-- require('aquila.core.autocommands.auto-save')
