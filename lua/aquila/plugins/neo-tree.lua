@@ -12,6 +12,62 @@ return {
             use_libuv_file_watcher = true,
             window = {
                 width = 35,
+                    -- copy to system clipboard
+                    ["Y"] = function(state)
+                        local currentNode = state.tree:get_node()
+                        local path = currentNode.path
+                        vim.fn.setreg("+", path)
+                        vim.notify("Copied to system clipboard", "info", {
+                            title = "NeoTree",
+                            timeout = 1000,
+                        })
+                    end,
+                    -- paste from system clipboard
+                    ["P"] = function(state)
+                        local clipboardPath = vim.fn.getreg("+")
+
+                        if clipboardPath == "" then return end
+
+                        local currentNode = state.tree:get_node()
+                        local inputs = require("neo-tree.ui.inputs")
+                        local confirmationMessage = "Are you sure you want to paste " .. clipboardPath
+
+                        inputs.confirm(confirmationMessage, function(confirmed)
+                            if not confirmed then return end
+
+                            local success, error = pcall(function()
+                                local sourcePath = vim.fn.fnameescape(clipboardPath)
+                                local destinationPath = vim.fn.fnameescape(currentNode.path)
+
+                                if currentNode.type == 'directory' then
+                                    vim.fn.system { "cp", "-r", sourcePath, destinationPath }
+                                elseif currentNode.type == 'file' then
+                                    vim.fn.system { "cp", sourcePath, destinationPath }
+                                end
+                            end)
+
+                            if not success then
+                                local errorNotification = {
+                                    title = "NeoTree",
+                                    timeout = 1000,
+                                }
+                                vim.notify("Failed to paste from system clipboard", "error", errorNotification)
+                                vim.cmd [[echohl ErrorMsg]]
+                                return
+                            end
+
+                            require("neo-tree.sources.manager").refresh(state.name)
+                            require 'neo-tree.ui.renderer'.focus_node(state, currentNode.id)
+
+                            local successNotification = {
+                                title = "NeoTree",
+                                timeout = 1000,
+                            }
+                            vim.notify("Pasted from system clipboard", "info", successNotification)
+                        end)
+                    end
+
+                }
             },
             filesystem = {
                 follow_current_file = {
