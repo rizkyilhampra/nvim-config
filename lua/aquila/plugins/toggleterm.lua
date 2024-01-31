@@ -59,13 +59,9 @@ return {
                 vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
             end,
             on_close = function(term)
-                require("neo-tree.sources.filesystem.commands")
-                    .refresh(
-                        require("neo-tree.sources.manager")
-                        .get_state("filesystem")
-                    )
                 -- refresh current buffer
                 vim.cmd("e")
+                vim.cmd [[ lua require("neo-tree.sources.filesystem.commands").refresh(require("neo-tree.sources.manager").get_state("filesystem"))]]
             end,
         })
 
