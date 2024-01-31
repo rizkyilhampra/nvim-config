@@ -12,6 +12,7 @@ return {
             -- sidebars = "transparent",
             floats = "transparent"
         },
+        terminal_colors = false,
         on_highlights = function(hl, c)
             if vim.g.aquila_theme_transparent_mode == false then
                 hl.TelescopeNormal = {
@@ -19,9 +20,6 @@ return {
                 }
                 hl.WhichKeyFloat = {
                     bg = c.bg_dark,
-                }
-                hl.ToggleTermFloat = {
-                    bg = c.bg_dark
                 }
             end
         end
