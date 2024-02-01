@@ -6,7 +6,7 @@ return {
         require("statuscol").setup({
             segments = {
                 relculright = true,
-                { sign = { name = { "Diagnostic" }, auto = true },     click = "v:lua.ScSa" },
+                { sign = { namespace = { "diagnostic*" }, auto = true },     click = "v:lua.ScSa" },
                 { sign = { namespace = { "gitsigns" }, auto = true, }, click = "v:lua.ScSa", },
                 { text = { builtin.lnumfunc, " " },                    click = "v:lua.ScLa", },
                 { text = { builtin.foldfunc, "  " },                    click = "v:lua.ScFa", },
