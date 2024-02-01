@@ -77,6 +77,9 @@ return {
                                 return
                             end
 
+                            -- reset clipboard
+                            vim.fn.setreg("+", "")
+
                             require("neo-tree.sources.manager").refresh(state.name)
                             require 'neo-tree.ui.renderer'.focus_node(state, currentNode.id)
 
