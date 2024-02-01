@@ -61,7 +61,16 @@ return {
             on_close = function(term)
                 -- refresh current buffer
                 vim.cmd("e")
-                vim.cmd [[ lua require("neo-tree.sources.filesystem.commands").refresh(require("neo-tree.sources.manager").get_state("filesystem"))]]
+
+                -- is open neotree?
+                local manager = require("neo-tree.sources.manager")
+                local renderer = require("neo-tree.ui.renderer")
+                local state = manager.get_state("filesystem")
+                local window_exists = renderer.window_exists(state)
+
+                if window_exists then
+                    vim.cmd [[ lua require("neo-tree.sources.filesystem.commands").refresh(require("neo-tree.sources.manager").get_state("filesystem"))]]
+                end
             end,
         })
 
