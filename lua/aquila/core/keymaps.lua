@@ -2,18 +2,25 @@ local set = function(mode, map, mapped, opts)
     vim.keymap.set(mode, map, mapped, opts)
 end
 
-set("i", "jj", "<Esc>", { noremap = true, silent = true }) -- the important things you should remap
+set("i", "jj", "<Esc>", { noremap = true, silent = true })
+-- i love windows behavior for saving a file
+set({ 'i', 'n' }, "<C-s>", '<cmd>w<CR>')
 
-set({ 'i', 'n' }, "<C-s>", '<cmd>w<CR>')                   -- i love windows behavior for save a file
+-- fix problem when below keymap will exit neovim
+set({ 'n', 'v', 'i' }, '<C-z>', '<Nop>')
+set('n', '<C-c>', '<Nop>')
 
-set({ 'n', 'v', 'i' }, '<C-z>', '<Nop>')                   -- fix problem when CTRL + Z is exit neovim
-set('n', '<C-c>', '<Nop>')                                 -- fix probelm when CTRL + C in normal mode is exit neovim
+-- the selected line will move one line up/down and keep the selection
+-- set("v", "J", ":m '>+1<CR>gv=gv")
+-- set("v", "K", ":m '<-2<CR>gv=gv")
 
--- same behavior like alt + up/down in vscode
--- the selected line will move one line up/down
-set("v", "J", ":m '>+1<CR>gv=gv")
-set("v", "K", ":m '<-2<CR>gv=gv")
-
+-- the current line under cursor will move one line up/down
+vim.keymap.set("n", "<leader>k", ":m .-2<CR>==gv<Esc>", {
+    desc = "Move current line up",
+})
+vim.keymap.set("n", "<leader>j", ":m .+1<CR>==gv<Esc>", {
+    desc = "Move current line down",
+})
 -- pressing `n/N` for the next/prev matches in search mode, will make the matches line center
 set("n", "n", "nzzzv")
 set("n", "N", "Nzzzv")
@@ -33,37 +40,34 @@ set("n", "<Leader>~", '<cmd>Alpha<CR>', { desc = "Take me home to the place i be
 set("n", "H", "<C-w>h", { noremap = true, silent = true })
 set("n", "L", "<C-w>l", { noremap = true, silent = true })
 
--- Neotree
-set("n", "<Leader>e", '<cmd>Neotree toggle<CR>')
-set("n", "<Leader>E", '<cmd>Neotree reveal<CR>')
-
--- dd without copy to register if line is empty
 set("n", "dd", function()
-        if vim.fn.getline("."):match("^%s*$") then
-            return '"_dd'
-        end
-        return "dd"
-    end,
-    { expr = true }
-)
+    if vim.fn.getline("."):match("^%s*$") then
+        return '"_dd'
+    end
+    return "dd"
+end, {
+    expr = true,
+    desc = "Delete line without copy to register if line is empty"
+})
 
 -- DUPLICATE VISUAL SELECTION
 local duplicate_selection = function()
     local save_reg = vim.fn.getreginfo([["]])
 
-    local visual_mode = vim.fn.mode()
-    if visual_mode == "v" or visual_mode == "V" then
+    local mode = vim.fn.mode()
+    if mode == "v" or mode == "V" then
         vim.fn.execute [[noautocmd normal! y`>p]]
-    else
-        vim.fn.execute [[noautocmd normal! yP]]
+    elseif mode == "n" then
+        vim.fn.execute [[noautocmd normal! yyP]]
+        -- vim.fn.execute [[noautocmd normal! yyPgvy`[v`]=]]
     end
 
     vim.fn.setreg([["]], save_reg.regcontents, save_reg.regtype)
 end
-set('v', '<C-d>', duplicate_selection, { desc = 'Duplicate selection' })
+set({ 'n', 'v' }, '<C-S-d>', duplicate_selection, { desc = 'Duplicate selection' })
 set('v', '<C-M-d>', function()
-        duplicate_selection()
-        vim.fn.execute [[noautocmd normal! gv]]
-    end,
-    { desc = 'Duplicate selection (keep selection)' }
-)
+    duplicate_selection()
+    vim.fn.execute [[noautocmd normal! gv]]
+end, {
+    desc = 'Duplicate selection (keep selection)'
+})
