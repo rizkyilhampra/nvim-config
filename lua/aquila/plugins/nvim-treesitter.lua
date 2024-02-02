@@ -20,7 +20,8 @@ return {
                 "html",
                 "css",
                 "bash",
-                "sql"
+                "sql",
+                "regex"
             },
 
             sync_install = true,
