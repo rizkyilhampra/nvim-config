@@ -21,7 +21,9 @@ return {
                 "css",
                 "bash",
                 "sql",
-                "regex"
+                "regex",
+                "markdown_inline",
+                "markdown"
             },
 
             sync_install = true,
