@@ -17,19 +17,6 @@ return {
             lualine_a = { 'filename' },
             lualine_b = { 'branch' },
             lualine_c = { 'diagnostics' },
-            lualine_x = {
-                'filetype',
-                "encoding",
-                {
-                    'fileformat',
-                    icons_enabled = true,
-                    symbols = {
-                        unix = 'LF',
-                        dos = 'CRLF',
-                        mac = 'CR',
-                    },
-                }
-            },
             lualine_y = { 'progress' },
             lualine_z = { 'location' },
         },
