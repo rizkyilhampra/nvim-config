@@ -1,53 +1,20 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-        'nvim-treesitter/playground',
-    },
     build = ":TSUpdate",
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     event = { "BufReadPost", "BufNewFile", "BufWritePost", "VeryLazy" },
     config = function()
-        local configs = require("nvim-treesitter.configs")
-
-        configs.setup({
+        require("nvim-treesitter.configs").setup({
             ensure_installed = {
-                "lua",
-                "vim",
-                "vimdoc",
-                "javascript",
-                "typescript",
-                "php",
-                "html",
-                "css",
-                "bash",
-                "sql",
-                "regex",
-                "markdown_inline",
-                "markdown"
+                "lua", "vim", "vimdoc", "javascript", "typescript", "php", "html",
+                "css", "bash", "sql", "regex", "markdown_inline", "markdown",
             },
-
             sync_install = true,
+            auto_install = true,
+            ignore_install = {},
             highlight = { enable = true },
             indent = { enable = true },
-
-            playground = {
-                enable = true,
-                disable = {},
-                updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-                persist_queries = false, -- Whether the query persists across vim sessions
-                keybindings = {
-                    toggle_query_editor = 'o',
-                    toggle_hl_groups = 'i',
-                    toggle_injected_languages = 't',
-                    toggle_anonymous_nodes = 'a',
-                    toggle_language_display = 'I',
-                    focus_language = 'f',
-                    unfocus_language = 'F',
-                    update = 'R',
-                    goto_node = '<cr>',
-                    show_help = '?',
-                },
-            }
+            modules = {}
         })
 
         local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
