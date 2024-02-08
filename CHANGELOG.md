@@ -1,5 +1,49 @@
 # Changelog
 
+## [1.3.0](https://github.com/rizkyilhampra/nvim-config/compare/v1.2.0...v1.3.0) (2024-02-08)
+
+
+### Features
+
+* add deadcolumn plugin ([21ec83c](https://github.com/rizkyilhampra/nvim-config/commit/21ec83c2de582907e81069bace3ffad8c69e344d))
+* add Noice and Pets plugin ([bda0643](https://github.com/rizkyilhampra/nvim-config/commit/bda0643243091cb55ac9dcaecbfbd68d0785b76c))
+* add obsidian plugin ([2e863c0](https://github.com/rizkyilhampra/nvim-config/commit/2e863c073a47dea63c2eda83a7d0c442b780ff31))
+* add peek ([6de8076](https://github.com/rizkyilhampra/nvim-config/commit/6de8076027b113fa4f41d9bd78575b708a5fc85a))
+* **Cmp:** add completion for cmd and some refactor ([1ff6ef6](https://github.com/rizkyilhampra/nvim-config/commit/1ff6ef60b399a67c5a74901a392cbcc96aeca76f))
+* **Neotree:** add mapping for better navigation with H and L ([5f77bcf](https://github.com/rizkyilhampra/nvim-config/commit/5f77bcf8f930411ddbc321928aa0d88b850d403f))
+* **Neotree:** add mapping for copy and paste with system clipboard ([2a9f788](https://github.com/rizkyilhampra/nvim-config/commit/2a9f7885ab17c27a00352c36904bdd5ab2cb6b8a))
+
+
+### Bug Fixes
+
+* **Neotree:** not changed after git processed ([3671a33](https://github.com/rizkyilhampra/nvim-config/commit/3671a33b9989502bf4032f52faa2b1171c5927cc))
+* **statusol:** not showing diagnostic icon after update ([48767e1](https://github.com/rizkyilhampra/nvim-config/commit/48767e1b2069837276400923166d2291194c406e))
+
+
+### Miscellaneous
+
+* add option colourcolumn ([f1a26e6](https://github.com/rizkyilhampra/nvim-config/commit/f1a26e6788f24ba50ee008f166b1f26429e910ee))
+* add regex list to treesitter ensure installed ([6027db6](https://github.com/rizkyilhampra/nvim-config/commit/6027db68adf2d1485e4f35cdf4513daad6e97392))
+* add spesific commit for neo-tree ([b78149c](https://github.com/rizkyilhampra/nvim-config/commit/b78149c90b7121fdc47110c201163b752016f3d3))
+* add tresitter grammar for markdown ([da7f6ba](https://github.com/rizkyilhampra/nvim-config/commit/da7f6baf8493e31dd76543fd1354d4f3bd81a343))
+* **alpha-dashboard:** using theta theme as boilerplate ([5389f62](https://github.com/rizkyilhampra/nvim-config/commit/5389f6245eeabf336219ca476fcb2b114794e7e7))
+* change colorcolumn value ([a27a40e](https://github.com/rizkyilhampra/nvim-config/commit/a27a40ef8f7b4d8d4ba39607094ebb52ecc6342a))
+* currently disable auto save feat ([1fe7a62](https://github.com/rizkyilhampra/nvim-config/commit/1fe7a6284ca92e041a61e05b45f6cec7922b9a41))
+* **Lsp:** setup noedev plugin for better auto completion ([c48ba7b](https://github.com/rizkyilhampra/nvim-config/commit/c48ba7b74de7ba0b48856d9029286c45d1f5da5a))
+* **Lualine:** disabled when TelescopePrompt active ([78d8dd7](https://github.com/rizkyilhampra/nvim-config/commit/78d8dd78558385084559770131a57739afcf011e))
+* **Mason:** added removed lsp and add event showing installed notify ([130c1f1](https://github.com/rizkyilhampra/nvim-config/commit/130c1f1db811bb5a411b01dfa98ff6e0ec96cc12))
+* **neo-tree:** add file_watcher attr ([a0499ea](https://github.com/rizkyilhampra/nvim-config/commit/a0499ead06d40c73a43539a28c2bb7bfd27f1c33))
+* **Neotree:** handle error if delete to trash not working ([e2b332f](https://github.com/rizkyilhampra/nvim-config/commit/e2b332f71bb39fca57e0c1bdd32de0d3b3a109d0))
+* **Neotree:** reset system clipboard after paste from clipboard ([579bf69](https://github.com/rizkyilhampra/nvim-config/commit/579bf69330f0234886cbdbe9a8ac1d81ec7a4f42))
+* remove deadcolumn ([8bc120e](https://github.com/rizkyilhampra/nvim-config/commit/8bc120ed388cf5e05c872684f4da149bc5d829ff))
+* remove notify cause it depends on noice ([44335a2](https://github.com/rizkyilhampra/nvim-config/commit/44335a27152928aaa1c99afa32ba0bf122a87e0e))
+* remove nvim-lsp-notify ([8a9aa56](https://github.com/rizkyilhampra/nvim-config/commit/8a9aa56089fa3337ff92b21eb401e27b81effe3f))
+* should refresh neotree after git changed if window is open ([8c271f3](https://github.com/rizkyilhampra/nvim-config/commit/8c271f367c20470fd1272b5194968579511c7736))
+* some refactoring keymap ([283b4f1](https://github.com/rizkyilhampra/nvim-config/commit/283b4f1f728193bcdc341641cb177eb201deddfa))
+* **tokyonight:** remove hl group for toggle term and disable terminal color ([1db4052](https://github.com/rizkyilhampra/nvim-config/commit/1db405232e20e214bd7cc6b673a4e74fca5fb6d2))
+* unable nvim-lsp-notify ([eac3d16](https://github.com/rizkyilhampra/nvim-config/commit/eac3d16d4019de1a5c0b2e40c266ad9f6d87c90b))
+* using opt_local instead set wrap when filetype md ([5adf8e9](https://github.com/rizkyilhampra/nvim-config/commit/5adf8e98c7226d6ace46757694ac11ae915496f6))
+
 ## [1.2.0](https://github.com/rizkyilhampra/nvim-config/compare/v1.1.0...v1.2.0) (2024-01-28)
 
 
