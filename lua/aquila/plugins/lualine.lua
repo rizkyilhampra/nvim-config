@@ -7,7 +7,7 @@ return {
         options = {
             globalstatus = true,
             disabled_filetypes = {
-                statusline = { "alpha", "neo-tree" }
+                statusline = { "alpha", "neo-tree", "TelescopePrompt" }
             },
             component_separators = '|',
             -- section_separators = { left = '', right = '' },
