@@ -4,6 +4,7 @@ return {
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
         "onsails/lspkind.nvim",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
@@ -13,7 +14,7 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
 
         local cmp = require("cmp")
-        local compare = cmp.config.compare
+
         local luasnip = require("luasnip")
         luasnip.config.setup({
             region_check_events = "CursorMoved",
@@ -125,15 +126,6 @@ return {
                 { name = "path",     keyword_length = 1, group_index = 4 },
                 { name = "buffer",   group_index = 2 },
             }),
-            sorting = {
-                comparators = {
-                    compare.locality,
-                    compare.recently_used,
-                    compare.score,
-                    compare.offset,
-                    compare.order
-                }
-            },
             formatting = {
                 fields = { "kind", "abbr" },
                 format = function(_, vim_item)
@@ -141,6 +133,23 @@ return {
                     return vim_item
                 end,
             },
+        })
+
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources(
+                {
+                    { name = 'path' }
+                },
+                {
+                    {
+                        name = 'cmdline',
+                        option = {
+                            ignore_cmds = { 'Man', '!' }
+                        }
+                    }
+                }
+            )
         })
     end,
 }
