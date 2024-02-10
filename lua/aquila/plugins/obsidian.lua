@@ -1,10 +1,6 @@
 return {
     "epwalsh/obsidian.nvim",
     version = "*",
-    event = {
-        "BufReadPre",
-        "BufNewFile",
-    },
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
