@@ -16,13 +16,12 @@ return {
         local cmp = require("cmp")
 
         local luasnip = require("luasnip")
-        luasnip.config.setup({
-            region_check_events = "CursorMoved",
-            delete_check_events = "TextChanged",
+        luasnip.setup({
+            region_check_events = "InsertLeave",
+            delete_check_events = "InsertLeave",
         })
 
         require("lspkind")
-        local cps = require('copilot.suggestion')
 
         local cmp_kinds = {
             Text = '  ',
@@ -98,14 +97,18 @@ return {
                 ["<CR>"] = cmp.mapping.confirm({ select = false }),
                 ["<Esc>"] = cmp.mapping.abort(),
                 ['<Tab>'] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif cps.is_visible() then
-                        cps.accept()
-                    elseif luasnip.expandable() then
-                        luasnip.expand()
-                    elseif luasnip.jumpable(1) then
-                        luasnip.jump(1)
+                    local copilot = require 'copilot.suggestion'
+                    if copilot.is_visible() then
+                        copilot.accept()
+                    elseif cmp.visible() then
+                        local entry = cmp.get_selected_entry()
+                        if not entry then
+                            cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+                        else
+                            cmp.confirm()
+                        end
+                    elseif luasnip.expand_or_locally_jumpable() then
+                        luasnip.expand_or_jump()
                     else
                         fallback()
                     end
