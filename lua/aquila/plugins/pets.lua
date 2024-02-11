@@ -3,7 +3,7 @@ return {
     dependencies = { "MunifTanjim/nui.nvim", "giusgad/hologram.nvim" },
     config = function()
         require("pets").setup({
-            row = 1,
+            row = 5,
             col = 0,
             speed_multiplier = 1,
             default_pet = "dog",
