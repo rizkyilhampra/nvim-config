@@ -1,6 +1,7 @@
 return {
     'stevearc/dressing.nvim',
     opts = {},
+    event = "BufRead",
     config = function()
         require('dressing').setup({
             select = {
