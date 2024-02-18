@@ -56,10 +56,10 @@ return {
             performance = {
                 max_view_entries = 50,
             },
-            completion = {
-                completeopt = "menu,menuone,preview,noselect",
-                keyword_length = 3
-            },
+            -- completion = {
+            --     completeopt = "menu,menuone,preview,noselect",
+            --     keyword_length = 3
+            -- },
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
