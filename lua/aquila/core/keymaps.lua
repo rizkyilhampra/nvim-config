@@ -32,7 +32,6 @@ set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/Yank to system clipboard" 
 set({ "n", "v" }, "<Leader>p", "\"+p", { desc = "Paste from system clipboard" })
 set("v", "<leader>P", '"_dP', { desc = 'Do not lose the " register on paste' })
 set("n", "x", '"_x', { desc = 'Do not lose the " register on delete' })
-set("n", "c", '"_c', { desc = 'Do not lose the " register on change' })
 set("n", "s", '"_s', { desc = 'Do not lose the " register on replace' })
 
 set("n", "<Leader>~", '<cmd>Alpha<CR>', { desc = "Take me home to the place i belong ~~" })
