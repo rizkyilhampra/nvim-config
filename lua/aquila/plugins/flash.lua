@@ -1,9 +1,9 @@
 return {
     "folke/flash.nvim",
-    event = "BufRead",
-    ---@type Flash.Config
+    event = {
+        "BufReadPre", "BufNewFile",
+    },
     opts = {},
-    -- stylua: ignore
     keys = {
         { "<CR>", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
         -- { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
