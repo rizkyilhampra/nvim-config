@@ -89,7 +89,7 @@ return {
             { desc = "List of dynamic workspace symbols" }
         )
 
-        vim.keymap.set('n', "<leader>fld", function()
+        vim.keymap.set('n', "<leader>fldd", function()
                 builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' })
             end,
             { desc = "List of diagnostics document" }
