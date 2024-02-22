@@ -3,13 +3,13 @@ local function augroup(name)
 end
 
 -- remember folds
-vim.cmd [[
-augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave *.* mkview
-  autocmd BufWinEnter *.* silent! loadview
-augroup END
-]]
+-- vim.cmd [[
+-- augroup remember_folds
+--   autocmd!
+--   autocmd BufWinLeave *.* mkview
+--   autocmd BufWinEnter *.* silent! loadview
+-- augroup END
+-- ]]
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = augroup('highlight_yank'),
