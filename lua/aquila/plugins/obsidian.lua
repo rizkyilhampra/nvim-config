@@ -11,10 +11,6 @@ return {
                 name = "aquila",
                 path = "~/Notes/aquila-notes/",
             },
-            {
-                name = "personal-blog",
-                path = "~/Projects/obsidian-blog/resources/markdown/articles"
-            }
         },
     }
 }
