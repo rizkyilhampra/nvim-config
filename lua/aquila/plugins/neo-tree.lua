@@ -132,16 +132,19 @@ return {
 
                                 msg = "Skip trash? (permanent delete)"
 
-                                inputs.confirm(msg, function(confirmed)
-                                    if not confirmed then return end
+                                inputs.confirm(msg, function(confirmed_delete_to_trash)
+                                    if not confirmed_delete_to_trash then return end
 
                                     if state.tree:get_node().type == "directory" then
                                         vim.fn.system { "rm", "-rf", vim.fn.fnameescape(path) }
                                     else
                                         vim.fn.system { "rm", vim.fn.fnameescape(path) }
                                     end
+
+                                    require("neo-tree.sources.manager").refresh(state.name)
                                 end)
                             end
+
                             require("neo-tree.sources.manager").refresh(state.name)
                         end)
                     end,
