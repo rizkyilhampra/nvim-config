@@ -30,27 +30,6 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
-        -- PHP language server (intelephense)
-        -- lspconfig.intelephense.setup({
-        --     commands = {
-        --         IntelephenseIndex = {
-        --             function()
-        --                 vim.lsp.buf.execute_command({ command = 'intelephense.index.workspace' })
-        --             end,
-        --         },
-        --     },
-        --     capabilities = capabilities,
-        --     single_file_support = true,
-        --     on_attach = on_attach,
-        --     settings = {
-        --         intelephense = {
-        --             files = {
-        --                 maxSize = 5000000
-        --             }
-        --         }
-        --     }
-        -- })
-
         -- PHP language server (PHPActor)
         lspconfig.phpactor.setup({
             capabilities = capabilities,
@@ -66,22 +45,6 @@ return {
         lspconfig.lua_ls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            -- diagnostics = {
-            --     signs = true,
-            --     underline = true,
-            --     update_in_insert = false,
-            --     virtual_text = {
-            --         spacing = 4,
-            --         source = 'if_many',
-            --         prefix = '●',
-            --     },
-            --     severity_sort = true,
-            --     float = {
-            --         show_header = true,
-            --         border = 'rounded',
-            --         source = 'always',
-            --     },
-            -- },
             settings = {
                 Lua = {
                     completion = {
