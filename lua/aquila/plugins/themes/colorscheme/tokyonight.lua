@@ -1,10 +1,7 @@
 return {
     "folke/tokyonight.nvim",
-    priority = 1000,
     lazy = false,
-    enabled = function()
-        return vim.g.aquila_theme == "tokyonight"
-    end,
+    priority = 1000,
     opts = {
         style = "moon",
         transparent = true,

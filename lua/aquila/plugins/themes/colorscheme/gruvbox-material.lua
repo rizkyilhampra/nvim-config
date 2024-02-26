@@ -1,8 +1,6 @@
 return {
     'sainnhe/gruvbox-material',
-    enabled = function()
-        return vim.g.aquila_theme == "gruvbox-material"
-    end,
+    enabled = false,
     config = function()
         vim.o.background = "dark" -- or "light" for light mode
         vim.cmd("let g:gruvbox_material_background= 'hard'")
