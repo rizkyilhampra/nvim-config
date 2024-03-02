@@ -10,7 +10,6 @@ return {
                 padding = 0,
                 margin = {
                     horizontal = 0,
-                    vertical = 0
                 },
             },
             render = function(props)
@@ -20,11 +19,12 @@ return {
                 end
                 local ft_icon, ft_color = devicons.get_icon_color(filename)
                 local modified = vim.bo[props.buf].modified
+
                 return {
                     ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
                     ' ',
-                    { filename, gui = modified and 'bold,italic' or 'bold' },
-                    ' ',
+                    { filename,                  gui = modified and 'bold,italic' or ' light' },
+                    { modified and ' [+]' or '', group = 'DiagnosticWarn' }
                 }
             end,
         }
