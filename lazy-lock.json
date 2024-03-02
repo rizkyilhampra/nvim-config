@@ -22,7 +22,6 @@
   "hlsearch.nvim": { "branch": "main", "commit": "fdeb60b890d15d9194e8600042e5232ef8c29b0e" },
   "hologram.nvim": { "branch": "main", "commit": "c91aa77121162d8ff554b18a487a3f60677447f2" },
   "hover.nvim": { "branch": "main", "commit": "4d04667cf3d6b22379e02ccef6a2fdc6e8837d56" },
-  "huez.nvim": { "branch": "main", "commit": "bb55b32f16598e6ea8586a3a54e6aed2b9ee28e2" },
   "hydra.nvim": { "branch": "master", "commit": "55de54543d673824435930ecf533256eea2e565b" },
   "incline.nvim": { "branch": "main", "commit": "2f5f6094089b29ee1e626cd9459fb42ce249e191" },
   "indent-blankline.nvim": { "branch": "master", "commit": "821a7acd88587d966f7e464b0b3031dfe7f5680c" },
