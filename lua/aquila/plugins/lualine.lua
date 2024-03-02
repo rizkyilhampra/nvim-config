@@ -5,36 +5,49 @@ return {
     enabled = true,
     opts = {
         options = {
-            globalstatus = true,
             disabled_filetypes = {
                 statusline = {
                     "alpha",
                     "neo-tree",
+                    "neo-tree-popup",
                     "TelescopePrompt",
                     "toggleterm",
-                    "neo-tree-popup"
-                }
+                },
             },
             component_separators = '|',
-            -- section_separators = { left = '', right = '' },
-            section_separators = { left = '', right = '' },
+            section_separators = { left = '', right = '' },
+            -- section_separators = { left = '', right = '' },
         },
         sections = {
-            lualine_a = { 'filename' },
-            lualine_b = { 'branch' },
-            lualine_c = { 'diagnostics' },
+            lualine_a = {
+                { 'mode', icon = ' ' },
+            },
+            lualine_b = { { 'branch', icon = ' ' } },
+            lualine_c = {
+                {
+                    'diff',
+                    symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
+                },
+                'diagnostics'
+            },
+            lualine_x = {
+                'filetype',
+                {
+                    'o:encoding',
+                    fmt = string.upper,
+                },
+                {
+                    'fileformat',
+                    symbols = {
+                        unix = 'LF',
+                        dos = 'CRLF',
+                        mac = 'CR',
+                    },
+                    fmt = string.upper,
+                }
+            },
             lualine_y = { 'progress' },
             lualine_z = { 'location' },
         },
-        inactive_sections = {
-            lualine_a = { 'filename' },
-            lualine_b = {},
-            lualine_c = {},
-            lualine_x = {},
-            lualine_y = {},
-            lualine_z = { 'location' },
-        },
-        tabline = {},
-        extensions = {},
     },
 }
