@@ -19,16 +19,13 @@ return {
             vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
             vim.keymap.set("n", "gd", '<cmd>Telescope lsp_definitions<CR>', opts) -- show lsp definitions
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)      -- see available code actions, in visual mode will apply to selection
+
+            if client and client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable(bufnr, true)
+            end
         end
 
         local capabilities = cmp_nvim_lsp.default_capabilities()
-
-        -- Change the Diagnostic symbols in the sign column (gutter)
-        local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-        end
 
         -- PHP language server (PHPActor)
         lspconfig.phpactor.setup({
@@ -86,11 +83,28 @@ return {
             on_attach = on_attach
         })
 
-        vim.diagnostic.config({
-            virtual_text = false,
+        local global = require("aquila.core.global")
+
+        vim.diagnostic.config {
+            virtual_text = {
+                spacing = 4,
+                prefix = "●",
+                severity = vim.diagnostic.severity.ERROR,
+            },
             float = {
-                source = true,
-            }
-        })
+                severity_sort = true,
+                source = "if_many",
+            },
+            severity_sort = true,
+            -- add this if neo-tree tag is not 3.14
+            -- signs = {
+            --     text = {
+            --         [vim.diagnostic.severity.ERROR] = global.icons.diagnostic.error,
+            --         [vim.diagnostic.severity.WARN] = global.icons.diagnostic.warn,
+            --         [vim.diagnostic.severity.HINT] = global.icons.diagnostic.hint,
+            --         [vim.diagnostic.severity.INFO] = global.icons.diagnostic.info,
+            --     },
+            -- },
+        }
     end
 }
