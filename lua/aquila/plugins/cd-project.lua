@@ -1,6 +1,6 @@
 return {
     "LintaoAmons/cd-project.nvim",
-    event = "BufWinEnter",
+    event = "VeryLazy",
     -- Don't need call the setup function if you think you are good with the default configuration
     config = function()
         require("cd-project").setup({
