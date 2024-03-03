@@ -1,7 +1,9 @@
+local global = require('aquila.core.global')
+
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
-    commit = "77d9f484b88fd380386b46ed9206e5374d69d9d8",
+    tag = "3.14",
     dependencies = {
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
         "MunifTanjim/nui.nvim",
@@ -10,7 +12,6 @@ return {
     config = function()
         require("neo-tree").setup({
             close_if_last_window = true,
-            use_libuv_file_watcher = true,
             window = {
                 width = 35,
                 mappings = {
@@ -94,7 +95,17 @@ return {
 
                 }
             },
+            default_component_configs = {
+                git_status = {
+                    symbols = {
+                        added    = global.icons.git.added,
+                        modified = global.icons.git.modified,
+                    }
+                },
+
+            },
             filesystem = {
+                use_libuv_file_watcher = true,
                 follow_current_file = {
                     enabled         = true,
                     leave_dirs_open = true
