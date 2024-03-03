@@ -64,7 +64,8 @@ return {
                 opts = { skip = true },
             },
             {
-                filter = { event = "msg_show", kind = "", find = "written",
+                filter = {
+                    event = "msg_show", kind = "", find = "written",
                 },
                 opts = { skip = true },
             },
@@ -74,7 +75,4 @@ return {
             },
         },
     },
-    config = function(_, opts)
-        require("noice").setup(opts)
-    end
 }
