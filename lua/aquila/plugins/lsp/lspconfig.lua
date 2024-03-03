@@ -4,12 +4,12 @@ return {
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
+        "folke/neodev.nvim",
     },
     config = function()
         require('neodev').setup();
 
         local lspconfig = require("lspconfig")
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
         local opts = { noremap = true, silent = true }
         local on_attach = function(client, bufnr)
@@ -25,7 +25,7 @@ return {
             end
         end
 
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         -- PHP language server (PHPActor)
         lspconfig.phpactor.setup({
