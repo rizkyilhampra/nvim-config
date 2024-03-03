@@ -18,13 +18,24 @@ return {
                     filename = '[No Name]'
                 end
                 local ft_icon, ft_color = devicons.get_icon_color(filename)
-                local modified = vim.bo[props.buf].modified
+                local modified          = vim.bo[props.buf].modified
+                local global            = require('aquila.core.global')
 
                 return {
-                    ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
-                    ' ',
-                    { filename,                  gui = modified and 'bold,italic' or ' light' },
-                    { modified and ' [+]' or '', group = 'DiagnosticWarn' }
+                    {
+                        '',
+                        guifg = ft_color
+                    },
+                    ft_icon and { ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
+                    {
+                        ' ',
+                        filename,
+                        -- gui = modified and 'bold,italic' or 'light'
+                    },
+                    {
+                        modified and ' [+]' or '',
+                        group = 'NeoTreeModified',
+                    }
                 }
             end,
         }
