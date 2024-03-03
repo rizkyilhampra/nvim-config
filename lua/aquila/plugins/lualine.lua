@@ -1,3 +1,5 @@
+local global = require('aquila.core.global')
+
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -26,7 +28,7 @@ return {
             lualine_c = {
                 {
                     'diff',
-                    symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
+                    symbols = global.icons.git,
                 },
                 'diagnostics'
             },
