@@ -34,7 +34,6 @@ return {
             if client and client.server_capabilities.inlayHintProvider then
                 vim.lsp.inlay_hint.enable(bufnr, true)
             end
-
         end
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -43,10 +42,9 @@ return {
         lspconfig.phpactor.setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            init_options = {
-                ["language_server_phpstan.enabled"] = true,
-            },
-            single_file_support = true,
+            root_dir = function(fname)
+                return lspconfig.util.root_pattern("composer.json", ".git")(fname) or lspconfig.util.path.dirname(fname)
+            end,
         })
 
         -- Lua Language Server
