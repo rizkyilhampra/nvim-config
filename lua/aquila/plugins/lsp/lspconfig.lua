@@ -19,10 +19,22 @@ return {
             vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
             vim.keymap.set("n", "gd", '<cmd>Telescope lsp_definitions<CR>', opts) -- show lsp definitions
             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)      -- see available code actions, in visual mode will apply to selection
+            vim.keymap.set("n", '<c-k>', function()
+                vim.diagnostic.open_float(nil, {
+                    focusable = false,
+                    close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+                    border = 'rounded',
+                    source = 'if_many',
+                    -- source = 'always',
+                    prefix = ' ',
+                    scope = 'line',
+                })
+            end, opts)
 
             if client and client.server_capabilities.inlayHintProvider then
                 vim.lsp.inlay_hint.enable(bufnr, true)
             end
+
         end
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -32,8 +44,7 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
             init_options = {
-                ["language_server_phpstan.enabled"] = false,
-                ["language_server_psalm.enabled"] = false,
+                ["language_server_phpstan.enabled"] = true,
             },
             single_file_support = true,
         })
@@ -86,25 +97,26 @@ return {
         local global = require("aquila.core.global")
 
         vim.diagnostic.config {
-            virtual_text = {
-                spacing = 4,
-                prefix = "●",
-                severity = vim.diagnostic.severity.ERROR,
-            },
+            virtual_text = false,
+            -- virtual_text = {
+            --     virt_text_hide = true,
+            --     spacing = 4,
+            --     prefix = "● ",
+            --     severity = vim.diagnostic.severity.ERROR,
+            -- },
             float = {
                 severity_sort = true,
                 source = "if_many",
             },
             severity_sort = true,
-            -- add this if neo-tree tag is not 3.14
-            -- signs = {
-            --     text = {
-            --         [vim.diagnostic.severity.ERROR] = global.icons.diagnostic.error,
-            --         [vim.diagnostic.severity.WARN] = global.icons.diagnostic.warn,
-            --         [vim.diagnostic.severity.HINT] = global.icons.diagnostic.hint,
-            --         [vim.diagnostic.severity.INFO] = global.icons.diagnostic.info,
-            --     },
-            -- },
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = global.icons.diagnostic.error,
+                    [vim.diagnostic.severity.WARN] = global.icons.diagnostic.warn,
+                    [vim.diagnostic.severity.HINT] = global.icons.diagnostic.hint,
+                    [vim.diagnostic.severity.INFO] = global.icons.diagnostic.info,
+                },
+            },
         }
     end
 }
