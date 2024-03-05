@@ -35,7 +35,7 @@ return {
             ensure_installed = {
                 "eslint-lsp",
                 "prettierd",
-                "tailwindcss-language-server"
+                "tailwindcss-language-server",
             }
         })
 
