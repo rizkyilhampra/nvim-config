@@ -47,7 +47,7 @@ if mode == "reader" then
     vim.opt.listchars:append({ trail = "•" })
 end
 
-vim.opt.mousemoveevent = true -- Allow hovering in bufferline
+vim.opt.mousemoveevent = true -- Allow hovering in bufferline.nvim & eagle.nvim
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.showmode = false
