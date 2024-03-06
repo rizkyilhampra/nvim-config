@@ -23,6 +23,7 @@ return {
                 command = "eslint_d",
             }),
             null_ls.builtins.diagnostics.selene,
+            null_ls.builtins.diagnostics.phpstan,
         }
 
         null_ls.setup({

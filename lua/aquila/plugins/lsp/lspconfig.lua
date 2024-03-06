@@ -38,11 +38,15 @@ return {
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        -- PHP language server (PHPActor)
+        -- PHP language server
         lspconfig.phpactor.setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            init_options = {
+                ['language_server_configuration.auto_config'] = false
+            },
             root_dir = function(fname)
+                -- allow single file support
                 return lspconfig.util.root_pattern("composer.json", ".git")(fname) or lspconfig.util.path.dirname(fname)
             end,
         })
