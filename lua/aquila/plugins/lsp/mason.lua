@@ -33,9 +33,11 @@ return {
 
         require("mason-tool-installer").setup({
             ensure_installed = {
-                "eslint-lsp",
+                "eslint_d",
                 "prettierd",
+                "selene",
                 "tailwindcss-language-server",
+                "phpstan",
             }
         })
 
