@@ -18,8 +18,11 @@ return {
                     filename = '[No Name]'
                 end
                 local ft_icon, ft_color = devicons.get_icon_color(filename)
-                local modified          = vim.bo[props.buf].modified
-                local global            = require('aquila.core.global')
+                if ft_icon == nil then
+                    ft_icon = ''
+                    ft_color = '#ffffff'
+                end
+                local modified = vim.bo[props.buf].modified
 
                 return {
                     {
@@ -30,11 +33,18 @@ return {
                     {
                         ' ',
                         filename,
+                        group = "lualine_c_normal",
+                        -- remove above line if you want to modified gui
                         -- gui = modified and 'bold,italic' or 'light'
+                        ' '
                     },
                     {
-                        modified and ' [+]' or '',
-                        group = 'NeoTreeModified',
+                        '',
+                        group = 'lualine_c_normal',
+                        {
+                            modified and '[+]' or '',
+                            group = 'NeoTreeModified',
+                        }
                     }
                 }
             end,
