@@ -5,7 +5,6 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
-        "onsails/lspkind.nvim",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets",
@@ -21,41 +20,7 @@ return {
             delete_check_events = "InsertLeave",
         })
 
-        require("lspkind")
-
-        local cmp_kinds = {
-            Text = '  ',
-            Method = '  ',
-            Function = '  ',
-            Constructor = '  ',
-            Field = '  ',
-            Variable = '  ',
-            Class = '  ',
-            Interface = '  ',
-            Module = '  ',
-            Property = '  ',
-            Unit = '  ',
-            Value = '  ',
-            Enum = '  ',
-            Keyword = '  ',
-            Snippet = '  ',
-            Color = '  ',
-            File = '  ',
-            Reference = '  ',
-            Folder = '  ',
-            EnumMember = '  ',
-            Constant = '  ',
-            Struct = '  ',
-            Event = '  ',
-            Operator = '  ',
-            TypeParameter = '  ',
-            Copilot = '  '
-        }
-
         cmp.setup({
-            performance = {
-                max_view_entries = 50,
-            },
             -- completion = {
             --     completeopt = "menu,menuone,preview,noselect",
             --     keyword_length = 3
@@ -83,6 +48,7 @@ return {
                 documentation = {
                     maxheight = 15,
                     maxwidth = 50,
+                    border = "rounded",
                 },
                 completion = {
                     -- col_offset = -3,
@@ -132,7 +98,7 @@ return {
             formatting = {
                 fields = { "kind", "abbr" },
                 format = function(_, vim_item)
-                    vim_item.kind = cmp_kinds[vim_item.kind] or ""
+                    vim_item.kind = require("aquila.core.global").icons.kind_with_space[vim_item.kind] or ""
                     return vim_item
                 end,
             },
