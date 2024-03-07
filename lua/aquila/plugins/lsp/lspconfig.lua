@@ -96,21 +96,26 @@ return {
             on_attach = on_attach
         })
 
+        lspconfig.eslint.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
         local global = require("aquila.core.global")
 
         vim.diagnostic.config {
-            virtual_text = false,
-            -- virtual_text = {
-            --     virt_text_hide = true,
-            --     spacing = 4,
-            --     prefix = "● ",
-            --     severity = vim.diagnostic.severity.ERROR,
-            -- },
+            update_in_insert = false,
+            -- virtual_text = false,
+            virtual_text = {
+                spacing = 4,
+                prefix = "● ",
+                -- severity = vim.diagnostic.severity.ERROR,
+            },
             float = {
-                severity_sort = true,
+                -- severity_sort = true,
                 source = "if_many",
             },
-            severity_sort = true,
+            -- severity_sort = true,
             signs = {
                 text = {
                     [vim.diagnostic.severity.ERROR] = global.icons.diagnostic.error,
