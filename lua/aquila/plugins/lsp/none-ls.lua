@@ -2,7 +2,7 @@ return {
     'nvimtools/none-ls.nvim',
     event = {
         "BufReadPre",
-        "BufWritePost"
+        "BufNewFile"
     },
     dependencies = {
         "nvimtools/none-ls-extras.nvim",
