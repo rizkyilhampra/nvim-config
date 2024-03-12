@@ -55,3 +55,4 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 -- cause i use noice plugin this is not needed
 -- vim.opt.cmdheight = 0
+vim.opt.autoread = true
