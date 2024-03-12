@@ -1,6 +1,6 @@
 # Aquila's Neovim Configuration
 An my personal IDE/Editor write from scratch
-> Nah. I've many stole it from other people configuration :).
+> Nah. I've many stole it from other people configuration 😁
 
 I mainly used this as an web developer. Currently focus on PHP Laravel project (when 'php is dead'), so i think currently only configured well for that case. Let see if i'm moved focus other ecosystem/language, i wil update my configuration and writing(if i'm not lazy too)
 
