@@ -39,7 +39,6 @@ return {
                     })
                 end, opts)
 
-
                 local virtual_text_diagnostics_active = true
                 vim.keymap.set("n", "<leader>cd", function()
                     virtual_text_diagnostics_active = not virtual_text_diagnostics_active
