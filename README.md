@@ -1,8 +1,8 @@
 # Aquila's Neovim Configuration
-An personal IDE/Editor write from scratch
+An my personal IDE/Editor write from scratch
 > Nah. I've many stole it from other people configuration :).
 
-I mainly used this as an web developer. Currently focus on PHP Laravel project (when 'php is dead'), so i think currently only configured well for that case. Let see if i'm moved focus other ecosystem/language, i wil update my writing (if i'm not lazy too)
+I mainly used this as an web developer. Currently focus on PHP Laravel project (when 'php is dead'), so i think currently only configured well for that case. Let see if i'm moved focus other ecosystem/language, i wil update my configuration and writing(if i'm not lazy too)
 
 ## How to run this thing?
 ### Requirement
@@ -27,12 +27,12 @@ FD|https://github.com/sharkdp/fd
 > You can copy paste all below code and paste them in your terminal,, then press `enter` and wait until finish.
 
 ```bash
+mkdir -p ~/.config && \
 cd ~/.config && \
-git clone https://github.com/rizkyilhampra/nvim-config.git && \
-mv nvim-config nvim && \
+git clone https://github.com/rizkyilhampra/nvim-config.git nvim && \
 cd nvim && \
 nvim
 ```
 
 ## Thanks
-All people under Neovim Ecosystem
+All people or organization under Neovim Ecosystem and/or who i was notice in here
