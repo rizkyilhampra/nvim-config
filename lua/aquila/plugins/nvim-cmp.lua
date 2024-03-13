@@ -90,10 +90,10 @@ return {
                 end, { 'i', 's' }),
             }),
             sources = cmp.config.sources({
-                { name = "nvim_lsp", group_index = 1 },
-                { name = "luasnip",  group_index = 3 },
-                { name = "path",     keyword_length = 1, group_index = 4 },
-                { name = "buffer",   group_index = 2 },
+                { name = "nvim_lsp" },
+                { name = "luasnip" },
+                { name = "path" },
+                { name = "buffer" },
             }),
             formatting = {
                 fields = { "kind", "abbr" },
