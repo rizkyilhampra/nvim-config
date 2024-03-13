@@ -23,6 +23,7 @@ Phyton|I'm not sure but ensure `phyton3` is installed too
 FZF|https://github.com/junegunn/fzf
 Ripgrep|https://github.com/BurntSushi/ripgrep
 FD|https://github.com/sharkdp/fd
+Deno(Javascript Runtime)|https://deno.com/
 ### Run
 > You can copy paste all below code and paste them in your terminal,, then press `enter` and wait until finish.
 
