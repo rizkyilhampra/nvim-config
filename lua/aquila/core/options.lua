@@ -15,14 +15,17 @@ vim.opt.termguicolors = true
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
--- this more for UFO folding initialization
+-- this for UFO folding requirement.
 vim.opt.foldcolumn = "1" -- '0' is not bad
 vim.opt.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
-vim.opt.smoothscroll = true -- only work in 10.0+
+if vim.fn.has("nvim-0.10") == 1 then
+    vim.opt.smoothscroll = true
+end
+
 vim.opt.cursorline = true
 vim.opt.scrolloff = 14
 vim.opt.sidescrolloff = 8
@@ -55,4 +58,6 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 -- cause i use noice plugin this is not needed
 -- vim.opt.cmdheight = 0
+
+vim.opt.updatetime = 200
 vim.opt.autoread = true
