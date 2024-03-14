@@ -26,26 +26,20 @@ return {
 
                 return {
                     {
-                        '',
-                        guifg = ft_color
+                        modified and '[+]' or '',
+                        group = 'NeoTreeModified'
                     },
-                    ft_icon and { ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
+                    ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
                     {
                         ' ',
-                        filename,
-                        group = "lualine_c_normal",
-                        -- remove above line if you want to modified gui
-                        -- gui = modified and 'bold,italic' or 'light'
+                        guibg = require("tokyonight.util").darken(ft_color, 0.8),
+                        guifg = helpers.contrast_color(ft_color),
+                        {
+                            filename,
+                            gui = modified and 'bold,italic' or 'normal'
+                        },
                         ' '
                     },
-                    {
-                        '',
-                        group = 'lualine_c_normal',
-                        {
-                            modified and '[+]' or '',
-                            group = 'NeoTreeModified',
-                        }
-                    }
                 }
             end,
         }
