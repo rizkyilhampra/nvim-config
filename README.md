@@ -20,10 +20,13 @@ C Compiler|Ensure `make` is installed too
 Rust|https://www.rust-lang.org/tools/install. Ensure `cargo` is installed too
 Node|I use [`fnm`](https://github.com/Schniz/fnm) as node version manager. If you need install only one version, take look in [here](https://github.com/nodesource/distributions?tab=readme-ov-file#installation-instructions)
 Phyton|I'm not sure but ensure `phyton3` is installed too
-FZF|https://github.com/junegunn/fzf
-Ripgrep|https://github.com/BurntSushi/ripgrep
-FD|https://github.com/sharkdp/fd
+`fzf`|https://github.com/junegunn/fzf
+`ripgrep`|https://github.com/BurntSushi/ripgrep
+`fd`|https://github.com/sharkdp/fd
 Deno(Javascript Runtime)|https://deno.com/
+`jq`|to format JSON output
+`tidy`|to format HTML output
+`curl`|-
 ### Run
 > You can copy paste all below code and paste them in your terminal,, then press `enter` and wait until finish.
 
