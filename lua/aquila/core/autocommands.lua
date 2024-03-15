@@ -64,6 +64,27 @@ M.create("BufReadPost", {
     desc = "Create undo-dir",
 })
 
+M.create('User', {
+    pattern = 'AlphaReady',
+    desc = 'hide cursor for alpha',
+    callback = function()
+        local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
+        hl.blend = 100
+        vim.api.nvim_set_hl(0, 'Cursor', hl)
+        vim.opt.guicursor:append('a:Cursor/lCursor')
+    end,
+})
+
+M.create('BufNew', {
+    desc = 'show cursor after alpha',
+    callback = function(event)
+        local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
+        hl.blend = 0
+        vim.api.nvim_set_hl(0, 'Cursor', hl)
+        vim.opt.guicursor:remove('a:Cursor/lCursor')
+        vim.api.nvim_del_autocmd(event.id)
+    end,
+})
 
 -- i'm not sure with this
 -- vim.api.nvim_create_autocmd("BufEnter", {
