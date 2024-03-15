@@ -1,5 +1,6 @@
 # Aquila's Neovim Configuration
 An my neovim configuration write from stratch. 
+
 ![screenshot](./src/2024-03-15-221218_hyprshot.png)
 ## How to run this thing?
 ### Requirement
