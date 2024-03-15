@@ -1,9 +1,10 @@
 # Aquila's Neovim Configuration
-An my neovim configuration write from stratch. 
+An my neovim configuration write from stratch (of course,with stolen other neovim configuration from somewhere). It is fit with my workflow or/and environtment, see [Aquila's Dotfiles](https://github.com/rizkyilhampra/dotfilesv2).
 
 ![screenshot](./src/2024-03-15-221218_hyprshot.png)
+
 ## How to run this thing?
-### Requirement
+### Requirements
 > Forgive me if i'm missing something. Please run `:checkhealth` if you are not missing some dependencies after clone my config.
 
 The Things|Description
@@ -35,6 +36,3 @@ git clone https://github.com/rizkyilhampra/nvim-config.git nvim && \
 cd nvim && \
 nvim
 ```
-
-## Thanks
-All people or organization under Neovim Ecosystem and/or who i was notice in here
