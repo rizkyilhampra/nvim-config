@@ -11,6 +11,7 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "code-refactor.nvim": { "branch": "main", "commit": "88b6ca5907aa8f9d6b9d4322e1708a792d75859e" },
+  "codesnap.nvim": { "branch": "main", "commit": "53b3d2544a3219d9774c3234f1fb34949b7be6b3" },
   "conform.nvim": { "branch": "master", "commit": "a605ce4b2db397c84ae6fa8bcfc85f00b985bc73" },
   "copilot.lua": { "branch": "master", "commit": "f7612f5af4a7d7615babf43ab1e67a2d790c13a6" },
   "dressing.nvim": { "branch": "master", "commit": "18e5beb3845f085b6a33c24112b37988f3f93c06" },
