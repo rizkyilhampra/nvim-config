@@ -2,6 +2,7 @@
 An my neovim configuration write from stratch (of course,with stolen other neovim configuration from somewhere). It is fit with my workflow or/and environtment, see [Aquila's Dotfiles](https://github.com/rizkyilhampra/dotfilesv2).
 
 ![screenshot](./src/2024-03-15-221218_hyprshot.png)
+![screenshot-2](./src/2024-03-15-232223_hyprshot.png)
 
 ## How to run this thing?
 ### Requirements
