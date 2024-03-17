@@ -1,127 +1,186 @@
 return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.3',
-    event = "VeryLazy",
-    dependencies = {
-        'nvim-lua/plenary.nvim',
-        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    },
-    config = function()
-        local telescope = require('telescope')
+    opts = function()
         local actions = require('telescope.actions')
-        local themes = require('telescope.themes')
-        local builtin = require('telescope.builtin')
-
-        telescope.load_extension("smart_open")
-
-        telescope.setup({
+        return {
             defaults = {
                 mappings = {
                     n = {
                         ['q'] = actions.close
                     }
+                }
+            }
+        }
+    end,
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        "kkharji/sqlite.lua",
+        {
+            "danielfalk/smart-open.nvim",
+            branch = "0.2.x",
+            keys = {
+                {
+                    "<leader><space>",
+                    function()
+                        require('telescope').extensions.smart_open.smart_open(require('telescope.themes').get_dropdown({
+                            -- winblend = 10,
+                            cwd_only = true,
+                            devicons_enabled = true,
+                            initial_mode = 'normal',
+                            match_algorithm = 'fzf',
+                        }))
+                    end,
+                    desc = "Find files in cwd"
                 },
             },
-        })
+            config = function()
+                require('telescope').load_extension('smart_open')
+            end
+        },
+        {
+            "isak102/telescope-git-file-history.nvim",
+            dependencies = { "tpope/vim-fugitive" },
+            keys = {
+                {
+                    "<Leader>fg",
+                    "<cmd>Telescope git_file_history<CR>",
+                    desc = "List of git file history"
 
-        vim.keymap.set('n', '<leader>fa', function()
-                builtin.find_files({
+                }
+            },
+            config = function()
+                require('telescope').load_extension('git_file_history')
+            end
+        },
+        {
+            "debugloop/telescope-undo.nvim",
+            keys = {
+                {
+                    "<Leader>fu",
+                    "<cmd>Telescope undo<CR>",
+                    desc = "List of undos"
+                }
+            },
+            config = function()
+                require('telescope').load_extension('undo')
+            end
+        }
+    },
+    keys = {
+        {
+            '<leader>fa',
+            function()
+                require('telescope.builtin').find_files({
                     no_ignore = true,
                     hidden = true,
                 })
             end,
-            { desc = "Find all without respect anything" }
-        )
-
-        vim.keymap.set("n", "<leader>fr", function()
-                builtin.oldfiles({ initial_mode = 'normal' })
+            desc = "Find all without respect anything"
+        },
+        {
+            "<leader>fr",
+            function()
+                require('telescope.builtin').oldfiles({ initial_mode = 'normal' })
             end,
-            { desc = "List previously open files all dir" }
-        )
+            desc = "List previously open files all dir"
 
-        vim.keymap.set("n", "<leader><Tab>", function()
-                builtin.oldfiles(themes.get_dropdown({
+        },
+        {
+            "<Leader><Tab>",
+            function()
+                require('telescope.builtin').oldfiles(require('telescope.themes').get_dropdown({
                     previewer = false,
                     initial_mode = 'normal',
                     cwd_only = true,
                 }))
             end,
-            { desc = 'List previously open files on cwd' }
-        )
-
-        vim.keymap.set("n", "<leader>fs", function()
-            builtin.live_grep()
-        end, { desc = "Find string in cwd" })
-
-        vim.keymap.set("n", "<leader>fc", function()
-                builtin.grep_string()
+            desc = 'List previously open files on cwd'
+        },
+        {
+            "<leader>fs",
+            function()
+                require('telescope.builtin').grep_string()
             end,
-            { desc = "Find string under cursor in cwd" }
-        )
-
-        vim.keymap.set("n", "<leader>fb", function()
-                builtin.buffers({ initial_mode = 'normal' })
+            desc = "Find string under cursor in cwd"
+        },
+        {
+            "<leader>fb",
+            function()
+                require('telescope.builtin').buffers({ initial_mode = 'normal' })
             end,
-            { desc = "list of buffers" }
-        )
-
-        vim.keymap.set('n', "<leader>flr", function()
-                builtin.lsp_references({ initial_mode = 'normal' })
+            desc = "list of buffers"
+        },
+        {
+            "<leader>flr",
+            function()
+                require('telescope.builtin').lsp_references({ initial_mode = 'normal' })
             end,
-            { desc = "List of references" }
-        )
+            desc = "List of references"
 
-        vim.keymap.set('n', "<leader>fls", function()
-                builtin.lsp_document_symbols()
+        },
+        {
+            "<leader>fls",
+            function()
+                require('telescope.builtin').lsp_document_symbols()
             end,
-            { desc = "List of symbols" }
-        )
+            desc = "List of symbols"
 
-        vim.keymap.set('n', "<leader>flw",
-            "<cmd> lua require('telescope.builtin').lsp_workspace_symbols({initial_mode = 'normal'})<CR> ", {
-                desc = "List of workspace symbols"
-            }
-        )
+        },
+        {
+            "<leader>flw",
+            "<cmd> lua require('telescope.builtin').lsp_workspace_symbols({initial_mode = 'normal'})<CR> ",
 
-        vim.keymap.set('n', "<leader>flS", function()
-                builtin.lsp_dynamic_workspace_symbols()
+            desc = "List of workspace symbols"
+
+        },
+        {
+            "<leader>flS",
+            function()
+                require('telescope.builtin').lsp_dynamic_workspace_symbols()
             end,
-            { desc = "List of dynamic workspace symbols" }
-        )
-
-        vim.keymap.set('n', "<leader>fldd", function()
-                builtin.diagnostics({ bufnr = 0, initial_mode = 'normal' })
+            desc = "List of dynamic workspace symbols"
+        },
+        {
+            "<leader>fldd",
+            function()
+                require('telescope.builtin').diagnostics({ bufnr = 0, initial_mode = 'normal' })
             end,
-            { desc = "List of diagnostics document" }
-        )
-
-        vim.keymap.set('n', "<leader>flii",
-            "<cmd> lua require('telescope.builtin').lsp_implementations({initial_mode = 'normal'})<CR> ", {
-                desc = "List of implementations"
-            })
-
-        vim.keymap.set('n', "<leader>fldD",
-            "<cmd> lua require('telescope.builtin').lsp_type_definitions({initial_mode = 'normal'})<CR> ", {
-                desc = "List of type definitions"
-            }
-        )
-
-        vim.keymap.set("n", "<leader>fh", function()
-                builtin.help_tags()
+            desc = "List of diagnostics document"
+        },
+        {
+            "<leader>flii",
+            "<cmd> lua require('telescope.require('telescope.builtin')').lsp_implementations({initial_mode = 'normal'})<CR> ",
+            desc = "List of implementations"
+        },
+        {
+            "<leader>fldD",
+            "<cmd> lua require('telescope.require('telescope.builtin')').lsp_type_definitions({initial_mode = 'normal'})<CR> ",
+            desc = "List of type definitions"
+        },
+        {
+            "<leader>fh",
+            function()
+                require('telescope.builtin').help_tags()
             end,
-            { desc = "List of help tags" }
-        )
+            desc = "List of help tags"
 
-        vim.keymap.set('n', "<Leader>f/", function()
-                builtin.resume()
+        },
+        {
+            "<Leader>f/",
+            function()
+                require('telescope.builtin').resume()
             end,
-            { desc = "Resume last telescope" }
-        )
+            desc = "Resume last telescope"
+        },
+        {
+            "<Leader>fi",
+            function()
+                require('telescope.builtin').highlights()
+            end,
+            desc = "Lists all available highlights"
 
-        vim.keymap.set('n', "<Leader>fi", function()
-                builtin.highlights()
-            end,
-            { desc = "Lists all available highlights" }
-        )
-    end
+        },
+    },
 }
