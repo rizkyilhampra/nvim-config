@@ -67,7 +67,8 @@ return {
                 ['language_server_configuration.auto_config'] = false,
                 ['language_server_worse_reflection.inlay_hints.enable'] = true,
                 -- ['language_server_worse_reflection.inlay_hints.types'] = true,
-                -- ['language_server_phpstan.enabled'] = true,
+                -- replace with phpstan from null-ls
+                ['language_server_phpstan.enabled'] = false,
                 ['phpunit.enabled'] = true,
             },
             root_dir = function(fname)
