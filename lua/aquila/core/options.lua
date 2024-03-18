@@ -61,3 +61,7 @@ vim.opt.undofile = true
 
 vim.opt.updatetime = 200
 vim.opt.autoread = true
+
+-- required by which key plugin
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300

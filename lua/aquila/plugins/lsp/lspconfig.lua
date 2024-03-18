@@ -7,10 +7,10 @@ return {
     },
     config = function()
         vim.api.nvim_create_autocmd("LspAttach", {
-            callback = function(details)
-                local bufnr = details.buf
-                local client = vim.lsp.get_client_by_id(details.data.client_id) or {}
-                local opts = { noremap = true, silent = true }
+            callback = function(event)
+                local bufnr = event.buf
+                local client = vim.lsp.get_client_by_id(event.data.client_id) or {}
+                local opts = { noremap = true, silent = true, buffer = bufnr }
 
                 if client.server_capabilities.inlayHintProvider then
                     vim.lsp.inlay_hint.enable(bufnr, true)
@@ -27,17 +27,7 @@ return {
                 vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
                 vim.keymap.set("n", "gd", '<cmd>Telescope lsp_definitions<CR>', opts) -- show lsp definitions
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)      -- see available code actions, in visual mode will apply to selection
-                vim.keymap.set("n", '<C-k>', function()
-                    vim.diagnostic.open_float(nil, {
-                        focusable = false,
-                        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-                        border = 'rounded',
-                        source = 'if_many',
-                        -- source = 'always',
-                        prefix = ' ',
-                        scope = 'line',
-                    })
-                end, opts)
+                vim.keymap.set("n", '<C-k>', function() vim.diagnostic.open_float() end, opts)
 
                 local virtual_text_diagnostics_active = true
                 vim.keymap.set("n", "<leader>cd", function()
@@ -49,8 +39,9 @@ return {
                     end
                 end, opts)
 
+                vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
                 -- i'm not sure if this is necessary. stole it from https://github.com/pynappo/dotfiles/
-                -- vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
                 -- vim.b[bufnr].lsp_attached = true
                 -- if not client then return end
                 -- if vim.tbl_contains({ 'copilot', 'null-ls' }, client.name or vim.print('no client found')) then return end
@@ -74,9 +65,10 @@ return {
             capabilities = capabilities,
             init_options = {
                 ['language_server_configuration.auto_config'] = false,
-                -- i think i will toggle this things if i get some information about it
                 ['language_server_worse_reflection.inlay_hints.enable'] = true,
-                ['language_server_worse_reflection.inlay_hints.types'] = true,
+                -- ['language_server_worse_reflection.inlay_hints.types'] = true,
+                -- ['language_server_phpstan.enabled'] = true,
+                ['phpunit.enabled'] = true,
             },
             root_dir = function(fname)
                 -- allow single file support
@@ -143,25 +135,26 @@ return {
         -- Bash Language Server
         lspconfig.bashls.setup({
             capabilities = capabilities,
-        })
-
-        lspconfig.eslint.setup({
-            capabilities = capabilities,
+            single_file_support = true,
         })
 
         local global = require("aquila.core.global")
 
         vim.diagnostic.config({
             update_in_insert = false,
-            -- virtual_text = false,
             virtual_text = {
                 spacing = 4,
                 prefix = "● ",
-                source = false
+                source = true
             },
             float = {
-                severity_sort = true,
-                source = true,
+                focusable = false,
+                close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+                border = 'rounded',
+                source = 'if_many',
+                -- source = 'always',
+                prefix = ' ',
+                scope = 'line',
             },
             severity_sort = true,
             signs = {
