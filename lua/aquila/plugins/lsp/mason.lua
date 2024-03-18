@@ -1,6 +1,8 @@
 return {
     "williamboman/mason.nvim",
-    event = "VeryLazy",
+    keys = {
+        { "<Leader>m", '<cmd>Mason<CR>', desc = 'Open Mason' }
+    },
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim"
@@ -26,7 +28,13 @@ return {
                 "tsserver",
                 "emmet_ls",
                 "bashls",
-                "marksman"
+                "marksman",
+                "jsonls",
+                "sqlls",
+                "yamlls",
+                "tailwindcss",
+                "docker_compose_language_service",
+                "dockerls",
             },
             automatic_installation = true
         })
@@ -36,18 +44,10 @@ return {
                 "eslint_d",
                 "prettierd",
                 "selene",
-                "tailwindcss-language-server",
                 "phpstan",
-            }
-        })
-
-        vim.api.nvim_create_autocmd('User', {
-            pattern = 'MasonToolsStartingInstall',
-            callback = function()
-                vim.schedule(function()
-                    print 'mason-tool-installer is starting'
-                end)
-            end,
+            },
+            auto_update = true,
+            run_on_start = true
         })
     end
 }

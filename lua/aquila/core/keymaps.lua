@@ -27,7 +27,6 @@ set("v", "K", ":m '<-2<CR>gv=gv", {
 set("n", "n", "nzzzv")
 set("n", "N", "Nzzzv")
 
-set("n", "<Leader>m", '<cmd>Mason<CR>', { desc = 'Open Mason' })
 set("n", "<Leader>l", '<cmd>Lazy<CR>', { desc = "Open Lazy" })
 
 set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/Yank to system clipboard" })
