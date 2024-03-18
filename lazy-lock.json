@@ -63,8 +63,6 @@
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "2200900e3c1aae21dadb65c2ea2e91bcc39ca368" },
   "rest.nvim": { "branch": "main", "commit": "91badd46c60df6bd9800c809056af2d80d33da4c" },
   "scrollEOF.nvim": { "branch": "master", "commit": "38fd5880021e90c15dc61fa325f714bd8077f0a6" },
-  "smart-open.nvim": { "branch": "0.2.x", "commit": "026091fe7f9b283aa1f5f4bb8c56aa5bcad43dbd" },
-  "sqlite.lua": { "branch": "master", "commit": "40701b6151f8883980c1548647116de39b763540" },
   "statuscol.nvim": { "branch": "main", "commit": "d954893262a57a92e46edd87de67e2b3fe72305e" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9ef21b2e6bb6ebeaf349a0781745549bbb870d27" },
   "telescope-git-file-history.nvim": { "branch": "master", "commit": "dbc8d3d5bef7195aece4d9f37292d5e485d09900" },
