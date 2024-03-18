@@ -10,63 +10,16 @@ return {
                         ['q'] = actions.close
                     }
                 }
-            }
+            },
         }
     end,
     dependencies = {
         'nvim-lua/plenary.nvim',
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        "kkharji/sqlite.lua",
-        {
-            "danielfalk/smart-open.nvim",
-            branch = "0.2.x",
-            keys = {
-                {
-                    "<leader><space>",
-                    function()
-                        require('telescope').extensions.smart_open.smart_open(require('telescope.themes').get_dropdown({
-                            -- winblend = 10,
-                            cwd_only = true,
-                            devicons_enabled = true,
-                            initial_mode = 'normal',
-                            match_algorithm = 'fzf',
-                        }))
-                    end,
-                    desc = "Find files in cwd"
-                },
-            },
-            config = function()
-                require('telescope').load_extension('smart_open')
-            end
-        },
-        {
-            "isak102/telescope-git-file-history.nvim",
-            dependencies = { "tpope/vim-fugitive" },
-            keys = {
-                {
-                    "<Leader>fg",
-                    "<cmd>Telescope git_file_history<CR>",
-                    desc = "List of git file history"
-
-                }
-            },
-            config = function()
-                require('telescope').load_extension('git_file_history')
-            end
-        },
-        {
-            "debugloop/telescope-undo.nvim",
-            keys = {
-                {
-                    "<Leader>fu",
-                    "<cmd>Telescope undo<CR>",
-                    desc = "List of undos"
-                }
-            },
-            config = function()
-                require('telescope').load_extension('undo')
-            end
-        }
+        require('aquila.plugins.telescope.git-file-history'),
+        require('aquila.plugins.telescope.recent-files'),
+        require('aquila.plugins.telescope.telescope-undo'),
+        require('aquila.plugins.telescope.smart-open'),
     },
     keys = {
         {
@@ -75,6 +28,10 @@ return {
                 require('telescope.builtin').find_files({
                     no_ignore = true,
                     hidden = true,
+                    layout_config = {
+                        preview_width = 0.60,
+                    }
+
                 })
             end,
             desc = "Find all without respect anything"
@@ -86,17 +43,6 @@ return {
             end,
             desc = "List previously open files all dir"
 
-        },
-        {
-            "<Leader><Tab>",
-            function()
-                require('telescope.builtin').oldfiles(require('telescope.themes').get_dropdown({
-                    previewer = false,
-                    initial_mode = 'normal',
-                    cwd_only = true,
-                }))
-            end,
-            desc = 'List previously open files on cwd'
         },
         {
             "<leader>fs",
@@ -183,4 +129,17 @@ return {
 
         },
     },
+    config = function(_, opts)
+        require('telescope').setup(opts)
+
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "TelescopeResults",
+            callback = function(ctx)
+                vim.api.nvim_buf_call(ctx.buf, function()
+                    vim.fn.matchadd("TelescopeParent", "\t\t.*$")
+                    vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
+                end)
+            end,
+        })
+    end
 }
