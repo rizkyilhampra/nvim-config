@@ -15,4 +15,11 @@ function M.duplicate_selection()
     vim.fn.setreg([["]], save_reg.regcontents, save_reg.regtype)
 end
 
+function M.filenameFirst(_, path)
+    local tail = vim.fs.basename(path)
+    local parent = vim.fs.dirname(path)
+    if parent == "." then return tail end
+    return string.format("%s\t\t%s", tail, parent)
+end
+
 return M
