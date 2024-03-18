@@ -14,11 +14,11 @@ return {
     opts = {
         lsp = {
             -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-            override = {
-                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                ["vim.lsp.util.stylize_markdown"] = true,
-                ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-            },
+            -- override = {
+            --     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            --     ["vim.lsp.util.stylize_markdown"] = true,
+            --     ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+            -- },
             hover = {
                 enabled = false
             },
@@ -81,4 +81,42 @@ return {
             },
         },
     },
+    init = function()
+        require('lualine').setup({
+            sections = {
+                lualine_x = {
+                    'filetype',
+                    {
+                        'o:encoding',
+                        fmt = string.upper,
+                    },
+                    {
+                        'fileformat',
+                        symbols = {
+                            unix = 'LF',
+                            dos = 'CRLF',
+                            mac = 'CR',
+                        },
+                        fmt = string.upper,
+                    },
+                    -- {
+                    --     require("noice").api.status.command.get,
+                    --     cond = require("noice").api.status.command.has,
+                    --     color = { fg = "#ff9e64" },
+                    -- },
+                    {
+                        require("noice").api.status.mode.get,
+                        cond = require("noice").api.status.mode.has,
+                        color = { fg = "#ff9e64" },
+                    },
+                    {
+                        require("noice").api.status.search.get,
+                        cond = require("noice").api.status.search.has,
+                        color = { fg = "#ff9e64" },
+                    },
+                },
+
+            }
+        })
+    end
 }
