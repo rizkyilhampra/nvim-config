@@ -1,10 +1,10 @@
-local global = require('aquila.core.global')
-
 return {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    event = "UIEnter",
-    enabled = true,
+    dependencies = {
+        'nvim-tree/nvim-web-devicons',
+        "folke/noice.nvim",
+    },
+    event = "BufReadPre",
     opts = {
         options = {
             disabled_filetypes = {
@@ -26,12 +26,14 @@ return {
             },
             lualine_b = { { 'branch', icon = ' ' } },
             lualine_c = {
+                { 'grapple' },
                 {
                     'diff',
-                    symbols = global.icons.git,
+                    symbols = require('aquila.core.global').icons.git,
                 },
                 'diagnostics'
             },
+
             lualine_x = {
                 'filetype',
                 {
@@ -46,10 +48,32 @@ return {
                         mac = 'CR',
                     },
                     fmt = string.upper,
-                }
+                },
+
             },
             lualine_y = { 'progress' },
             lualine_z = { 'location' },
         },
     },
+    config = function(_, opts)
+        local noice_lualine_sections = {
+            {
+                require("noice").api.status.mode.get,
+                cond = require("noice").api.status.mode.has,
+                color = { fg = "#ff9e64" },
+            },
+            {
+                require("noice").api.status.search.get,
+                cond = require("noice").api.status.search.has,
+                color = { fg = "#ff9e64" },
+            },
+        }
+
+        -- merge into lualine sections
+        for _, section in ipairs(noice_lualine_sections) do
+            table.insert(opts.sections.lualine_x, section)
+        end
+
+        require('lualine').setup(opts)
+    end
 }
