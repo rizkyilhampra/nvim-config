@@ -13,23 +13,16 @@ end
 return {
     'akinsho/toggleterm.nvim',
     version = "*",
-    event = "VeryLazy",
+    lazy = true,
     opts = {
         highlights = {
             FloatBorder = {
                 link = "FloatBorder"
             }
         },
-        float_opts = {
-            border = "curved"
-        }
     },
-    config = function(_, opts)
-        require('toggleterm').setup(opts)
-
-        local Terminal = require('toggleterm.terminal').Terminal
-
-        vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+    keys = function()
+        local Terminal        = require('toggleterm.terminal').Terminal
 
         local escape_keymap   = function(term)
             vim.api.nvim_buf_set_keymap(term.bufnr, "t", "jj", [[<C-\><C-n>]], { noremap = true, silent = true })
@@ -41,6 +34,9 @@ return {
 
         local cwd_term        = Terminal:new({
             direction = "float",
+            float_opts = {
+                border = "rounded",
+            },
             on_open = function(term)
                 vim.cmd("startinsert!")
                 escape_keymap(term)
@@ -62,6 +58,7 @@ return {
             float_opts = {
                 height = 50,
                 width  = 150,
+                border = 'rounded'
             },
             on_open = function(term)
                 vim.cmd("startinsert!")
@@ -75,6 +72,7 @@ return {
             float_opts = {
                 height = 50,
                 width  = 150,
+                border = 'rounded'
             },
             on_open = function(term)
                 vim.cmd("startinsert!")
@@ -89,6 +87,7 @@ return {
             float_opts = {
                 height = 50,
                 width  = 150,
+                border = "rounded",
             },
             on_open = function(term)
                 vim.cmd("startinsert!")
@@ -109,24 +108,46 @@ return {
             end,
         })
 
-        vim.keymap.set("n", "<leader>tl", function()
-            lazygit:toggle()
-        end, { desc = "Toggle terminal as Lazygit" })
+        return {
+            {
+                "<leader>tl",
+                function()
+                    lazygit:toggle()
+                end,
+                desc = "Toggle terminal as Lazygit"
+            }, {
+            "<Leader>tt",
+            function()
+                cwd_term:toggle()
+            end,
+            desc = "Toggle terminal on cwd with floating"
+        },
+            {
+                "<Leader>tv",
+                function()
+                    horizontal_term:toggle()
+                end,
+                desc = "Toggle terminal on cwd with vertical"
+            },
+            {
+                "<Leader>ts",
+                function()
+                    lazysql:toggle()
+                end,
+                desc = "Toggle terminal as Lazysql"
+            },
+            {
+                "<Leader>td",
+                function()
+                    lazydocker:toggle()
+                end,
+                desc = "Toggle terminal as Lazydocker"
+            }
+        }
+    end,
+    config = function(_, opts)
+        require('toggleterm').setup(opts)
 
-        vim.keymap.set("n", "<Leader>tt", function()
-            cwd_term:toggle()
-        end, { desc = "Toggle terminal on cwd with floating" })
-
-        vim.keymap.set("n", "<Leader>tv", function()
-            horizontal_term:toggle()
-        end, { desc = "Toggle terminal on cwd with vertical" })
-
-        vim.keymap.set("n", "<Leader>ts", function()
-            lazysql:toggle()
-        end, { desc = "Toggle terminal as Lazysql" })
-
-        vim.keymap.set("n", "<Leader>td", function()
-            lazydocker:toggle()
-        end, { desc = "Toggle terminal as Lazydocker" })
+        vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
     end
 }
