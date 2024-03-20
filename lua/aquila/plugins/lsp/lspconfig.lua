@@ -8,7 +8,6 @@ return {
             "zeioth/garbage-day.nvim", -- Stop inactive LSP clients to free RAM
             opts = {
                 notifications = true,
-                aggressive_mode = true
             }
         },
     },
