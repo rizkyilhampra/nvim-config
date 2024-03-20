@@ -4,6 +4,13 @@ return {
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
+        {
+            "zeioth/garbage-day.nvim", -- Stop inactive LSP clients to free RAM
+            opts = {
+                notifications = true,
+                aggressive_mode = true
+            }
+        },
     },
     config = function()
         vim.api.nvim_create_autocmd("LspAttach", {
