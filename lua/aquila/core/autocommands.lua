@@ -41,17 +41,19 @@ M.create("BufEnter", {
     desc = "Disable New Line Comment",
 })
 
-M.create("BufReadPost", {
-    callback = function()
-        local mark = vim.api.nvim_buf_get_mark(0, '"')
-        if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(0) then
-            vim.api.nvim_win_set_cursor(0, mark)
-        end
-    end,
-    desc = "Restore cursor position",
-})
+-- Replace by Grapple.nvim plugin
+-- M.create("BufReadPost", {
+--     callback = function()
+--         local mark = vim.api.nvim_buf_get_mark(0, '"')
+--         if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(0) then
+--             vim.api.nvim_win_set_cursor(0, mark)
+--         end
+--     end,
+--     desc = "Restore cursor position",
+-- })
 
 M.create("BufReadPost", {
+    once = true,
     callback = function()
         local home = os.getenv("HOME")
         if not vim.fn.isdirectory(home .. "/.vim") then
@@ -65,6 +67,7 @@ M.create("BufReadPost", {
 })
 
 M.create('User', {
+    once = true,
     pattern = 'AlphaReady',
     desc = 'hide cursor for alpha',
     callback = function()
@@ -76,17 +79,27 @@ M.create('User', {
 })
 
 M.create('BufNew', {
+    once = true,
     desc = 'show cursor after alpha',
     callback = function(event)
         local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
         hl.blend = 0
         vim.api.nvim_set_hl(0, 'Cursor', hl)
         vim.opt.guicursor:remove('a:Cursor/lCursor')
-        vim.api.nvim_del_autocmd(event.id)
     end,
 })
 
--- i'm not sure with this
+M.create("FileType", {
+    pattern = "TelescopeResults",
+    callback = function(ctx)
+        vim.api.nvim_buf_call(ctx.buf, function()
+            vim.fn.matchadd("TelescopeParent", "\t\t.*$")
+            vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
+        end)
+    end,
+})
+
+-- i'm not sure with this but i think it will be useful
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --     callback = function()
 --         if vim.opt.foldmethod:get() == "expr" then
