@@ -57,21 +57,6 @@ return {
             return lsp_folds
         end
 
-        local function fold_text()
-            local text = vim.treesitter.foldtext()
-
-            local n_lines = vim.v.foldend - vim.v.foldstart
-            local text_lines = " lines"
-
-            if n_lines == 1 then
-                text_lines = " line"
-            end
-
-            table.insert(text, { " - " .. n_lines .. text_lines, { "Folded" } })
-
-            return text
-        end
-
         local ftMap = {
             vim = 'indent',
             git = 'indent',
@@ -82,7 +67,11 @@ return {
         }
 
         require('ufo').setup({
-            close_fold_kinds = { 'imports', 'comment' },
+            close_fold_kinds_for_ft = {
+                default = {
+                    'imports', 'comment'
+                }
+            },
             preview = {
                 win_config = {
                     border = { '', '─', '', '', '', '─', '', '' },
@@ -90,10 +79,9 @@ return {
                     winblend = 0
                 },
             },
-            provider_selector = function(bufnr, filetype, buftype)
+            provider_selector = function(_, filetype, _)
                 return ftMap[filetype]
             end,
-            -- fold_virt_text_handler = fold_text
         })
     end
 }
