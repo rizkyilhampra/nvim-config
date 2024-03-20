@@ -39,16 +39,18 @@ vim.opt.guicursor = {
 }
 
 -- show hidden characters
-vim.opt.list = true
+-- vim.opt.list = true
+
 -- NOTE: indent-blankline.nvim will override first charater of tab.
 -- So use second character to differentiate tab & space
 -- Use default for space to avoid Search highlight been override by Whitespace highlight
-vim.opt.listchars = { tab = "▸─", extends = "»", precedes = "«", nbsp = "␣", eol = "↴" }
-local mode = vim.api.nvim_get_mode().mode
-if mode == "reader" then
-    -- Don't show trailing space in reader vim mode
-    vim.opt.listchars:append({ trail = "•" })
-end
+
+-- vim.opt.listchars = { tab = "▸─", extends = "»", precedes = "«", nbsp = "␣", eol = "↴" }
+-- local mode = vim.api.nvim_get_mode().mode
+-- if mode == "reader" then
+--     -- Don't show trailing space in reader vim mode
+--     vim.opt.listchars:append({ trail = "•" })
+-- end
 
 vim.opt.mousemoveevent = true -- Allow hovering in bufferline.nvim & eagle.nvim
 vim.opt.splitbelow = true
