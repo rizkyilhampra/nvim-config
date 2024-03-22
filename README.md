@@ -1,6 +1,5 @@
 # Aquila's Neovim Configuration
-My personal neovim configuration written from scratch (of course, with stolen other neovim configuration from somewhere). I use this with my workflow and/or environment, see [Aquila's Dotfiles](https://github.com/rizkyilhampra/dotfilesv2). Currently is configured well with PHP/Laravel development (yes, i mainly use 'php is dead' language). Let see if i'm moved focus to another language/framework, i will update my writing here (if i'm not lazy too).
-
+My personal neovim configuration written from scratch (of course, with stolen other neovim configuration from somewhere). I use this with my workflow and/or environment, see [Aquila's Dotfiles](https://github.com/rizkyilhampra/dotfilesv2).
 ![screenshot](./src/2024-03-15-221218_hyprshot.png)
 ![screenshot-2](./src/2024-03-16-051038_hyprshot.png)
 
@@ -28,6 +27,7 @@ Python|I'm not sure is needed, if you want to install ensure `python3` is instal
 `tar` `zip` `unzip`|-
 
 ## Installation
+### As default neovim configuration
 > You can copy all below code and paste them in your terminal, then press `enter` and wait until finish.
 ```bash
 mkdir -p ~/.config && \
@@ -36,3 +36,16 @@ git clone https://github.com/rizkyilhampra/nvim-config.git nvim && \
 cd nvim && \
 nvim
 ```
+### As alias NVIM_APPNAME
+> This option not make default neovim configuration instead make an alias, so you can still use your default neovim configuration
+```bash
+git clone https://github.com/rizkyilhampra/nvim-config.git ~/.config/ripnvim && \
+NVIM_APPNAME=ripnvim nvim
+```
+
+Optional:
+- Make shell alias in your shell configuration, ex in zsh:
+    ```bash
+    # ~/.zshrc
+    alias ripnvim=NVIM_APPNAME=ripnvim nvim
+    ```
