@@ -29,7 +29,7 @@ M.create({ "BufWinEnter" }, {
 
 M.create("TextYankPost", {
     callback = function()
-        vim.highlight.on_yank()
+        vim.highlight.on_yank({ timeout = 200 })
     end,
     desc = "Highlight yank",
 })
