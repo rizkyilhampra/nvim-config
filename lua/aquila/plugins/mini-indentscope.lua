@@ -1,7 +1,7 @@
 return {
     "echasnovski/mini.indentscope",
     version = false,
-    event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+    event = { "BufReadPost", "BufNewFile" }, -- to disable, comment this out
     opts = {
         symbol = "│",
         options = {

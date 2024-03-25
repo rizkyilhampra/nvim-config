@@ -1,28 +1,32 @@
 return {
     "mfussenegger/nvim-lint",
-    event = { "BufReadPre", "BufWritePost" },
     enabled = false,
-    init = function()
-        local lint = require("lint")
-        local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+    dependencies = {
+        "williamboman/mason.nvim",
+    },
+    event = require('aquila.core.global').event.LazyFile,
+    config = function()
+        require("lint").linters_by_ft = {
+            php = { "phpstan" },
+            lua = { "selene" },
+            javascript = { "eslint_d" },
+            typescript = { "eslint_d" },
+            javascriptreact = { "eslint_d" },
+            typescriptreact = { "eslint_d" }
+        }
 
         vim.api.nvim_create_autocmd(
-            { "TextChanged", "TextChangedI", "BufEnter", "BufReadPre", "BufWritePost", "CursorHold", "CursorHoldI" },
             {
-                group = lint_augroup,
+                "TextChanged",
+                "TextChangedI",
+                "BufReadPre",
+            },
+            {
+                group = vim.api.nvim_create_augroup("lint", { clear = true }),
                 callback = function()
-                    lint.try_lint()
+                    require('lint').try_lint()
                 end,
             }
         )
-    end,
-    config = function()
-        local lint = require("lint")
-
-        lint.linters_by_ft = {
-            php = { "phpstan" },
-            blade = { "phpstan" },
-            lua = { "selene" }
-        }
     end
 }

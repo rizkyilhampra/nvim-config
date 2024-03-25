@@ -1,7 +1,7 @@
 return {
     "okuuva/auto-save.nvim",
     cmd = "ASToggle",
-    event = { "InsertLeave", "TextChanged" },
+    event = { "BufWritePost", "InsertLeave" },
     opts = {
         enabled = true,
         execution_message = {

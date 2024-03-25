@@ -1,7 +1,10 @@
 return {
     "giusgad/pets.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "giusgad/hologram.nvim" },
-    event = "BufRead",
+    enabled = false,
+    dependencies = {
+        "MunifTanjim/nui.nvim",
+        "giusgad/hologram.nvim"
+    },
     config = function()
         require("pets").setup({
             row = 5,

@@ -1,6 +1,6 @@
 return {
     "folke/todo-comments.nvim",
-    event = require('aquila.core.global').LazyFile,
+    event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {}
 }
