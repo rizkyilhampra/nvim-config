@@ -1,5 +1,7 @@
 # Aquila's Neovim Configuration
 My personal neovim configuration written from scratch (of course, with stolen other neovim configuration from somewhere). I use this with my workflow and/or environment, see [Aquila's Dotfiles](https://github.com/rizkyilhampra/dotfilesv2).
+
+## Screenshot
 ![screenshot](./src/2024-03-15-221218_hyprshot.png)
 ![screenshot-2](./src/2024-03-16-051038_hyprshot.png)
 
