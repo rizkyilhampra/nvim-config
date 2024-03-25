@@ -1,5 +1,6 @@
 return {
     "goolord/alpha-nvim",
+    event = "VimEnter",
     opts = function()
         local dashboard = require('alpha.themes.dashboard')
         local logo = {
@@ -52,8 +53,11 @@ return {
         require('alpha').setup(dashboard.opts)
 
         vim.api.nvim_create_autocmd("User", {
+            once = true,
             pattern = "LazyVimStarted",
             callback = function()
+                vim.o.laststatus = 0
+
                 local stats = require("lazy").stats()
                 local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 
