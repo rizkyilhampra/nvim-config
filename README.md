@@ -12,11 +12,10 @@ Linux|I've never tried other OS except Linux to run Neovim, so i can't promise i
 Git|-
 Nerd Font|Search font in [here](https://nerdfonts.com) and chose by your preference then use in your terminal (i'm using [GeistMono](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/GeistMono.zip))
 Neovim v10/nightly build|I would recomend using [bob](https://github.com/MordechaiHadad/bob) as Neovim version manager or build from source in [here](https://github.com/neovim/neovim?tab=readme-ov-file#install-from-source)
-Terminal|There are so many terminal, chose your preference. I use [kitty](https://sw.kovidgoyal.net/kitty/) and/or [alacritty](https://alacritty.org/).
+Terminal|Use terminal true color support. I use [kitty](https://sw.kovidgoyal.net/kitty/) and/or [alacritty](https://alacritty.org/).
 Clipboard (optional)|If you are not using DE. Maybe you need clipboard tool. I use [`wl-copy`](https://github.com/bugaevc/wl-clipboard)
 C Compiler|`gcc` `libstdc++`
 [`make`](https://www.gnu.org/software/make/)|-
-[Rust](https://www.rust-lang.org/tools/install) environment|Ensure `cargo` is installed too
 Node (Javascript runtime)|I use [`fnm`](https://github.com/Schniz/fnm) as node version manager. If you need install only one version, take look in [here](https://github.com/nodesource/distributions?tab=readme-ov-file#installation-instructions)
 Python|I'm not sure is needed, if you want to install ensure `python3` is installed too
 [`fzf`](https://github.com/junegunn/fzf)|As far i know it's required for telescope.nvim plugin
