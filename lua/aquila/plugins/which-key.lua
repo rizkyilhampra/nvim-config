@@ -18,8 +18,12 @@ return {
             g = {
                 name = "+Git",
                 h = "+Actions",
-                t = "+Text Object"
+                t = "+Text Object",
+                f = "+Fugitive2"
             },
+            G = {
+                name = "+Grapple"
+            }
         }, {
             prefix = "<Leader>",
         })
