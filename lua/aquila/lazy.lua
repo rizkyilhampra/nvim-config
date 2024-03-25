@@ -15,7 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(
     {
         { import = "aquila.plugins" },
-        { import = "aquila.plugins.lsp" }
+        { import = "aquila.plugins.lsp" },
+        { import = "aquila.plugins.telescope" }
     },
     {
         install = {
@@ -59,4 +60,3 @@ require("lazy").setup(
         }
     }
 )
-
