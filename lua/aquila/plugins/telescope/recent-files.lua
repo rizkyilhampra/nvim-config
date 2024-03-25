@@ -1,5 +1,9 @@
 return {
     'mollerhoj/telescope-recent-files.nvim',
+    dependencies = {
+        'nvim-telescope/telescope.nvim',
+    },
+    lazy = true,
     keys = {
         {
             "<Leader><Space>",
@@ -8,9 +12,6 @@ return {
                     initial_mode = 'normal',
                     find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
                     path_display = require('aquila.core.commands').filenameFirst,
-                    layout_config = {
-                        width = 0.5,
-                    }
                 }))
             end,
             desc = "List recently opened files"

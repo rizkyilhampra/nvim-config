@@ -16,11 +16,9 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        require('aquila.plugins.telescope.git-file-history'),
-        require('aquila.plugins.telescope.recent-files'),
-        require('aquila.plugins.telescope.telescope-undo'),
-        require('aquila.plugins.telescope.smart-open'),
     },
+    lazy = true,
+    cmd = "Telescope",
     keys = {
         {
             '<leader>fa',
@@ -129,17 +127,4 @@ return {
 
         },
     },
-    config = function(_, opts)
-        require('telescope').setup(opts)
-
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = "TelescopeResults",
-            callback = function(ctx)
-                vim.api.nvim_buf_call(ctx.buf, function()
-                    vim.fn.matchadd("TelescopeParent", "\t\t.*$")
-                    vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
-                end)
-            end,
-        })
-    end
 }

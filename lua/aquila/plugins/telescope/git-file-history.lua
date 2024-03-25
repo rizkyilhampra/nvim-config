@@ -1,11 +1,13 @@
 return {
     "isak102/telescope-git-file-history.nvim",
-    dependencies = { "tpope/vim-fugitive" },
+    dependencies = {
+        'nvim-telescope/telescope.nvim',
+        "tpope/vim-fugitive"
+    },
+    lazy = true,
     keys = {
         {
-            "<Leader>fg",
-            "<cmd>Telescope git_file_history<CR>",
-            desc = "List of git file history"
+            "<Leader>fg", "<cmd>Telescope git_file_history<CR>", desc = "List of git file history"
 
         }
     },

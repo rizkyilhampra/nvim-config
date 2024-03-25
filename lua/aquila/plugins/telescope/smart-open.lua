@@ -2,12 +2,13 @@ return {
     "danielfalk/smart-open.nvim",
     branch = "0.2.x",
     dependencies = {
+        'nvim-telescope/telescope.nvim',
         "kkharji/sqlite.lua",
     },
     enabled = false,
     keys = {
         {
-            "<leader><space>",
+            "<leader>ff",
             function()
                 require('telescope').extensions.smart_open.smart_open(require('telescope.themes').get_dropdown({
                     -- winblend = 10,
