@@ -25,7 +25,9 @@ return {
                 "markdown",
                 "php_only",
                 "http",
-                "json"
+                "json",
+                "phpdoc",
+                "hyprlang"
             },
             sync_install = false,
             auto_install = true,
@@ -46,18 +48,32 @@ return {
             requires_generate_from_grammar = true,
             filetype = "blade"
         }
-        parser_config.phpdoc = {
-            install_info = {
-                url = '~/sources/treesitter/tree-sitter-phpdoc',
-                files = {
-                    'src/parser.c',
-                    'src/scanner.c',
-                },
-                branch = "master",
-                generate_requires_npm = true,
-                requires_generate_from_grammar = true,
+
+        vim.filetype.add({
+            extension = {
+                neon = 'yaml',
             },
-            filetype = 'php',
-        }
+            pattern = {
+                ['.*%.blade%.php'] = 'blade',
+                ['.*%.neon%.dist'] = 'yaml',
+                ['.*/waybar/config'] = 'jsonc',
+                ['.*/kitty/*.conf'] = 'bash',
+                ['.*/hypr/.*%.conf'] = 'hyprlang'
+            },
+        })
+
+        -- parser_config.phpdoc = {
+        --     install_info = {
+        --         url = '~/sources/treesitter/tree-sitter-phpdoc',
+        --         files = {
+        --             'src/parser.c',
+        --             'src/scanner.c',
+        --         },
+        --         branch = "master",
+        --         generate_requires_npm = true,
+        --         requires_generate_from_grammar = true,
+        --     },
+        --     filetype = 'php',
+        -- }
     end
 }
