@@ -55,4 +55,12 @@ M.icons = {
     }
 }
 
+M.event = {
+    LazyFile = {
+        "BufReadPost",
+        "BufWritePost",
+        "BufNewFile",
+    }
+}
+
 return M

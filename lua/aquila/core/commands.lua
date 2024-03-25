@@ -15,6 +15,7 @@ function M.duplicate_selection()
     vim.fn.setreg([["]], save_reg.regcontents, save_reg.regtype)
 end
 
+-- Better highlight on telescope, related with autocommands.lua
 function M.filenameFirst(_, path)
     local tail = vim.fs.basename(path)
     local parent = vim.fs.dirname(path)

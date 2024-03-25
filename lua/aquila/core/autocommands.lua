@@ -89,6 +89,7 @@ M.create('BufNew', {
     end,
 })
 
+-- Better highlight on telescope, related with commands.lua
 M.create("FileType", {
     pattern = "TelescopeResults",
     callback = function(ctx)
