@@ -1,32 +1,36 @@
 return {
     "folke/noice.nvim",
     event = "VeryLazy",
+    cmd = "Noice",
     dependencies = {
         "MunifTanjim/nui.nvim",
         {
             "rcarriga/nvim-notify",
             opts = {
+                max_width = math.floor(vim.o.columns * 0.4),
                 render = "wrapped-compact",
                 timeout = 200
             }
         },
+        "hrsh7th/nvim-cmp"
     },
     opts = {
         lsp = {
             -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-            -- override = {
-            --     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            --     ["vim.lsp.util.stylize_markdown"] = true,
-            --     ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-            -- },
+            override = {
+                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                ["vim.lsp.util.stylize_markdown"] = true,
+                ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+            },
             hover = {
-                enabled = false
+                enabled = true,
+                view = "hover"
             },
             signature = {
                 enabled = false
             },
             documentation = {
-                enabled = false
+                enabled = true
             }
         },
         -- you can enable a preset for easier configuration
@@ -34,9 +38,16 @@ return {
             bottom_search = false,        -- use a classic bottom cmdline for search
             long_message_to_split = true, -- long messages will be sent to a split
             inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-            lsp_doc_border = false,       -- add a border to hover docs and signature help
+            lsp_doc_border = true,        -- add a border to hover docs and signature help
             command_palette = {
                 views = {
+                    -- hover = {
+                    --     border = "rounded",
+                    --     size = { max_width = 50 },
+                    -- },
+                    documentation = {
+                        border = "rounded",
+                    },
                     cmdline_popup = {
                         position = {
                             row = "50%",
@@ -79,44 +90,18 @@ return {
                 view = "split",
                 filter = { event = "msg_show", min_height = 20 },
             },
-        },
-    },
-    init = function()
-        require('lualine').setup({
-            sections = {
-                lualine_x = {
-                    'filetype',
-                    {
-                        'o:encoding',
-                        fmt = string.upper,
-                    },
-                    {
-                        'fileformat',
-                        symbols = {
-                            unix = 'LF',
-                            dos = 'CRLF',
-                            mac = 'CR',
-                        },
-                        fmt = string.upper,
-                    },
-                    -- {
-                    --     require("noice").api.status.command.get,
-                    --     cond = require("noice").api.status.command.has,
-                    --     color = { fg = "#ff9e64" },
-                    -- },
-                    {
-                        require("noice").api.status.mode.get,
-                        cond = require("noice").api.status.mode.has,
-                        color = { fg = "#ff9e64" },
-                    },
-                    {
-                        require("noice").api.status.search.get,
-                        cond = require("noice").api.status.search.has,
-                        color = { fg = "#ff9e64" },
+            {
+                filter = {
+                    event = "msg_show",
+                    any = {
+                        { find = "%d+L, %d+B" },
+                        { find = "; after #%d+" },
+                        { find = "; before #%d+" },
                     },
                 },
-
-            }
-        })
-    end
+            },
+            { filter = { event = "msg_show", find = "^[/?]." },                            skip = true }, -- unneeded info on search patterns
+            { filter = { event = "msg_show", find = "E211: File .* no longer available" }, skip = true },
+        },
+    },
 }
