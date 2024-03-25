@@ -4,7 +4,30 @@ return {
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
+        {
+            "hrsh7th/cmp-cmdline",
+            config = function()
+                local cmp = require("cmp")
+
+                cmp.setup.cmdline(':', {
+                    mapping = cmp.mapping.preset.cmdline(),
+                    sources = cmp.config.sources(
+                        {
+                            { name = 'path' }
+                        },
+                        {
+                            {
+                                name = 'cmdline',
+                                option = {
+                                    ignore_cmds = { 'Man', '!' }
+                                }
+                            }
+                        }
+                    )
+                })
+            end
+
+        },
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets",
@@ -44,18 +67,18 @@ return {
             --     --     winhighlight = 'normal:pmenu,floatborder:pmenu',
             --     -- },
             -- },
-            window = {
-                documentation = {
-                    maxheight = 15,
-                    maxwidth = 50,
-                    border = "rounded",
-                },
-                completion = {
-                    -- col_offset = -3,
-                    -- side_padding = 0,
-                    winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-                },
-            },
+            -- window = {
+            --     documentation = {
+            --         maxheight = 15,
+            --         maxwidth = 50,
+            --         border = "rounded",
+            --     },
+            --     completion = {
+            --         -- col_offset = -3,
+            --         -- side_padding = 0,
+            --         winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+            --     },
+            -- },
             mapping = cmp.mapping.preset.insert({
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -102,23 +125,6 @@ return {
                     return vim_item
                 end,
             },
-        })
-
-        cmp.setup.cmdline(':', {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources(
-                {
-                    { name = 'path' }
-                },
-                {
-                    {
-                        name = 'cmdline',
-                        option = {
-                            ignore_cmds = { 'Man', '!' }
-                        }
-                    }
-                }
-            )
         })
     end,
 }
