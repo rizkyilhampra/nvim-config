@@ -29,7 +29,7 @@ set("n", "N", "Nzzzv")
 
 set("n", "<Leader>l", '<cmd>Lazy<CR>', { desc = "Open Lazy" })
 
-set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/Yank to system clipboard" })
+set({ "n", "v" }, "<Leader>y", "\"+y", { desc = "Copy/yank to system clipboard" })
 set({ "n", "v" }, "<Leader>p", "\"+p", { desc = "Paste from system clipboard" })
 set("v", "<leader>P", '"_dP', { desc = 'Do not lose the " register on paste' })
 set("n", "x", '"_x', { desc = 'Do not lose the " register on delete' })
@@ -57,3 +57,21 @@ set('v', '<C-M-d>', function()
 end, {
     desc = 'Duplicate selection (keep selection)'
 })
+
+set("v", "<leader>Y", function()
+    -- This is *start* and *end* of selection, will be first or last line depending on whether you selected up or down
+    local v_start = vim.fn.getpos("v")[2]
+    local v_end = vim.fn.getpos(".")[2]
+
+    local selected = vim.api.nvim_buf_get_lines(0, math.min(v_start, v_end) - 1, math.max(v_start, v_end), true)
+
+    local indent = require('aquila.core.commands').get_indent(selected)
+    for i, line in ipairs(selected) do
+        selected[i] = line:sub(indent)
+    end
+
+    local text = table.concat(selected, "\n")
+    vim.fn.setreg("+", text)
+    -- launch <esc> to return to normal mode
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, true, true), "n", true)
+end, { noremap = true, silent = true, desc = "Copy/yank to system clipboard without indent from source" })
