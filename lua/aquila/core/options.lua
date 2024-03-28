@@ -67,3 +67,4 @@ vim.opt.autoread = true
 -- required by which key plugin
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
+vim.opt.pumheight = 10

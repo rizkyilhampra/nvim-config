@@ -14,7 +14,34 @@ return {
         },
         "hrsh7th/nvim-cmp"
     },
+    keys = {
+        {
+            "<C-b>",
+            function()
+                if not require("noice.lsp").scroll(-4) then
+                    return "<C-b>"
+                end
+            end,
+            mode = { "n", "i", "s" },
+            silent = true,
+            expr = true
+        },
+        {
+            "<C-f>",
+            function()
+                if not require("noice.lsp").scroll(4) then
+                    return "<C-f>"
+                end
+            end,
+            mode = { "n", "i", "s" },
+            silent = true,
+            expr = true
+        }
+    },
     opts = {
+        popupmenu = {
+            backend = "cmp"
+        },
         lsp = {
             -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
             override = {
@@ -24,14 +51,19 @@ return {
             },
             hover = {
                 enabled = true,
-                view = "hover"
+                -- opts = {
+                --     size = { max_width = 50 },
+                -- }
             },
             signature = {
-                enabled = false
+                enabled = true,
+                opts = {
+                    anchor = "SW",
+                    position = {
+                        row = 1,
+                    },
+                }
             },
-            documentation = {
-                enabled = true
-            }
         },
         -- you can enable a preset for easier configuration
         presets = {
@@ -41,13 +73,6 @@ return {
             lsp_doc_border = true,        -- add a border to hover docs and signature help
             command_palette = {
                 views = {
-                    -- hover = {
-                    --     border = "rounded",
-                    --     size = { max_width = 50 },
-                    -- },
-                    documentation = {
-                        border = "rounded",
-                    },
                     cmdline_popup = {
                         position = {
                             row = "50%",
@@ -59,12 +84,13 @@ return {
                             height = "auto",
                         },
                     },
-                    cmdline_popupmenu = {
-                        position = {
-                            row = "80%",
-                            col = "50%",
-                        },
-                    },
+                    -- handle by cmp, see `popupmenu` opt above
+                    -- cmdline_popupmenu = {
+                    --     position = {
+                    --         row = "80%",
+                    --         col = "50%",
+                    --     },
+                    -- },
                 },
             },
         },

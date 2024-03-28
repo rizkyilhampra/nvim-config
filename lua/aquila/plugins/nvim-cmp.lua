@@ -36,12 +36,7 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
 
         local cmp = require("cmp")
-
         local luasnip = require("luasnip")
-        luasnip.setup({
-            region_check_events = "InsertLeave",
-            delete_check_events = "InsertLeave",
-        })
 
         cmp.setup({
             -- completion = {
@@ -54,31 +49,26 @@ return {
                 end,
             },
             --old
-            -- window = {
-            --     -- completion = cmp.config.window.bordered(),
-            --     -- completion = {
-            --     --     -- border = "rounded",
-            --     --     -- winhighlight = "Normal:TelescopeNormal",
-            --     -- },
-            --
-            --     documentation = cmp.config.window.bordered(),
-            --     -- documentation = {
-            --     --     border = "rounded",
-            --     --     winhighlight = 'normal:pmenu,floatborder:pmenu',
-            --     -- },
-            -- },
-            -- window = {
-            --     documentation = {
-            --         maxheight = 15,
-            --         maxwidth = 50,
-            --         border = "rounded",
-            --     },
-            --     completion = {
-            --         -- col_offset = -3,
-            --         -- side_padding = 0,
-            --         winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-            --     },
-            -- },
+            window = {
+                -- completion = {
+                    -- border = "rounded",
+                    -- winhighlight = "Normal:TelescopeNormal",
+                    -- col_offset = -3,
+                    -- side_padding = 0,
+                    -- winhighlight = 'Normal:Pmenu,FloatBorder:FloatBorder',
+                    -- border = "rounded"
+                -- },
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+                -- documentation = {
+                    -- border = "rounded",
+                    -- max_height = 10,
+                    -- max_width = 50,
+                    -- winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+                    -- border = "rounded",
+                    -- winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu',
+                -- },
+            },
             mapping = cmp.mapping.preset.insert({
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),

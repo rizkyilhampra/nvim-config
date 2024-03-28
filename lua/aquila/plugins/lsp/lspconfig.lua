@@ -10,10 +10,6 @@ return {
                 notifications = true,
             }
         },
-        {
-            "ray-x/lsp_signature.nvim",
-            opts = {},
-        }
     },
     config = function()
         vim.api.nvim_create_autocmd("LspAttach", {
