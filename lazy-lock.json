@@ -17,6 +17,7 @@
   "cpy_buffers.nvim": { "branch": "main", "commit": "e1a80ed9ba14b830456fbfe4d878df28f5b0c639" },
   "dressing.nvim": { "branch": "master", "commit": "18e5beb3845f085b6a33c24112b37988f3f93c06" },
   "eagle.nvim": { "branch": "main", "commit": "177957f60f6ca9c38b92328c8a51453f88a9d098" },
+  "fidget.nvim": { "branch": "main", "commit": "933db4596e4bab1b09b6d48a10e21819e4cc458f" },
   "flash.nvim": { "branch": "main", "commit": "48817af25f51c0590653bbc290866e4890fe1cbe" },
   "friendly-snippets": { "branch": "main", "commit": "dcd4a586439a1c81357d5b9d26319ae218cc9479" },
   "fugit2.nvim": { "branch": "main", "commit": "f5a3dff95ed2bb28a8988bea35a195cc4454e2ac" },
