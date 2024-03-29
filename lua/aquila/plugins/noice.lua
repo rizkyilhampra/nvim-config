@@ -49,6 +49,9 @@ return {
                 ["vim.lsp.util.stylize_markdown"] = true,
                 ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
             },
+            progress = {
+                enabled = false,
+            },
             hover = {
                 enabled = true,
                 -- opts = {
@@ -73,6 +76,11 @@ return {
             lsp_doc_border = true,        -- add a border to hover docs and signature help
             command_palette = {
                 views = {
+                    hover = {
+                        size = {
+                            max_height = 10
+                        }
+                    },
                     cmdline_popup = {
                         position = {
                             row = "50%",
