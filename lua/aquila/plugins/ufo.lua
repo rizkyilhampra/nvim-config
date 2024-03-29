@@ -15,13 +15,6 @@ return {
         vim.keymap.set("n", "zM", function()
             require("ufo").closeAllFolds()
         end, { desc = "Close all fold" })
-
-        vim.keymap.set('n', 'K', function()
-            local winid = require('ufo').peekFoldedLinesUnderCursor()
-            if not winid then
-                vim.lsp.buf.hover()
-            end
-        end)
     end,
     config = function()
         local function get_comment_folds(bufnr)
@@ -74,9 +67,7 @@ return {
             },
             preview = {
                 win_config = {
-                    border = { '', '─', '', '', '', '─', '', '' },
-                    winhighlight = 'Normal:Folded',
-                    winblend = 0
+                    winblend = 0,
                 },
             },
             provider_selector = function(_, filetype, _)
