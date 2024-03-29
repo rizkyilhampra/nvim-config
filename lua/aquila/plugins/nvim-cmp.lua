@@ -66,7 +66,6 @@ return {
                     -- max_width = 50,
                     -- winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
                     -- border = "rounded",
-                    -- winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu',
                 -- },
             },
             mapping = cmp.mapping.preset.insert({
