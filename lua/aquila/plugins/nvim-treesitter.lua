@@ -2,10 +2,10 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        "nvim-treesitter/nvim-treesitter-context"
+        "nvim-treesitter/nvim-treesitter-context",
     },
     config = function()
         require("nvim-treesitter.configs").setup({
@@ -61,19 +61,5 @@ return {
                 ['.*/hypr/.*%.conf'] = 'hyprlang'
             },
         })
-
-        -- parser_config.phpdoc = {
-        --     install_info = {
-        --         url = '~/sources/treesitter/tree-sitter-phpdoc',
-        --         files = {
-        --             'src/parser.c',
-        --             'src/scanner.c',
-        --         },
-        --         branch = "master",
-        --         generate_requires_npm = true,
-        --         requires_generate_from_grammar = true,
-        --     },
-        --     filetype = 'php',
-        -- }
     end
 }
