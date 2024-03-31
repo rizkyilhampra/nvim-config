@@ -3,6 +3,7 @@ return {
     event = "BufRead",
     dependencies = {
         "kevinhwang91/promise-async",
+        "luukvbaal/statuscol.nvim",
     },
     opts = {},
     keys = function()
