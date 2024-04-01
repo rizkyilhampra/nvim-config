@@ -49,7 +49,6 @@ return {
                     },
                     fmt = string.upper,
                 },
-
             },
             lualine_y = { 'progress' },
             lualine_z = { 'location' },
@@ -71,7 +70,8 @@ return {
 
         -- merge into lualine sections
         for _, section in ipairs(noice_lualine_sections) do
-            table.insert(opts.sections.lualine_x, section)
+            --put at the index 1
+            table.insert(opts.sections.lualine_x, 1, section)
         end
 
         require('lualine').setup(opts)
