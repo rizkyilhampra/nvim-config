@@ -1,33 +1,14 @@
 return {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = {
+        "InsertEnter",
+        "CmdlineEnter",
+    },
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        {
-            "hrsh7th/cmp-cmdline",
-            config = function()
-                local cmp = require("cmp")
-
-                cmp.setup.cmdline(':', {
-                    mapping = cmp.mapping.preset.cmdline(),
-                    sources = cmp.config.sources(
-                        {
-                            { name = 'path' }
-                        },
-                        {
-                            {
-                                name = 'cmdline',
-                                option = {
-                                    ignore_cmds = { 'Man', '!' }
-                                }
-                            }
-                        }
-                    )
-                })
-            end
-
-        },
+        "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-nvim-lsp",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets",
@@ -39,34 +20,19 @@ return {
         local luasnip = require("luasnip")
 
         cmp.setup({
-            -- completion = {
-            --     completeopt = "menu,menuone,preview,noselect",
-            --     keyword_length = 3
-            -- },
+            view = {
+                entries = {
+                    follow_cursor = true
+                }
+            },
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
                 end,
             },
-            --old
             window = {
-                -- completion = {
-                    -- border = "rounded",
-                    -- winhighlight = "Normal:TelescopeNormal",
-                    -- col_offset = -3,
-                    -- side_padding = 0,
-                    -- winhighlight = 'Normal:Pmenu,FloatBorder:FloatBorder',
-                    -- border = "rounded"
-                -- },
                 completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
-                -- documentation = {
-                    -- border = "rounded",
-                    -- max_height = 10,
-                    -- max_width = 50,
-                    -- winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-                    -- border = "rounded",
-                -- },
             },
             mapping = cmp.mapping.preset.insert({
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -113,6 +79,30 @@ return {
                     vim_item.kind = require("aquila.core.global").icons.kind_with_space[vim_item.kind] or ""
                     return vim_item
                 end,
+            },
+        })
+
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources(
+                {
+                    { name = 'path' }
+                },
+                {
+                    {
+                        name = 'cmdline',
+                        option = {
+                            ignore_cmds = { 'Man', '!' }
+                        }
+                    }
+                }
+            )
+        })
+
+        cmp.setup.cmdline("/", {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = "buffer" },
             },
         })
     end,
