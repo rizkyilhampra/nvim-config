@@ -1,8 +1,7 @@
 return {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+    event = require('aquila.core.global').event.LazyFile,
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
         {
             "zeioth/garbage-day.nvim", -- Stop inactive LSP clients to free RAM
@@ -10,12 +9,6 @@ return {
                 notifications = true,
             }
         },
-        -- {
-        --     "ray-x/lsp_signature.nvim",
-        --     opts = {
-        --         hint_enable                    = false,
-        --     },
-        -- }
     },
     config = function()
         vim.api.nvim_create_autocmd("LspAttach", {
@@ -43,13 +36,15 @@ return {
 
                 local virtual_text_diagnostics_active = true
                 vim.keymap.set("n", "<leader>cd", function()
-                    virtual_text_diagnostics_active = not virtual_text_diagnostics_active
-                    if virtual_text_diagnostics_active then
-                        vim.diagnostic.show(nil, bufnr, nil, { virtual_text = true })
-                    else
-                        vim.diagnostic.show(nil, bufnr, nil, { virtual_text = false })
-                    end
-                end, opts)
+                        virtual_text_diagnostics_active = not virtual_text_diagnostics_active
+                        if virtual_text_diagnostics_active then
+                            vim.diagnostic.show(nil, bufnr, nil, { virtual_text = true })
+                        else
+                            vim.diagnostic.show(nil, bufnr, nil, { virtual_text = false })
+                        end
+                    end,
+                    vim.tbl_deep_extend('force', opts, { desc = "Toggle diagnostic message" })
+                )
 
                 vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
@@ -61,16 +56,7 @@ return {
         })
 
         local lspconfig = require("lspconfig")
-
-        local capabilities = {
-            capabilities = vim.tbl_deep_extend(
-                'force',
-                vim.lsp.protocol.make_client_capabilities(),
-                require('cmp_nvim_lsp').default_capabilities()
-            ),
-            flags = { debounce_text_changes = 200 },
-        }
-        -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        local capabilities = require('aquila.core.global').capabilities()
 
         -- PHP language server
         lspconfig.phpactor.setup({
