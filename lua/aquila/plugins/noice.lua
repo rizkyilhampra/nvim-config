@@ -12,7 +12,6 @@ return {
                 timeout = 200
             }
         },
-        "hrsh7th/nvim-cmp"
     },
     keys = {
         {
@@ -50,22 +49,16 @@ return {
                 ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
             },
             progress = {
-                enabled = false,
+                enabled = true,
             },
             hover = {
                 enabled = true,
-                -- opts = {
-                --     size = { max_width = 50 },
-                -- }
+                opts = {
+                    size = { max_width = 50 },
+                }
             },
             signature = {
                 enabled = true,
-                opts = {
-                    anchor = "SW",
-                    position = {
-                        row = 1,
-                    },
-                }
             },
         },
         -- you can enable a preset for easier configuration
