@@ -22,6 +22,16 @@ return {
                     },
                 },
                 command = "eslint_d",
+                condition = function(utils)
+                    -- Check if the root directory has a ".eslintrc.{js,yml,json}" file
+                    local filenames = { ".eslintrc.js", ".eslintrc.yml", ".eslintrc.json" }
+                    for _, filename in ipairs(filenames) do
+                        if utils.root_has_file(filename) then
+                            return true
+                        end
+                    end
+                    return false
+                end,
             }),
             null_ls.builtins.diagnostics.selene,
             null_ls.builtins.diagnostics.phpstan.with({
