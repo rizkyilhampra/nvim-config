@@ -10,6 +10,8 @@ return {
     config = function()
         require("barbecue").setup({
             create_autocmd = false, -- prevent barbecue from updating itself automatically
+            show_dirname = false,
+            show_modified = true,
         })
 
         vim.api.nvim_create_autocmd({
