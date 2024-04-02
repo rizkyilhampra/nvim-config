@@ -35,7 +35,12 @@ return {
             },
             sections = {
                 lualine_a = {
-                    { 'mode', icon = ' ' },
+                    {
+                        'mode',
+                        fmt = function()
+                            return ''
+                        end,
+                    },
                 },
                 lualine_b = { { 'branch', icon = ' ' } },
                 lualine_c = {
