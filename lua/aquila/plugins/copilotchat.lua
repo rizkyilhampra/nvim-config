@@ -19,6 +19,21 @@ local prompts = {
 
 return {
     "CopilotC-Nvim/CopilotChat.nvim",
+    lazy = true,
+    cmd = {
+        "CopilotChat",
+        "CopilotChatExplain",
+        "CopilotChatTests",
+        "CopilotChatReview",
+        "CopilotChatRefactor",
+        "CopilotChatBetterNamings",
+        "CopilotChatCommit",
+        "CopilotChatCommitStaged",
+        "CopilotChatDebugInfo",
+        "CopilotChatFixDiagnostic",
+        "CopilotChatReset",
+        "CopilotChatToggle",
+    },
     -- version = "v2.4.0",
     branch = "canary", -- Use the canary branch if you want to test the latest features but it might be unstable
     -- Do not use branch and version together, either use branch or version
@@ -108,7 +123,6 @@ return {
             },
         })
     end,
-    event = "VeryLazy",
     keys = {
         -- Show help actions with telescope
         {

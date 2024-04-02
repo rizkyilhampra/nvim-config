@@ -4,7 +4,6 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     cmd = "NeoTree",
-    event = "VeryLazy",
     keys = {
         {
             "<Leader>e",
