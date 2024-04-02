@@ -56,8 +56,6 @@ return {
             once = true,
             pattern = "LazyVimStarted",
             callback = function()
-                vim.o.laststatus = 0
-
                 local stats = require("lazy").stats()
                 local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 
