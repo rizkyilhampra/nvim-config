@@ -1,6 +1,7 @@
 return {
     'b0o/incline.nvim',
     event = 'BufReadPre',
+    enabled = false,
     config = function()
         local helpers = require 'incline.helpers'
         local devicons = require 'nvim-web-devicons'
@@ -26,10 +27,11 @@ return {
 
                 return {
                     {
-                        modified and '[+]' or '',
-                        group = 'NeoTreeModified'
+                        '',
+                        guibg = "NONE",
+                        guifg = ft_color,
                     },
-                    ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
+                    ft_icon and { '', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
                     {
                         ' ',
                         guibg = require("tokyonight.util").darken(ft_color, 0.8),
