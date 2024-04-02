@@ -43,6 +43,13 @@ return {
 
         },
         {
+            "<Leader>fS",
+            function()
+                require('telescope.builtin').live_grep()
+            end,
+            desc = "Find string in cwd"
+        },
+        {
             "<leader>fs",
             function()
                 require('telescope.builtin').grep_string()
