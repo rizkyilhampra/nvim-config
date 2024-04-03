@@ -7,6 +7,13 @@ return {
         "nvim-treesitter/nvim-treesitter-textobjects",
         "nvim-treesitter/nvim-treesitter-context",
     },
+    keys = {
+        {
+            "<Leader>cts",
+            ':TSContextToggle<CR>',
+            desc = "Toggle Treesitter Context"
+        }
+    },
     config = function()
         require("nvim-treesitter.configs").setup({
             ensure_installed = {
@@ -15,7 +22,6 @@ return {
                 "vimdoc",
                 "javascript",
                 "typescript",
-                "php",
                 "html",
                 "css",
                 "bash",
@@ -23,10 +29,11 @@ return {
                 "regex",
                 "markdown_inline",
                 "markdown",
+                "php",
                 "php_only",
+                "phpdoc",
                 "http",
                 "json",
-                "phpdoc",
                 "hyprlang"
             },
             sync_install = false,
@@ -34,7 +41,8 @@ return {
             ignore_install = {},
             highlight = { enable = true },
             indent = { enable = true },
-            modules = {}
+            modules = {},
+            additional_vim_regex_highlighting = true,
         })
 
         local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
