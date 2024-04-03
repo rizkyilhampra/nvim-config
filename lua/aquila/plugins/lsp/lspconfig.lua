@@ -2,6 +2,7 @@ return {
     "neovim/nvim-lspconfig",
     event = require('aquila.core.global').event.LazyFile,
     dependencies = {
+        "williamboman/mason.nvim",
         { "antosha417/nvim-lsp-file-operations", config = true },
         {
             "zeioth/garbage-day.nvim", -- Stop inactive LSP clients to free RAM
