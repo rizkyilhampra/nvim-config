@@ -68,11 +68,10 @@ return {
         lspconfig.phpactor.setup({
             capabilities = capabilities,
             init_options = {
-                ['language_server_configuration.auto_config'] = false,
+                -- ['language_server_configuration.auto_config'] = false,
                 ['language_server_worse_reflection.inlay_hints.enable'] = true,
                 -- ['language_server_worse_reflection.inlay_hints.types'] = true,
-                -- replace with phpstan from null-ls
-                ['language_server_phpstan.enabled'] = false,
+                -- ['language_server_phpstan.enabled'] = true,
                 ['phpunit.enabled'] = true,
             },
             root_dir = function(fname)
