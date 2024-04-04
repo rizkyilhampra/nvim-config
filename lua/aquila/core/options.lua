@@ -68,3 +68,5 @@ vim.opt.autoread = true
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 vim.opt.pumheight = 10
+
+vim.g.diagnostics_virtual_text = 0

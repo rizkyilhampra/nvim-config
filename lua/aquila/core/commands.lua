@@ -41,4 +41,12 @@ function M.get_indent(lines)
     return indent
 end
 
+-- Toggle diagnostic message
+function M.toggle_virtual_text_diagnostic()
+    vim.g.diagnostics_virtual_text = (vim.g.diagnostics_virtual_text + 1) % 2
+    vim.diagnostic.config(require('aquila.core.global').diagnostics[vim.g.diagnostics_virtual_text])
+    vim.notify("Diagnostic message " .. (vim.g.diagnostics_virtual_text == 1 and "enabled" or "disabled"),
+        vim.log.levels.INFO)
+end
+
 return M

@@ -71,4 +71,42 @@ M.capabilities = function()
     return capabilities
 end
 
+M.default_diagnostic = {
+    update_in_insert = false,
+    virtual_text = {
+        spacing = 4,
+        prefix = "● ",
+        source = true
+    },
+    float = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = 'rounded',
+        source = 'if_many',
+        -- source = 'always',
+        prefix = ' ',
+        scope = 'line',
+    },
+    severity_sort = true,
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = M.icons.diagnostic.error,
+            [vim.diagnostic.severity.WARN] = M.icons.diagnostic.warn,
+            [vim.diagnostic.severity.HINT] = M.icons.diagnostic.hint,
+            [vim.diagnostic.severity.INFO] = M.icons.diagnostic.info,
+        },
+    }
+}
+M.diagnostics = {
+    -- virtual_text diagnostic off
+    [0] = vim.tbl_deep_extend(
+        "force",
+        M.default_diagnostic,
+        { virtual_text = false }
+    ),
+
+    -- all diagnostics on
+    M.default_diagnostic,
+}
+
 return M

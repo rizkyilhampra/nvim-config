@@ -12,6 +12,8 @@ return {
         },
     },
     config = function()
+        vim.diagnostic.config(require('aquila.core.global').diagnostics[vim.g.diagnostics_virtual_text])
+
         vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(event)
                 local bufnr = event.buf
@@ -34,15 +36,8 @@ return {
                 vim.keymap.set("n", "gd", '<cmd>Telescope lsp_definitions<CR>', opts) -- show lsp definitions
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)      -- see available code actions, in visual mode will apply to selection
                 vim.keymap.set("n", '<C-k>', function() vim.diagnostic.open_float() end, opts)
-
-                local virtual_text_diagnostics_active = true
                 vim.keymap.set("n", "<leader>cd", function()
-                        virtual_text_diagnostics_active = not virtual_text_diagnostics_active
-                        if virtual_text_diagnostics_active then
-                            vim.diagnostic.show(nil, bufnr, nil, { virtual_text = true })
-                        else
-                            vim.diagnostic.show(nil, bufnr, nil, { virtual_text = false })
-                        end
+                        require('aquila.core.commands').toggle_virtual_text_diagnostic()
                     end,
                     vim.tbl_deep_extend('force', opts, { desc = "Toggle diagnostic message" })
                 )
@@ -136,35 +131,6 @@ return {
         lspconfig.bashls.setup({
             capabilities = capabilities,
             single_file_support = true,
-        })
-
-        local global = require("aquila.core.global")
-
-        vim.diagnostic.config({
-            update_in_insert = false,
-            virtual_text = {
-                spacing = 4,
-                prefix = "● ",
-                source = true
-            },
-            float = {
-                focusable = false,
-                close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-                border = 'rounded',
-                source = 'if_many',
-                -- source = 'always',
-                prefix = ' ',
-                scope = 'line',
-            },
-            severity_sort = true,
-            signs = {
-                text = {
-                    [vim.diagnostic.severity.ERROR] = global.icons.diagnostic.error,
-                    [vim.diagnostic.severity.WARN] = global.icons.diagnostic.warn,
-                    [vim.diagnostic.severity.HINT] = global.icons.diagnostic.hint,
-                    [vim.diagnostic.severity.INFO] = global.icons.diagnostic.info,
-                },
-            }
         })
     end
 }
