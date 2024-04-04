@@ -91,11 +91,10 @@ return {
             },
             on_open = function(term)
                 vim.cmd("startinsert!")
-                close_keymap(term)
             end,
             on_close = function()
                 -- refresh current buffer
-                vim.cmd("e")
+                vim.api.nvim_command('checktime')
 
                 -- refresh neo-tree if it's open
                 local manager = require("neo-tree.sources.manager")
