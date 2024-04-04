@@ -8,6 +8,11 @@ return {
             "zeioth/garbage-day.nvim", -- Stop inactive LSP clients to free RAM
             opts = {
                 notifications = true,
+                excluded_lsp_clients = {
+                    "null-ls",
+                    "jdtls",
+                    "copilot"
+                }
             }
         },
     },
