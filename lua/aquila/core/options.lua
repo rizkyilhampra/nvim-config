@@ -70,3 +70,4 @@ vim.opt.timeoutlen = 300
 vim.opt.pumheight = 10
 
 vim.g.diagnostics_virtual_text = 0
+vim.g.inlay_hints_enabled = true
