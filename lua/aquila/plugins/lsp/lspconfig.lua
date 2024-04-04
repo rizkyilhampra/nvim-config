@@ -15,6 +15,7 @@ return {
                 }
             }
         },
+        'stevearc/dressing.nvim',
     },
     config = function()
         vim.diagnostic.config(require('aquila.core.global').diagnostics[vim.g.diagnostics_virtual_text])
