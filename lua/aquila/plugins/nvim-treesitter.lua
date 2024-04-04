@@ -9,9 +9,9 @@ return {
     },
     keys = {
         {
-            "<Leader>cts",
+            "<Leader>ct",
             ':TSContextToggle<CR>',
-            desc = "Toggle Treesitter Context"
+            desc = "Toggle treesitter context"
         }
     },
     config = function()
