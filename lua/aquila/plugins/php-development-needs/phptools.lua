@@ -42,9 +42,7 @@ return {
         "nvim-lua/plenary.nvim"
     },
     lazy = true,
-    cond = function()
-        return vim.fn.isdirectory("vendor") == 1
-    end,
+    cond = vim.fn.isdirectory("vendor") == 1,
     opts = {
         ui = false, -- if you have stevearc/dressing.nvim or something similar keep it false or else true
     },

@@ -16,7 +16,8 @@ require("lazy").setup(
     {
         { import = "aquila.plugins" },
         { import = "aquila.plugins.lsp" },
-        { import = "aquila.plugins.telescope" }
+        { import = "aquila.plugins.telescope" },
+        { import = "aquila.plugins.php-development-needs" }
     },
     {
         install = {
