@@ -62,6 +62,7 @@
   "peek.nvim": { "branch": "master", "commit": "62e9e46fb5b6be510c60f67c1fd9913764efaac0" },
   "phptools.nvim": { "branch": "main", "commit": "058f968315b7c4d8e89c10399de3330c10add8ca" },
   "plenary.nvim": { "branch": "master", "commit": "8aad4396840be7fc42896e3011751b7609ca4119" },
+  "pomo.nvim": { "branch": "main", "commit": "a6c9fe718dd2eac444bfb449fac36eaf8f09d25b" },
   "presence.nvim": { "branch": "main", "commit": "87c857a56b7703f976d3a5ef15967d80508df6e6" },
   "promise-async": { "branch": "main", "commit": "93540c168c5ed2b030ec3e6c40ab8bbb85e36355" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "0563a31b1f46a911865cb85df3ddde2eff9fdada" },
