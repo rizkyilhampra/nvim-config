@@ -61,6 +61,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "93ddac6966d5d3416f96df728d7b92e27aaa4452" },
   "peek.nvim": { "branch": "master", "commit": "62e9e46fb5b6be510c60f67c1fd9913764efaac0" },
   "phptools.nvim": { "branch": "main", "commit": "058f968315b7c4d8e89c10399de3330c10add8ca" },
+  "phpactor.nvim": { "branch": "main", "commit": "42bdb2ea48abadc910d9f500455b811a9039e620" },
   "plenary.nvim": { "branch": "master", "commit": "8aad4396840be7fc42896e3011751b7609ca4119" },
   "pomo.nvim": { "branch": "main", "commit": "a6c9fe718dd2eac444bfb449fac36eaf8f09d25b" },
   "presence.nvim": { "branch": "main", "commit": "87c857a56b7703f976d3a5ef15967d80508df6e6" },
