@@ -34,11 +34,16 @@ return {
                         vim.notify("Inlay hints " .. (vim.lsp.inlay_hint.is_enabled() and "enabled" or "disabled"))
                     end, vim.tbl_deep_extend('force', opts, { desc = "Toggle inlay hints" }))
 
-                    vim.api.nvim_create_autocmd('InsertEnter', {
-                        callback = function() vim.lsp.inlay_hint.enable(bufnr, false) end,
+                    require('aquila.core.autocommands').create("InsertEnter", {
+                        callback = function()
+                            vim.lsp.inlay_hint.enable(bufnr, false)
+                        end
                     })
-                    vim.api.nvim_create_autocmd('InsertLeave', {
-                        callback = function() vim.lsp.inlay_hint.enable(bufnr, true) end,
+
+                    require('aquila.core.autocommands').create("InsertLeave", {
+                        callback = function()
+                            vim.lsp.inlay_hint.enable(bufnr, true)
+                        end
                     })
                 end
 
