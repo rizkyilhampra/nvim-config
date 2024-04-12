@@ -4,8 +4,8 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-    enabled = false,
     event = "VeryLazy",
+    cond = vim.fn.isdirectory("Notes") == 1,
     opts = {
         workspaces = {
             {
