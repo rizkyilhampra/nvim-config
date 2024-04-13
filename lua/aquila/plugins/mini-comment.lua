@@ -1,6 +1,7 @@
 return {
     'echasnovski/mini.comment',
     version = false,
+    enabled = false,
     event = "BufReadPost",
     opts = {
         options = {
