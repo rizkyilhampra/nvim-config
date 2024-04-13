@@ -1,3 +1,10 @@
+local workspaces = {
+    {
+        name = "aquila",
+        path = "~/Notes/aquila-notes",
+    },
+}
+
 return {
     "epwalsh/obsidian.nvim",
     version = "*",
@@ -5,13 +12,16 @@ return {
         "nvim-lua/plenary.nvim",
     },
     event = "VeryLazy",
-    cond = vim.fn.isdirectory("Notes") == 1,
+    cond = function()
+        for _, workspace in ipairs(workspaces) do
+            if vim.fn.getcwd() == vim.fn.expand(workspace.path) then
+                return true
+            end
+        end
+
+        return false
+    end,
     opts = {
-        workspaces = {
-            {
-                name = "aquila",
-                path = "~/Notes/aquila-notes/",
-            },
-        },
+        workspaces = workspaces
     }
 }
