@@ -1,23 +1,14 @@
 return {
     "kevinhwang91/nvim-ufo",
-    event = "BufNew",
+    event = "VeryLazy",
     dependencies = {
         "kevinhwang91/promise-async",
-        "luukvbaal/statuscol.nvim",
     },
-    opts = {},
-    keys = function()
-        vim.keymap.set("n", "zR", function()
-            require("ufo").openAllFolds()
-        end, {
-            desc = "Open all fold"
-        })
-
-        vim.keymap.set("n", "zM", function()
-            require("ufo").closeAllFolds()
-        end, { desc = "Close all fold" })
-    end,
-    config = function()
+    keys = {
+        { "zR", "<cmd>lua require('ufo').openAllFolds()<CR>",  desc = "Open all fold" },
+        { "zM", "<cmd>lua require('ufo').closeAllFolds()<CR>", desc = "Close all fold" },
+    },
+    opts = function()
         local function get_comment_folds(bufnr)
             local comment_folds = {}
             local line_count = vim.api.nvim_buf_line_count(bufnr)
@@ -60,7 +51,7 @@ return {
             end
         }
 
-        require('ufo').setup({
+        return {
             close_fold_kinds_for_ft = {
                 default = {
                     'imports', 'comment'
@@ -74,6 +65,6 @@ return {
             provider_selector = function(_, filetype, _)
                 return ftMap[filetype]
             end,
-        })
-    end
+        }
+    end,
 }

@@ -1,9 +1,11 @@
 return {
     "luukvbaal/statuscol.nvim",
-    lazy = true,
-    config = function()
+    event = "VimEnter",
+    opts = function()
         local builtin = require("statuscol.builtin")
-        require("statuscol").setup({
+        return {
+            -- bt_ignore = { "nofile", "prompt" },
+            ft_ignore = { "alpha", "neo-tree" },
             segments = {
                 relculright = true,
                 { sign = { namespace = { "diagnostic*" }, auto = true }, click = "v:lua.ScSa" },
@@ -11,6 +13,6 @@ return {
                 { text = { builtin.lnumfunc, " " },                      click = "v:lua.ScLa", },
                 { text = { builtin.foldfunc, "  " },                     click = "v:lua.ScFa", },
             },
-        })
-    end,
+        }
+    end
 }
