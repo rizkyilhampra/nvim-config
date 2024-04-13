@@ -4,7 +4,7 @@ return {
     opts = function()
         local builtin = require("statuscol.builtin")
         return {
-            -- bt_ignore = { "nofile", "prompt" },
+            bt_ignore = { "nofile", "prompt" },
             ft_ignore = { "alpha", "neo-tree" },
             segments = {
                 relculright = true,
