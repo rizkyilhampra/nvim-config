@@ -41,7 +41,7 @@ M.create("BufEnter", {
     desc = "Disable New Line Comment",
 })
 
--- Replace by Grapple.nvim plugin
+-- NOTE: Replace by Grapple.nvim plugin
 -- M.create("BufReadPost", {
 --     callback = function()
 --         local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -99,6 +99,15 @@ M.create("FileType", {
         end)
     end,
 })
+
+-- NOTE: This is a workaround for the issue with the `commentstring` option. Will see if it's still needed when v0.10.0 is released
+-- M.create('FileType', {
+--     desc = 'Force commentstring to include spaces',
+--     callback = function(event)
+--         local cs = vim.bo[event.buf].commentstring
+--         vim.bo[event.buf].commentstring = cs:gsub('(%S)%%s', '%1 %%s'):gsub('%%s(%S)', '%%s %1')
+--     end,
+-- })
 
 -- i'm not sure with this but i think it will be useful
 -- vim.api.nvim_create_autocmd("BufEnter", {
