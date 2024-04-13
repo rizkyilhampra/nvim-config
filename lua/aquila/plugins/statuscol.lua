@@ -5,7 +5,7 @@ return {
         local builtin = require("statuscol.builtin")
         return {
             bt_ignore = { "nofile", "prompt" },
-            ft_ignore = { "alpha", "neo-tree" },
+            ft_ignore = { "alpha" },
             segments = {
                 relculright = true,
                 { sign = { namespace = { "diagnostic*" }, auto = true }, click = "v:lua.ScSa" },
