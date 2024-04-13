@@ -6,7 +6,6 @@ return {
     opts = {
         scope = "git", -- also try out "git_branch"
     },
-    event = { "BufReadPost", "BufNewFile" },
     cmd = "Grapple",
     keys = {
         {
