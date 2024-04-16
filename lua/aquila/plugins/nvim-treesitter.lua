@@ -2,7 +2,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    event = { "BufReadPre", "BufNewFile" },
+    event = require('aquila.core.global').event.LazyFile,
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
         "nvim-treesitter/nvim-treesitter-context",
@@ -39,10 +39,11 @@ return {
             sync_install = false,
             auto_install = true,
             ignore_install = {},
-            highlight = { enable = true },
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = false,
+            },
             indent = { enable = true },
-            modules = {},
-            additional_vim_regex_highlighting = true,
         })
 
         local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
@@ -51,9 +52,9 @@ return {
                 url = "https://github.com/EmranMR/tree-sitter-blade",
                 files = { "src/parser.c" },
                 branch = "main",
+                generate_requires_npm = true,
+                requires_generate_from_grammar = true,
             },
-            generate_requires_npm = true,
-            requires_generate_from_grammar = true,
             filetype = "blade"
         }
 
@@ -62,7 +63,6 @@ return {
                 neon = 'yaml',
             },
             pattern = {
-                ['.*%.blade%.php'] = 'blade',
                 ['.*%.neon%.dist'] = 'yaml',
                 ['.*/waybar/config'] = 'jsonc',
                 ['.*/kitty/*.conf'] = 'bash',
