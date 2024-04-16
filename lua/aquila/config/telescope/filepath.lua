@@ -12,12 +12,21 @@ local config = require("telescope.config").values
 local log = require("plenary.log"):new()
 log.level = "debug"
 
+function M.get_github_file_path_url()
+    local remote_url = vim.fn.system("git remote get-url origin"):gsub("\n", "")
+    local current_branch_name = vim.fn.system("git branch --show-current"):gsub("\n", "")
+    local path = vim.fn.expand("%")
+
+    return remote_url:gsub("%.git", "") .. "/blob/" .. current_branch_name .. "/" .. path
+end
+
 function M.file_paths()
     local paths = {
         { type = "name", name = vim.fn.expand("%:t") },
         { type = "path", name = vim.fn.expand("%") },
         { type = "home", name = vim.fn.expand("%:~") },
         { type = "root", name = vim.fn.expand("%:p:h") },
+        { type = "url",  name = M.get_github_file_path_url() }
     }
     return paths
 end
