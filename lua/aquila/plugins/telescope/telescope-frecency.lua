@@ -11,7 +11,7 @@ return {
                 require('telescope').extensions.frecency.frecency(require('telescope.themes').get_dropdown({
                     workspace = "CWD",
                     devicons_enabled = true,
-                    initial_mode = 'normal',
+                    -- initial_mode = 'normal',
                     path_display = function(opts, path)
                         -- local current_cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ":p")
                         local relative_path = vim.fn.fnamemodify(path, ":~:.")
