@@ -24,7 +24,15 @@ return {
             json = { "prettierd" },
             typescript = { "prettierd" },
             typescriptreact = { "prettierd" },
-            blade = { 'blade-formatter' },
+            blade = function(_)
+                -- NOTE: formatting blade files with prettierd it's use https://github.com/shufo/prettier-plugin-blade
+                -- so it's need has .prettierrc file in the project root and also configured with that plugin.
+                if vim.fn.filereadable(vim.fn.getcwd() .. "/.prettierrc") == 1 then
+                    return { "prettierd" }
+                end
+                return { "blade-formatter" }
+            end,
+            yml = { 'prettierd' },
         },
     },
     init = function()
