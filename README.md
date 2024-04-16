@@ -50,3 +50,4 @@ alias ripnvim="NVIM_APPNAME=ripnvim nvim"
 - [ ] Create script to automate install with all dependencies (at least working in the archlinux and ubuntu) 
 - [ ] More screenshot
 - [ ] Make readme more nicer for new comer
+- [ ] Refactor LSP configuration
