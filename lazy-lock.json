@@ -87,4 +87,5 @@
   "vim-illuminate": { "branch": "master", "commit": "305bf07b919ac526deb5193280379e2f8b599926" },
   "vim-wakatime": { "branch": "master", "commit": "5d11a253dd1ecabd4612a885175216032d814300" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
+  "yankbank-nvim": { "branch": "main", "commit": "6a8fb9c8f56b87bb383f6c78d2047b27fba67a0c" }
 }
