@@ -133,5 +133,12 @@ return {
             desc = "Lists all available highlights"
 
         },
+        {
+            "<Leader>fC",
+            function()
+                require('aquila.config.telescope.filepath').list_paths()
+            end,
+            desc = "List of paths"
+        },
     },
 }
