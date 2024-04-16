@@ -1,6 +1,6 @@
 return {
     "kevinhwang91/nvim-ufo",
-    event = "VeryLazy",
+    event = require('aquila.core.global').event.LazyFile,
     dependencies = {
         "kevinhwang91/promise-async",
     },
