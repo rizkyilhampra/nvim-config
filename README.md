@@ -24,9 +24,12 @@ Python|I'm not sure is needed, if you want to install ensure `python3` is instal
 [`lazydocker`](https://github.com/jesseduffield/lazydocker) [`lazysql`](https://github.com/jorgerojas26/lazysql) [`lazygit`](https://github.com/jesseduffield/lazygit) 
 
 ## Installation
-### As default neovim configuration
 > [!NOTE]
-> You can copy all below commands and paste them in your terminal, then press `enter` and wait until finish. Please ensure there is no neovim configuration before, or these commands will fail.
+> You can copy all below commands and paste them in your terminal, then press `enter` and wait until finish. 
+
+### As default neovim configuration
+> [!WARNING]
+> Please ensure there is no neovim configuration before, or these commands will fail.
 
 ```bash
 mkdir -p ~/.config/nvim && \
