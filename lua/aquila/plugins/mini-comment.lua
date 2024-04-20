@@ -1,8 +1,15 @@
 return {
     'echasnovski/mini.comment',
     version = false,
-    enabled = false,
     event = "BufReadPost",
+    dependencies = {
+        {
+            'JoosepAlviste/nvim-ts-context-commentstring',
+            opts = {
+                enable_autocmd = false
+            }
+        }
+    },
     opts = {
         options = {
             custom_commentstring = function()
@@ -24,7 +31,6 @@ return {
                 local buf = vim.api.nvim_get_current_buf()
                 local mark = vim.api.nvim_buf_get_mark(buf, "f")
 
-                -- Baris tersebut adalah baris pertama dari foldlevel
                 if line == mark[2] then
                     vim.cmd("call feedkeys('za')")
                 end
