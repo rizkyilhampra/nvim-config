@@ -54,3 +54,4 @@ alias ripnvim="NVIM_APPNAME=ripnvim nvim"
 - [ ] More screenshot
 - [ ] Make readme more nicer for new comer
 - [ ] Refactor LSP configuration
+- [ ] Fix blank startup screen when open neovim with argument, ex: `nvim README.md`
