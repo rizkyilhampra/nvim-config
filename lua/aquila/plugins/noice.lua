@@ -4,14 +4,7 @@ return {
     cmd = "Noice",
     dependencies = {
         "MunifTanjim/nui.nvim",
-        {
-            "rcarriga/nvim-notify",
-            opts = {
-                max_width = math.floor(vim.o.columns * 0.4),
-                render = "wrapped-compact",
-                timeout = 200
-            }
-        },
+        "rcarriga/nvim-notify",
     },
     keys = {
         {
