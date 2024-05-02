@@ -21,6 +21,17 @@ return {
     cmd = "Telescope",
     keys = {
         {
+            "<Leader><Tab>",
+            function()
+                require('telescope.builtin').oldfiles(require('telescope.themes').get_dropdown({
+                    initial_mode = 'normal',
+                    only_cwd = true,
+                    path_display = require('aquila.core.commands').filenameFirst,
+                }))
+            end,
+            desc = "List previously open files cwd"
+        },
+        {
             '<leader>fa',
             function()
                 require('telescope.builtin').find_files({

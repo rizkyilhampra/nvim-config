@@ -4,6 +4,7 @@ return {
         'nvim-telescope/telescope.nvim',
     },
     lazy = true,
+    enabled = false,
     keys = {
         {
             "<Leader><Space>",

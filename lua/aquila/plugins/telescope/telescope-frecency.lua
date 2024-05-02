@@ -6,7 +6,7 @@ return {
     lazy = true,
     keys = {
         {
-            "<Leader>ff",
+            "<Leader><Space>",
             function()
                 require('telescope').extensions.frecency.frecency(require('telescope.themes').get_dropdown({
                     workspace = "CWD",

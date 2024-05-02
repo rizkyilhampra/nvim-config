@@ -9,10 +9,10 @@ return {
     cmd = "Grapple",
     keys = {
         {
-            "<Leader><Tab>", "<cmd>Grapple toggle_tags<CR>", desc = "Grapple toggle tags",
+            "<Leader><GG>", "<cmd>Grapple toggle_tags<CR>", desc = "Grapple toggle tags",
         },
         {
-            "<Leader>GG", "<cmd>Grapple toggle<CR>", desc = "Grapple toggle tag"
+            "<Leader>GA", "<cmd>Grapple toggle<CR>", desc = "Grapple toggle tag"
         }
     }
 }
