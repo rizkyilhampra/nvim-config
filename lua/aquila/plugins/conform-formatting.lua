@@ -33,6 +33,7 @@ return {
                 return { "blade-formatter" }
             end,
             yml = { 'prettierd' },
+            jsonc = { 'prettierd' },
         },
     },
     init = function()
