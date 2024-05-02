@@ -46,6 +46,7 @@ return {
                 "prettierd",
                 "selene",
                 "phpstan",
+                "pint",
             },
             auto_update = true,
             run_on_start = true
