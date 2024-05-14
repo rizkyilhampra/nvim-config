@@ -7,7 +7,7 @@ return {
         {
             "zeioth/garbage-day.nvim", -- Stop inactive LSP clients to free RAM
             opts = {
-                notifications = true,
+                notifications = false,
                 excluded_lsp_clients = {
                     "null-ls",
                     "jdtls",
@@ -146,6 +146,15 @@ return {
         lspconfig.bashls.setup({
             capabilities = capabilities,
             single_file_support = true,
+        })
+
+        lspconfig.jsonls.setup({
+            capabilities = capabilities,
+        })
+
+        lspconfig.tailwindcss.setup({
+            capabilities = capabilities,
+            root_dir = lspconfig.util.root_pattern("tailwind.config.js", "tailwind.config.cjs", "tailwind.config.ts"),
         })
     end
 }
