@@ -2,7 +2,6 @@ local global = require('aquila.core.global')
 
 return {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
     cmd = "NeoTree",
     keys = {
         {
@@ -116,6 +115,7 @@ return {
 
         },
         filesystem = {
+            hijack_netrw_behavior = "open_current",
             use_libuv_file_watcher = true,
             follow_current_file = {
                 enabled         = true,
