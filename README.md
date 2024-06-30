@@ -1,33 +1,39 @@
 # Aquila's Neovim Configuration
+
 My personal neovim configuration written from scratch (of course, with some stolen other neovim configuration from somewhere). I use this with my workflow and/or environment, see [Aquila's Dotfiles](https://github.com/rizkyilhampra/dotfilesv2).
 
 ## Screenshot
+
 ![screenshot](./src/2024-03-15-221218_hyprshot.png)
 ![screenshot-2](./src/2024-03-16-051038_hyprshot.png)
 
 ## Requirements
+
 > Forgive me if i'm missed anything. Please run `:checkhealth` to see if you are not missed some dependencies after clone/install my config.
 
 `git` `tar` `zip` `unzip` [`jq`](https://github.com/sharkdp/fd) [`tidy`](https://www.html-tidy.org/) [`curl`](https://curl.se/) [`fd`](https://github.com/sharkdp/fd) [`ripgrep`](https://github.com/BurntSushi/ripgrep) [`fzf`](https://github.com/junegunn/fzf) `gcc` `libstdc++` [`make`](https://www.gnu.org/software/make/) [`deno`](https://deno.com/)
 
-| | |
----|---
-GNU Linux|I've never tried other OS except Linux to run Neovim, so i can't promise it will work as you'are exepected if you try run in other OS (explicitly Windows without WSL). I'm using Arch btw
-Nerd Font|Search font in [here](https://nerdfonts.com) and chose by your preference then use in your terminal, or you can use only `Symbol Nerd Font` if your terminal support fallback font. Take look in [here](https://github.com/rizkyilhampra/dotfilesv2/blob/49461bba79a15749ddf29531aed3cde4ecb34533/.config/kitty/kitty.conf#L1-L4) to see what fonts i used.
-Neovim v10/nightly build|Install with [bob](https://github.com/MordechaiHadad/bob) as Neovim version manager or build from source in [here](https://github.com/neovim/neovim?tab=readme-ov-file#install-from-source)
-Terminal|Use terminal true color support. I use [kitty](https://sw.kovidgoyal.net/kitty/) and [alacritty](https://alacritty.org/). Take look in [here](https://github.com/rizkyilhampra/dotfilesv2/blob/main/.config/kitty) or [here](https://github.com/rizkyilhampra/dotfilesv2/tree/main/.config/alacritty) to see my terminal configuration 
-Clipboard Tools|If you are not using DE. Maybe you need clipboard tool program. I use [`wl-copy`](https://github.com/bugaevc/wl-clipboard)
-Node (Javascript runtime)|Install with [`fnm`](https://github.com/Schniz/fnm) as node version manager or if you need to install only one version, take look in [here](https://github.com/nodesource/distributions?tab=readme-ov-file#installation-instructions)
-Python|I'm not sure is needed, if you want to install ensure `python3` is installed too
+|                           |                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GNU Linux                 | I've never tried other OS except Linux to run Neovim, so i can't promise it will work as you'are exepected if you try run in other OS (explicitly Windows without WSL). I'm using Arch btw                                                                                                                                                                  |
+| Nerd Font                 | Search font in [here](https://nerdfonts.com) and chose by your preference then use in your terminal, or you can use only `Symbol Nerd Font` if your terminal support fallback font. Take look in [here](https://github.com/rizkyilhampra/dotfilesv2/blob/49461bba79a15749ddf29531aed3cde4ecb34533/.config/kitty/kitty.conf#L1-L4) to see what fonts i used. |
+| Neovim v10/nightly build  | Install with [bob](https://github.com/MordechaiHadad/bob) as Neovim version manager or build from source in [here](https://github.com/neovim/neovim?tab=readme-ov-file#install-from-source)                                                                                                                                                                 |
+| Terminal                  | Use terminal true color support. I use [kitty](https://sw.kovidgoyal.net/kitty/) and [alacritty](https://alacritty.org/). Take look in [here](https://github.com/rizkyilhampra/dotfilesv2/blob/main/.config/kitty) or [here](https://github.com/rizkyilhampra/dotfilesv2/tree/main/.config/alacritty) to see my terminal configuration                      |
+| Clipboard Tools           | If you are not using DE. Maybe you need clipboard tool program. I use [`wl-copy`](https://github.com/bugaevc/wl-clipboard)                                                                                                                                                                                                                                  |
+| Node (Javascript runtime) | Install with [`fnm`](https://github.com/Schniz/fnm) as node version manager or if you need to install only one version, take look in [here](https://github.com/nodesource/distributions?tab=readme-ov-file#installation-instructions)                                                                                                                       |
+| Python                    | I'm not sure is needed, if you want to install ensure `python3` is installed too                                                                                                                                                                                                                                                                            |
 
 #### Optional
-[`lazydocker`](https://github.com/jesseduffield/lazydocker) [`lazysql`](https://github.com/jorgerojas26/lazysql) [`lazygit`](https://github.com/jesseduffield/lazygit) 
+
+[`lazydocker`](https://github.com/jesseduffield/lazydocker) [`lazysql`](https://github.com/jorgerojas26/lazysql) [`lazygit`](https://github.com/jesseduffield/lazygit)
 
 ## Installation
+
 > [!NOTE]
-> You can copy all below commands and paste them in your terminal, then press `enter` and wait until finish. 
+> You can copy all below commands and paste them in your terminal, then press `enter` and wait until finish.
 
 ### As default neovim configuration
+
 > [!WARNING]
 > Please ensure there is no neovim configuration before, or these commands will fail.
 
@@ -37,21 +43,28 @@ cd ~/.config/nvim && \
 git clone https://github.com/rizkyilhampra/nvim-config.git . && \
 nvim
 ```
+
 ### As alias NVIM_APPNAME
+
 ```bash
 git clone https://github.com/rizkyilhampra/nvim-config.git ~/.config/ripnvim && \
 NVIM_APPNAME=ripnvim nvim
 ```
+
 #### Optional
+
 Make shell alias in your shell configuration, ex in zsh:
+
 ```bash
 # ~/.zshrc
 alias ripnvim="NVIM_APPNAME=ripnvim nvim"
 ```
 
 ## Todo
-- [ ] Create script to automate install with all dependencies (at least working in the archlinux and ubuntu) 
+
+- [ ] Create script to automate install with all dependencies (at least working in the archlinux and ubuntu)
 - [ ] More screenshot
 - [ ] Make readme more nicer for new comer
 - [ ] Refactor LSP configuration
-- [ ] Fix blank startup screen when open neovim with argument, ex: `nvim README.md`
+- [ ] Fix blank startup screen when open neovim with argument, example: `nvim README.md`
+
