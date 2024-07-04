@@ -63,8 +63,8 @@ alias ripnvim="NVIM_APPNAME=ripnvim nvim"
 ## Todo
 
 - [ ] Create script to automate install with all dependencies (at least working in the archlinux and ubuntu)
-- [ ] More screenshot
+- [ ] Add More screenshot
 - [ ] Make readme more nicer for new comer
 - [ ] Refactor LSP configuration
-- [ ] Fix blank startup screen when open neovim with argument, example: `nvim README.md`
-
+- [x] Fix blank startup screen when open neovim with argument, example: `nvim README.md`
+- [ ] Test to replace Gitsign to Mini.diff as statuscol view
