@@ -1,7 +1,10 @@
 return {
     'SuperBo/fugit2.nvim',
-    lazy = true,
-    opts = {},
+    opts = {
+        width = 70,
+        height = "80%",
+        external_diffview = false,
+    },
     dependencies = {
         'MunifTanjim/nui.nvim',
         'nvim-tree/nvim-web-devicons',
@@ -9,11 +12,18 @@ return {
         {
             'chrisgrieser/nvim-tinygit',
             dependencies = { 'stevearc/dressing.nvim' }
+        },
+        {
+            'sindrets/diffview.nvim',
+            dependencies = { 'nvim-tree/nvim-web-devicons' },
+            cmd = {
+                'DiffviewFileHistory',
+                'DiffviewOpen',
+                'DiffviewToggleFiles',
+                'DiffviewFocusFiles',
+                'DiffviewRefresh'
+            }
         }
     },
-    cmd = { 'Fugit2', 'Fugit2Graph' },
-    keys = {
-        { '<leader>gff', mode = 'n', '<cmd>Fugit2<cr>',      desc = "Main" },
-        { '<leader>gfg', mode = 'n', '<cmd>Fugit2Graph<cr>', desc = "Graph commit" }
-    }
+    cmd = { 'Fugit2', 'Fugit2Blame', 'Fugit2Diff', 'Fugit2Graph' },
 }
