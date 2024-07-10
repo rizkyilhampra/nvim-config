@@ -1,5 +1,9 @@
 return {
     "max397574/better-escape.nvim",
     event = "InsertCharPre",
-    opts = {},
+    opts = {
+        mappings = {
+            t = false
+        }
+    },
 }
