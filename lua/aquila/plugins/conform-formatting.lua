@@ -34,6 +34,7 @@ return {
             end,
             yml = { 'prettierd' },
             jsonc = { 'prettierd' },
+            markdown = { 'prettierd' },
         },
     },
     init = function()
