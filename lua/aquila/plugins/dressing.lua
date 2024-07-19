@@ -1,6 +1,6 @@
 return {
     'stevearc/dressing.nvim',
-    lazy = true,
+    event = "User BaseDefered",
     opts = function()
         local nui = require('dressing.select.nui')
         nui.select = function(config, items, opts, on_choice)
@@ -71,7 +71,6 @@ return {
         return {
             select = {
                 get_config = function(opts)
-                    vim.notify(vim.inspect(opts))
                     if opts.kind == 'codeaction' then
                         return {
                             backend = 'nui',
