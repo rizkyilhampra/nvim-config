@@ -22,13 +22,11 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
-if vim.fn.has("nvim-0.10") == 1 then
-    vim.opt.smoothscroll = true
-end
+vim.opt.smoothscroll = true
 
 vim.opt.cursorline = true
 vim.opt.scrolloff = 14
-vim.opt.sidescrolloff = 8
+vim.opt.sidescrolloff = 16
 vim.opt.confirm = true
 vim.opt.swapfile = false
 vim.opt.spell = true
@@ -69,5 +67,8 @@ vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 vim.opt.pumheight = 10
 
-vim.g.diagnostics_virtual_text = 0
+vim.g.diagnostics_virtual_text = 1
 vim.g.inlay_hints_enabled = true
+vim.g.notifications_enabled = true
+
+vim.g.default_colorscheme = "tokyonight"
