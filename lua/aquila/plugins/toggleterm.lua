@@ -76,7 +76,6 @@ return {
             },
             on_open = function(term)
                 vim.cmd("startinsert!")
-                close_keymap(term)
             end,
         })
 
@@ -89,7 +88,7 @@ return {
                 width  = 150,
                 border = "rounded",
             },
-            on_open = function(term)
+            on_open = function(_)
                 vim.cmd("startinsert!")
             end,
             on_close = function()
@@ -107,6 +106,20 @@ return {
             end,
         })
 
+
+        local serpl = Terminal:new({
+            cmd = "serpl",
+            direction = "float",
+            float_opts = {
+                height = 50,
+                width  = 150,
+                border = 'rounded'
+            },
+            on_open = function(_)
+                vim.cmd("startinsert!")
+            end,
+        })
+
         return {
             {
                 "<leader>tl",
@@ -114,13 +127,14 @@ return {
                     lazygit:toggle()
                 end,
                 desc = "Toggle terminal as Lazygit"
-            }, {
-            "<Leader>tt",
-            function()
-                cwd_term:toggle()
-            end,
-            desc = "Toggle terminal on cwd with floating"
-        },
+            },
+            {
+                "<Leader>tt",
+                function()
+                    cwd_term:toggle()
+                end,
+                desc = "Toggle terminal on cwd with floating"
+            },
             {
                 "<Leader>tv",
                 function()
@@ -141,7 +155,14 @@ return {
                     lazydocker:toggle()
                 end,
                 desc = "Toggle terminal as Lazydocker"
-            }
+            },
+            {
+                "<Leader>tS",
+                function()
+                    serpl:toggle()
+                end,
+                desc = "Toggle terminal as Serpl (Search and Replace)"
+            },
         }
     end,
     config = function(_, opts)
