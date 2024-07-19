@@ -1,32 +1,84 @@
 return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.3',
-    opts = function()
-        local actions = require('telescope.actions')
-        return {
-            defaults = {
-                mappings = {
-                    n = {
-                        ['q'] = actions.close
-                    }
-                }
-            },
-        }
-    end,
     dependencies = {
         'nvim-lua/plenary.nvim',
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        "nvim-telescope/telescope-frecency.nvim",
     },
-    lazy = true,
+    opts = function()
+        local actions = require('telescope.actions')
+
+        return {
+            defaults = {
+                preview = {
+                    filesize_limit = 0.1, -- MB
+                },
+                mappings = {
+                    n = {
+                        ['q'] = actions.close,
+                        ["<C-n>"] = actions.move_selection_next,
+                        ["<C-p>"] = actions.move_selection_previous,
+                    },
+                    i = {
+                        ["<ESC>"] = actions.close,
+                    }
+                }
+            },
+            extensions = {
+                frecency = {
+                    show_filter_column = false,
+                }
+            }
+        }
+    end,
+    config = function(_, opts)
+        local telescope = require("telescope")
+        telescope.setup(opts)
+
+        telescope.load_extension('fzf')
+        telescope.load_extension("frecency")
+        telescope.load_extension("neoclip")
+
+        vim.api.nvim_set_hl(0, "TelescopePathSeparator", {})
+    end,
     cmd = "Telescope",
     keys = {
+        {
+            "<Leader>fF",
+            function()
+                require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({
+                    preview = {
+                        filesize_limit = 0.1, -- MB
+                    },
+                    path_display = { filename_first = { reverse_directories = false } },
+                    find_command = { "rg", "--files", "--color", "never", "--hidden", "--glob", "!.git" },
+                }))
+            end,
+            desc = "Find files with Telescope picker builtin (rg)"
+        },
+        {
+            "<Leader><Space>",
+            function()
+                require('telescope').extensions.frecency.frecency(require('telescope.themes').get_dropdown({
+                    workspace = "CWD",
+                    devicons_enabled = true,
+                    preview = {
+                        filesize_limit = 0.1, -- MB
+                    },
+                    path_display = { filename_first = { reverse_directories = false } },
+                    prompt_title = "Find Files"
+                }))
+            end,
+            desc = "Find files with Frecency (fd)"
+        },
         {
             "<Leader><Tab>",
             function()
                 require('telescope.builtin').oldfiles(require('telescope.themes').get_dropdown({
+                    previewer = false,
                     initial_mode = 'normal',
                     only_cwd = true,
-                    path_display = require('aquila.core.commands').filenameFirst,
+                    path_display = { filename_first = { reverse_directories = false } },
                 }))
             end,
             desc = "List previously open files cwd"
