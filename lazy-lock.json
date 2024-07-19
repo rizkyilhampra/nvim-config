@@ -6,6 +6,7 @@
   "barbecue": { "branch": "main", "commit": "cd7e7da622d68136e13721865b4d919efd6325ed" },
   "blame.nvim": { "branch": "main", "commit": "21fe989f323ad0418ecf2e8f8e4d2000613b269b" },
   "cd-project.nvim": { "branch": "main", "commit": "d907edd88d16fcf921f4d22936550532cd084cc6" },
+  "blade-nav.nvim": { "branch": "main", "commit": "406b5e0f236aa012c163374d9fa9d86882836f24" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-cmdline": { "branch": "main", "commit": "d250c63aa13ead745e3a40f61fdd3470efde3923" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
