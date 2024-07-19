@@ -4,6 +4,8 @@ end
 
 local commands = require("aquila.core.commands")
 
+set("n", "$", "g_", { noremap = true, silent = true })
+
 set("i", "jj", "<Esc>", { noremap = true, silent = true })
 -- i love windows behavior for saving a file
 set({ 'i', 'n' }, "<C-s>", '<cmd>w<CR>')
@@ -82,3 +84,53 @@ set('n', 'K', function()
         vim.lsp.buf.hover()
     end
 end)
+set('x', '<', '<gv', { desc = 'unindent selection' })
+set('x', '>', '>gv', { desc = 'indent selection' })
+
+set('n', 'gg', function()
+    vim.g.minianimate_disable = true
+    if vim.v.count > 0 then
+        vim.cmd("normal! " .. vim.v.count .. "gg")
+    else
+        vim.cmd "normal! gg0"
+    end
+    vim.g.minianimate_disable = false
+end, { desc = 'better gg and go to the first position' })
+set('n', 'G', function()
+    vim.g.minianimate_disable = true
+    vim.cmd "normal! G$"
+    vim.g.minianimate_disable = false
+end, { desc = "better G and got to the last position" })
+
+set('x', 'gg', function()
+    vim.g.minianimate_disable = true
+    if vim.v.count > 0 then
+        vim.cmd("normal! " .. vim.v.count .. "gg")
+    else
+        vim.cmd "normal! gg0"
+    end
+    vim.g.minianimate_disable = false
+end, { desc = "gg and go to the first position (visual)" })
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    desc = "Make q close help, man, quickfix, dap floats",
+    callback = function(args)
+        local buftype =
+            vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+        if vim.tbl_contains({ "help", "nofile", "quickfix" }, buftype) then
+            vim.keymap.set(
+                "n", "q", "<cmd>close<cr>",
+                { buffer = args.buf, silent = true, nowait = true }
+            )
+        end
+    end,
+})
+vim.api.nvim_create_autocmd("CmdwinEnter", {
+    desc = "Make q close command history (q: and q?)",
+    callback = function(args)
+        vim.keymap.set(
+            "n", "q", "<cmd>close<cr>",
+            { buffer = args.buf, silent = true, nowait = true }
+        )
+    end,
+})
