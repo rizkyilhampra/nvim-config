@@ -3,7 +3,12 @@ return {
     event = "InsertCharPre",
     opts = {
         mappings = {
-            t = false
+            t = {
+                j = {
+                    j = false,
+                    k = false
+                }
+            }
         }
     },
 }
