@@ -1,7 +1,7 @@
 return {
     "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
+    event = "User LoadColorSchemes",
+    enabled = true,
     opts = {
         style = "moon",
         transparent = true,
@@ -10,21 +10,15 @@ return {
             floats = "transparent"
         },
         terminal_colors = false,
-        on_highlights = function(hl, c)
-            if vim.g.aquila_theme_transparent_mode == false then
-                hl.TelescopeNormal = {
-                    bg = c.bg_dark,
-                }
-                hl.WhichKeyFloat = {
-                    bg = c.bg_dark,
-                }
-            end
-        end
+        -- on_highlights = function(hl, C)
+        --     hl.NormalMoody = { fg = C.blue }
+        --     hl.InsertMoody = { fg = C.green }
+        --     hl.VisualMoody = { fg = C.orange }
+        --     hl.SelectMoody = { fg = C.orange }
+        --     hl.CommandMoody = { fg = C.cyan }
+        --     hl.ReplaceMoody = { fg = C.red }
+        --     hl.TerminalMoody = { fg = C.purple }
+        --     hl.TerminalNormalMoody = { fg = C.teal }
+        -- end
     },
-
-    config = function(_, opts)
-        require('tokyonight').setup(opts)
-
-        vim.cmd [[colorscheme tokyonight]]
-    end
 }
