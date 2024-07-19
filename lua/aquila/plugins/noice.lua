@@ -1,10 +1,9 @@
 return {
     "folke/noice.nvim",
-    event = "VeryLazy",
+    event = "User BaseDefered",
     cmd = "Noice",
     dependencies = {
         "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
     },
     keys = {
         {
@@ -16,7 +15,7 @@ return {
             end,
             mode = { "n", "i", "s" },
             silent = true,
-            expr = true
+            expr = true,
         },
         {
             "<C-f>",
@@ -27,12 +26,12 @@ return {
             end,
             mode = { "n", "i", "s" },
             silent = true,
-            expr = true
-        }
+            expr = true,
+        },
     },
     opts = {
         popupmenu = {
-            backend = "cmp"
+            backend = "cmp",
         },
         lsp = {
             -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -48,10 +47,10 @@ return {
                 enabled = true,
                 opts = {
                     size = { max_width = 50 },
-                }
+                },
             },
             signature = {
-                enabled = true,
+                enabled = false,
             },
         },
         -- you can enable a preset for easier configuration
@@ -64,8 +63,8 @@ return {
                 views = {
                     hover = {
                         size = {
-                            max_height = 10
-                        }
+                            max_height = 10,
+                        },
                     },
                     cmdline_popup = {
                         position = {
@@ -93,7 +92,7 @@ return {
                 win_options = {
                     winblend = 0,
                 },
-            }
+            },
         },
         routes = {
             {
@@ -102,7 +101,9 @@ return {
             },
             {
                 filter = {
-                    event = "msg_show", kind = "", find = "written",
+                    event = "msg_show",
+                    kind = "",
+                    find = "written",
                 },
                 opts = { skip = true },
             },
