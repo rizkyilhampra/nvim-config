@@ -1,5 +1,5 @@
 return {
     'tzachar/highlight-undo.nvim',
-    event = "BufReadPost",
-    opts = {},
+    event = "User BaseDefered",
+    opts= {},
 }
