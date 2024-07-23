@@ -1,7 +1,7 @@
 return {
     'echasnovski/mini.comment',
     version = false,
-    event = "BufReadPost",
+    event = "User BaseFile",
     dependencies = {
         {
             'JoosepAlviste/nvim-ts-context-commentstring',
