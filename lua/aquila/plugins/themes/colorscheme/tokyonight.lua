@@ -10,15 +10,16 @@ return {
             floats = "transparent"
         },
         terminal_colors = false,
-        -- on_highlights = function(hl, C)
-        --     hl.NormalMoody = { fg = C.blue }
-        --     hl.InsertMoody = { fg = C.green }
-        --     hl.VisualMoody = { fg = C.orange }
-        --     hl.SelectMoody = { fg = C.orange }
-        --     hl.CommandMoody = { fg = C.cyan }
-        --     hl.ReplaceMoody = { fg = C.red }
-        --     hl.TerminalMoody = { fg = C.purple }
-        --     hl.TerminalNormalMoody = { fg = C.teal }
-        -- end
+        on_highlights = function(hl, C)
+            hl.NormalMoody = { fg = C.blue }
+            hl.InsertMoody = { fg = C.green }
+            hl.VisualMoody = { fg = C.magenta }
+            hl.SelectMoody = { fg = C.magenta }
+            hl.OperatorMoody = { fg = C.yellow }
+            hl.CommandMoody = { fg = C.yellow }
+            hl.ReplaceMoody = { fg = C.red }
+            hl.TerminalMoody = { fg = C.green1 }
+            hl.TerminalNormalMoody = { fg = C.green1 }
+        end
     },
 }
