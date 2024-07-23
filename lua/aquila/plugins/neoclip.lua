@@ -49,6 +49,7 @@ return {
                     },
                 })
             end,
+            mode = { "n", "x" },
             desc = "Find yank"
         },
     }
