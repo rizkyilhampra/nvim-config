@@ -19,6 +19,8 @@ return {
 
         local cmp = require("cmp")
         local luasnip = require("luasnip")
+        local lspkind = require("lspkind")
+        local utils = require('aquila.core.utils')
 
         cmp.setup({
             view = {
@@ -76,10 +78,15 @@ return {
                 { name = "async_path", priority = 250 },
             }),
             formatting = {
-                fields = { "kind", "abbr" },
-                format = function(_, vim_item)
-                    vim_item.kind = require("aquila.core.global").icons.kind_with_space[vim_item.kind] or ""
-                    return vim_item
+                fields = { "abbr", "kind", "menu" },
+                format = function(entry, item)
+                    local kind = lspkind.cmp_format(utils.get_plugin_opts('lspkind.nvim'))(entry, item)
+                    local strings = vim.split(kind.kind, "%s", { trimempty = true })
+
+                    kind.kind = " " .. (strings[1] or "") .. " "
+                    kind.menu = (strings[3] or "")
+
+                    return kind
                 end,
             },
         })
