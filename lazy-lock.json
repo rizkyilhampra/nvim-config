@@ -21,6 +21,7 @@
   "eagle.nvim": { "branch": "main", "commit": "177957f60f6ca9c38b92328c8a51453f88a9d098" },
   "flash.nvim": { "branch": "main", "commit": "48817af25f51c0590653bbc290866e4890fe1cbe" },
   "friendly-snippets": { "branch": "main", "commit": "ea068f1becd91bcd4591fceb6420d4335e2e14d3" },
+  "focus.nvim": { "branch": "master", "commit": "3841a38df972534567e85840d7ead20d3a26faa6" },
   "fugit2.nvim": { "branch": "main", "commit": "e8b262d3f974a301b9efae98a571e6c9e635ab16" },
   "full_visual_line.nvim": { "branch": "master", "commit": "c6375ff50338ac6069aec99fb9adfaadc9174618" },
   "garbage-day.nvim": { "branch": "main", "commit": "3af496f0d1dc6586dcf4ceda6bbf61a8f820ab66" },
