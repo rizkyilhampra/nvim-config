@@ -6,7 +6,7 @@ return {
     },
     dependencies = {
         "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
+        "FelipeLema/cmp-async-path",
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-calc",
@@ -71,9 +71,9 @@ return {
             sources = cmp.config.sources({
                 { name = "nvim_lsp", priority = 1000 },
                 { name = "luasnip",  priority = 750 },
-                { name = "path",     priority = 250 },
                 { name = "buffer",   priority = 500 },
                 { name = "calc" }
+                { name = "async_path", priority = 250 },
             }),
             formatting = {
                 fields = { "kind", "abbr" },
