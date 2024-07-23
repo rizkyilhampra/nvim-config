@@ -1,6 +1,9 @@
 return {
     'nvim-focus/focus.nvim',
-    event = "BufWinEnter",
+    cmd = {
+        "FocusDisable",
+        "FocusEnable"
+    },
     version = false,
     opts = {
         ui = {
