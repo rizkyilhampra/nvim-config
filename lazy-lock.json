@@ -70,6 +70,7 @@
   "markview.nvim": { "branch": "main", "commit": "316cafc79490f8b79c288bbe6638838d6d68e227" },
   "nvim-rip-substitute": { "branch": "main", "commit": "d083affa058823c738efc85e293cbd201d5225e3" },
   "moody.nvim": { "branch": "main", "commit": "c3dd9d890686c8bbae0ec14f9cdf4a19acb4ac29" },
+  "no-neck-pain.nvim": { "branch": "main", "commit": "ecc584150f5c8a2a82f2e1d43201df0f65c63d0e" },
   "peek.nvim": { "branch": "master", "commit": "5820d937d5414baea5f586dc2a3d912a74636e5b" },
   "phpactor.nvim": { "branch": "main", "commit": "db250633e7b9f0e08cc7cce364de8b7adad4f6d2" },
   "phptools.nvim": { "branch": "main", "commit": "058f968315b7c4d8e89c10399de3330c10add8ca" },
