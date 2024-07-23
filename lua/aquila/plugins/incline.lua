@@ -1,7 +1,7 @@
 return {
     'b0o/incline.nvim',
-    event = 'BufReadPre',
-    enabled = false,
+    event = 'User BaseFile',
+    enabled = true,
     config = function()
         local helpers = require 'incline.helpers'
         local devicons = require 'nvim-web-devicons'
@@ -28,13 +28,15 @@ return {
                 return {
                     {
                         '',
-                        guibg = "NONE",
+                        guibg = nil,
                         guifg = ft_color,
                     },
-                    ft_icon and { '', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
+                    ft_icon and
+                    { ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) }
+                    or ' ',
                     {
                         ' ',
-                        guibg = require("tokyonight.util").darken(ft_color, 0.8),
+                        guibg = require("tokyonight.util").blend_bg(ft_color, 0.8),
                         guifg = helpers.contrast_color(ft_color),
                         {
                             filename,
