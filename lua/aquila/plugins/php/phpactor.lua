@@ -8,7 +8,6 @@ return {
             enabled = false,
         },
     },
-    cond = vim.fn.isdirectory("vendor") == 1,
     keys = {
         {
             '<Leader>Lp',
@@ -20,5 +19,8 @@ return {
         'nvim-lua/plenary.nvim',
         'neovim/nvim-lspconfig',
     },
+    cond = function()
+        return vim.fn.isdirectory("vendor") == 1
+    end,
     enabled = false
 }
