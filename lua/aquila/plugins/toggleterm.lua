@@ -21,7 +21,11 @@ return {
             }
         },
     },
-    keys = function()
+    config = function(_, opts)
+        require('toggleterm').setup(opts)
+
+        vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
         local Terminal        = require('toggleterm.terminal').Terminal
 
         local escape_keymap   = function(term)
@@ -120,54 +124,60 @@ return {
             end,
         })
 
-        return {
-            {
-                "<leader>tl",
-                function()
-                    lazygit:toggle()
-                end,
-                desc = "Toggle terminal as Lazygit"
-            },
-            {
-                "<Leader>tt",
-                function()
-                    cwd_term:toggle()
-                end,
-                desc = "Toggle terminal on cwd with floating"
-            },
-            {
-                "<Leader>tv",
-                function()
-                    horizontal_term:toggle()
-                end,
-                desc = "Toggle terminal on cwd with vertical"
-            },
-            {
-                "<Leader>ts",
-                function()
-                    lazysql:toggle()
-                end,
-                desc = "Toggle terminal as Lazysql"
-            },
-            {
-                "<Leader>td",
-                function()
-                    lazydocker:toggle()
-                end,
-                desc = "Toggle terminal as Lazydocker"
-            },
-            {
-                "<Leader>tS",
-                function()
-                    serpl:toggle()
-                end,
-                desc = "Toggle terminal as Serpl (Search and Replace)"
-            },
-        }
-    end,
-    config = function(_, opts)
-        require('toggleterm').setup(opts)
+        function _lazygit_toggle()
+            lazygit:toggle()
+        end
 
-        vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
-    end
+        function _lazysql_toggle()
+            lazysql:toggle()
+        end
+
+        function _lazydocker_toggle()
+            lazydocker:toggle()
+        end
+
+        function _serpl_toggle()
+            serpl:toggle()
+        end
+
+        function _cwd_term_toggle()
+            cwd_term:toggle()
+        end
+
+        function _horizontal_term_toggle()
+            horizontal_term:toggle()
+        end
+    end,
+    keys = {
+        {
+            "<leader>tl",
+            "<cmd>lua _lazygit_toggle()<CR>",
+            desc = "Toggle terminal as Lazygit"
+        },
+        {
+            "<Leader>tt",
+            "<cmd>lua _cwd_term_toggle()<CR>",
+            desc = "Toggle terminal on cwd with floating"
+        },
+        {
+            "<Leader>tv",
+            "<cmd>lua _horizontal_term_toggle()<CR>",
+            desc = "Toggle terminal on cwd with vertical"
+        },
+        {
+            "<Leader>ts",
+            "<cmd>lua _lazysql_toggle()<CR>",
+            desc = "Toggle terminal as Lazysql"
+        },
+        {
+            "<Leader>td",
+            "<cmd>lua _lazydocker_toggle()<CR>",
+            desc = "Toggle terminal as Lazydocker"
+        },
+        {
+            "<Leader>tS",
+            "<cmd>lua _serpl_toggle()<CR>",
+            desc = "Toggle terminal as Serpl (Search and Replace)"
+        },
+    }
 }
