@@ -1,8 +1,8 @@
 return {
     'wet-sandwich/hyper.nvim',
-    enabled = false,
     dependencies = { 'nvim-lua/plenary.nvim' },
+    cmd = "Hyper",
     keys = {
-        { '<leader>H', "lua require('hyper.view').show", description = 'Show Hyper' },
+        { '<leader>H', "<cmd>Hyper<CR>", desc = 'Show Hyper' },
     }
 }
