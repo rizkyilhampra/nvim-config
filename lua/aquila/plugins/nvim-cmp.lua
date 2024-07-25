@@ -12,6 +12,22 @@ return {
         { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets",
+        {
+            "petertriho/cmp-git",
+            opts = {
+                filetypes = { "gitcommit", "octo", "markdown" },
+            }
+        },
+        "SergioRibera/cmp-dotenv",
+        "hrsh7th/cmp-emoji",
+        "hrsh7th/cmp-nvim-lua",
+        "f3fora/cmp-spell",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            build = 'make'
+        },
+        "tzachar/fuzzy.nvim",
         "tzachar/cmp-fuzzy-buffer",
     },
     config = function()
@@ -71,28 +87,41 @@ return {
                 end, { 'i', 's' }),
             }),
             sources = cmp.config.sources({
-                { name = "nvim_lsp", priority = 1000 },
-                { name = "luasnip",  priority = 750 },
-                { name = "buffer",   priority = 500 },
-                { name = "calc" }
+                { name = "nvim_lsp",     priority = 1000 },
+                { name = "luasnip",      priority = 750 },
+                { name = 'fuzzy_buffer', priority = 500 },
+                { name = "async_path",   priority = 250 },
+                { name = "calc" },
+                { name = "git" },
+                { name = "dotenv",       option = { load_shell = false } },
                 {
-                    name = 'fuzzy_buffer',
-                    option = {
-                        get_bufnrs = function()
-                            local bufs = {}
-                            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-                                local buftype = vim.api.nvim_buf_get_option(buf, 'buftype')
-                                if buftype ~= 'nofile' and buftype ~= 'prompt' then
-                                    bufs[#bufs + 1] = buf
-                                end
-                            end
-
-                            return bufs
+                    name = "emoji",
+                    entry_filter = function()
+                        local allowed_filetypes = { "markdown", "gitcommit", "octo" }
+                        if not vim.tbl_contains(allowed_filetypes, vim.bo.filetype) then
+                            return false
                         end
-                    },
-                    priority = 500
+
+                        return true
+                    end,
                 },
-                { name = "async_path", priority = 250 },
+                {
+                    name = "spell",
+                    option = {
+                        preselect_correct_word = false,
+                    },
+                    priority = 300
+                },
+                { name = 'nvim_lsp_signature_help' },
+                {
+                    name = "nvim_lua",
+                    entry_filter = function()
+                        if vim.bo.filetype ~= "lua" then
+                            return false
+                        end
+                        return true
+                    end,
+                },
             }),
             formatting = {
                 fields = { "abbr", "kind", "menu" },
@@ -112,7 +141,7 @@ return {
             mapping = cmp.mapping.preset.cmdline(),
             sources = cmp.config.sources(
                 {
-                    { name = 'path' }
+                    { name = 'async_path' }
                 },
                 {
                     {
