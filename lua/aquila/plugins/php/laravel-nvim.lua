@@ -28,5 +28,5 @@ return {
     },
     config = true,
     cond = vim.fn.isdirectory("vendor") == 1,
-    lazy = true,
+    enabled = false
 }

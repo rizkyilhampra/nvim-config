@@ -47,4 +47,5 @@ return {
         ui = false, -- if you have stevearc/dressing.nvim or something similar keep it false or else true
     },
     config = true,
+    enabled = false
 }
