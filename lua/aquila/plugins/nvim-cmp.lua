@@ -5,7 +5,6 @@ return {
         "CmdlineEnter",
     },
     dependencies = {
-        "hrsh7th/cmp-buffer",
         "FelipeLema/cmp-async-path",
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp",
@@ -13,6 +12,7 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets",
+        "tzachar/cmp-fuzzy-buffer",
     },
     config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
@@ -75,6 +75,23 @@ return {
                 { name = "luasnip",  priority = 750 },
                 { name = "buffer",   priority = 500 },
                 { name = "calc" }
+                {
+                    name = 'fuzzy_buffer',
+                    option = {
+                        get_bufnrs = function()
+                            local bufs = {}
+                            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                                local buftype = vim.api.nvim_buf_get_option(buf, 'buftype')
+                                if buftype ~= 'nofile' and buftype ~= 'prompt' then
+                                    bufs[#bufs + 1] = buf
+                                end
+                            end
+
+                            return bufs
+                        end
+                    },
+                    priority = 500
+                },
                 { name = "async_path", priority = 250 },
             }),
             formatting = {
@@ -111,7 +128,7 @@ return {
         cmp.setup.cmdline("/", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
-                { name = "buffer" },
+                { name = 'fuzzy_buffer' },
             },
         })
     end,
