@@ -9,11 +9,6 @@ return {
             "<cmd>Neotree toggle<CR>",
             desc = "Toggle NeoTree"
         },
-        {
-            "<Leader>E",
-            "<cmd>Neotree reveal<CR>",
-            desc = "Reveal NeoTree"
-        }
     },
     dependencies = {
         "nvim-tree/nvim-web-devicons",
