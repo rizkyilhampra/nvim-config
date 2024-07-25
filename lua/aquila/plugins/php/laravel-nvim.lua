@@ -6,27 +6,34 @@ return {
         "MunifTanjim/nui.nvim",
         "nvimtools/none-ls.nvim",
     },
+    opts = {
+        features = {
+            null_ls = {
+                enable = false,
+            }
+        }
+    },
     cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
+    cond = function()
+        return vim.fn.isdirectory("vendor") == 1
+    end,
     keys = {
         {
             "<leader>Lla",
-            ":Laravel artisan<cr>",
+            "<cmd>Laravel artisan<cr>",
             desc = "List all artisan commands"
 
         },
         {
             "<leader>Llr",
-            ":Laravel routes<cr>",
+            "<cmd>Laravel routes<cr>",
             desc = "List all routes"
         },
         {
             "<leader>Llm",
-            ":Laravel related<cr>",
+            "<cmd>Laravel related<cr>",
             desc = "List all related files"
 
         },
     },
-    config = true,
-    cond = vim.fn.isdirectory("vendor") == 1,
-    enabled = false
 }
