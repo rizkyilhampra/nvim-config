@@ -62,11 +62,6 @@ vim.opt.undofile = true
 vim.opt.updatetime = 200
 vim.opt.autoread = true
 
--- required by which key plugin
-vim.opt.timeout = true
-vim.opt.timeoutlen = 300
-vim.opt.pumheight = 10
-
 vim.g.diagnostics_virtual_text = 1
 vim.g.inlay_hints_enabled = true
 vim.g.notifications_enabled = true
