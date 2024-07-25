@@ -5,4 +5,5 @@ return {
     },
     opts = {},
     ft = "markdown",
+    enabled = false
 }
