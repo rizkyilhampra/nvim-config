@@ -17,7 +17,8 @@ require("lazy").setup(
         { import = "aquila.plugins" },
         { import = "aquila.plugins.lsp" },
         { import = "aquila.plugins.telescope" },
-        { import = "aquila.plugins.php-development-needs" }
+        { import = "aquila.plugins.markdown" },
+        { import = "aquila.plugins.php" }
     },
     {
         install = {
@@ -26,6 +27,7 @@ require("lazy").setup(
         change_detection = {
             notify = true
         },
+        defaults = { lazy = true },
         performance = {
             rtp = {
                 -- disable some rtp plugins
