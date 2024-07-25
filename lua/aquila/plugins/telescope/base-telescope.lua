@@ -3,7 +3,8 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        "nvim-telescope/telescope-frecency.nvim",
+            "nvim-telescope/telescope-frecency.nvim",
+        "Myzel394/jsonfly.nvim",
     },
     opts = function()
         local actions = require('telescope.actions')
@@ -38,11 +39,18 @@ return {
         telescope.load_extension('fzf')
         telescope.load_extension("frecency")
         telescope.load_extension("neoclip")
+        telescope.load_extension('jsonfly')
 
         vim.api.nvim_set_hl(0, "TelescopePathSeparator", {})
     end,
     cmd = "Telescope",
     keys = {
+        {
+            "<Leader>fj",
+            "<cmd>Telescope jsonfly<CR>",
+            desc = "List of json files",
+            ft = "json",
+        },
         {
             "<Leader>fF",
             function()
