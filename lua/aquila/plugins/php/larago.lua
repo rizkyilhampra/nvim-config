@@ -3,13 +3,13 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim"
     },
-    cond = vim.fn.isdirectory("vendor") == 1,
-    lazy = true,
+    enabled = false,
+    ft = "blade",
     keys = {
         {
-            "<Leader>LG",
+            "<Leader>b",
             "<cmd>GoBlade<CR>",
-            desc = "Go to Blade file"
+            desc = "Go to blade component file",
         }
     }
 }
