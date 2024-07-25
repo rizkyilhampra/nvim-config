@@ -71,19 +71,12 @@ return {
                             row = "50%",
                             col = "50%",
                         },
-                        size = {
-                            min_width = 60,
-                            width = "auto",
-                            height = "auto",
-                        },
+                        -- size = {
+                        --     min_width = 60,
+                        --     width = "auto",
+                        --     height = "auto",
+                        -- },
                     },
-                    -- handle by cmp, see `popupmenu` opt above
-                    -- cmdline_popupmenu = {
-                    --     position = {
-                    --         row = "80%",
-                    --         col = "50%",
-                    --     },
-                    -- },
                 },
             },
         },
@@ -93,6 +86,12 @@ return {
                     winblend = 0,
                 },
             },
+            confirm = {
+                position = {
+                    row = "50%",
+                    col = "50%"
+                }
+            }
         },
         routes = {
             {
