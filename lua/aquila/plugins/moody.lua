@@ -1,5 +1,7 @@
 return {
     "svampkorg/moody.nvim",
     event = "User BaseDefered",
-    opts = {},
+    opts = {
+        disabled_filetypes = { "TelescopePrompt", "neo-tree", "neo-tree-popup" },
+    },
 }
