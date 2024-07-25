@@ -1,4 +1,7 @@
 return {
     'ricardoramirezr/blade-nav.nvim',
-    ft = { 'blade', 'php' } -- optional, improves startup time
+    dependencies = {
+        'hrsh7th/nvim-cmp',
+    },
+    ft = { 'blade', 'php' }
 }
