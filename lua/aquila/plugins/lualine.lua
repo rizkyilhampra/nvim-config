@@ -1,23 +1,25 @@
+local mode_map = {
+    n = "(ᴗ_ ᴗ。)",
+    nt = "(ᴗ_ ᴗ。)",
+    i = "(•̀ - •́ )",
+    R = "( •̯́ ₃ •̯̀)",
+    v = "(⊙ _ ⊙ )",
+    V = "(⊙ _ ⊙ )",
+    no = "Σ(°△°ꪱꪱꪱ)",
+    ["\22"] = "(⊙ _ ⊙ )",
+    t = "(⌐■_■)",
+    ['!'] = "Σ(°△°ꪱꪱꪱ)",
+    c = "Σ(°△°ꪱꪱꪱ)",
+    s = "SUB"
+}
+
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = {
-        'nvim-tree/nvim-web-devicons',
         "folke/noice.nvim",
     },
-    event = "VeryLazy",
-    init = function()
-        vim.g.lualine_laststatus = vim.o.laststatus
-        if vim.fn.argc(-1) > 0 then
-            -- set an empty statusline till lualine loads
-            vim.o.statusline = " "
-        else
-            -- hide the statusline on the starter page
-            vim.o.laststatus = 0
-        end
-    end,
+    event = "User BaseDefered",
     opts = function()
-        vim.o.laststatus = vim.g.lualine_laststatus
-
         return {
             options = {
                 disabled_filetypes = {
@@ -27,6 +29,7 @@ return {
                         "neo-tree-popup",
                         "TelescopePrompt",
                         "toggleterm",
+                        "minimap"
                     },
                 },
                 component_separators = '|',
@@ -37,14 +40,17 @@ return {
                 lualine_a = {
                     {
                         'mode',
+                        icons_enabled = true,
+                        separator = {
+                            right = ""
+                        },
                         fmt = function()
-                            return ''
-                        end,
+                            return mode_map[vim.api.nvim_get_mode().mode] or vim.api.nvim_get_mode().mode
+                        end
                     },
                 },
                 lualine_b = { { 'branch', icon = ' ' } },
                 lualine_c = {
-                    { 'grapple' },
                     {
                         'diff',
                         symbols = require('aquila.core.global').icons.git,
