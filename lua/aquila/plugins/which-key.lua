@@ -1,31 +1,20 @@
 return {
     "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {},
-    config = function()
-        require('which-key').register({
-            f = {
-                name = "+Fuzzy Find",
-                l = "LSP"
-            },
-            t = { name = "+Terminal" },
-            x = { name = "+Diagnostic" },
-            a = { name = "+Auto" },
-            c = {
-                name = "+Code",
-                a = "Actions"
-            },
-            g = {
-                name = "+Git",
-                h = "+Actions",
-                t = "+Text Object",
-                f = "+Fugitive2"
-            },
-            G = {
-                name = "+Grapple"
-            }
-        }, {
-            prefix = "<Leader>",
+    event = "User BaseDefered",
+    opts = {
+        disable = { ft = { "TelescopePrompt", "noice", "toggleterm" } },
+    },
+    config = function(_, opts)
+        require('which-key').setup(opts)
+
+        require('which-key').add({
+            { "<Leader>f",  group = "find/file" },
+            { "<Leader>fl", group = "lsp" },
+            { "<Leader>t",  group = "terminal" },
+            { "<Leader>x",  group = "diagnostic" },
+            { "<Leader>c",  group = "code" },
+            { "<Leader>g",  group = "git" },
+            { "<Leader>G",  group = "file tags" },
         })
     end
 }
