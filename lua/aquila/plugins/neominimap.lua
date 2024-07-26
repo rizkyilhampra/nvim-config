@@ -3,6 +3,9 @@ return {
     lazy = false,
     init = function()
         vim.g.neominimap = {
+            diagnostic = {
+                enabled = false
+            },
             auto_enable = true,
             z_index = 21,
             buf_filter = function(bufnr)
@@ -13,6 +16,7 @@ return {
             margin = {
                 top = 1,
             },
+            minimap_width = 15,
         }
     end
 }
