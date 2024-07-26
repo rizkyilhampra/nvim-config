@@ -3,7 +3,7 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-            "nvim-telescope/telescope-frecency.nvim",
+        "nvim-telescope/telescope-frecency.nvim",
         "Myzel394/jsonfly.nvim",
     },
     opts = function()
