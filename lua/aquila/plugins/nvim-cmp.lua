@@ -89,11 +89,26 @@ return {
             sources = cmp.config.sources({
                 { name = "nvim_lsp",     priority = 1000 },
                 { name = "luasnip",      priority = 750 },
-                { name = 'fuzzy_buffer', priority = 500 },
+                { name = 'fuzzy_buffer', priority = 500, max_item_count = 5 },
                 { name = "async_path",   priority = 250 },
                 { name = "calc" },
                 { name = "git" },
-                { name = "dotenv",       option = { load_shell = false } },
+                {
+                    name = "dotenv",
+                    option = { load_shell = false },
+                    entry_filter = function()
+                        -- if file is .env* or Dockerfile
+                        if vim.fn.match(vim.fn.expand('%:t'), 'Dockerfile') ~= -1 then
+                            return true
+                        end
+
+                        if vim.fn.match(vim.fn.expand('%:e'), 'env') ~= -1 then
+                            return true
+                        end
+
+                        return false
+                    end,
+                },
                 {
                     name = "emoji",
                     entry_filter = function()
@@ -110,7 +125,8 @@ return {
                     option = {
                         preselect_correct_word = false,
                     },
-                    priority = 300
+                    priority = 300,
+                    max_item_count = 2,
                 },
                 { name = 'nvim_lsp_signature_help' },
                 {
