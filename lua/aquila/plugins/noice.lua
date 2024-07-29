@@ -124,4 +124,24 @@ return {
             { filter = { event = "msg_show", find = "E211: File .* no longer available" }, skip = true },
         },
     },
+    config = function(_, opts)
+        require('noice').setup(opts)
+
+        local mode_get_component = {
+            require("noice").api.status.mode.get,
+            cond = require("noice").api.status.mode.has,
+            color = { fg = "#ff9e64" },
+        }
+
+        local mode_search_component = {
+            require("noice").api.status.search.get,
+            cond = require("noice").api.status.search.has,
+            color = { fg = "#ff9e64" },
+        }
+
+        local lualine_opts = require('aquila.core.utils').get_plugin_opts('lualine.nvim')
+
+        table.insert(lualine_opts.sections.lualine_x, 1, mode_get_component)
+        table.insert(lualine_opts.sections.lualine_x, 2, mode_search_component)
+    end
 }
