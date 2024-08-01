@@ -29,6 +29,7 @@ return {
         },
         "tzachar/fuzzy.nvim",
         "tzachar/cmp-fuzzy-buffer",
+        'hrsh7th/cmp-buffer',
     },
     config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
@@ -37,8 +38,25 @@ return {
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
         local utils = require('aquila.core.utils')
+        local compare = require('cmp.config.compare')
 
         cmp.setup({
+            sorting = {
+                priority_weight = 2,
+                comparators = {
+                    require('cmp_fuzzy_buffer.compare'),
+                    compare.offset,
+                    compare.exact,
+                    -- compare.scopes,
+                    compare.score,
+                    compare.recently_used,
+                    compare.locality,
+                    compare.kind,
+                    compare.sort_text,
+                    compare.length,
+                    compare.order,
+                }
+            },
             view = {
                 entries = {
                     follow_cursor = true
@@ -87,10 +105,10 @@ return {
                 end, { 'i', 's' }),
             }),
             sources = cmp.config.sources({
-                { name = "nvim_lsp",     priority = 1000 },
-                { name = "luasnip",      priority = 750 },
-                { name = 'fuzzy_buffer', priority = 500, max_item_count = 5 },
-                { name = "async_path",   priority = 250 },
+                { name = "nvim_lsp",   priority = 1000 },
+                { name = "luasnip",    priority = 750 },
+                { name = 'buffer',     priority = 500 },
+                { name = "async_path", priority = 250 },
                 { name = "calc" },
                 { name = "git" },
                 {
