@@ -26,7 +26,7 @@ vim.opt.smoothscroll = true
 
 vim.opt.cursorline = true
 vim.opt.scrolloff = 14
-vim.opt.sidescrolloff = 16
+vim.opt.sidescrolloff = 28
 vim.opt.confirm = true
 vim.opt.swapfile = false
 vim.opt.spell = true
@@ -56,11 +56,11 @@ vim.opt.splitright = true
 vim.opt.showmode = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
--- cause i use noice plugin this is not needed
--- vim.opt.cmdheight = 0
 
 vim.opt.updatetime = 200
 vim.opt.autoread = true
+
+vim.opt.pumheight = 10
 
 vim.g.diagnostics_virtual_text = 1
 vim.g.inlay_hints_enabled = true
