@@ -89,16 +89,6 @@ M.create('BufNew', {
     end,
 })
 
--- Better highlight on telescope, related with commands.lua
-M.create("FileType", {
-    pattern = "TelescopeResults",
-    callback = function(ctx)
-        vim.api.nvim_buf_call(ctx.buf, function()
-            vim.fn.matchadd("TelescopeParent", "\t\t.*$")
-            vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
-        end)
-    end,
-})
 
 -- NOTE: This is a workaround for the issue with the `commentstring` option. Will see if it's still needed when v0.10.0 is released
 -- M.create('FileType', {
