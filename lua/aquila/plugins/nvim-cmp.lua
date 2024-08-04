@@ -105,9 +105,26 @@ return {
                 end, { 'i', 's' }),
             }),
             sources = cmp.config.sources({
-                { name = "nvim_lsp",   priority = 1000 },
-                { name = "luasnip",    priority = 750 },
-                { name = 'buffer',     priority = 500 },
+                { name = "nvim_lsp", priority = 1000 },
+                { name = "luasnip",  priority = 750 },
+                {
+                    name = 'buffer',
+                    priority = 500,
+                    option = {
+                        -- fetch from all visible windows (not sure about multi-tab)
+                        -- https://github.com/hrsh7th/cmp-buffer?tab=readme-ov-file#get_bufnrs-type-fun-number
+                        get_bufnrs = function()
+                            local bufs = {}
+                            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                                bufs[vim.api.nvim_win_get_buf(win)] = true
+                            end
+                            return vim.tbl_keys(bufs)
+                        end,
+                        -- i think it's needed for non-ascii https://github.com/hrsh7th/cmp-buffer/issues/11
+                        keyword_pattern = [[\k\+]],
+                    }
+
+                },
                 { name = "async_path", priority = 250 },
                 { name = "calc" },
                 { name = "git" },
