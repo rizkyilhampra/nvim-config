@@ -1,6 +1,8 @@
 return {
     "Myzel394/jsonfly.nvim",
-    requires = "nvim-telescope/telescope.nvim",
+    dependencies = {
+        'nvim-telescope/telescope.nvim',
+    },
     config = function()
         require("telescope").load_extension "jsonfly"
     end,

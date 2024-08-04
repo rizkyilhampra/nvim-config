@@ -3,7 +3,6 @@ return {
     dependencies = {
         'nvim-telescope/telescope.nvim',
     },
-    lazy = true,
     keys = {
         {
             "<Leader>fc",

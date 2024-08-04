@@ -3,19 +3,18 @@ return {
     dependencies = {
         'nvim-telescope/telescope.nvim',
     },
-    lazy = true,
-    enabled = false,
     keys = {
         {
-            "<Leader><Space>",
+            "<Leader>f<Tab>",
             function()
                 require('telescope').extensions['recent-files'].recent_files(require('telescope.themes').get_dropdown({
-                    initial_mode = 'normal',
-                    find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-                    path_display = require('aquila.core.commands').filenameFirst,
+                    preview = {
+                        filesize_limit = 0.1, -- MB
+                    },
+                    path_display = { filename_first = { reverse_directories = false } },
                 }))
             end,
-            desc = "List recently opened files"
+            desc = "List recently opened files but combine with files in current directory"
         },
     },
     config = function()
