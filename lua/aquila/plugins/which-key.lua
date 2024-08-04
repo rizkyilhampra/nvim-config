@@ -3,6 +3,9 @@ return {
     event = "User BaseDefered",
     opts = {
         disable = { ft = { "TelescopePrompt", "noice", "toggleterm" } },
+        icons = {
+            mappings = false
+        }
     },
     config = function(_, opts)
         require('which-key').setup(opts)
