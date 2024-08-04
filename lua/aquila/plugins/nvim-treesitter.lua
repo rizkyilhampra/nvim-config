@@ -2,18 +2,22 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    event = require('aquila.core.global').event.LazyFile,
+    init = function(plugin)
+        -- perf: make treesitter queries available at startup.
+        require("lazy.core.loader").add_to_rtp(plugin)
+        require("nvim-treesitter.query_predicates")
+    end,
     dependencies = {
-        "nvim-treesitter/nvim-treesitter-textobjects",
         "nvim-treesitter/nvim-treesitter-context",
+        keys = {
+            {
+                "<Leader>ct",
+                ':TSContextToggle<CR>',
+                desc = "Toggle treesitter context"
+            }
+        },
     },
-    keys = {
-        {
-            "<Leader>ct",
-            ':TSContextToggle<CR>',
-            desc = "Toggle treesitter context"
-        }
-    },
+    event = "User BaseDefered",
     config = function()
         require("nvim-treesitter.configs").setup({
             ensure_installed = {
@@ -66,7 +70,8 @@ return {
                 ['.*%.neon%.dist'] = 'yaml',
                 ['.*/waybar/config'] = 'jsonc',
                 ['.*/kitty/*.conf'] = 'bash',
-                ['.*/hypr/.*%.conf'] = 'hyprlang'
+                ['.*/hypr/.*%.conf'] = 'hyprlang',
+                ['.*%.http%'] = 'http',
             },
         })
     end
