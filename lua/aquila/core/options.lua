@@ -65,5 +65,5 @@ vim.opt.pumheight = 10
 vim.g.diagnostics_virtual_text = 1
 vim.g.inlay_hints_enabled = true
 vim.g.notifications_enabled = true
-
 vim.g.default_colorscheme = "tokyonight"
+vim.g.transparent_mode = true
