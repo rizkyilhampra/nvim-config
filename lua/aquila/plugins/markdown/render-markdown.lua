@@ -1,13 +1,10 @@
 return {
-    'MeanderingProgrammer/markdown.nvim',
-    main = "render-markdown",
-    name = 'render-markdown',
+    'MeanderingProgrammer/render-markdown.nvim',
     dependencies = {
         'nvim-treesitter/nvim-treesitter',
         'nvim-tree/nvim-web-devicons',
     },
     ft = 'markdown',
-    enabled = true,
-    cmd = "RenderMarkdown",
+    enabled = vim.g.markdown_render == 'render-markdown',
     opts = {}
 }
