@@ -1,5 +1,5 @@
 return {
     'mei28/luminate.nvim',
-    event = "User BaseFile",
+    event = "User BaseDefered",
     opts = {}
 }
