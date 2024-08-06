@@ -1,7 +1,7 @@
 return {
     'rmagatti/goto-preview',
-    enabled = false,
-    event = 'BufRead',
+    enabled = true,
+    event = 'User BaseFile',
     config = function()
         require('goto-preview').setup({
             width = 80,
