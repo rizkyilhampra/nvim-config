@@ -1,5 +1,5 @@
 return {
     'nvimdev/hlsearch.nvim',
-    event = 'User BaseFile',
+    event = { "BufRead", "BufNewFile" },
     opts = {}
 }
