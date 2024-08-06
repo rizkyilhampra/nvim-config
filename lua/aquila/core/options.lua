@@ -26,7 +26,7 @@ vim.opt.smoothscroll = true
 
 vim.opt.cursorline = true
 vim.opt.scrolloff = 14
-vim.opt.sidescrolloff = 28
+vim.opt.sidescrolloff = 36
 vim.opt.confirm = true
 vim.opt.swapfile = false
 vim.opt.spell = true
@@ -67,3 +67,4 @@ vim.g.inlay_hints_enabled = true
 vim.g.notifications_enabled = true
 vim.g.default_colorscheme = "tokyonight"
 vim.g.transparent_mode = true
+vim.g.markdown_render = "render-markdown"  -- "markview" or "render-markdown"
