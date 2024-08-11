@@ -4,7 +4,7 @@
   "better-escape.nvim": { "branch": "master", "commit": "d337e02b140d909345441392de47a42d283747c1" },
   "blade-nav.nvim": { "branch": "main", "commit": "56c1538a093688a5a24ade3c1bcf7b0e3a15eee9" },
   "blame.nvim": { "branch": "main", "commit": "dedbcdce857f708c63f261287ac7491a893912d0" },
-  "catppuccin": { "branch": "main", "commit": "153ae7c6f609890a8664dc8c6a2d50151238ca6e" },
+  "catppuccin": { "branch": "main", "commit": "bfdd6b3833e991fa45c3d5931ffed853dca60fab" },
   "cd-project.nvim": { "branch": "main", "commit": "1b3f702bfe94476b8f05a76b0336442b2e0aeedb" },
   "cmp-async-path": { "branch": "main", "commit": "9d581eec5acf812316913565c135b0d1ee2c9a71" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
