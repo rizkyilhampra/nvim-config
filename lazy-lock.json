@@ -102,7 +102,7 @@
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "97b8238fb6f1dd2b7d4168ee10457c277c9e6ee3" },
   "render-markdown.nvim": { "branch": "main", "commit": "aff8d09a199b263f2373c842057c87b76369084f" },
   "satellite.nvim": { "branch": "main", "commit": "777ed56e1ef45ec808df701730b6597fc4fb0fbc" },
-  "screenkey.nvim": { "branch": "main", "commit": "75cb5603fc991c05222bef257921c98702df84c3" },
+  "screenkey.nvim": { "branch": "main", "commit": "0ecdfb52d4572e280d0015f1b69dbb6ffe218a80" },
   "scrollEOF.nvim": { "branch": "master", "commit": "38fd5880021e90c15dc61fa325f714bd8077f0a6" },
   "snipe.nvim": { "branch": "main", "commit": "854a47c970413405361487c13e2b1e9aa9a3696e" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
