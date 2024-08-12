@@ -1,5 +1,14 @@
 return {
     "luckasRanarison/tailwind-tools.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    opts = {} -- your configuration
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-telescope/telescope.nvim",
+    },
+    opts = {
+        conceal = {
+            enabled = true
+        }
+    }
 }
