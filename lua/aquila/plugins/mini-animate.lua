@@ -1,6 +1,6 @@
 return {
     'echasnovski/mini.animate',
-    event = "User BaseFile",
+    event = "User BaseDefered",
     version = false,
     opts = function()
         -- don't use animate when scrolling with the mouse
@@ -21,7 +21,7 @@ return {
             },
             close = { enable = false },
             scroll = {
-                timing = animate.gen_timing.linear { duration = 26, unit = "total" },
+                timing = animate.gen_timing.linear { duration = 40, unit = "total" },
                 subscroll = animate.gen_subscroll.equal {
                     predicate = function(total_scroll)
                         if mouse_scrolled then
@@ -34,7 +34,6 @@ return {
             },
             cursor = {
                 enable = false, -- We don't want cursor ghosting
-                timing = animate.gen_timing.linear { duration = 26, unit = "total" },
             },
         }
     end,
