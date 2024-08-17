@@ -17,6 +17,13 @@ return {
                 top = 1,
             },
             minimap_width = 15,
+            search = {
+                enabled = true
+
+            },
+            click = {
+                enabled = true,
+            }
         }
     end
 }
