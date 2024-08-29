@@ -26,6 +26,7 @@ return {
             extensions = {
                 frecency = {
                     show_filter_column = false,
+                    auto_validate = true
                 }
             }
         }
