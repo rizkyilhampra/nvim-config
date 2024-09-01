@@ -49,7 +49,7 @@
   "incline.nvim": { "branch": "main", "commit": "16fc9c073e3ea4175b66ad94375df6d73fc114c0" },
   "indent-blankline.nvim": { "branch": "master", "commit": "db926997af951da38e5004ec7b9fbdc480b48f5d" },
   "jsonfly.nvim": { "branch": "main", "commit": "4d22028b13513f14f0739d3833b2dfca7a6c7aef" },
-  "kulala.nvim": { "branch": "main", "commit": "7649576ca459146658b4c415d1a320bbedc3f564" },
+  "kulala.nvim": { "branch": "main", "commit": "db0b3cc8b62b22bef3f19b087946f9fdf884a197" },
   "larago.nvim": { "branch": "master", "commit": "8bfaf6c85d6e088bec9c5d8b94c8d5495895b2dc" },
   "laravel.nvim": { "branch": "main", "commit": "bd2d8cf68ae09556a07dec014384aa6e15709938" },
   "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
