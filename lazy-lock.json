@@ -33,7 +33,7 @@
   "focus.nvim": { "branch": "master", "commit": "3841a38df972534567e85840d7ead20d3a26faa6" },
   "friendly-snippets": { "branch": "main", "commit": "00ebcaa159e817150bd83bfe2d51fa3b3377d5c4" },
   "fugit2.nvim": { "branch": "main", "commit": "e5eaed1ec9c210e43d75d47822de3800f02465ca" },
-  "full_visual_line.nvim": { "branch": "master", "commit": "c6375ff50338ac6069aec99fb9adfaadc9174618" },
+  "full_visual_line.nvim": { "branch": "master", "commit": "4cf9977388e09d876ae59ae32b303cdd3e100ae4" },
   "fuzzy.nvim": { "branch": "master", "commit": "68608f6a232f7e73ccf81437bf12108128f15bd4" },
   "garbage-day.nvim": { "branch": "main", "commit": "4a1160bfffb2f499fb55a54333f29d160ab3c8a1" },
   "gitgraph.nvim": { "branch": "main", "commit": "01e466b32c346a165135dd47d42f1244eca06572" },
