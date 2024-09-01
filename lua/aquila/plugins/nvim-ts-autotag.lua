@@ -1,10 +1,9 @@
 return {
     "windwp/nvim-ts-autotag",
-    -- event = "User BaseFile",
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
     },
-    ft = { "blade", "html", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    event = "InsertEnter",
     opts = {
         opts = {
             enable_close = true,
