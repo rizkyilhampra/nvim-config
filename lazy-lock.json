@@ -37,7 +37,7 @@
   "fuzzy.nvim": { "branch": "master", "commit": "68608f6a232f7e73ccf81437bf12108128f15bd4" },
   "garbage-day.nvim": { "branch": "main", "commit": "4a1160bfffb2f499fb55a54333f29d160ab3c8a1" },
   "gitgraph.nvim": { "branch": "main", "commit": "01e466b32c346a165135dd47d42f1244eca06572" },
-  "gitsigns.nvim": { "branch": "main", "commit": "562dc47189ad3c8696dbf460d38603a74d544849" },
+  "gitsigns.nvim": { "branch": "main", "commit": "899e993850084ea33d001ec229d237bc020c19ae" },
   "goto-preview": { "branch": "main", "commit": "1519ea3512828c944eed5b2bbb66a8f8deb92447" },
   "grapple.nvim": { "branch": "main", "commit": "7aedc261b05a6c030397c4bc26416efbe746ebf1" },
   "guess-indent.nvim": { "branch": "main", "commit": "6cd61f7a600bb756e558627cd2e740302c58e32d" },
