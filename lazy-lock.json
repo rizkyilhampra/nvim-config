@@ -88,7 +88,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "3ad562700d0615818bf358268ac8914f6ce2b079" },
   "nvim-neoclip.lua": { "branch": "main", "commit": "709c97fabec9da7d04f7d2f5e207423af8c02871" },
   "nvim-notify": { "branch": "master", "commit": "d333b6f167900f6d9d42a59005d82919830626bf" },
-  "nvim-rip-substitute": { "branch": "main", "commit": "49d535cccd5a2795aae9f2bef884e79ac98fc62d" },
+  "nvim-rip-substitute": { "branch": "main", "commit": "4e5ed58d74d210b853255e3d1a4ab6410f3007b5" },
   "nvim-tinygit": { "branch": "main", "commit": "f0d105d133875e9ea5d8fb7a628da29d26f9bff1" },
   "nvim-treesitter": { "branch": "master", "commit": "04401b5dd17c3419dae5141677bd256f52d54733" },
   "nvim-treesitter-context": { "branch": "master", "commit": "0f3332788e0bd37716fbd25f39120dcfd557c90f" },
