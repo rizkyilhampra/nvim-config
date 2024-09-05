@@ -1,6 +1,6 @@
 return {
     "kevinhwang91/nvim-ufo",
-    event = require('aquila.core.global').event.LazyFile,
+    event = "User BaseFile",
     dependencies = {
         "kevinhwang91/promise-async",
     },
@@ -53,9 +53,7 @@ return {
 
         return {
             close_fold_kinds_for_ft = {
-                default = {
-                    'imports', 'comment'
-                }
+                default = {}
             },
             preview = {
                 win_config = {
