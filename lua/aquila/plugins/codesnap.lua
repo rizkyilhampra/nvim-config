@@ -5,7 +5,8 @@ return {
     config = function()
         require("codesnap").setup({
             watermark = "",
-            editor_font_familiy = "GeistMono Nerd Font"
+            editor_font_familiy = "Iosevka Expanded",
+            bg_padding = 0
         })
     end
 }
