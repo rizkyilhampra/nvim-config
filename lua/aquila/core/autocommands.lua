@@ -226,6 +226,19 @@ M.create('WinEnter', {
     desc = 'Disable focus autoresize for BufType',
 })
 
+M.create('CmdlineLeave', {
+    pattern = ':*',
+    group = vim.api.nvim_create_augroup('AutoMarkOnJump', { clear = true }),
+    callback = function()
+        local cmd = vim.fn.getcmdline()
+        if tonumber(cmd) ~= nil then
+            vim.cmd('normal! m`')
+        end
+    end,
+    desc = 'Mark jump position after jump',
+})
+
+
 M.create('FileType', {
     group = focusDisable,
     callback = function(_)
