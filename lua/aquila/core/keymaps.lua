@@ -8,11 +8,12 @@ set("n", "$", "g_", { noremap = true, silent = true })
 vim.keymap.set('n', 'j', [[(v:count > 1 ? 'm`' . v:count : 'g') . 'j']], { expr = true })
 vim.keymap.set('n', 'k', [[(v:count > 1 ? 'm`' . v:count : 'g') . 'k']], { expr = true })
 
-set("i", "jj", "<Esc>", { noremap = true, silent = true })
--- i love windows behavior for saving a file
 -- TODO: Maybe hook with surround plugin 
 set("i", "<M-S-h>", "<ESC>ha<Space>")
 set("i", "<M-S-l>", "<ESC>la<Space>")
+
+-- set("i", "jj", "<Esc>", { noremap = true, silent = true }) -- replaced by better-escape
+
 set({ 'i', 'n' }, "<C-s>", '<cmd>w<CR>')
 
 -- fix problem when below keymap will exit neovim
