@@ -113,8 +113,6 @@ return {
                     name = 'buffer',
                     priority = 500,
                     option = {
-                        -- fetch from all visible windows (not sure about multi-tab)
-                        -- https://github.com/hrsh7th/cmp-buffer?tab=readme-ov-file#get_bufnrs-type-fun-number
                         get_bufnrs = function()
                             local bufs = {}
                             for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -122,7 +120,6 @@ return {
                             end
                             return vim.tbl_keys(bufs)
                         end,
-                        -- i think it's needed for non-ascii https://github.com/hrsh7th/cmp-buffer/issues/11
                         keyword_pattern = [[\k\+]],
                     }
 
