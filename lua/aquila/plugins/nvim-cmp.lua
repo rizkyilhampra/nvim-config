@@ -126,7 +126,17 @@ return {
                 },
                 { name = "async_path", priority = 250 },
                 { name = "calc" },
-                { name = "git" },
+                {
+                    name = "git",
+                    entry_filter = function()
+                        local allowed_filetypes = { "gitcommit", "octo", "markdown" }
+                        if not vim.tbl_contains(allowed_filetypes, vim.bo.filetype) then
+                            return false
+                        end
+
+                        return true
+                    end,
+                },
                 {
                     name = "dotenv",
                     option = { load_shell = false },
