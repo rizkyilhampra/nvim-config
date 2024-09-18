@@ -10,6 +10,9 @@ vim.keymap.set('n', 'k', [[(v:count > 1 ? 'm`' . v:count : 'g') . 'k']], { expr 
 
 set("i", "jj", "<Esc>", { noremap = true, silent = true })
 -- i love windows behavior for saving a file
+-- TODO: Maybe hook with surround plugin 
+set("i", "<M-S-h>", "<ESC>ha<Space>")
+set("i", "<M-S-l>", "<ESC>la<Space>")
 set({ 'i', 'n' }, "<C-s>", '<cmd>w<CR>')
 
 -- fix problem when below keymap will exit neovim
