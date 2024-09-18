@@ -1,5 +1,5 @@
 return {
-    "yioneko/nvim-cmp",      --TODO: remove after https://github.com/hrsh7th/nvim-cmp/pull/1980 is closed
+    "yioneko/nvim-cmp", --TODO: remove after https://github.com/hrsh7th/nvim-cmp/pull/1980 is closed
     branch = "perf-up",
     event = {
         "InsertEnter",
@@ -48,7 +48,6 @@ return {
                     require('cmp_fuzzy_buffer.compare'),
                     compare.offset,
                     compare.exact,
-                    -- compare.scopes,
                     compare.score,
                     compare.recently_used,
                     compare.locality,
