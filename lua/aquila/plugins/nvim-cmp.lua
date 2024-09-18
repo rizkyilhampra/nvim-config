@@ -29,8 +29,7 @@ return {
             build = 'make'
         },
         "tzachar/fuzzy.nvim",
-        "tzachar/cmp-fuzzy-buffer",
-        'hrsh7th/cmp-buffer',
+        "tzachar/cmp-fuzzy-buffer", -- replace of 'hrsh7th/cmp-buffer'
         "luckasRanarison/tailwind-tools.nvim",
     },
     config = function()
@@ -110,7 +109,7 @@ return {
                 { name = "nvim_lsp", priority = 1000 },
                 { name = "luasnip",  priority = 750 },
                 {
-                    name = 'buffer',
+                    name = 'fuzzy_buffer',
                     priority = 500,
                     option = {
                         get_bufnrs = function()
@@ -121,6 +120,7 @@ return {
                             return vim.tbl_keys(bufs)
                         end,
                         keyword_pattern = [[\k\+]],
+                        max_matches = 5,
                     }
 
                 },
