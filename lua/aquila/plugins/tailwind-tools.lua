@@ -8,7 +8,7 @@ return {
     },
     opts = {
         conceal = {
-            enabled = true
+            enabled = false
         }
     }
 }
