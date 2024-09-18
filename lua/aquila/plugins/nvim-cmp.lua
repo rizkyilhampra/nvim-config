@@ -141,17 +141,11 @@ return {
                     name = "dotenv",
                     option = { load_shell = false },
                     entry_filter = function()
-                        -- if file is .env* or Dockerfile
-                        if vim.fn.match(vim.fn.expand('%:t'), 'Dockerfile') ~= -1 then
-                            return true
-                        end
+                        local filename = vim.fn.expand('%:t')
+                        local extension = vim.fn.expand('%:e')
 
-                        if vim.fn.match(vim.fn.expand('%:e'), 'env') ~= -1 then
-                            return true
-                        end
-
-                        return false
-                    end,
+                        return filename == 'Dockerfile' or extension:match('^env') ~= nil
+                    end
                 },
                 {
                     name = "emoji",
