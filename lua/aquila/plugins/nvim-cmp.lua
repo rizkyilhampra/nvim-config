@@ -31,6 +31,7 @@ return {
         "tzachar/fuzzy.nvim",
         "tzachar/cmp-fuzzy-buffer",
         'hrsh7th/cmp-buffer',
+        "luckasRanarison/tailwind-tools.nvim",
     },
     config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
@@ -180,12 +181,23 @@ return {
                 format = function(entry, item)
                     local kind = lspkind.cmp_format(utils.get_plugin_opts('lspkind.nvim'))(entry, item)
                     local strings = vim.split(kind.kind, "%s", { trimempty = true })
-
                     kind.kind = " " .. (strings[1] or "") .. " "
                     kind.menu = (strings[3] or "")
 
+                    local doc = entry.completion_item.documentation
+                    if item.kind == "Color" and doc then
+                        local content = type(doc) == "string" and doc or doc.value
+                        local config = require('tailwind-tools.config')
+                        local tailwind_tools_utils = require('tailwind-tools.utils')
+                        local r, g, b = tailwind_tools_utils.extract_color(content)
+                        local style = config.options.cmp.highlight
+                        if r then
+                            kind.kind_hl_group = tailwind_tools_utils.set_hl_from(r, g, b, style)
+                        end
+                    end
+
                     return kind
-                end,
+                end
             },
         })
 
