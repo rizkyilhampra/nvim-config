@@ -1,5 +1,6 @@
 return {
-    "hrsh7th/nvim-cmp",
+    "yioneko/nvim-cmp",      --TODO: remove after https://github.com/hrsh7th/nvim-cmp/pull/1980 is closed
+    branch = "perf-up",
     event = {
         "InsertEnter",
         "CmdlineEnter",
