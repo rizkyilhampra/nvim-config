@@ -110,7 +110,7 @@
   "statuscol.nvim": { "branch": "main", "commit": "1022f922b77b44c36f8057ac29adbfd89ce86958" },
   "suda.vim": { "branch": "master", "commit": "b97fab52f9cdeabe2bbb5eb98d82356899f30829" },
   "tailwind-tools": { "branch": "master", "commit": "41e901e7b4470082b5388b8385249632642c2510" },
-  "telescope-frecency.nvim": { "branch": "master", "commit": "03ebefef8813d412b916bb6a250b697e9b25b260" },
+  "telescope-frecency.nvim": { "branch": "master", "commit": "f67baca08423a6fd00167801a54db38e0b878063" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope-git-file-history.nvim": { "branch": "master", "commit": "f94fab1d5a51fa28dd95b1a6bd377505dc1a8e82" },
   "telescope-http.nvim": { "branch": "main", "commit": "f602cc80b590cabaf442328a73e8b9352506df49" },
