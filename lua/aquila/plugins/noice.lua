@@ -117,6 +117,7 @@ return {
                         { find = "%d+L, %d+B" },
                         { find = "; after #%d+" },
                         { find = "; before #%d+" },
+                        { find = "Agent service not initialized." } --TODO: Caused by wakatime, let's see until next update
                     },
                 },
             },
