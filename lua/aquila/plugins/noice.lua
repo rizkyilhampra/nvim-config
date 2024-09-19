@@ -2,7 +2,6 @@ return {
     "folke/noice.nvim",
     event = "User BaseDefered",
     cmd = "Noice",
-    commit = "d9328ef903168b6f52385a751eb384ae7e906c6f",
     dependencies = {
         "MunifTanjim/nui.nvim",
     },
