@@ -8,14 +8,17 @@ return {
         require("nvim-treesitter.query_predicates")
     end,
     dependencies = {
-        "nvim-treesitter/nvim-treesitter-context",
-        keys = {
-            {
-                "<Leader>ct",
-                ':TSContextToggle<CR>',
-                desc = "Toggle treesitter context"
-            }
-        },
+        {
+            "nvim-treesitter/nvim-treesitter-context",
+            keys = {
+                {
+                    "<Leader>ct",
+                    ':TSContextToggle<CR>',
+                    desc = "Toggle treesitter context"
+                }
+            },
+
+        }
     },
     event = "User BaseDefered",
     config = function()
