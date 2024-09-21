@@ -156,13 +156,15 @@ return {
                     kind.menu = (strings[3] or "")
 
                     local doc = entry.completion_item.documentation
-                    if item.kind == "Color" and doc then
+                    if kind.menu == "Color" and doc then
                         local content = type(doc) == "string" and doc or doc.value
                         local config = require('tailwind-tools.config')
                         local tailwind_tools_utils = require('tailwind-tools.utils')
                         local r, g, b = tailwind_tools_utils.extract_color(content)
                         local style = config.options.cmp.highlight
+
                         if r then
+                            kind.kind = "  "
                             kind.kind_hl_group = tailwind_tools_utils.set_hl_from(r, g, b, style)
                         end
                     end

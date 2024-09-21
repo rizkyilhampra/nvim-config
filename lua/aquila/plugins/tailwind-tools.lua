@@ -8,7 +8,10 @@ return {
     },
     opts = {
         conceal = {
-            enabled = false
-        }
+            enabled = false,
+        },
+        cmp = {
+            highlight = "background",
+        },
     }
 }
