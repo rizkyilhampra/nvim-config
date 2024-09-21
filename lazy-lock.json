@@ -80,6 +80,7 @@
   "none-ls-extras.nvim": { "branch": "main", "commit": "ebb09961f1c0a377f9ed1685740cdf87b5cd39a8" },
   "none-ls.nvim": { "branch": "main", "commit": "9b98991e15dce8fc502993e23caac2528b8b667f" },
   "nui.nvim": { "branch": "main", "commit": "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f" },
+  "nvim-autopairs": { "branch": "master", "commit": "f158dcb865c36f72c92358f87787dab2c272eaf3" },
   "nvim-cmp": { "branch": "perf-up", "commit": "a475d8b8b282fda2d18f9fbdebba401b405cfecd" },
   "nvim-lsp-file-operations": { "branch": "master", "commit": "92a673de7ecaa157dd230d0128def10beb56d103" },
   "nvim-lspconfig": { "branch": "master", "commit": "b064131428f6bbbbc905f4451ba6779fda334a3a" },
