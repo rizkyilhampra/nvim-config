@@ -26,7 +26,7 @@ return {
                 "lua_ls",
                 "cssls",
                 "html",
-                "tsserver",
+                "vtsls",
                 "emmet_ls",
                 "bashls",
                 "marksman",
