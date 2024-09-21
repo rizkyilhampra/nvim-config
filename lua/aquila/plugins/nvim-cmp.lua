@@ -28,8 +28,7 @@ return {
             'nvim-telescope/telescope-fzf-native.nvim',
             build = 'make'
         },
-        "tzachar/fuzzy.nvim",
-        "tzachar/cmp-fuzzy-buffer", -- replace of 'hrsh7th/cmp-buffer'
+        "hrsh7th/cmp-buffer",
         "luckasRanarison/tailwind-tools.nvim",
     },
     config = function()
@@ -39,23 +38,10 @@ return {
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
         local utils = require('aquila.core.utils')
-        local compare = require('cmp.config.compare')
 
         cmp.setup({
             sorting = {
                 priority_weight = 2,
-                comparators = {
-                    require('cmp_fuzzy_buffer.compare'),
-                    compare.offset,
-                    compare.exact,
-                    compare.score,
-                    compare.recently_used,
-                    compare.locality,
-                    compare.kind,
-                    compare.sort_text,
-                    compare.length,
-                    compare.order,
-                }
             },
             view = {
                 entries = {
@@ -105,24 +91,9 @@ return {
                 end, { 'i', 's' }),
             }),
             sources = cmp.config.sources({
-                { name = "nvim_lsp", priority = 1000 },
-                { name = "luasnip",  priority = 750 },
-                {
-                    name = 'fuzzy_buffer',
-                    priority = 500,
-                    option = {
-                        get_bufnrs = function()
-                            local bufs = {}
-                            for _, win in ipairs(vim.api.nvim_list_wins()) do
-                                bufs[vim.api.nvim_win_get_buf(win)] = true
-                            end
-                            return vim.tbl_keys(bufs)
-                        end,
-                        keyword_pattern = [[\k\+]],
-                        max_matches = 5,
-                    }
-
-                },
+                { name = "nvim_lsp",   priority = 1000 },
+                { name = "luasnip",    priority = 750 },
+                { name = 'buffer',     priority = 500, },
                 { name = "async_path", priority = 250 },
                 { name = "calc" },
                 {
@@ -221,7 +192,7 @@ return {
         cmp.setup.cmdline("/", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
-                { name = 'fuzzy_buffer' },
+                { name = 'buffer' },
             },
         })
     end,
