@@ -10,8 +10,5 @@ return {
         conceal = {
             enabled = false,
         },
-        cmp = {
-            highlight = "background",
-        },
     }
 }

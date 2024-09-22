@@ -16,18 +16,10 @@ return {
         {
             "petertriho/cmp-git",
             opts = {
-                filetypes = { "gitcommit", "octo", "markdown" },
+                filetypes = { "gitcommit", "markdown" },
             }
         },
-        "SergioRibera/cmp-dotenv",
-        "hrsh7th/cmp-emoji",
-        "hrsh7th/cmp-nvim-lua",
         "f3fora/cmp-spell",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
-        {
-            'nvim-telescope/telescope-fzf-native.nvim',
-            build = 'make'
-        },
         "hrsh7th/cmp-buffer",
         "luckasRanarison/tailwind-tools.nvim",
     },
@@ -99,28 +91,7 @@ return {
                 {
                     name = "git",
                     entry_filter = function()
-                        local allowed_filetypes = { "gitcommit", "octo", "markdown" }
-                        if not vim.tbl_contains(allowed_filetypes, vim.bo.filetype) then
-                            return false
-                        end
-
-                        return true
-                    end,
-                },
-                {
-                    name = "dotenv",
-                    option = { load_shell = false },
-                    entry_filter = function()
-                        local filename = vim.fn.expand('%:t')
-                        local extension = vim.fn.expand('%:e')
-
-                        return filename == 'Dockerfile' or extension:match('^env') ~= nil
-                    end
-                },
-                {
-                    name = "emoji",
-                    entry_filter = function()
-                        local allowed_filetypes = { "markdown", "gitcommit", "octo" }
+                        local allowed_filetypes = { "gitcommit", "markdown" }
                         if not vim.tbl_contains(allowed_filetypes, vim.bo.filetype) then
                             return false
                         end
@@ -134,17 +105,7 @@ return {
                         preselect_correct_word = false,
                     },
                     priority = 300,
-                    max_item_count = 2,
-                },
-                { name = 'nvim_lsp_signature_help' },
-                {
-                    name = "nvim_lua",
-                    entry_filter = function()
-                        if vim.bo.filetype ~= "lua" then
-                            return false
-                        end
-                        return true
-                    end,
+                    max_item_count = 3,
                 },
             }),
             formatting = {
@@ -164,7 +125,6 @@ return {
                         local style = config.options.cmp.highlight
 
                         if r then
-                            kind.kind = "  "
                             kind.kind_hl_group = tailwind_tools_utils.set_hl_from(r, g, b, style)
                         end
                     end
