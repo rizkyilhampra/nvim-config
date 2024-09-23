@@ -159,7 +159,33 @@ return {
         {
             "<leader>fh",
             function()
-                require('telescope.builtin').help_tags()
+                require('telescope.builtin').help_tags({
+                    attach_mappings = function(prompt_bufnr)
+                        local actions = require('telescope.actions')
+                        local action_state = require('telescope.actions.state')
+                        local action_set = require('telescope.actions.set')
+                        local utils = require('telescope.utils')
+
+                        action_set.select:replace(function(_, cmd)
+                            local selection = action_state.get_selected_entry()
+                            if selection == nil then
+                                utils.__warn_no_selection "builtin.help_tags"
+                                return
+                            end
+
+                            actions.close(prompt_bufnr)
+                            if cmd == "default" or cmd == "horizontal" then
+                                vim.cmd("FloatingHelp " .. selection.value)
+                            elseif cmd == "vertical" then
+                                vim.cmd("vert help " .. selection.value)
+                            elseif cmd == "tab" then
+                                vim.cmd("tab help " .. selection.value)
+                            end
+                        end)
+
+                        return true
+                    end,
+                })
             end,
             desc = "List of help tags"
 
