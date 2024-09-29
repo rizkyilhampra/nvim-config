@@ -34,16 +34,15 @@ M.create("BufEnter", {
     desc = "Disable New Line Comment",
 })
 
--- NOTE: Replace by Grapple.nvim plugin
--- M.create("BufReadPost", {
---     callback = function()
---         local mark = vim.api.nvim_buf_get_mark(0, '"')
---         if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(0) then
---             vim.api.nvim_win_set_cursor(0, mark)
---         end
---     end,
---     desc = "Restore cursor position",
--- })
+M.create("BufReadPost", {
+    callback = function()
+        local mark = vim.api.nvim_buf_get_mark(0, '"')
+        if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(0) then
+            vim.api.nvim_win_set_cursor(0, mark)
+        end
+    end,
+    desc = "Restore cursor position",
+})
 
 M.create("BufReadPost", {
     once = true,
