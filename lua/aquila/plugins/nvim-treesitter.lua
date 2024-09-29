@@ -2,11 +2,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    init = function(plugin)
-        -- perf: make treesitter queries available at startup.
-        require("lazy.core.loader").add_to_rtp(plugin)
-        require("nvim-treesitter.query_predicates")
-    end,
     dependencies = {
         {
             "nvim-treesitter/nvim-treesitter-context",
