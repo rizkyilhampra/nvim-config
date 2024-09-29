@@ -98,13 +98,13 @@ set('n', 'gg', function()
     if vim.v.count > 0 then
         vim.cmd("normal! " .. vim.v.count .. "gg")
     else
-        vim.cmd "normal! gg0"
+        vim.cmd "normal! gg"
     end
     vim.g.minianimate_disable = false
 end, { desc = 'better gg and go to the first position' })
 set('n', 'G', function()
     vim.g.minianimate_disable = true
-    vim.cmd "normal! G$"
+    vim.cmd "normal! G"
     vim.g.minianimate_disable = false
 end, { desc = "better G and got to the last position" })
 
