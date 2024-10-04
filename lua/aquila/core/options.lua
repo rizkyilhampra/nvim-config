@@ -63,6 +63,8 @@ vim.opt.autoread = true
 vim.opt.pumheight = 10
 vim.opt.colorcolumn = ''
 
+vim.opt.nrformats:append { "alpha" }
+
 vim.g.diagnostics_virtual_text = 1
 vim.g.inlay_hints_enabled = true
 vim.g.notifications_enabled = true
