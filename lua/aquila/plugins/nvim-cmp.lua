@@ -1,6 +1,7 @@
 return {
-    "yioneko/nvim-cmp", --TODO: remove after https://github.com/hrsh7th/nvim-cmp/pull/1980 is closed
-    branch = "perf-up",
+    -- NOTE: see https://www.reddit.com/r/neovim/comments/1fwy06w/magazinenvim_a_beta_nvimcmp_to_fix_bugs_implement/
+    -- and also spesific PR https://github.com/hrsh7th/nvim-cmp/pull/1980
+    "iguanacucumber/magazine.nvim",
     event = {
         "InsertEnter",
         "CmdlineEnter",
