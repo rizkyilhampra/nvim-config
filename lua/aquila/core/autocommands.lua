@@ -258,4 +258,16 @@ M.create('FileType', {
 --   end,
 -- })
 
+
+-- NOTE: This is a workaround of this issue https://github.com/folke/noice.nvim/issues/892
+M.create("CmdlineChanged", {
+    group = vim.api.nvim_create_augroup("update_search_redraw", {}),
+    desc = "Update search redraw",
+    callback = function()
+        vim.schedule(function()
+            vim.cmd("redraw")
+        end)
+    end,
+})
+
 return M
