@@ -23,6 +23,7 @@
   "dressing.nvim": { "branch": "master", "commit": "1b7921eecc65af1baf8ac1dc06f0794934cbcfb2" },
   "dropbar.nvim": { "branch": "master", "commit": "669e325489202ae4da5a951314bbf8dbb20e7cff" },
   "eagle.nvim": { "branch": "main", "commit": "f590404f510be11ef2cf7c68e135441bfa48c9a8" },
+  "emoji.nvim": { "branch": "main", "commit": "fe3f181932aff456bf2563b5543bfde86d6a6249" },
   "fastaction.nvim": { "branch": "master", "commit": "89c64a4906df97e766208640f6e80a96d5e4abb4" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
   "floating-help.nvim": { "branch": "main", "commit": "1e61cb6804b7aac7fb0ccfdccbbd01a0a4c92241" },
