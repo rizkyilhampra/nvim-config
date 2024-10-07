@@ -45,7 +45,7 @@ return {
                     local currentNode = state.tree:get_node()
                     local path = currentNode.path
                     vim.fn.setreg("+", path)
-                    vim.notify("Copied to system clipboard", "info", {
+                    vim.notify("Copied to system clipboard", vim.log.levels.INFO, {
                         title = "NeoTree",
                         timeout = 1000,
                     })
@@ -63,7 +63,7 @@ return {
                     inputs.confirm(confirmationMessage, function(confirmed)
                         if not confirmed then return end
 
-                        local success, error = pcall(function()
+                        local success, _ = pcall(function()
                             local sourcePath = vim.fn.fnameescape(clipboardPath)
                             local destinationPath = vim.fn.fnameescape(currentNode.path)
 
@@ -79,7 +79,7 @@ return {
                                 title = "NeoTree",
                                 timeout = 1000,
                             }
-                            vim.notify("Failed to paste from system clipboard", "error", errorNotification)
+                            vim.notify("Failed to paste from system clipboard", vim.log.levels.ERROR, errorNotification)
                             vim.cmd [[echohl ErrorMsg]]
                             return
                         end
@@ -94,7 +94,7 @@ return {
                             title = "NeoTree",
                             timeout = 1000,
                         }
-                        vim.notify("Pasted from system clipboard", "info", successNotification)
+                        vim.notify("Pasted from system clipboard", vim.log.levels.INFO, successNotification)
                     end)
                 end
 
@@ -136,7 +136,7 @@ return {
                     inputs.confirm(msg, function(confirmed)
                         if not confirmed then return end
 
-                        local success, error = pcall(function()
+                        local success, _ = pcall(function()
                             vim.fn.system { "trash", vim.fn.fnameescape(path) }
                         end)
 
@@ -145,7 +145,7 @@ return {
                                 title = "NeoTree",
                                 timeout = 1000,
                             }
-                            vim.notify("Failed to delete to trash", "error", errorNotification)
+                            vim.notify("Failed to delete to trash", vim.log.levels.ERROR, errorNotification)
 
                             msg = "Skip trash? (permanent delete)"
 
