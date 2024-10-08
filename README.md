@@ -4,8 +4,8 @@ My personal neovim configuration written from scratch (of course, with some stol
 
 ## Screenshot
 
-![screenshot](./src/2024-03-15-221218_hyprshot.png)
-![screenshot-2](./src/2024-03-16-051038_hyprshot.png)
+![screenshot](./dist/2024-03-15-221218_hyprshot.png)
+![screenshot-2](./dist/2024-03-16-051038_hyprshot.png)
 
 ## Requirements
 
