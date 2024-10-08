@@ -70,4 +70,3 @@ vim.g.inlay_hints_enabled = true
 vim.g.notifications_enabled = true
 vim.g.default_colorscheme = "tokyonight"
 vim.g.transparent_mode = true
-vim.g.markdown_render = "render-markdown"  -- "markview" or "render-markdown"
