@@ -48,6 +48,9 @@ return {
             bash = 'indent',
             lua = function(bufnr)
                 return treesitter_and_comment_folding(bufnr)
+            end,
+            markdown = function(bufnr)
+                return treesitter_and_comment_folding(bufnr)
             end
         }
 
