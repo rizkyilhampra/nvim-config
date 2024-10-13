@@ -10,13 +10,7 @@ return {
 
         require("markview").setup({
             hybrid_modes = { "n" },
-            callbacks = {
-                on_enable = function(_, win)
-                    vim.wo[win].conceallevel = 2;
-                    vim.wo[win].concealcursor = "nc";
-                end
-            },
-            checkboxes = presets.checkboxes.nerd
+            checkboxes = presets.checkboxes.nerd,
         });
 
         require("markview.extras.editor").setup({
