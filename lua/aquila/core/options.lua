@@ -71,3 +71,4 @@ vim.g.notifications_enabled = true
 vim.g.default_colorscheme = "tokyonight"
 vim.g.transparent_mode = true
 vim.g.big_file = { size = 1024 * 5000, lines = 50000 } -- For files bigger than this, disable 'treesitter' (+5Mb).
+vim.g.url_effect_enabled = true -- Highlight URLs with an underline effect.

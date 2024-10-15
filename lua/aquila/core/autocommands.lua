@@ -270,4 +270,11 @@ M.create("CmdlineChanged", {
     end,
 })
 
+-- Highlight URLs in the buffer
+vim.api.nvim_set_hl(0, 'HighlightURL', { underline = true })
+M.create({ "VimEnter", "FileType", "BufEnter", "WinEnter" }, {
+    desc = "URL Highlighting",
+    callback = function() utils.set_url_effect() end,
+})
+
 return M
