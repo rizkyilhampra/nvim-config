@@ -29,7 +29,7 @@ vim.opt.scrolloff = 14
 vim.opt.sidescrolloff = 36
 vim.opt.confirm = true
 vim.opt.swapfile = false
-vim.opt.spell = true
+
 -- enable blinking cursor
 vim.opt.guicursor = {
     "n-v-c-sm:block-blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
