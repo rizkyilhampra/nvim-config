@@ -34,11 +34,8 @@ return {
             [[ ⣾⣿⣿⣟⣽⣿⣿⣿⣿⡿⣿⣽⣾⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠘⢿⣿⡮⢿⣿⣿⣿⣿⣿⣿⡿⣟⣽⣾⣿⣿⣼⣿⣿⣿⣷⣀⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿ ]],
         }
 
-        -- local footer = "Type `:q` for exit/quit VIM"
-        -- local footer = "The sunset is beautiful, isn't it?"
-
         dashboard.section.header.val = logo
-        -- dashboard.section.footer.val = footer
+        -- dashboard.section.footer.val = "Type `:q` for exit/quit VIM"
         dashboard.section.buttons.val = {}
 
         dashboard.section.buttons.opts.hl = 'AlphaButtons'
@@ -46,6 +43,8 @@ return {
         dashboard.section.footer.opts.hl = "AlphaFooter"
 
         -- dashboard.opts.layout[1].val = 4
+
+        dashboard.config.opts.noautocmd = true
 
         return dashboard
     end,
@@ -55,6 +54,7 @@ return {
         vim.api.nvim_create_autocmd("User", {
             once = true,
             pattern = "LazyVimStarted",
+            desc = "Add Alpha dashboard footer",
             callback = function()
                 local stats = require("lazy").stats()
                 local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
