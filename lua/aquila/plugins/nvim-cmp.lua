@@ -1,7 +1,8 @@
 return {
     -- NOTE: see https://www.reddit.com/r/neovim/comments/1fwy06w/magazinenvim_a_beta_nvimcmp_to_fix_bugs_implement/
-    -- and also spesific PR https://github.com/hrsh7th/nvim-cmp/pull/1980
+    -- and also specific PR https://github.com/hrsh7th/nvim-cmp/pull/1980
     "iguanacucumber/magazine.nvim",
+    name = "nvim-cmp", -- Otherwise highlighting gets messed up
     event = {
         "InsertEnter",
         "CmdlineEnter",
@@ -29,13 +30,15 @@ return {
 
         local cmp = require("cmp")
         local luasnip = require("luasnip")
-        local lspkind = require("lspkind")
+        local _, lspkind = pcall(require, "lspkind")
         local utils = require('aquila.core.utils')
 
+        local border_opts = {
+            border = "rounded",
+            winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+        }
+
         cmp.setup({
-            sorting = {
-                priority_weight = 2,
-            },
             view = {
                 entries = {
                     follow_cursor = true
@@ -47,8 +50,8 @@ return {
                 end,
             },
             window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered(),
+                completion = cmp.config.window.bordered(border_opts),
+                documentation = cmp.config.window.bordered(border_opts),
             },
             mapping = cmp.mapping.preset.insert({
                 ["<C-b>"] = cmp.mapping.scroll_docs(-4),
