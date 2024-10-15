@@ -1,1 +1,4 @@
 bakplugins
+lua/aquila/plugins/*.bak
+lua/aquila/plugins/*/*.bak
+lua/aquila/core/*.bak
