@@ -2,19 +2,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    dependencies = {
-        {
-            "nvim-treesitter/nvim-treesitter-context",
-            keys = {
-                {
-                    "<Leader>ct",
-                    ':TSContextToggle<CR>',
-                    desc = "Toggle treesitter context"
-                }
-            },
-
-        }
-    },
     event = "User BaseDefered",
     config = function()
         require("nvim-treesitter.configs").setup({
