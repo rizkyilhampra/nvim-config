@@ -12,7 +12,7 @@ return {
         local null_ls = require('null-ls')
 
         local sources = {
-            require("none-ls.diagnostics.eslint").with({
+            require("none-ls.diagnostics.eslint_d").with({
                 condition = function(utils)
                     -- Check if the root directory has a ".eslintrc.{js,yml,json}" file
                     local filenames = { ".eslintrc.js", ".eslintrc.yml", ".eslintrc.json" }
