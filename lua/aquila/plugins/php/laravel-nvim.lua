@@ -1,39 +1,18 @@
 return {
     "adalessa/laravel.nvim",
     dependencies = {
-        "nvim-telescope/telescope.nvim",
         "tpope/vim-dotenv",
+        "nvim-telescope/telescope.nvim",
         "MunifTanjim/nui.nvim",
-        "nvimtools/none-ls.nvim",
+        "kevinhwang91/promise-async",
     },
-    opts = {
-        features = {
-            null_ls = {
-                enable = false,
-            }
-        }
-    },
-    cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
-    cond = function()
-        return vim.fn.isdirectory("vendor") == 1
-    end,
+    cmd = { "Laravel" },
     keys = {
-        {
-            "<leader>Lla",
-            "<cmd>Laravel artisan<cr>",
-            desc = "List all artisan commands"
-
-        },
-        {
-            "<leader>Llr",
-            "<cmd>Laravel routes<cr>",
-            desc = "List all routes"
-        },
-        {
-            "<leader>Llm",
-            "<cmd>Laravel related<cr>",
-            desc = "List all related files"
-
-        },
+        { "<leader>Lla", ":Laravel artisan<cr>", desc = "List all artisan commands" },
+        { "<leader>Llr", ":Laravel routes<cr>",  desc = "List all routes" },
+        { "<leader>Llm", ":Laravel related<cr>", desc = "List all related files" },
     },
+    cond = vim.fn.isdirectory("vendor") == 1,
+    opts = {},
+    config = true,
 }
