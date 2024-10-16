@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd ~
+
+yadm add .config/nvim
+
+yadm commit -m "chore(neovim): sync head"
+
+yadm push
