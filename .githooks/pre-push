@@ -2,7 +2,7 @@
 
 cd ~
 
-yadm add -q .config/nvim
+yadm add .config/nvim
 
 yadm commit -q -m "chore(neovim): sync head"
 
