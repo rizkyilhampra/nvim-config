@@ -13,7 +13,7 @@ My personal neovim configuration written from scratch (of course, with some stol
 ![screenshot-3](./dist/2024-10-13-170840_hyprshot.png)
 </details>
 
-
+<!--
 ## Requirements
 
 > Forgive me if i'm missed anything. Please run `:checkhealth` to see if you are not missed some dependencies after clone/install my config.
@@ -73,3 +73,4 @@ alias ripnvim="NVIM_APPNAME=ripnvim nvim"
 - [ ] Refactor LSP configuration
 - [x] Fix blank startup screen when open neovim with argument, example: `nvim README.md`
 - [ ] Test to replace Gitsign to Mini.diff as statuscol view
+-->
