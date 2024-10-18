@@ -7,6 +7,7 @@ local commands = require("aquila.core.commands")
 set("n", "$", "g_", { noremap = true, silent = true })
 vim.keymap.set('n', 'j', [[(v:count > 1 ? 'm`' . v:count : 'g') . 'j']], { expr = true })
 vim.keymap.set('n', 'k', [[(v:count > 1 ? 'm`' . v:count : 'g') . 'k']], { expr = true })
+set("n", ";", ":", { desc = "CMD enter command mode" })
 
 -- TODO: Maybe hook with surround plugin 
 set("i", "<M-S-h>", "<ESC>ha<Space>")
