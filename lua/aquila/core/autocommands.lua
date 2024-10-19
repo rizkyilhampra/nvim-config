@@ -61,27 +61,19 @@ M.create("BufReadPost", {
 M.create('User', {
     once = true,
     pattern = 'AlphaReady',
-    desc = 'hide cursor for alpha',
+    desc = "Hide cursor in Alpha",
     callback = function()
-        local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
-        hl.blend = 100
-        vim.api.nvim_set_hl(0, 'Cursor', hl)
-        vim.opt.guicursor:append('a:Cursor/lCursor')
+        vim.api.nvim_set_hl(0, "Cursor", {default = true, blend = 100, force = true})
     end,
 })
 
 M.create('BufNew', {
     once = true,
-    desc = 'show cursor after alpha',
-    callback = function(event)
-        local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
-        hl.blend = 0
-        vim.api.nvim_set_hl(0, 'Cursor', hl)
-        vim.opt.guicursor:remove('a:Cursor/lCursor')
+    desc = "Show cursor after Alpha",
+    callback = function()
+        vim.api.nvim_set_hl(0, "Cursor", {default = true, blend = 0, force = true})
     end,
 })
-
-
 
 -- NOTE: This is a workaround for the issue with the `commentstring` option. Will see if it's still needed when v0.10.0 is released
 -- M.create('FileType', {
