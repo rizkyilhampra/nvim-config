@@ -1,4 +1,5 @@
 local M = {}
+local utils = require("aquila.core.utils")
 
 function M.create_wrapper(augroup_name)
 	local augroup = vim.api.nvim_create_augroup(augroup_name, { clear = true })
@@ -76,13 +77,10 @@ M.create("FileType", {
 	end,
 })
 
-local autocmd = vim.api.nvim_create_autocmd
-local utils = require("aquila.core.utils")
-
 --    Events to load plugins faster → 'BaseFile'/'BaseGitFile'/'BaseDefered':
 --    this is pretty much the same thing as the event 'BufEnter',
 --    but without increasing the startup time displayed in the greeter.
-autocmd({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
+M.create({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
 	desc = "Nvim user events for file detection (BaseFile and BaseGitFile)",
 	callback = function(args)
 		local empty_buffer = vim.fn.resolve(vim.fn.expand("%")) == ""
@@ -103,7 +101,7 @@ autocmd({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
 		end
 	end,
 })
-autocmd({ "VimEnter" }, {
+M.create({ "VimEnter" }, {
 	desc = "Nvim user event that trigger a few ms after nvim starts",
 	callback = function()
 		-- If nvim is opened passing a filename, trigger the event inmediatelly.
@@ -119,7 +117,7 @@ autocmd({ "VimEnter" }, {
 	end,
 })
 
-autocmd({ "User", "BufEnter" }, {
+M.create({ "User", "BufEnter" }, {
 	desc = "Disable status and tablines for alpha",
 	callback = function(args)
 		local is_filetype_alpha = vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "alpha"
@@ -140,7 +138,7 @@ autocmd({ "User", "BufEnter" }, {
 		end
 	end,
 })
-autocmd("VimEnter", {
+M.create("VimEnter", {
 	desc = "Start Alpha only when nvim is opened with no arguments",
 	callback = function()
 		local lines = vim.api.nvim_buf_get_lines(0, 0, 2, false)
@@ -206,14 +204,6 @@ M.create("FileType", {
 	end,
 	desc = "Disable focus autoresize for FileType",
 })
-
--- autocmd({ 'FileType' }, {
---   desc = 'Force commentstring to include spaces',
---   callback = function(event)
---     local cs = vim.bo[event.buf].commentstring
---     vim.bo[event.buf].commentstring = cs:gsub('(%S)%%s', '%1 %%s'):gsub('%%s(%S)', '%%s %1')
---   end,
--- })
 
 -- NOTE: This is a workaround of this issue https://github.com/folke/noice.nvim/issues/892
 M.create("CmdlineChanged", {
