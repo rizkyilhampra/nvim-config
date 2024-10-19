@@ -30,7 +30,7 @@ return {
 
         local cmp = require("cmp")
         local luasnip = require("luasnip")
-        local _, lspkind = pcall(require, "lspkind")
+        local lspkind = require("lspkind")
         local utils = require('aquila.core.utils')
 
         local border_opts = {
@@ -39,6 +39,17 @@ return {
         }
 
         cmp.setup({
+            matching = {
+                disallow_fuzzy_matching = true,
+                disallow_fullfuzzy_matching = true,
+                disallow_partial_fuzzy_matching = true,
+                disallow_partial_matching = false,
+                disallow_prefix_unmatching = true,
+            },
+            performance = {
+                debounce = 0,
+                throttle = 0,
+            },
             view = {
                 entries = {
                     follow_cursor = true
