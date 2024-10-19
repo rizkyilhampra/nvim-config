@@ -36,6 +36,7 @@ return {
             yml = { 'prettierd' },
             jsonc = { 'prettierd' },
             markdown = { 'prettierd' },
+            lua = { 'stylua' },
         },
     },
     init = function()
