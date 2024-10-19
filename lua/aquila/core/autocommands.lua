@@ -11,22 +11,6 @@ end
 
 M.create, M.aquila_augroup = M.create_wrapper("aquila")
 
-M.create({ "BufWinLeave" }, {
-	pattern = "*.*",
-	desc = "Remember folds",
-	callback = function()
-		vim.cmd("mkview")
-	end,
-})
-
-M.create({ "BufWinEnter" }, {
-	pattern = "*.*",
-	desc = "Restore folds",
-	callback = function()
-		vim.cmd("silent! loadview")
-	end,
-})
-
 M.create("BufEnter", {
 	callback = function()
 		vim.opt.formatoptions:remove({ "c", "r", "o" })
