@@ -102,6 +102,13 @@ M.create('BufNew', {
 --         end
 --     end,
 -- })
+-- NOTE: This is a workaround for the gray CursorLine in the Telescope prompt when using svampkorg/moody.nvim  
+M.create( "FileType", {
+    pattern = "TelescopePrompt",
+    callback = function()
+        vim.wo.cursorline = false
+    end,
+})
 
 local autocmd = vim.api.nvim_create_autocmd
 local utils = require("aquila.core.utils")
