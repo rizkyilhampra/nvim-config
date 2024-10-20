@@ -1,6 +1,6 @@
 return {
 	"svampkorg/moody.nvim",
-	event = "User BaseDefered",
+	event = "User BaseFile",
 	opts = {
 		disabled_filetypes = {
 			"neo-tree",
