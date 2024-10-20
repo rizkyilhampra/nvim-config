@@ -102,6 +102,7 @@
   "screenkey.nvim": { "branch": "main", "commit": "0589de3c857721e150ea694cfe66d6d0e8aecacb" },
   "scrollEOF.nvim": { "branch": "master", "commit": "38fd5880021e90c15dc61fa325f714bd8077f0a6" },
   "snipe.nvim": { "branch": "main", "commit": "e2d43b9290480d745910b5a872a504651da29bd3" },
+  "smart-scrolloff.nvim": { "branch": "main", "commit": "36129b41cb260cfa743b6939f3badd2718dbb1b8" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
   "statuscol.nvim": { "branch": "main", "commit": "5998d16044159ad3779f62c45e756c555e3051f0" },
   "suda.vim": { "branch": "master", "commit": "b97fab52f9cdeabe2bbb5eb98d82356899f30829" },
