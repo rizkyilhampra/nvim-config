@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -17,7 +17,7 @@ vim.opt.ignorecase = true
 
 -- this for UFO folding requirement.
 vim.opt.foldcolumn = "1" -- '0' is not bad
-vim.opt.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
@@ -32,8 +32,8 @@ vim.opt.swapfile = false
 
 -- enable blinking cursor
 vim.opt.guicursor = {
-    "n-v-c-sm:block-blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
-    "i:ver25",
+	"n-v-c-sm:block-blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+	"i:ver25",
 }
 
 -- show hidden characters
@@ -54,16 +54,21 @@ vim.opt.mousemoveevent = true -- Allow hovering in bufferline.nvim & eagle.nvim
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.showmode = false
+
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+vim.opt.virtualedit = "block" -- Allow going past end of line in visual block mode.
+vim.opt.writebackup = false -- Disable making a backup before overwriting a file.
+vim.opt.shada = "!,'1000,<50,s10,h" -- Remember the last 1000 opened files
+vim.opt.history = 1000 -- Number of commands to remember in a history table (per buffer).
 
 vim.opt.updatetime = 200
 vim.opt.autoread = true
 
 vim.opt.pumheight = 10
-vim.opt.colorcolumn = ''
+vim.opt.colorcolumn = ""
 
-vim.opt.nrformats:append { "alpha" }
+vim.opt.nrformats:append({ "alpha" })
 
 vim.g.diagnostics_virtual_text = 1
 vim.g.inlay_hints_enabled = true
