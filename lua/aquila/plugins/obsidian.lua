@@ -14,6 +14,7 @@ local note_paths = {
 
 return {
     "epwalsh/obsidian.nvim",
+    version = "*",
     event = get_note_events(note_paths),
     dependencies = {
         "nvim-lua/plenary.nvim",
