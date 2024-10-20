@@ -13,7 +13,7 @@ My Neovim configuration written from **scratch** (of course, with some ~stolen~ 
 ![screenshot-3](./dist/2024-10-13-170840_hyprshot.png)
 </details>
 
-## References
+## Acknowledgements
 - [NormalNvim](https://github.com/NormalNvim/NormalNvim)
 
 <!--
