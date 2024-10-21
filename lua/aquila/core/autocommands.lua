@@ -241,4 +241,6 @@ M.create("CmdwinEnter", {
 	end,
 })
 
+require("aquila.core.commands.activation-window").setup(M)
+
 return M
