@@ -20,6 +20,9 @@ return {
                 link = "FloatBorder"
             }
         },
+        float_opts = {
+            zindex = 252
+        }
     },
     config = function(_, opts)
         require('toggleterm').setup(opts)
