@@ -1,16 +1,16 @@
 local M = {}
 local utils = require("aquila.core.utils")
 
-function M.create_wrapper(augroup_name)
-	local augroup = vim.api.nvim_create_augroup(augroup_name, { clear = true })
+local auogroup = vim.api.nvim_create_augroup("AquilaCmd", { clear = true })
+
+function M.create_wrapper()
 	return function(event, opts)
-		opts.group = opts.group or augroup
+		opts.group = opts.group or auogroup
 		return vim.api.nvim_create_autocmd(event, opts)
-	end,
-		augroup
+	end
 end
 
-M.create, M.aquila_augroup = M.create_wrapper("aquila")
+M.create = M.create_wrapper()
 
 M.create("BufEnter", {
 	callback = function()
