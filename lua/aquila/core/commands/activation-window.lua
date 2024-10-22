@@ -12,7 +12,7 @@ local function create_activation_window()
 		relative = "editor",
 		width = width,
 		height = height,
-		col = ui.width - width,
+		col = (ui.width - width) - 4,
 		row = ui.height - height,
 		anchor = "SW",
 		style = "minimal",
@@ -51,10 +51,10 @@ local function close_activation_windows()
 end
 
 function M.setup(autocmd)
-	autocmd.create("BufReadPost", {
+	autocmd.create("VimEnter", {
 		group = activation_window_augroup,
 		callback = function()
-			vim.defer_fn(create_activation_window, 8000)
+            create_activation_window()
 		end,
 	})
 
