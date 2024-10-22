@@ -8,16 +8,24 @@ local function create_activation_window()
 	local width = 34
 	local height = 2
 	local ui = vim.api.nvim_list_uis()[1]
+
+	local row = 0
+
+	if vim.bo[0].buftype == "nofile" then
+		row = math.max(ui.height - 1, 0)
+	else
+		row = math.max(ui.height - 2, 0)
+	end
+
 	local win_opts = {
 		relative = "editor",
 		width = width,
 		height = height,
 		col = (ui.width - width) - 4,
-		row = ui.height - height,
+		row = row,
 		anchor = "SW",
 		style = "minimal",
 		border = "none",
-		zindex = 251,
 		noautocmd = true,
 		focusable = false,
 	}
@@ -51,15 +59,25 @@ local function close_activation_windows()
 end
 
 function M.setup(autocmd)
-	autocmd.create("VimEnter", {
+	autocmd.create("User", {
+		pattern = "BaseDefered",
 		group = activation_window_augroup,
 		callback = function()
-            create_activation_window()
+			create_activation_window()
 		end,
 	})
 
 	autocmd.create("VimResized", {
 		group = activation_window_augroup,
+		callback = function()
+			close_activation_windows()
+			create_activation_window()
+		end,
+	})
+
+	autocmd.create("BufReadPost", {
+		group = activation_window_augroup,
+		once = true,
 		callback = function()
 			close_activation_windows()
 			create_activation_window()
