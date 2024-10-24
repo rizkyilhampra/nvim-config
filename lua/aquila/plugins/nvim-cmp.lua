@@ -15,12 +15,6 @@ return {
 		{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
-		{
-			"petertriho/cmp-git",
-			opts = {
-				filetypes = { "gitcommit", "markdown" },
-			},
-		},
 		"f3fora/cmp-spell",
 		"hrsh7th/cmp-buffer",
 		"luckasRanarison/tailwind-tools.nvim",
@@ -103,17 +97,6 @@ return {
 				{ name = "buffer", priority = 500 },
 				{ name = "async_path", priority = 250 },
 				{ name = "calc" },
-				{
-					name = "git",
-					entry_filter = function()
-						local allowed_filetypes = { "gitcommit", "markdown" }
-						if not vim.tbl_contains(allowed_filetypes, vim.bo.filetype) then
-							return false
-						end
-
-						return true
-					end,
-				},
 				{
 					name = "spell",
 					option = {
