@@ -12,7 +12,7 @@ local function multi_mode(modes, key, cmd, opts)
 	end
 end
 
-M.n["$"] = { "g_", desc = "Go to the last non-blank character of the line" }
+multi_mode({ "n", "v" }, "$", "g_", { desc = "Go to the last non-blank character of the line" })
 
 M.n["j"] = {
 	[[(v:count > 1 ? 'm`' . v:count : 'g') . 'j']],
