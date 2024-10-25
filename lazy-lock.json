@@ -73,6 +73,7 @@
   "neominimap.nvim": { "branch": "main", "commit": "b86d121cdd4fa3536edd48c33646600e2fa0b43e" },
   "noice.nvim": { "branch": "main", "commit": "df448c649ef6bc5a6a633a44f2ad0ed8d4442499" },
   "none-ls-extras.nvim": { "branch": "main", "commit": "f2bb002c8aa644d1f253772ff5d4e75e45ff7f4f" },
+  "none-ls-luacheck.nvim": { "branch": "main", "commit": "a1dfea0d4c40c4023829c8b9a7ab0a26135985ca" },
   "none-ls.nvim": { "branch": "main", "commit": "dcc8cd4efdcb29275681a3c95786a816330dbca6" },
   "nui-components.nvim": { "branch": "main", "commit": "caecfe2089e5ffbe99c2b0e0468da91990263a90" },
   "nui.nvim": { "branch": "main", "commit": "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f" },
