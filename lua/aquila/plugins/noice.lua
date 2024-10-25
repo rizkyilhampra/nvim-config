@@ -37,7 +37,7 @@ return {
             -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
             override = {
                 ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                ["vim.lsp.util.stylize_markdown"] = true,
+                ["vim.lsp.util.stylize_markdown"] = false, -- NOTE: This is a workaround for an issue with eagle.nvim
                 ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
             },
             progress = {
@@ -117,7 +117,7 @@ return {
                         { find = "%d+L, %d+B" },
                         { find = "; after #%d+" },
                         { find = "; before #%d+" },
-                        { find = "Agent service not initialized." } --TODO: Caused by wakatime, let's see until next update
+                        { find = "Agent service not initialized." } -- TODO: Caused by wakatime, let's see until next update
                     },
                 },
             },
