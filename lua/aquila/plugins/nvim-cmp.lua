@@ -98,6 +98,18 @@ return {
 				{ name = "async_path", priority = 250 },
 				{ name = "calc" },
 				{
+					name = "lazydev",
+					entry_filter = function()
+						local allowed_filetypes = { "lua" }
+						if not vim.tbl_contains(allowed_filetypes, vim.bo.filetype) then
+							return false
+						end
+
+						return true
+					end,
+					group_index = 0,
+				},
+				{
 					name = "spell",
 					option = {
 						preselect_correct_word = false,
