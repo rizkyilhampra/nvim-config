@@ -8,6 +8,7 @@ return {
 		styles = {
 			floats = "transparent",
 		},
+		lualine_bold = true,
 		terminal_colors = false,
 		on_highlights = function(hl, C)
 			hl.NormalMoody = { fg = C.blue }
