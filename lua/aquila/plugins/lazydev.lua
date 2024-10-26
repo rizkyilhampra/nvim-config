@@ -15,6 +15,7 @@ return {
 			{ path = "luassert-types/library", words = { "assert" } },
 			{ path = "busted-types/library", words = { "describe" } },
 			{ path = "nvimtools/none-ls.nvim", words = { "null-ls" } },
+			{ path = "tokyonight.nvim", mods = { "tokyonight" } },
 			"malas-ngodonf.nvim",
 		},
 	},
