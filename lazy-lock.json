@@ -73,6 +73,7 @@
   "moody.nvim": { "branch": "main", "commit": "47d37deaa0fb575f07c6675aff6c6c2754d8ed8e" },
   "multicursors.nvim": { "branch": "main", "commit": "562809aaf203b4c65482a75199166d360f2b9298" },
   "neo-tree.nvim": { "branch": "main", "commit": "a77af2e764c5ed4038d27d1c463fa49cd4794e07" },
+  "neocord": { "branch": "main", "commit": "587e03390a355e9c364d48638e0e0db2a8431d73" },
   "neominimap.nvim": { "branch": "main", "commit": "b86d121cdd4fa3536edd48c33646600e2fa0b43e" },
   "noice.nvim": { "branch": "main", "commit": "df448c649ef6bc5a6a633a44f2ad0ed8d4442499" },
   "none-ls-extras.nvim": { "branch": "main", "commit": "f2bb002c8aa644d1f253772ff5d4e75e45ff7f4f" },
