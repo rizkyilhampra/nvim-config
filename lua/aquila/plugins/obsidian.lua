@@ -1,6 +1,10 @@
-local function get_note_events(paths)
+local note_paths = {
+	"~/Notes/aquila-notes",
+}
+
+local function get_note_events()
 	local events = {}
-	for _, path in ipairs(paths) do
+	for _, path in ipairs(note_paths) do
 		local expanded_path = vim.fn.expand(path)
 		table.insert(events, "BufReadPre " .. expanded_path .. "/*.md")
 		table.insert(events, "BufNewFile " .. expanded_path .. "/*.md")
@@ -8,19 +12,18 @@ local function get_note_events(paths)
 	return events
 end
 
-local note_paths = {
-	"~/Notes/aquila-notes",
-}
-
 return {
 	"epwalsh/obsidian.nvim",
 	version = "*",
-	event = get_note_events(note_paths),
+	event = get_note_events(),
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	cmd = {
+		"ObsidianNew",
+	},
 	opts = {
-		-- ui = { enable = false },
+		ui = { enable = false },
 		workspaces = {
 			{
 				name = "dotfiles-wiki",
