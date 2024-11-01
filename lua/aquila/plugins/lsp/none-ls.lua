@@ -32,6 +32,9 @@ return {
 						or vim.diagnostic.severity["ERROR"]
 				end,
 				method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+				condition = function(utils)
+					return utils.root_has_file(".vale.ini")
+				end,
 			}),
 		}
 
