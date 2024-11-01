@@ -31,6 +31,7 @@ return {
 					diagnostic.severity = diagnostic.message:find("really") and vim.diagnostic.severity["WARN"]
 						or vim.diagnostic.severity["ERROR"]
 				end,
+				method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
 			}),
 		}
 
