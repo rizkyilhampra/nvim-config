@@ -1,5 +1,7 @@
 return {
-    'ricardoramirezr/blade-nav.nvim',
-    version = "*",
-    ft = { 'blade', 'php' }
+	"ricardoramirezr/blade-nav.nvim",
+	opts = {
+		close_tag_on_complete = false,
+	},
+	ft = { "blade", "php" },
 }
