@@ -205,17 +205,6 @@ M.create("FileType", {
 	desc = "Disable focus autoresize for FileType",
 })
 
--- NOTE: This is a workaround of this issue https://github.com/folke/noice.nvim/issues/892
-M.create("CmdlineChanged", {
-	group = vim.api.nvim_create_augroup("update_search_redraw", {}),
-	desc = "Update search redraw",
-	callback = function()
-		vim.schedule(function()
-			vim.cmd("redraw")
-		end)
-	end,
-})
-
 -- Highlight URLs in the buffer
 vim.api.nvim_set_hl(0, "HighlightURL", { underline = true })
 M.create({ "VimEnter", "FileType", "BufEnter", "WinEnter" }, {
