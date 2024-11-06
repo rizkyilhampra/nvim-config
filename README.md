@@ -21,7 +21,7 @@ My Neovim configuration written from **scratch** (of course, with some ~stolen~ 
 
 > Forgive me if i'm missed anything. Please run `:checkhealth` to see if you are not missed some dependencies after clone/install my config.
 
-`git` `tar` `zip` `unzip` [`jq`](https://github.com/sharkdp/fd) [`tidy`](https://www.html-tidy.org/) [`curl`](https://curl.se/) [`fd`](https://github.com/sharkdp/fd) [`ripgrep`](https://github.com/BurntSushi/ripgrep) [`fzf`](https://github.com/junegunn/fzf) `gcc` `libstdc++` [`make`](https://www.gnu.org/software/make/) [`deno`](https://deno.com/)
+`git` `tar` `zip` `unzip` [`jq`](https://github.com/sharkdp/fd) [`tidy`](https://www.html-tidy.org/) [`curl`](https://curl.se/) [`fd`](https://github.com/sharkdp/fd) [`ripgrep`](https://github.com/BurntSushi/ripgrep) [`fzf`](https://github.com/junegunn/fzf) `gcc` `libstdc++` [`make`](https://www.gnu.org/software/make/) [`deno`](https://deno.com/) `webkitgtk2`
 
 |                           |                                                                                                                                                                                                                                                                                                                                                             |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
