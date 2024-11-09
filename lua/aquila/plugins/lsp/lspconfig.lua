@@ -137,7 +137,6 @@ return {
             },
         })
 
-        -- Bash Language Server
         lspconfig.bashls.setup({
             capabilities = capabilities,
             single_file_support = true,
@@ -151,15 +150,6 @@ return {
             capabilities = capabilities,
         })
 
-        lspconfig.typos_lsp.setup({
-            capabilities = capabilities,
-            init_options = {
-                -- config = "--exclude *;#toggleterm#1 ",
-                diagnosticSeverity = "Hint"
-            },
-            autostart = false
-        })
-
         lspconfig.docker_compose_language_service.setup({
             capabilities = capabilities
         })
@@ -169,6 +159,14 @@ return {
         })
 
         lspconfig.vtsls.setup({
+            capabilities = capabilities
+        })
+
+        lspconfig.yamlls.setup({
+            capabilities = capabilities
+        })
+
+        lspconfig.cspell.setup({
             capabilities = capabilities
         })
     end,

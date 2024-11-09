@@ -36,6 +36,7 @@ return {
                 "tailwindcss",
                 "docker_compose_language_service",
                 "dockerls",
+                "cspell",
             },
             automatic_installation = true
         })
