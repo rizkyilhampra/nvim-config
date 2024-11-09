@@ -27,11 +27,6 @@ return {
 			}),
 			null_ls.builtins.diagnostics.vale.with({
 				filetype = { "markdown" },
-				diagnostics_postprocess = function(diagnostic)
-					diagnostic.severity = diagnostic.message:find("really") and vim.diagnostic.severity["WARN"]
-						or vim.diagnostic.severity["ERROR"]
-				end,
-				method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
 				condition = function(utils)
 					return utils.root_has_file(".vale.ini")
 				end,
