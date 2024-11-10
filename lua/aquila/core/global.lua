@@ -73,11 +73,12 @@ end
 
 M.default_diagnostic = {
     update_in_insert = false,
-    virtual_text = {
-        spacing = 4,
-        prefix = "● ",
-        source = true
-    },
+    virtual_text = false,
+    -- virtual_text = {
+    --     spacing = 4,
+    --     prefix = "● ",
+    --     source = true
+    -- },
     float = {
         focusable = false,
         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
