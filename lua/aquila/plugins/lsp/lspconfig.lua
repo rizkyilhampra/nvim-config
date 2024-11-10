@@ -151,15 +151,6 @@ return {
             capabilities = capabilities,
         })
 
-        lspconfig.typos_lsp.setup({
-            capabilities = capabilities,
-            init_options = {
-                -- config = "--exclude *;#toggleterm#1 ",
-                diagnosticSeverity = "Hint"
-            },
-            autostart = false
-        })
-
         lspconfig.docker_compose_language_service.setup({
             capabilities = capabilities
         })
