@@ -22,7 +22,8 @@ return {
         },
         float_opts = {
             zindex = 252
-        }
+        },
+        persist_mode = false,
     },
     config = function(_, opts)
         require('toggleterm').setup(opts)
