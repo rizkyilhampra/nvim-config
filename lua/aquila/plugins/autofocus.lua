@@ -1,13 +1,10 @@
 return {
-    'nvim-focus/focus.nvim',
-    cmd = {
-        "FocusDisable",
-        "FocusEnable"
-    },
-    version = false,
-    opts = {
-        ui = {
-            signcolumn = false
-        }
-    },
+	"nvim-focus/focus.nvim",
+	event = "User BaseDefered",
+	version = false,
+	opts = {
+		ui = {
+			signcolumn = false,
+		},
+	},
 }
