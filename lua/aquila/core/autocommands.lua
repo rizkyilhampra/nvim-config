@@ -164,7 +164,7 @@ M.create("VimEnter", {
 	end,
 })
 
-local ignore_filetypes = { "neo-tree", "TelescopePrompt", "toggleterm", "alpha" }
+local ignore_filetypes = { "neo-tree" }
 local ignore_buftypes = { "nofile", "prompt", "popup" }
 
 local focusDisable = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
@@ -181,18 +181,6 @@ M.create("WinEnter", {
 	desc = "Disable focus autoresize for BufType",
 })
 
-M.create("CmdlineLeave", {
-	pattern = ":*",
-	group = vim.api.nvim_create_augroup("AutoMarkOnJump", { clear = true }),
-	callback = function()
-		local cmd = vim.fn.getcmdline()
-		if tonumber(cmd) ~= nil then
-			vim.cmd("normal! m`")
-		end
-	end,
-	desc = "Mark jump position after jump",
-})
-
 M.create("FileType", {
 	group = focusDisable,
 	callback = function(_)
@@ -203,6 +191,18 @@ M.create("FileType", {
 		end
 	end,
 	desc = "Disable focus autoresize for FileType",
+})
+
+M.create("CmdlineLeave", {
+	pattern = ":*",
+	group = vim.api.nvim_create_augroup("AutoMarkOnJump", { clear = true }),
+	callback = function()
+		local cmd = vim.fn.getcmdline()
+		if tonumber(cmd) ~= nil then
+			vim.cmd("normal! m`")
+		end
+	end,
+	desc = "Mark jump position after jump",
 })
 
 -- Highlight URLs in the buffer
@@ -233,3 +233,4 @@ M.create("CmdwinEnter", {
 require("aquila.core.commands.activation-window").setup(M)
 
 return M
+
