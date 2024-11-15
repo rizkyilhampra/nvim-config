@@ -65,6 +65,7 @@ return {
 				[".*/waybar/config"] = "jsonc",
 				[".*/kitty/*.conf"] = "bash",
 				[".*/hypr/.*%.conf"] = "hyprlang",
+				[".*/%.env.*"] = "sh",
 			},
 		})
 	end,
