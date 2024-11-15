@@ -5,6 +5,7 @@ return {
 		"williamboman/mason.nvim",
 		"nvimtools/none-ls-extras.nvim",
 		"gbprod/none-ls-luacheck.nvim",
+		"gbprod/none-ls-shellcheck.nvim",
 	},
 	config = function()
 		local null_ls = require("null-ls")
@@ -31,6 +32,8 @@ return {
 					return utils.root_has_file(".vale.ini")
 				end,
 			}),
+			require("none-ls-shellcheck.diagnostics"),
+			require("none-ls-shellcheck.code_actions"),
 		}
 
 		null_ls.setup({
