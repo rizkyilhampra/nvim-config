@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~
+cd ~ || exit
 
 yadm add .config/nvim
 
