@@ -27,7 +27,8 @@ return {
                 frecency = {
                     show_filter_column = false,
                     db_safe_mode = false,
-                    matcher = "fuzzy"
+                    matcher = "fuzzy",
+                    db_validate_threshold = 1,
                 }
             }
         }
