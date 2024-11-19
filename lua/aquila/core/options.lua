@@ -71,7 +71,7 @@ vim.opt.colorcolumn = ""
 vim.opt.nrformats:append({ "alpha" })
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 
-vim.g.diagnostics_virtual_text = 1
+vim.g.diagnostics_mode = 2 -- Set code linting (0=off, 1=only show in status line, 2=virtual text off, 3=all on).
 vim.g.inlay_hints_enabled = true
 vim.g.notifications_enabled = true
 vim.g.default_colorscheme = "tokyonight"
