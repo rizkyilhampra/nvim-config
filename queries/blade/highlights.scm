@@ -3,4 +3,4 @@
 (directive_end) @tag
 (bracket_start) @punctuation.special
 (bracket_end) @punctuation.special
-(comment) @comment @spell
+((comment) @comment @spell (#set! priority 101))
