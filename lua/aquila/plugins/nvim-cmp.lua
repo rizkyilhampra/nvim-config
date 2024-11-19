@@ -8,15 +8,15 @@ return {
 		"CmdlineEnter",
 	},
 	dependencies = {
+		{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp" },
+		{ "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+		{ "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
 		"FelipeLema/cmp-async-path",
-		"hrsh7th/cmp-cmdline",
-		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-calc",
 		{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 		"f3fora/cmp-spell",
-		"hrsh7th/cmp-buffer",
 		"luckasRanarison/tailwind-tools.nvim",
 	},
 	config = function()
@@ -166,3 +166,4 @@ return {
 		})
 	end,
 }
+
