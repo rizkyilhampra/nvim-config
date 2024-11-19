@@ -12,13 +12,6 @@ end
 
 M.create = M.create_wrapper()
 
-M.create("BufEnter", {
-	callback = function()
-		vim.opt.formatoptions:remove({ "c", "r", "o" })
-	end,
-	desc = "Disable New Line Comment",
-})
-
 M.create("BufReadPost", {
 	callback = function()
 		local mark = vim.api.nvim_buf_get_mark(0, '"')

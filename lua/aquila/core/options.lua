@@ -69,6 +69,7 @@ vim.opt.pumheight = 10
 vim.opt.colorcolumn = ""
 
 vim.opt.nrformats:append({ "alpha" })
+vim.opt.formatoptions:remove({ "c", "r", "o" })
 
 vim.g.diagnostics_virtual_text = 1
 vim.g.inlay_hints_enabled = true
