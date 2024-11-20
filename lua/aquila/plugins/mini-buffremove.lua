@@ -6,7 +6,7 @@ return {
 	},
 	keys = {
 		{
-			"<C-w>q",
+			"<Leader>w",
 			":lua MiniBufremove.delete()<CR>",
 			noremap = true,
 			silent = true,
