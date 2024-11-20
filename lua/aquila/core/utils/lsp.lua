@@ -29,12 +29,8 @@ M.apply_default_lsp_settings = function()
 		underline = true,
 		severity_sort = true,
 		float = {
-			focused = false,
-			style = "minimal",
 			border = "rounded",
 			source = "always",
-			header = "",
-			prefix = "",
 		},
 	}
 
@@ -185,7 +181,7 @@ function M.apply_user_lsp_settings(server_name)
 		M.apply_user_lsp_mappings(client, bufnr)
 	end
 
-    return opts
+	return opts
 end
 
 M.setup = function(server)
