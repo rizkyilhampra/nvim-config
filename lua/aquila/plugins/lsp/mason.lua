@@ -1,60 +1,28 @@
+local utils = require("aquila.core.utils")
 return {
 	"williamboman/mason.nvim",
 	keys = {
 		{ "<Leader>m", "<cmd>Mason<CR>", desc = "Open Mason" },
 	},
-	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
+	dependencies = { "zeioth/mason-extra-cmds", opts = {} },
+	cmd = {
+		"Mason",
+		"MasonInstall",
+		"MasonUninstall",
+		"MasonUninstallAll",
+		"MasonLog",
+		"MasonUpdate",
+		"MasonUpdateAll", -- this cmd is provided by mason-extra-cmds
 	},
-	config = function()
-		require("mason").setup({
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
-				},
-				border = "rounded",
-			},
-		})
+	opts = {
+		ui = {
+			icons = {
 
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"intelephense",
-				"lua_ls",
-				"cssls",
-				"html",
-				"vtsls",
-				"emmet_ls",
-				"bashls",
-				"marksman",
-				"jsonls",
-				"sqlls",
-				"yamlls",
-				"tailwindcss",
-				"docker_compose_language_service",
-				"dockerls",
+				package_installed = utils.get_icon("MasonInstalled"),
+				package_uninstalled = utils.get_icon("MasonUninstalled"),
+				package_pending = utils.get_icon("MasonPending"),
 			},
-			automatic_installation = true,
-		})
-
-		require("mason-tool-installer").setup({
-			ensure_installed = {
-				"eslint_d",
-				"prettierd",
-				"selene",
-				"phpstan",
-				"pint",
-				"shfmt",
-				"vale",
-				"blade-formatter",
-				"stylua",
-				"shellcheck",
-			},
-			auto_update = true,
-			run_on_start = true,
-		})
-	end,
+			border = "rounded",
+		},
+	},
 }
-
