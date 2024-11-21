@@ -1,10 +1,16 @@
 return {
 	"echasnovski/mini.splitjoin",
 	version = false,
-	event = "User BaseFile",
+	keys = {
+		{
+			"gs",
+			"<cmd>lua MiniSplitjoin.toggle()<CR>",
+			desc = "Toggle split/join",
+		},
+	},
 	opts = {
-	    mappings = {
-	        toggle = "gs",
-	    },
+		mappings = {
+			toggle = "",
+		},
 	},
 }
