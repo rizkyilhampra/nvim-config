@@ -73,6 +73,10 @@ function M.apply_user_lsp_settings(server_name)
 
 	M.capabilities = vim.lsp.protocol.make_client_capabilities()
 	M.capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+	M.capabilities.textDocument.foldingRange = {
+		dynamicRegistration = false,
+		lineFoldingOnly = true,
+	}
 	M.capabilities = vim.tbl_deep_extend(
 		"force",
 		M.capabilities,
