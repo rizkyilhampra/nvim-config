@@ -1,4 +1,5 @@
 local M = {}
+
 local activation_window_augroup = vim.api.nvim_create_augroup("ActivationWindow", { clear = true })
 
 local function create_activation_window()
@@ -89,3 +90,4 @@ function M.setup(autocmd)
 end
 
 return M
+
