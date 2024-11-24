@@ -1,5 +1,4 @@
 local servers = {
-	"intelephense",
 	"lua_ls",
 	"cssls",
 	"html",
@@ -14,8 +13,13 @@ local servers = {
 	"docker_compose_language_service",
 	"dockerls",
 }
+
+if vim.g.php_lsp then
+	table.insert(servers, vim.g.php_lsp)
+end
+
 local utils = require("aquila.core.utils")
-local utils_lsp = require("aquila.core.utils.lsp")
+local utils_lsp = require("aquila.core.utils.lsp.init")
 
 return {
 	"williamboman/mason-lspconfig.nvim",
