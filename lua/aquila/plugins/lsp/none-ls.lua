@@ -32,6 +32,10 @@ return {
 					return utils.root_has_file(".vale.ini")
 				end,
 			}),
+			null_ls.builtins.diagnostics.phpstan.with({
+				extra_args = { "--memory-limit=1G" },
+				prefer_local = "vendor/bin",
+			}),
 			require("none-ls-shellcheck.diagnostics"),
 			require("none-ls-shellcheck.code_actions"),
 		}
