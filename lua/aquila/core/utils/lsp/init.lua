@@ -65,114 +65,25 @@ function M.apply_user_lsp_mappings(_, bufnr)
 	utils.set_mappings(lsp_mappings, opts)
 end
 
+function M.find_server_config(server_name)
+	local server_config = require("aquila.core.utils.lsp.servers." .. server_name)
+	if server_config then
+		return server_config
+	end
+	return nil
+end
+
 function M.apply_user_lsp_settings(server_name)
 	local server = require("lspconfig")[server_name]
-	local cmp_nvim_lsp = require("cmp_nvim_lsp")
-	local lspconfig = require("lspconfig")
-	local lsp_file_operations = require("lsp-file-operations")
-
-	M.capabilities = vim.lsp.protocol.make_client_capabilities()
-	M.capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
-	M.capabilities.textDocument.foldingRange = {
-		dynamicRegistration = false,
-		lineFoldingOnly = true,
-	}
-	M.capabilities = vim.tbl_deep_extend(
-		"force",
-		M.capabilities,
-		cmp_nvim_lsp.default_capabilities(),
-		lsp_file_operations.default_capabilities()
-	)
-
-	M.flags = {}
+	local capabilities = require("aquila.core.utils.lsp.capabilities")
 	local opts = vim.tbl_deep_extend("force", server, {
-		capabilities = M.capabilities,
-		flags = M.flags,
+		capabilities = capabilities,
+		flags = {},
 	})
 
-	if server_name == "jsonls" then
-		local is_schemastore_loaded, schemastore = pcall(require, "schemastore")
-		if is_schemastore_loaded then
-			opts.settings = { json = { schemas = schemastore.json.schemas(), validate = { enable = true } } }
-		end
-	end
-	if server_name == "yamlls" then
-		local is_schemastore_loaded, schemastore = pcall(require, "schemastore")
-		if is_schemastore_loaded then
-			opts.settings = { yaml = { schemas = schemastore.yaml.schemas() } }
-		end
-	end
-
-	if server_name == "phpactor" then
-		opts.init_options = {
-			["language_server_worse_reflection.inlay_hints.enable"] = true,
-			["language_server_phpstan.enabled"] = true,
-			["phpunit.enabled"] = true,
-		}
-		opts.root_dir = function(fname)
-			return lspconfig.util.root_pattern("composer.json", ".git")(fname) or lspconfig.util.path.dirname(fname)
-		end
-	end
-
-	if server_name == "html" then
-		opts.filetypes = { "html", "blade" }
-	end
-
-	if server_name == "emmet_ls" then
-		opts.filetypes = {
-			"css",
-			"eruby",
-			"html",
-			"javascript",
-			"javascriptreact",
-			"less",
-			"sass",
-			"scss",
-			"svelte",
-			"pug",
-			"typescriptreact",
-			"vue",
-			"blade",
-		}
-	end
-
-	if server_name == "bashls" then
-		opts.single_file_support = true
-	end
-
-	if server_name == "lua_ls" then
-		opts.settings = {
-			Lua = {
-				runtime = {
-					version = "LuaJIT",
-					pathStrict = true,
-				},
-				workspace = {
-					library = {
-						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-						[vim.fn.expand("lua")] = true,
-						[vim.fn.expand("${3rd}/luv/library")] = true,
-						-- [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-					},
-				},
-				hint = {
-					enable = true,
-					-- setType = false,
-					arrayIndex = "Disable",
-				},
-				completion = {
-					callSnippet = "Replace",
-				},
-				-- checkThirdParty = false,
-				-- telemetry = {
-				--     enable = true,
-				-- },
-			},
-		}
-	end
-
-	if server_name == "tailwindcss" then
-		opts = require("aquila.core.utils.server.tailwindcss")
+	local success, server_config = pcall(require, string.format("aquila.core.utils.lsp.servers.%s", server_name))
+	if success then
+		opts = vim.tbl_deep_extend("force", opts, server_config)
 	end
 
 	local old_on_attach = server.on_attach
