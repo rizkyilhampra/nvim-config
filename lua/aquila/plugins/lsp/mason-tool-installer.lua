@@ -9,7 +9,6 @@ return {
 			"eslint_d",
 			"prettierd",
 			"selene",
-			"phpstan",
 			"pint",
 			"shfmt",
 			"vale",
