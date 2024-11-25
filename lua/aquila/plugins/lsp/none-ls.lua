@@ -39,6 +39,9 @@ return {
 				diagnostic_config = {
 					update_in_insert = false,
 				},
+				condition = function(utils)
+					return utils.root_has_file({ "phpstan.neon", "phpstan.neon.dist" })
+				end,
 			}),
 			require("none-ls-shellcheck.diagnostics"),
 			require("none-ls-shellcheck.code_actions"),
