@@ -35,6 +35,10 @@ return {
 			null_ls.builtins.diagnostics.phpstan.with({
 				extra_args = { "--memory-limit=1G" },
 				prefer_local = "vendor/bin",
+				method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+				diagnostic_config = {
+					update_in_insert = false,
+				},
 			}),
 			require("none-ls-shellcheck.diagnostics"),
 			require("none-ls-shellcheck.code_actions"),
