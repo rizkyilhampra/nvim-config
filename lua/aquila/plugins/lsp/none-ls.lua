@@ -40,7 +40,7 @@ return {
 					update_in_insert = false,
 				},
 				condition = function(utils)
-					return utils.root_has_file({ "phpstan.neon", "phpstan.neon.dist" })
+					return vim.g.phpstan_enabled and utils.root_has_file({ "phpstan.neon", "phpstan.neon.dist" })
 				end,
 			}),
 			require("none-ls-shellcheck.diagnostics"),
