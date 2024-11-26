@@ -1,5 +1,3 @@
-local utils = require("aquila.core.utils")
-
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
@@ -35,7 +33,7 @@ return {
 				enable = true,
 				additional_vim_regex_highlighting = false,
 				disable = function(_, bufnr)
-					return utils.is_big_file(bufnr)
+					return require("aquila.core.utils").is_big_file(bufnr)
 				end,
 			},
 			indent = { enable = true },
