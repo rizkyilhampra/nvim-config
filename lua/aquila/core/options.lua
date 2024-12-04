@@ -25,7 +25,7 @@ vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.opt.smoothscroll = true
 
 vim.opt.cursorline = true
-vim.opt.scrolloff = 14
+vim.opt.scrolloff = 16
 vim.opt.sidescrolloff = 36
 vim.opt.confirm = true
 vim.opt.swapfile = false
