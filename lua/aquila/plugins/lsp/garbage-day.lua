@@ -1,6 +1,5 @@
 return {
 	"zeioth/garbage-day.nvim",
-	event = "LspAttach",
 	opts = {
 		aggressive_mode = false,
 		excluded_lsp_clients = {

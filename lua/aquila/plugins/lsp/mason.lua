@@ -1,10 +1,14 @@
-local utils = require("aquila.core.utils")
 return {
 	"williamboman/mason.nvim",
 	keys = {
 		{ "<Leader>m", "<cmd>Mason<CR>", desc = "Open Mason" },
 	},
-	dependencies = { "zeioth/mason-extra-cmds", opts = {} },
+	dependencies = {
+		{
+			"zeioth/mason-extra-cmds",
+			opts = {},
+		},
+	},
 	cmd = {
 		"Mason",
 		"MasonInstall",
@@ -14,15 +18,18 @@ return {
 		"MasonUpdate",
 		"MasonUpdateAll", -- this cmd is provided by mason-extra-cmds
 	},
-	opts = {
-		ui = {
-			icons = {
+	opts = function()
+		local utils = require("aquila.core.utils")
 
-				package_installed = utils.get_icon("MasonInstalled"),
-				package_uninstalled = utils.get_icon("MasonUninstalled"),
-				package_pending = utils.get_icon("MasonPending"),
+		return {
+			ui = {
+				icons = {
+					package_installed = utils.get_icon("MasonInstalled"),
+					package_uninstalled = utils.get_icon("MasonUninstalled"),
+					package_pending = utils.get_icon("MasonPending"),
+				},
+				border = "rounded",
 			},
-			border = "rounded",
-		},
-	},
+		}
+	end,
 }

@@ -1,9 +1,6 @@
 return {
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	event = "User BaseFile",
-	dependencies = {
-		"williamboman/mason.nvim",
-	},
 	opts = {
 		ensure_installed = {
 			"eslint_d",
