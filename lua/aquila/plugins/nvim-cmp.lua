@@ -128,9 +128,14 @@ return {
 
 					local doc = entry.completion_item.documentation
 					if kind.menu == "Color" and doc then
-						local content = type(doc) == "string" and doc or doc.value
+						local tailwind_tools_installed = pcall(require, "tailwind-tools")
+						if not tailwind_tools_installed then
+							return kind
+						end
+
 						local config = require("tailwind-tools.config")
 						local tailwind_tools_utils = require("tailwind-tools.utils")
+						local content = type(doc) == "string" and doc or doc.value
 						local r, g, b = tailwind_tools_utils.extract_color(content)
 						local style = config.options.cmp.highlight
 
@@ -166,4 +171,3 @@ return {
 		})
 	end,
 }
-
