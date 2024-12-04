@@ -70,6 +70,7 @@ vim.opt.colorcolumn = ""
 
 vim.opt.nrformats:append({ "alpha" })
 vim.opt.formatoptions:remove({ "c", "r", "o" })
+vim.opt.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 vim.g.diagnostics_mode = 2 -- Set code linting (0=off, 1=only show in status line, 2=virtual text off, 3=all on).
 vim.g.inlay_hints_enabled = true

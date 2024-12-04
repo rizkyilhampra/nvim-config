@@ -1,6 +1,5 @@
 return {
 	"stevearc/conform.nvim",
-	lazy = true,
 	cmd = { "ConformInfo" },
 	keys = {
 		{
@@ -40,8 +39,4 @@ return {
 			sh = { "shfmt" },
 		},
 	},
-	init = function()
-		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-	end,
 }
-
