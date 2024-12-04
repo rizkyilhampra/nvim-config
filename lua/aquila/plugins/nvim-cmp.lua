@@ -25,6 +25,21 @@ return {
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
 		local utils = require("aquila.core.utils")
+		local types = require("cmp.types")
+
+		local check_backspace = function()
+			local col = vim.fn.col(".") - 1
+			return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+		end
+
+		local function deprioritize_snippet(entry1, entry2)
+			if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then
+				return false
+			end
+			if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then
+				return true
+			end
+		end
 
 		local border_opts = {
 			border = "rounded",
@@ -32,6 +47,19 @@ return {
 		}
 
 		cmp.setup({
+			sorting = {
+				priority_weight = 2,
+				comparators = {
+					deprioritize_snippet,
+					cmp.config.compare.exact,
+					cmp.config.compare.locality,
+					cmp.config.compare.score,
+					cmp.config.compare.recently_used,
+					cmp.config.compare.offset,
+					cmp.config.compare.sort_text,
+					cmp.config.compare.order,
+				},
+			},
 			matching = {
 				disallow_fuzzy_matching = true,
 				disallow_fullfuzzy_matching = true,
@@ -65,20 +93,30 @@ return {
 				["<Esc>"] = cmp.mapping.abort(),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					local copilot = require("copilot.suggestion")
+
 					if copilot.is_visible() then
-						copilot.accept()
-					elseif cmp.visible() then
+						return copilot.accept()
+					end
+
+					if cmp.visible() then
 						local entry = cmp.get_selected_entry()
 						if not entry then
 							cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 						else
 							cmp.confirm()
 						end
-					elseif luasnip.expand_or_locally_jumpable() then
-						luasnip.expand_or_jump()
-					else
-						fallback()
+						return
 					end
+
+					if luasnip.expand_or_locally_jumpable() then
+						return luasnip.expand_or_jump()
+					end
+
+					if check_backspace() then
+						return fallback()
+					end
+
+					fallback()
 				end, { "i", "s" }),
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
