@@ -17,7 +17,6 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 		"f3fora/cmp-spell",
-		"luckasRanarison/tailwind-tools.nvim",
 	},
 	config = function()
 		require("luasnip.loaders.from_vscode").lazy_load()
