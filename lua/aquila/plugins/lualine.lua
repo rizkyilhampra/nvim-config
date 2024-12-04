@@ -17,6 +17,20 @@ return {
 	"nvim-lualine/lualine.nvim",
 	event = "User BaseDefered",
 	opts = function()
+		local _, noice = pcall(require, "noice")
+
+		local mode_get_component = {
+			noice.api.status.mode.get,
+			cond = noice.api.status.mode.has,
+			color = { fg = "#ff9e64" },
+		}
+
+		local mode_search_component = {
+			noice.api.status.search.get,
+			cond = noice.api.status.search.has,
+			color = { fg = "#ff9e64" },
+		}
+
 		return {
 			options = {
 				disabled_filetypes = {
@@ -54,6 +68,8 @@ return {
 					"diagnostics",
 				},
 				lualine_x = {
+					mode_get_component,
+					mode_search_component,
 					"filetype",
 					{
 						"o:encoding",
