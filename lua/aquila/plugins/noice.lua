@@ -48,6 +48,7 @@ return {
 				opts = {
 					size = { max_width = 50 },
 				},
+				silent = true,
 			},
 			signature = {
 				enabled = false,
