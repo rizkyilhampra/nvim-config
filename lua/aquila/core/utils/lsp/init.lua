@@ -66,14 +66,6 @@ function M.apply_user_lsp_mappings(_, bufnr)
 	utils.set_mappings(lsp_mappings, opts)
 end
 
-function M.find_server_config(server_name)
-	local server_config = require("aquila.core.utils.lsp.servers." .. server_name)
-	if server_config then
-		return server_config
-	end
-	return nil
-end
-
 function M.apply_user_lsp_settings(server_name)
 	local server = require("lspconfig")[server_name]
 	local capabilities = require("aquila.core.utils.lsp.capabilities")
