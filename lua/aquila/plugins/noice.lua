@@ -96,35 +96,26 @@ return {
 		},
 		routes = {
 			{
-				filter = { event = "msg_show", kind = "search_count" },
 				opts = { skip = true },
-			},
-			{
 				filter = {
-					event = "msg_show",
-					kind = "",
-					find = "written",
+					any = {
+						{ error = true, find = "E486: Pattern not found" },
+						{ event = "msg_show", kind = "search_count" },
+						{ event = "msg_show", kind = "", find = "written" },
+						{ event = "msg_show", find = "E211: File .* no longer available" },
+						{ find = "%d+L, %d+B" },
+						{ find = "; after #%d+" },
+						{ find = "; before #%d+" },
+						{ find = "Agent service not initialized." }, -- TODO: Caused by wakatime, let's see until next update
+						{ event = "msg_show", find = "^[/?]." },
+						{ find = "Failed to set cursor" },
+					},
 				},
-				opts = { skip = true },
 			},
 			{
 				view = "split",
 				filter = { event = "msg_show", min_height = 20 },
 			},
-			{
-				filter = {
-					event = "msg_show",
-					any = {
-						{ find = "%d+L, %d+B" },
-						{ find = "; after #%d+" },
-						{ find = "; before #%d+" },
-						{ find = "Agent service not initialized." }, -- TODO: Caused by wakatime, let's see until next update
-						{ find = "Failed to set cursor" },
-					},
-				},
-			},
-			{ filter = { event = "msg_show", find = "^[/?]." }, skip = true }, -- unneeded info on search patterns
-			{ filter = { event = "msg_show", find = "E211: File .* no longer available" }, skip = true },
 		},
 	},
 }
