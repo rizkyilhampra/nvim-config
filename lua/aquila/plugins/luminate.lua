@@ -1,6 +1,7 @@
--- NOTE: Highlight yanked, pasted, and undone/redone text in Neovim with a splash of color.
+-- Highlight yanked, pasted, and undone/redone text in Neovim with a splash of color.
 return {
-    'mei28/luminate.nvim',
-    event = "User BaseFile",
-    opts = {}
+	"mei28/luminate.nvim",
+	opts = {
+		duration = 700,
+	},
 }
