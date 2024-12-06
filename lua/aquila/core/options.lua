@@ -82,3 +82,5 @@ vim.g.url_effect_enabled = true -- Highlight URLs with an underline effect.
 
 vim.g.php_lsp = "phpactor" -- intelephense
 vim.g.phpstan_enabled = false
+
+vim.g.inline_code_completion_provider = "supermaven" -- supermaven|copilot

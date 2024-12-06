@@ -26,6 +26,7 @@ return {
 		local lspkind = require("lspkind")
 		local utils = require("aquila.core.utils")
 		local types = require("cmp.types")
+		local provider = vim.g.inline_code_completion_provider
 
 		local check_backspace = function()
 			local col = vim.fn.col(".") - 1
@@ -92,10 +93,18 @@ return {
 				["<CR>"] = cmp.mapping.confirm({ select = false }),
 				["<Esc>"] = cmp.mapping.abort(),
 				["<Tab>"] = cmp.mapping(function(fallback)
-					local copilot = require("copilot.suggestion")
+					if provider == "copilot" then
+						local copilot_loaded, copilot = pcall(require, "copilot.suggestion")
+						if copilot_loaded and copilot.is_visible() then
+							return copilot.accept()
+						end
+					end
 
-					if copilot.is_visible() then
-						return copilot.accept()
+					if provider == "supermaven" then
+						local supermaven_loaded, supermaven = pcall(require, "supermaven-nvim.completion_preview")
+						if supermaven_loaded and supermaven.has_suggestion() then
+							return supermaven.on_accept_suggestion()
+						end
 					end
 
 					if cmp.visible() then
