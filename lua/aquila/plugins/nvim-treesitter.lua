@@ -3,9 +3,6 @@ return {
 	build = ":TSUpdate",
 	cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 	event = "User BaseDefered",
-	dependencies = {
-		"hiphish/rainbow-delimiters.nvim",
-	},
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
