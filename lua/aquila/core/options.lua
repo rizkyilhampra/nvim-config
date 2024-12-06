@@ -80,7 +80,7 @@ vim.g.transparent_mode = true
 vim.g.big_file = { size = 1024 * 5000, lines = 50000 } -- For files bigger than this, disable 'treesitter' (+5Mb).
 vim.g.url_effect_enabled = true -- Highlight URLs with an underline effect.
 
-vim.g.php_lsp = "phpactor" -- intelephense
+vim.g.php_lsp = "intelephense" -- intelephense|phpactor
 vim.g.phpstan_enabled = false
 
 vim.g.inline_code_completion_provider = "supermaven" -- supermaven|copilot
