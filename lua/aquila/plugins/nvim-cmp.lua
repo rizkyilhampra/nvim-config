@@ -13,14 +13,10 @@ return {
 		{ "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
 		"FelipeLema/cmp-async-path",
 		"hrsh7th/cmp-calc",
-		{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
 		"saadparwaiz1/cmp_luasnip",
-		"rafamadriz/friendly-snippets",
 		"f3fora/cmp-spell",
 	},
 	config = function()
-		require("luasnip.loaders.from_vscode").lazy_load()
-
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
