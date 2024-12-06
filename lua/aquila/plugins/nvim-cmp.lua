@@ -98,34 +98,27 @@ return {
 						if copilot_loaded and copilot.is_visible() then
 							return copilot.accept()
 						end
-					end
-
-					if provider == "supermaven" then
+					elseif provider == "supermaven" then
 						local supermaven_loaded, supermaven = pcall(require, "supermaven-nvim.completion_preview")
 						if supermaven_loaded and supermaven.has_suggestion() then
 							return supermaven.on_accept_suggestion()
 						end
-					end
-
-					if cmp.visible() then
+					elseif cmp.visible() then
 						local entry = cmp.get_selected_entry()
 						if not entry then
 							cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 						else
 							cmp.confirm()
 						end
-						return
+					elseif luasnip.expand_or_locally_jumpable() then
+						if check_backspace() then
+							fallback()
+						else
+							luasnip.expand_or_jump()
+						end
+					else
+						fallback()
 					end
-
-					if luasnip.expand_or_locally_jumpable() then
-						return luasnip.expand_or_jump()
-					end
-
-					if check_backspace() then
-						return fallback()
-					end
-
-					fallback()
 				end, { "i", "s" }),
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
