@@ -4,7 +4,7 @@ return {
 	init = function()
 		vim.g.neominimap = {
 			diagnostic = {
-				enabled = true,
+				enabled = false,
 			},
 			auto_enable = true,
 			buf_filter = function(bufnr)
