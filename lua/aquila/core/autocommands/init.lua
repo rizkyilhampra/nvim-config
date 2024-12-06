@@ -224,7 +224,6 @@ M.create("CmdwinEnter", {
 })
 
 require("aquila.core.autocommands.commands.activation-window").setup(M)
-require('aquila.core.autocommands.commands.async-keyword').setup(M, utils)
-require("aquila.core.autocommands.commands.laravel-blade-lsp").setup(M)
+require('aquila.core.autocommands.commands.async-keyword').setup(M)
 
 return M
