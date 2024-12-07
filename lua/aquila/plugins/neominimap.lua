@@ -8,8 +8,7 @@ return {
 			},
 			auto_enable = true,
 			buf_filter = function(bufnr)
-				local line_count = vim.api.nvim_buf_line_count(bufnr)
-				return line_count < 4096
+				return require("aquila.core.utils").is_big_file(bufnr)
 			end,
 			float = {
 				z_index = 21,
