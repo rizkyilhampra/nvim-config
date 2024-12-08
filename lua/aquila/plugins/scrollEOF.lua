@@ -1,6 +1,6 @@
 return {
 	"Aasim-A/scrollEOF.nvim",
-	event = "User BaseDefered",
+	event = { "BufRead", "BufNewFile" },
 	opts = {
 		floating = false,
 	},
