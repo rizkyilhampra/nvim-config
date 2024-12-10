@@ -8,7 +8,7 @@ return {
 			},
 			auto_enable = true,
 			buf_filter = function(bufnr)
-				return require("aquila.core.utils").is_big_file(bufnr)
+				return not require("aquila.core.utils").is_big_file(bufnr)
 			end,
 			float = {
 				z_index = 21,
