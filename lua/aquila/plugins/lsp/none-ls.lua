@@ -13,7 +13,7 @@ return {
 		local sources = {
 			require("none-ls.diagnostics.eslint_d").with({
 				condition = function(utils)
-					return utils.root_has_file({ ".eslintrc.js", ".eslintrc.yml", ".eslintrc.json" })
+					return utils.root_has_file({ "eslint.config.js", ".eslintrc.js" })
 				end,
 			}),
 			null_ls.builtins.diagnostics.selene.with({
