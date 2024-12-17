@@ -25,7 +25,7 @@ M.apply_default_lsp_settings = function()
 			},
 			active = signs,
 		},
-		update_in_insert = true,
+		update_in_insert = false,
 		underline = true,
 		severity_sort = true,
 		float = {
