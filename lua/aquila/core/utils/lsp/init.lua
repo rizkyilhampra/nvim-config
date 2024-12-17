@@ -54,8 +54,8 @@ function M.apply_user_lsp_mappings(_, bufnr)
 		n = {
 			["gi"] = "<cmd>Telescope lsp_implementations<CR>",
 			["gr"] = "<cmd>Telescope lsp_references<CR>",
-			-- ["gd"] = "<cmd>Telescope lsp_definitions<CR>",
-            ["gd"] = "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+            ["gp"] = "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+			["gd"] = "<cmd>Telescope lsp_definitions<CR>",
 			["<leader>ca"] = vim.lsp.buf.code_action,
 			["<C-k>"] = function()
 				vim.diagnostic.open_float()
