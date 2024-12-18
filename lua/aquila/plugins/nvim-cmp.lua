@@ -92,12 +92,12 @@ return {
 					if provider == "copilot" then
 						local copilot_loaded, copilot = pcall(require, "copilot.suggestion")
 						if copilot_loaded and copilot.is_visible() then
-							return copilot.accept()
+							copilot.accept()
 						end
 					elseif provider == "supermaven" then
 						local supermaven_loaded, supermaven = pcall(require, "supermaven-nvim.completion_preview")
 						if supermaven_loaded and supermaven.has_suggestion() then
-							return supermaven.on_accept_suggestion()
+							supermaven.on_accept_suggestion()
 						end
 					elseif cmp.visible() then
 						local entry = cmp.get_selected_entry()
