@@ -197,6 +197,10 @@ return {
 						end
 					end
 
+					item.dup = ({
+						["html-css"] = 0,
+					})[entry.source.name] or 0
+
 					return kind
 				end,
 			},
