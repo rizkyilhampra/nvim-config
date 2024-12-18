@@ -224,6 +224,30 @@ M.create("CmdwinEnter", {
 })
 
 require("aquila.core.autocommands.commands.activation-window").setup(M)
-require('aquila.core.autocommands.commands.async-keyword').setup(M)
+require("aquila.core.autocommands.commands.async-keyword").setup(M)
+
+vim.api.nvim_create_user_command("Cppath", function()
+	local path = vim.fn.expand("%:h")
+	vim.fn.setreg("+", path)
+	vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+
+vim.api.nvim_create_user_command("Cpbufwpath", function()
+  local filename = vim.fn.expand("%:.")
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+  local content = table.concat(lines, "\n")
+
+  local header = {
+    "================================================",
+    "File: " .. filename,
+    "================================================",
+  }
+
+  local formatted_content = table.concat(header, "\n") .. "\n" .. content
+
+  vim.fn.setreg("+", formatted_content)
+
+  vim.notify('Copied content of "' .. filename .. '" to the clipboard!', vim.log.levels.INFO)
+end, {})
 
 return M
