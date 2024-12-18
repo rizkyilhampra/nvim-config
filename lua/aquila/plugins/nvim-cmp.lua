@@ -175,6 +175,10 @@ return {
 					kind.kind = " " .. (strings[1] or "") .. " "
 					kind.menu = (strings[3] or "")
 
+					if entry.source.name == "html-css" then
+						kind.menu = entry.completion_item.provider or kind.menu
+					end
+
 					local doc = entry.completion_item.documentation
 					if kind.menu == "Color" and doc then
 						local tailwind_tools_installed = pcall(require, "tailwind-tools")
