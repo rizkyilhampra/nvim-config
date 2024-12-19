@@ -1,6 +1,8 @@
 {
+  "ChatGPT.nvim": { "branch": "main", "commit": "5b6d296eefc75331e2ff9f0adcffbd7d27862dd6" },
   "LuaSnip": { "branch": "master", "commit": "33b06d72d220aa56a7ce80a0dd6f06c70cd82b9d" },
   "SchemaStore.nvim": { "branch": "main", "commit": "bb03860b59f17dfada46d6d9563c48b7b12fecaf" },
+  "age.nvim": { "branch": "main", "commit": "f1793e14123a7c5374a3744aacab9c283014fa1d" },
   "alpha-nvim": { "branch": "main", "commit": "de72250e054e5e691b9736ee30db72c65d560771" },
   "better-escape.nvim": { "branch": "master", "commit": "199dcc2643dec5d8dbdab4ec672cf405224dcb3b" },
   "blade-nav.nvim": { "branch": "main", "commit": "07095226cdc345ac24e0b087c8689d5008f3b0da" },
