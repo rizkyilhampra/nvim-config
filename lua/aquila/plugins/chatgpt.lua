@@ -1,6 +1,6 @@
 local identity = vim.fn.expand("$HOME/key.txt")
-local api_key = vim.fn.expand("$HOME/gemini-api-key.age")
-local host = vim.fn.expand("$HOME/openai-proxy-host.age")
+local api_key = vim.fn.expand("$HOME/.keys/gemini-api-key.age")
+local host = vim.fn.expand("$HOME/.keys/openai-proxy-host.age")
 
 return {
 	"jackMort/ChatGPT.nvim",
