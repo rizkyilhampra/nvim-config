@@ -18,7 +18,7 @@
   "code-refactor.nvim": { "branch": "main", "commit": "d73662b0089cac94e109ccece58d1b31c32940c7" },
   "codesnap.nvim": { "branch": "main", "commit": "6400480aa6cc366cbd931146c429aaa64680dab9" },
   "conform.nvim": { "branch": "master", "commit": "9180320205d250429f0f80e073326c674e2a7149" },
-  "copilot.lua": { "branch": "master", "commit": "c810500b69cb8bcea58f2be635cb1340011714b5" },
+  "copilot.lua": { "branch": "master", "commit": "886ee73b6d464b2b3e3e6a7ff55ce87feac423a9" },
   "cpy_buffers.nvim": { "branch": "main", "commit": "94ae40a9a216a9e50fdfe5b8ef0bfbb7c7d84555" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dooing": { "branch": "main", "commit": "6b14542ebf19fe84e7960f4bad0c81b9bef41f4d" },
