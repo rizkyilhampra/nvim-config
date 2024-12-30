@@ -1,17 +1,20 @@
 # Aquila's Neovim Configuration
 
-My Neovim configuration written from **scratch** (of course, with some ~stolen~ reference from others). I use this with my workflow and/or environment, see [Aquila's Dotfiles](https://github.com/rizkyilhampra/dotfiles).
+My Neovim configuration written from **scratch** (of course, with some ~stolen~ *take inspiration* from others). This is also part of the gitmodules in my dotfiles. See [Aquila's Dotfiles](https://github.com/rizkyilhampra/dotfiles) for the rest of the setup.
 
-## Screenshot
+> [!WARNING]
+> The documentation is still a work in progress.
+ 
+## Screenshots
 
 ![screenshot](./dist/2024-12-30-221342_hyprshot.png)
 
-<details>
-<summary>More Screenshots (Click to expand)</summary>
-    
-![screenshot-2](./dist/2024-10-13-170359_hyprshot.png)
-![screenshot-3](./dist/2024-10-13-170840_hyprshot.png)
-</details>
+<!-- <details> -->
+<!-- <summary>More Screenshots (Click to expand)</summary> -->
+<!---->
+<!-- ![screenshot-2](./dist/2024-10-13-170359_hyprshot.png) -->
+<!-- ![screenshot-3](./dist/2024-10-13-170840_hyprshot.png) -->
+<!-- </details> -->
 
 ## Acknowledgements
 - [NormalNvim](https://github.com/NormalNvim/NormalNvim)
