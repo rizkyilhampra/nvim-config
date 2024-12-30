@@ -4,7 +4,7 @@ My Neovim configuration written from **scratch** (of course, with some ~stolen~ 
 
 ## Screenshot
 
-![screenshot](./dist/2024-10-13-170953_hyprshot.png)
+![screenshot](./dist/2024-12-30-221342_hyprshot.png)
 
 <details>
 <summary>More Screenshots (Click to expand)</summary>
