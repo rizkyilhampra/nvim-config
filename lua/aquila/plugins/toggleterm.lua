@@ -99,19 +99,6 @@ return {
             on_open = function(_)
                 vim.cmd("startinsert!")
             end,
-            on_close = function()
-                -- refresh current buffer
-                vim.api.nvim_command('checktime')
-
-                -- refresh neo-tree if it's open
-                local manager = require("neo-tree.sources.manager")
-                local renderer = require("neo-tree.ui.renderer")
-                local state = manager.get_state("filesystem")
-                local window_exists = renderer.window_exists(state)
-                if window_exists then
-                    vim.cmd [[ lua require("neo-tree.sources.filesystem.commands").refresh(require("neo-tree.sources.manager").get_state("filesystem"))]]
-                end
-            end,
         })
 
 

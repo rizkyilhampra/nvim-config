@@ -250,4 +250,24 @@ vim.api.nvim_create_user_command("Cpbufwpath", function()
   vim.notify('Copied content of "' .. filename .. '" to the clipboard!', vim.log.levels.INFO)
 end, {})
 
+M.create("TermClose", {
+	pattern = { "*lazygit" },
+	desc = "Refresh Neo-Tree git when closing lazygit/gitui",
+	callback = function()
+		local manager_avail, manager = pcall(require, "neo-tree.sources.manager")
+		if manager_avail then
+			for _, source in ipairs({
+				"filesystem",
+				"git_status",
+				"document_symbols",
+			}) do
+				local module = "neo-tree.sources." .. source
+				if package.loaded[module] then
+					manager.refresh(require(module).name)
+				end
+			end
+		end
+	end,
+})
+
 return M
