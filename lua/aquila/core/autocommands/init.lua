@@ -233,21 +233,21 @@ vim.api.nvim_create_user_command("Cppath", function()
 end, {})
 
 vim.api.nvim_create_user_command("Cpbufwpath", function()
-  local filename = vim.fn.expand("%:.")
-  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-  local content = table.concat(lines, "\n")
+	local filename = vim.fn.expand("%:.")
+	local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+	local content = table.concat(lines, "\n")
 
-  local header = {
-    "================================================",
-    "File: " .. filename,
-    "================================================",
-  }
+	local header = {
+		"================================================",
+		"File: " .. filename,
+		"================================================",
+	}
 
-  local formatted_content = table.concat(header, "\n") .. "\n" .. content
+	local formatted_content = table.concat(header, "\n") .. "\n" .. content
 
-  vim.fn.setreg("+", formatted_content)
+	vim.fn.setreg("+", formatted_content)
 
-  vim.notify('Copied content of "' .. filename .. '" to the clipboard!', vim.log.levels.INFO)
+	vim.notify('Copied content of "' .. filename .. '" to the clipboard!', vim.log.levels.INFO)
 end, {})
 
 M.create("TermClose", {
