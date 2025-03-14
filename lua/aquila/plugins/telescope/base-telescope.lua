@@ -90,10 +90,8 @@ return {
 		},
 		{
 			"<Leader>fS",
-			function()
-				require("telescope.builtin").live_grep()
-			end,
-			desc = "Find string in cwd",
+			require("aquila.config.telescope.multi-grep"),
+			desc = "Find string in cwd with shortcuts",
 		},
 		{
 			"<leader>fs",
@@ -206,11 +204,6 @@ return {
 				require("aquila.config.telescope.filepath").list_paths()
 			end,
 			desc = "List of paths",
-		},
-		{
-			"<Leader>fm",
-			require("aquila.config.telescope.multi-grep"),
-			desc = "Live grep with shortcuts",
 		},
 	},
 }
