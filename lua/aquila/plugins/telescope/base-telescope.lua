@@ -207,5 +207,10 @@ return {
 			end,
 			desc = "List of paths",
 		},
+		{
+			"<Leader>fm",
+			require("aquila.config.telescope.multi-grep"),
+			desc = "Live grep with shortcuts",
+		},
 	},
 }
