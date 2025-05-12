@@ -90,7 +90,7 @@ return {
 		},
 		{
 			"<Leader>fS",
-			require("aquila.config.telescope.multi-grep"),
+			"<cmd>lua require('aquila.config.telescope.multi-grep')()<CR>",
 			desc = "Find string in cwd with shortcuts",
 		},
 		{
@@ -200,9 +200,7 @@ return {
 		},
 		{
 			"<Leader>fC",
-			function()
-				require("aquila.config.telescope.filepath").list_paths()
-			end,
+			"<cmd> lua require('aquila.config.telescope.filepath').list_paths()<CR>",
 			desc = "List of paths",
 		},
 	},
