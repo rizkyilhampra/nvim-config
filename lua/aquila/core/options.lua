@@ -86,3 +86,17 @@ vim.g.php_lsp = "intelephense" -- intelephense|phpactor
 vim.g.phpstan_enabled = false
 
 vim.g.inline_code_completion_provider = "supermaven" -- supermaven|copilot
+
+vim.filetype.add({
+	extension = {
+		neon = "yaml",
+		["http"] = "http",
+	},
+	pattern = {
+		[".*%.neon%.dist"] = "yaml",
+		[".*/waybar/config"] = "jsonc",
+		[".*/kitty/*.conf"] = "bash",
+		[".*/hypr/.*%.conf"] = "hyprlang",
+		[".*/%.env.*"] = "sh",
+	},
+})
