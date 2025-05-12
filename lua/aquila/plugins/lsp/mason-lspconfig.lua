@@ -19,7 +19,7 @@ if vim.g.php_lsp then
 end
 
 return {
-	"williamboman/mason-lspconfig.nvim",
+	"mason-org/mason-lspconfig.nvim",
 	dependencies = {
 		"neovim/nvim-lspconfig",
 		"zeioth/garbage-day.nvim",
