@@ -23,7 +23,7 @@ end
 local function load_colorscheme(colorscheme)
 	if vim.g.default_colorscheme then
 		if not pcall(vim.cmd.colorscheme, colorscheme) then
-			require("base.utils").notify("Error setting up colorscheme: " .. colorscheme, vim.log.levels.ERROR)
+			require("aquila.core.utils").notify("Error setting up colorscheme: " .. colorscheme, vim.log.levels.ERROR)
 		end
 	end
 end
