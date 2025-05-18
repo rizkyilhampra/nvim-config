@@ -56,18 +56,19 @@ return {
 			end,
 			desc = "Find files with Telescope picker builtin (rg)",
 		},
-		{
-			"<Leader><Tab>",
-			function()
-				require("telescope.builtin").oldfiles(require("telescope.themes").get_dropdown({
-					previewer = false,
-					initial_mode = "normal",
-					only_cwd = true,
-					path_display = { filename_first = { reverse_directories = false } },
-				}))
-			end,
-			desc = "List previously open files cwd",
-		},
+		-- NOTE: Replaced by Snacks Picker. See: ../snacks.lua
+		-- {
+		-- 	"<Leader><Tab>",
+		-- 	function()
+		-- 		require("telescope.builtin").oldfiles(require("telescope.themes").get_dropdown({
+		-- 			previewer = false,
+		-- 			initial_mode = "normal",
+		-- 			only_cwd = true,
+		-- 			path_display = { filename_first = { reverse_directories = false } },
+		-- 		}))
+		-- 	end,
+		-- 	desc = "List previously open files cwd",
+		-- },
 		{
 			"<leader>fa",
 			function()
