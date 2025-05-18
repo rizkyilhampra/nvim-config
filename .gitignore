@@ -2,3 +2,5 @@ bakplugins
 lua/aquila/plugins/*.bak
 lua/aquila/plugins/*/*.bak
 lua/aquila/core/*.bak
+after/queries/html.bak
+queries/blade.bak
