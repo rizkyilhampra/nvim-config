@@ -18,8 +18,12 @@ if vim.g.php_lsp then
 	table.insert(servers, vim.g.php_lsp)
 end
 
+local utils = require("aquila.core.utils")
+local utils_lsp = require("aquila.core.utils.lsp.init")
+
 return {
 	"mason-org/mason-lspconfig.nvim",
+    version = "^1.0.0",
 	dependencies = {
 		"neovim/nvim-lspconfig",
 		"zeioth/garbage-day.nvim",
@@ -30,13 +34,14 @@ return {
 			opts.handlers = {}
 		end
 		opts.handlers[1] = function(server)
-			require("aquila.core.utils.lsp.init").setup(server)
+			utils_lsp.setup(server)
 		end
 		opts.ensure_installed = servers
+		opts.automatic_enable = false
 	end,
 	config = function(_, opts)
 		require("mason-lspconfig").setup(opts)
-		require("aquila.core.utils.lsp.init").apply_default_lsp_settings()
-		require("aquila.core.utils").trigger_event("FileType")
+		utils_lsp.apply_default_lsp_settings()
+		utils.trigger_event("FileType")
 	end,
 }

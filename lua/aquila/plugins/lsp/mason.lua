@@ -1,5 +1,6 @@
 return {
 	"mason-org/mason.nvim",
+    version = "^1.0.0",
 	keys = {
 		{ "<Leader>m", "<cmd>Mason<CR>", desc = "Open Mason" },
 	},
