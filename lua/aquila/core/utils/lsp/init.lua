@@ -54,7 +54,7 @@ function M.apply_user_lsp_mappings(_, bufnr)
 		n = {
 			["gi"] = "<cmd>Telescope lsp_implementations<CR>",
 			["gr"] = "<cmd>Telescope lsp_references<CR>",
-            ["gp"] = "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+			["gp"] = "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
 			["gd"] = "<cmd>Telescope lsp_definitions<CR>",
 			["<leader>ca"] = vim.lsp.buf.code_action,
 			["<C-k>"] = function()
@@ -67,22 +67,31 @@ function M.apply_user_lsp_mappings(_, bufnr)
 end
 
 function M.apply_user_lsp_settings(server_name)
-	local server = require("lspconfig")[server_name]
-	local capabilities = require("aquila.core.utils.lsp.capabilities")
-	local opts = vim.tbl_deep_extend("force", server, {
-		capabilities = capabilities,
-		flags = {},
-	})
+	local resolved = vim.lsp.config[server_name] or {}
 
-	local success, server_config = pcall(require, string.format("aquila.core.utils.lsp.servers.%s", server_name))
-	if success then
-		opts = vim.tbl_deep_extend("force", opts, server_config)
+	local ok, user_cfg = pcall(require, ("aquila.core.utils.lsp.servers.%s"):format(server_name))
+	if not ok or type(user_cfg) ~= "table" then
+		user_cfg = {}
 	end
 
-	local old_on_attach = server.on_attach
+	local base_on_attach = resolved.on_attach
+	local user_on_attach = user_cfg.on_attach
+
+	local my_caps = require("aquila.core.utils.lsp.capabilities")
+	local merged_caps =
+		vim.tbl_deep_extend("force", {}, resolved.capabilities or {}, my_caps or {}, user_cfg.capabilities or {})
+
+	local opts = vim.tbl_deep_extend("force", {}, resolved, user_cfg, {
+		capabilities = merged_caps,
+		flags = vim.tbl_deep_extend("force", {}, resolved.flags or {}, user_cfg.flags or {}),
+	})
+
 	opts.on_attach = function(client, bufnr)
-		if type(old_on_attach) == "function" then
-			old_on_attach(client, bufnr)
+		if type(base_on_attach) == "function" then
+			base_on_attach(client, bufnr)
+		end
+		if type(user_on_attach) == "function" then
+			user_on_attach(client, bufnr)
 		end
 		M.apply_user_lsp_mappings(client, bufnr)
 	end
@@ -92,10 +101,12 @@ end
 
 M.setup = function(server)
 	local opts = M.apply_user_lsp_settings(server)
-	local setup_handler = stored_handlers[server] or require("lspconfig")[server].setup(opts)
-	if setup_handler then
-		setup_handler(server, opts)
-	end
+	local setup_handler = stored_handlers[server]
+		or function(name, o)
+			vim.lsp.config(name, o)
+			vim.lsp.enable(name)
+		end
+	setup_handler(server, opts)
 end
 
 return M
