@@ -93,6 +93,8 @@ return {
 						local copilot_loaded, copilot = pcall(require, "copilot.suggestion")
 						if copilot_loaded and copilot.is_visible() then
 							copilot.accept()
+						else
+							fallback()
 						end
 					elseif provider == "supermaven" then
 						local supermaven_loaded, supermaven = pcall(require, "supermaven-nvim.completion_preview")
