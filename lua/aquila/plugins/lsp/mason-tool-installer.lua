@@ -11,7 +11,6 @@ return {
 			"vale",
 			"blade-formatter",
 			"stylua",
-			"shellcheck",
 		},
 		auto_update = true,
 		run_on_start = true,
